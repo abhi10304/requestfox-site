@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>API Testing Extension FAQ: Chrome and Firefox · RequestFox</title>
+<meta name="description" content="Straight answers about testing APIs in the browser: which tool fits, finding failed or slow calls, GraphQL errors in a 200, mocking, exports and privacy." />
+<link rel="canonical" href="https://requestfox.accessisight.com/faq.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="API Testing Extension FAQ: Chrome and Firefox · RequestFox" />
+<meta property="og:description" content="Straight answers about testing APIs in the browser: which tool fits, finding failed or slow calls, GraphQL errors in a 200, mocking, exports and privacy." />
+<meta property="og:url" content="https://requestfox.accessisight.com/faq.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-faq.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="API Testing Extension FAQ: Chrome and Firefox · RequestFox" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="API Testing Extension FAQ: Chrome and Firefox · RequestFox" />
+<meta name="twitter:description" content="Straight answers about testing APIs in the browser: which tool fits, finding failed or slow calls, GraphQL errors in a 200, mocking, exports and privacy." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-faq.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "FAQ",
+      "item": "https://requestfox.accessisight.com/faq.html"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best API testing extension for Chrome?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the job. To test the API calls a web app makes while you use it, and have failed, slow and duplicate calls flagged for you, use RequestFox. For a raw look at everything one page load does, the built-in DevTools Network panel needs no install. To build and share API collections across a team, Postman is the usual choice; to keep them as files in git, Bruno; for always-on rules that redirect or rewrite traffic, Requestly."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good API testing add-on for Firefox?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a free Postman alternative that runs in the browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is RequestFox different from the DevTools Network panel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I see every API call a website makes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open DevTools (F12), choose Network, and filter by Fetch/XHR. To keep the list while you click through a whole flow and have problems flagged for you, open the RequestFox side panel, press Start, and use the site: every fetch, XMLHttpRequest, WebSocket and server-sent event call is listed the moment it starts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I find failed, slow or duplicate API calls while testing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox flags them as they happen: every 4xx, 5xx and dropped connection, calls slower than a threshold you set, rapid double-fires and retries. Each flag is tied to the click or form submit that caused it, and failures are explained in plain words. By hand, sort the DevTools Network panel by Status, Time and Name and compare rows."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I catch GraphQL errors that come back as 200 OK?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "GraphQL servers often answer 200 OK with an errors array in the body, so the status column looks fine. Check each response body for a non-empty errors key, and treat it as a failure in your client and tests. RequestFox reads GraphQL and JSON-RPC responses and flags these errors automatically, with the server's own message."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does an API return 401 when the token looks fine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Often the access token expired minutes earlier and was never refreshed. The middle part of a JWT is base64url-encoded JSON with an exp time you can compare with the response's Date header. RequestFox decodes the bearer token locally, reading only its times, issuer and audience, and says on the request when an expired token caused the 401 or 403."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I spot N+1 API calls in the browser?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Look for one path called again and again with only an id changing, like /products/101/reviews, /products/102/reviews, in a short burst. RequestFox turns paths into templates such as /products/{id}/reviews and flags the burst as N+1. The fix is a batch endpoint or including the data in the list response."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I know when an API response changed shape?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags SCHEMA CHANGED when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I mock an API response in Chrome without a backend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In RequestFox, open a captured call and choose Mock: it returns that call's real status, headers and body, which you can edit, for both fetch and XMLHttpRequest. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or reply. Mocked responses are labelled in the log."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I turn browser traffic into load tests?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. After a recording, RequestFox's Performance panel turns the captured endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I export network requests as HAR, Postman or OpenAPI?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report, and copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can RequestFox send a request to any API?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked FROM EXTENSION in the log. Copy as code also turns any request into cURL or another language to run outside the browser."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does RequestFox send my data anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is RequestFox free? Is it open source?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public. It has no ads, no account and no paid tier."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which languages does RequestFox speak?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The interface is available in 14 languages: English, Arabic (right to left), Chinese (Simplified), French, German, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Turkish. It follows the browser's language, or you can pick one in Settings."
+      }
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html" aria-current="page">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">FAQ</span></li></ol></nav>
+      <h1 id="title">Which API testing extension should I use?</h1>
+      <p class="answer">Straight answers to the questions people ask about testing APIs in the browser. Where another tool is the better fit, we say so.</p>
+      <p class="byline">Written by the RequestFox team, for RequestFox 2.3.0.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#choose">Choosing a tool</a></li>
+        <li><a href="#find">Finding API bugs</a></li>
+        <li><a href="#do">Mocking, exporting and testing</a></li>
+        <li><a href="#trust">Privacy and cost</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="choose" aria-labelledby="choose-title">
+        <h2 id="choose-title">Choosing a tool</h2>
+        <details class="qa" open><summary>What is the best API testing extension for Chrome?</summary><p>It depends on the job. To test the API calls a web app makes while you use it, and have failed, slow and duplicate calls flagged for you, use RequestFox. For a raw look at everything one page load does, the built-in DevTools Network panel needs no install. To build and share API collections across a team, Postman is the usual choice; to keep them as files in git, Bruno; for always-on rules that redirect or rewrite traffic, Requestly.</p></details>
+        <details class="qa"><summary>What is a good API testing add-on for Firefox?</summary><p>RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.</p></details>
+        <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
+        <details class="qa"><summary>How is RequestFox different from the DevTools Network panel?</summary><p>DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads.</p></details>
+      </section>
+
+      <section class="block" id="find" aria-labelledby="find-title">
+        <h2 id="find-title">Finding API bugs</h2>
+        <details class="qa"><summary>How do I see every API call a website makes?</summary><p>Open DevTools (F12), choose Network, and filter by Fetch/XHR. To keep the list while you click through a whole flow and have problems flagged for you, open the RequestFox side panel, press Start, and use the site: every fetch, XMLHttpRequest, WebSocket and server-sent event call is listed the moment it starts.</p></details>
+        <details class="qa"><summary>How do I find failed, slow or duplicate API calls while testing?</summary><p>RequestFox flags them as they happen: every 4xx, 5xx and dropped connection, calls slower than a threshold you set, rapid double-fires and retries. Each flag is tied to the click or form submit that caused it, and failures are explained in plain words. By hand, sort the DevTools Network panel by Status, Time and Name and compare rows.</p></details>
+        <details class="qa"><summary>How do I catch GraphQL errors that come back as 200 OK?</summary><p>GraphQL servers often answer 200 OK with an errors array in the body, so the status column looks fine. Check each response body for a non-empty errors key, and treat it as a failure in your client and tests. RequestFox reads GraphQL and JSON-RPC responses and flags these errors automatically, with the server's own message.</p></details>
+        <details class="qa"><summary>Why does an API return 401 when the token looks fine?</summary><p>Often the access token expired minutes earlier and was never refreshed. The middle part of a JWT is base64url-encoded JSON with an exp time you can compare with the response's Date header. RequestFox decodes the bearer token locally, reading only its times, issuer and audience, and says on the request when an expired token caused the 401 or 403.</p></details>
+        <details class="qa"><summary>How can I spot N+1 API calls in the browser?</summary><p>Look for one path called again and again with only an id changing, like /products/101/reviews, /products/102/reviews, in a short burst. RequestFox turns paths into templates such as /products/{id}/reviews and flags the burst as N+1. The fix is a batch endpoint or including the data in the list response.</p></details>
+        <details class="qa"><summary>How do I know when an API response changed shape?</summary><p>RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags SCHEMA CHANGED when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema.</p></details>
+      </section>
+
+      <section class="block" id="do" aria-labelledby="do-title">
+        <h2 id="do-title">Mocking, exporting and testing</h2>
+        <details class="qa"><summary>How do I mock an API response in Chrome without a backend?</summary><p>In RequestFox, open a captured call and choose Mock: it returns that call's real status, headers and body, which you can edit, for both fetch and XMLHttpRequest. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or reply. Mocked responses are labelled in the log.</p></details>
+        <details class="qa"><summary>Can I turn browser traffic into load tests?</summary><p>Yes. After a recording, RequestFox's Performance panel turns the captured endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress.</p></details>
+        <details class="qa"><summary>How do I export network requests as HAR, Postman or OpenAPI?</summary><p>RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report, and copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.</p></details>
+        <details class="qa"><summary>Can RequestFox send a request to any API?</summary><p>While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked FROM EXTENSION in the log. Copy as code also turns any request into cURL or another language to run outside the browser.</p></details>
+      </section>
+
+      <section class="block" id="trust" aria-labelledby="trust-title">
+        <h2 id="trust-title">Privacy and cost</h2>
+        <details class="qa"><summary>Does RequestFox send my data anywhere?</summary><p>No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording.</p></details>
+        <details class="qa"><summary>Is RequestFox free? Is it open source?</summary><p>RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public. It has no ads, no account and no paid tier.</p></details>
+        <details class="qa"><summary>Which languages does RequestFox speak?</summary><p>The interface is available in 14 languages: English, Arabic (right to left), Chinese (Simplified), French, German, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Turkish. It follows the browser's language, or you can pick one in Settings.</p></details>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Try it on the app you are testing today.</h2>
+    <p>Free, in Chrome and Firefox.</p>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="compare-postman.html">vs Postman</a></li>
+          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+          <li><a href="compare-bruno.html">vs Bruno</a></li>
+          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>For</h2>
+        <ul>
+          <li><a href="use-qa-testers.html">QA testers</a></li>
+          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+          <li><a href="use-api-developers.html">API developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

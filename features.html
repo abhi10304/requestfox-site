@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox Features: Capture, Flag, Mock and Test APIs</title>
+<meta name="description" content="Everything RequestFox does in your browser: capture fetch, XHR, WebSocket and SSE, flag broken calls, replay, mock, check contracts, export tests." />
+<link rel="canonical" href="https://requestfox.accessisight.com/features.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox Features: Capture, Flag, Mock and Test APIs" />
+<meta property="og:description" content="Everything RequestFox does in your browser: capture fetch, XHR, WebSocket and SSE, flag broken calls, replay, mock, check contracts, export tests." />
+<meta property="og:url" content="https://requestfox.accessisight.com/features.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-features.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox Features: Capture, Flag, Mock and Test APIs" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox Features: Capture, Flag, Mock and Test APIs" />
+<meta name="twitter:description" content="Everything RequestFox does in your browser: capture fetch, XHR, WebSocket and SSE, flag broken calls, replay, mock, check contracts, export tests." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-features.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Features",
+      "item": "https://requestfox.accessisight.com/features.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html" aria-current="page">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap page-hero-grid">
+      <div>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Features</span></li></ol></nav>
+        <h1 id="title">Everything RequestFox does</h1>
+        <p class="answer"><strong>RequestFox</strong> captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.</p>
+        <p class="byline">For RequestFox 2.3.0.</p>
+      </div>
+      <figure class="fig">
+        <div class="shot">
+          <picture><source srcset="img/timeline-dark.webp 1x, img/timeline-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/timeline-light.webp" srcset="img/timeline-light.webp 1x, img/timeline-light@2x.webp 2x" width="380" height="560" fetchpriority="high" alt="The Network timeline: each call as a bar on a time ruler, with p50, p90 and p95 times, the slow and failed calls marked" /></picture>
+        </div>
+        <figcaption>The Timeline, one of the panel's views.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#capture">Capture</a></li>
+        <li><a href="#flags">Flags</a></li>
+        <li><a href="#inspect">Inspect</a></li>
+        <li><a href="#compose">Compose and replay</a></li>
+        <li><a href="#mock">Mocks and faults</a></li>
+        <li><a href="#checks">Checks and contracts</a></li>
+        <li><a href="#export">Export and tests</a></li>
+        <li><a href="#privacy">Privacy</a></li>
+        <li><a href="#limits">Limits</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="capture" aria-labelledby="capture-title">
+        <h2 id="capture-title">Capture every call, the moment it starts</h2>
+        <p>Press Start (or <kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>) and use your app. RequestFox lists fetch, XMLHttpRequest, WebSocket frames and server-sent events across tabs, iframes and pop-ups, including calls a service worker answers without the network.</p>
+        <ul>
+          <li>A call shows as soon as it starts and turns SLOW live if it drags; its finished card replaces it.</li>
+          <li>Streams (server-sent events, NDJSON, token streams) keep their first 64 KB.</li>
+          <li>Each call is tied to the click or form submit that caused it.</li>
+          <li>Every session goes to History, to reopen, search and compare with another run.</li>
+          <li>Search takes free text and tokens such as <code>status:500</code>, <code>host:api.example.com</code> and <code>path:/users/:id</code>; a leading <code>-</code> leaves matches out.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="flags" aria-labelledby="flags-title">
+        <h2 id="flags-title">Problems flagged for you</h2>
+        <p>These are the panel's own labels. Open a flagged call and it says what happened in plain words.</p>
+        <ul class="flag-list">
+          <li><span class="badge critical">FAILED</span> refused, timed out, or a 4xx/5xx answer</li>
+          <li><span class="badge warning">SLOW</span> past the slow threshold you set</li>
+          <li><span class="badge serious">RAPID 140ms</span> the same call fired twice in a moment</li>
+          <li><span class="badge serious">RETRY 900ms</span> sent again after it failed</li>
+          <li><span class="badge serious">N+1</span> one call per id in a quick burst</li>
+          <li><span class="badge critical">GRAPHQL ERROR</span> an error inside a 200 OK</li>
+          <li><span class="badge critical">RPC ERROR</span> a JSON-RPC error inside a 200 OK</li>
+          <li><span class="badge critical">Token expired</span> a 401 caused by an expired JWT</li>
+          <li><span class="badge info">SCHEMA CHANGED</span> the answer's JSON shape changed</li>
+          <li><span class="badge info">SPEC MISMATCH</span> the call breaks your linked OpenAPI spec</li>
+          <li><span class="badge critical">ASSERTION FAILED</span> one of your checks failed</li>
+          <li><span class="badge warning">SECURITY</span> a passive finding, such as a token in a URL</li>
+        </ul>
+      </section>
+
+      <section class="block" id="inspect" aria-labelledby="inspect-title">
+        <h2 id="inspect-title">Inspect without leaving the page</h2>
+        <p>Each call opens to its headers, body and Details: the timing split (DNS, connect, TLS, waiting, download), the HTTP version, bytes on the wire, and the page functions that made the call.</p>
+        <ul>
+          <li>JSON answers read as a tree you can filter, with a value's path one click away.</li>
+          <li>The Timeline puts every call on a time ruler; Performance lists the heaviest endpoints.</li>
+          <li>GraphQL calls are checked against a schema you load; gRPC-web answers are read without a schema.</li>
+        </ul>
+        <figure class="fig">
+          <div class="shot">
+            <picture><source srcset="img/json-tree-dark.webp 1x, img/json-tree-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/json-tree-light.webp" srcset="img/json-tree-light.webp 1x, img/json-tree-light@2x.webp 2x" width="380" height="620" loading="lazy" alt="A JSON answer read as a tree, with one value's menu open" /></picture>
+          </div>
+          <figcaption>A JSON answer as a tree.</figcaption>
+        </figure>
+      </section>
+
+      <section class="block" id="compose" aria-labelledby="compose-title">
+        <h2 id="compose-title">Compose, replay and send</h2>
+        <p>Replay any captured call, or Edit &amp; Replay it. Compose builds requests from scratch with Params, Headers, raw, form or multipart bodies, environments and <code>{{variables}}</code>, secret variables kept encrypted, and saved collections.</p>
+        <ul>
+          <li>Auth: Basic, Bearer, API key, Digest, OAuth 2.0 (browser sign-in with PKCE, client credentials, refresh token, password), OpenID Connect discovery, OAuth 1.0a (HMAC, RSA and PLAINTEXT signatures), JWT Bearer signing (HS, RS and ES algorithms), AWS Signature v4 and an HMAC preset.</li>
+          <li>Save an answer as an example, and keep notes on requests, collections and folders.</li>
+          <li>While recording, a send goes through the page with its cookies; with nothing recording it goes from the extension itself, without any page's cookies.</li>
+          <li>A WebSocket client connects to any <code>ws://</code> or <code>wss://</code> server, with a Socket.IO mode; captured Socket.IO frames read as events and their arguments.</li>
+          <li>Copy any request as code in 15 languages, cURL for bash and Windows cmd included.</li>
+        </ul>
+        <p>Import from Postman, Insomnia, Bruno, Hoppscotch, Thunder Client, OpenAPI 3, Swagger 2, HAR and cURL. <a href="guide-replay-edit-request.html">How to replay and edit a request</a>.</p>
+      </section>
+
+      <section class="block" id="mock" aria-labelledby="mock-title">
+        <h2 id="mock-title">Mocks and faults</h2>
+        <p>Make an endpoint fail, slow down, pause for editing, or return the answer you choose, with no backend change. "Mock this response" turns any captured call into a mock in one step.</p>
+        <figure class="fig">
+          <div class="shot">
+            <picture><source srcset="img/fault-editor-dark.webp 1x, img/fault-editor-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/fault-editor-light.webp" srcset="img/fault-editor-light.webp 1x, img/fault-editor-light@2x.webp 2x" width="380" height="620" loading="lazy" alt="Settings, Mock or break an endpoint: rules that make /api/checkout fail with 503 and slow /api/search down, and the form for a new rule" /></picture>
+          </div>
+          <figcaption>Mock or break an endpoint, in Settings.</figcaption>
+        </figure>
+        <p><a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
+      </section>
+
+      <section class="block" id="checks" aria-labelledby="checks-title">
+        <h2 id="checks-title">Checks, contracts and suites</h2>
+        <p>Add pass/fail checks to an endpoint on status, time, fields, headers or a JSON Schema, or a check that an answer stays the same as last time. Advice on caching and compression points out a large text answer sent uncompressed, or the same answer downloaded again with nothing a cache could use. Link an OpenAPI spec and every call is checked against it, with coverage of the operations seen. Chain saved requests into suites, with pass or fail per step and data-driven runs.</p>
+        <figure class="fig">
+          <div class="shot">
+            <picture><source srcset="img/contract-details-dark.webp 1x, img/contract-details-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/contract-details-light.webp" srcset="img/contract-details-light.webp 1x, img/contract-details-light@2x.webp 2x" width="380" height="740" loading="lazy" alt="A call marked SPEC MISMATCH: its Details say the response body's price was a string where the spec expects a number; another call is NOT IN SPEC; spec coverage 3 of 6 operations" /></picture>
+          </div>
+          <figcaption>A call that breaks the linked OpenAPI spec.</figcaption>
+        </figure>
+        <p><a href="guide-openapi-contract-check.html">How to check API calls against OpenAPI</a>.</p>
+      </section>
+
+      <section class="block" id="export" aria-labelledby="export-title">
+        <h2 id="export-title">Export evidence and tests</h2>
+        <p>Export a session as a self-contained HTML report, HAR, CSV, session JSON, a Postman collection or an OpenAPI 3.0 spec built from the calls. Open a GitHub or Linear issue with the repro filled in. Turn a recording into tests:</p>
+        <ul class="chips" aria-label="Tests you can generate"><li>Playwright</li><li>Cypress</li><li>k6</li><li>JMeter</li><li>Gatling</li><li>Locust</li></ul>
+        <p>Run the same checks in CI with the command-line tool you download from the panel; it can also make negative tests from an OpenAPI spec (<code>probe</code>) and serve a mock API from one (<code>mock</code>). <a href="guide-api-checks-in-ci.html">How to run API checks in CI</a>.</p>
+      </section>
+
+      <section class="block" id="privacy" aria-labelledby="privacy-title">
+        <h2 id="privacy-title">Private by design</h2>
+        <p>No account, no server, no analytics. Authorization headers, cookies and secret-shaped fields are redacted in everything you view or export, and site access is asked for when you press Start. <a href="privacy.html">Read the privacy policy</a>.</p>
+      </section>
+
+      <section class="block" id="limits" aria-labelledby="limits-title">
+        <h2 id="limits-title">What it does not do</h2>
+        <ul>
+          <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.</li>
+          <li>No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.</li>
+          <li>Pre-request and post-response scripts run in Chrome only; Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
+          <li>No native gRPC or MQTT client.</li>
+          <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">See it on your own app.</h2>
+    <p>Free, in Chrome and Firefox.</p>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="compare-postman.html">vs Postman</a></li>
+          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+          <li><a href="compare-bruno.html">vs Bruno</a></li>
+          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>For</h2>
+        <ul>
+          <li><a href="use-qa-testers.html">QA testers</a></li>
+          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+          <li><a href="use-api-developers.html">API developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

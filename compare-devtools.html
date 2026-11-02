@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox vs Chrome DevTools Network Panel</title>
+<meta name="description" content="A Chrome DevTools Network alternative for API testing? What the Network panel does well, what RequestFox adds, and when to use each. Sourced, dated." />
+<link rel="canonical" href="https://requestfox.accessisight.com/compare-devtools.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox vs Chrome DevTools Network Panel" />
+<meta property="og:description" content="A Chrome DevTools Network alternative for API testing? What the Network panel does well, what RequestFox adds, and when to use each. Sourced, dated." />
+<meta property="og:url" content="https://requestfox.accessisight.com/compare-devtools.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-compare-devtools.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox vs Chrome DevTools Network Panel" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox vs Chrome DevTools Network Panel" />
+<meta name="twitter:description" content="A Chrome DevTools Network alternative for API testing? What the Network panel does well, what RequestFox adds, and when to use each. Sourced, dated." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-compare-devtools.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://requestfox.accessisight.com/compare.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "vs DevTools Network",
+      "item": "https://requestfox.accessisight.com/compare-devtools.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare" aria-current="true">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs DevTools Network</span></li></ol></nav>
+      <h1 id="title">RequestFox vs the Chrome DevTools Network panel</h1>
+      <p class="answer">Use the <strong>DevTools Network panel</strong> for a raw, live view of everything one page loads, with nothing to install. Use <strong>RequestFox</strong> when you test a flow and want the API problems pointed out, each tied to your click, kept in History and ready to mock, replay or export.</p>
+      <p class="byline">Facts about DevTools are from Chrome's own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#table">Side by side</a></li>
+        <li><a href="#devtools">Where DevTools is stronger</a></li>
+        <li><a href="#requestfox">What RequestFox adds</a></li>
+        <li><a href="#code">Copy a call as code</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="table" aria-labelledby="table-title">
+        <h2 id="table-title">Side by side</h2>
+        <div class="table-wrap" role="region" aria-labelledby="table-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">&nbsp;</th><th scope="col">RequestFox</th><th scope="col">DevTools Network panel</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">What it lists</th><td>API calls: fetch, XMLHttpRequest, WebSocket, server-sent events</td><td>Every resource the page loads [1]</td></tr>
+              <tr><th scope="row">Keeps the list</th><td>Every session, in History, to reopen and compare</td><td>Across page loads with Preserve log [2]</td></tr>
+              <tr><th scope="row">Finding problems</th><td>Flags failed, slow, duplicate and retried calls, N+1, errors inside a 200, expired tokens, changed shapes</td><td>You filter and read: by domain, status code and other properties, or inverted [2]</td></tr>
+              <tr><th scope="row">Changing answers</th><td>Mock, fail, slow, throttle or pause a call; labelled in the log</td><td>Local overrides of content and response headers, saved in a folder you choose [3]</td></tr>
+              <tr><th scope="row">Export</th><td>HTML report, HAR, CSV, JSON, Postman, OpenAPI 3.0, tests, code in 15 languages</td><td>HAR (sensitive headers left out), Copy as cURL and as fetch [2]</td></tr>
+              <tr><th scope="row">Browsers</th><td>Chrome and Firefox</td><td>Chrome (Firefox has its own Network Monitor)</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="devtools" aria-labelledby="devtools-title">
+        <h2 id="devtools-title">Where DevTools is stronger</h2>
+        <ul>
+          <li>It is already there: nothing to install, no site access to allow.</li>
+          <li>It shows every resource (scripts, styles, images, fonts), not only API calls [1].</li>
+          <li>Network throttling and request blocking for the whole page [1].</li>
+          <li>Each event of an open stream shows live; RequestFox keeps a stream's first 64 KB.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="requestfox" aria-labelledby="requestfox-title">
+        <h2 id="requestfox-title">What RequestFox adds</h2>
+        <ul>
+          <li>Problems are pointed out instead of found by eye, with the reason in plain words.</li>
+          <li>Each call is tied to the click or form submit that caused it.</li>
+          <li>Sessions survive closing DevTools and the browser, and two runs can be compared.</li>
+          <li>Per-endpoint checks, an OpenAPI contract, suites and a CLI for CI.</li>
+          <li>Authorization headers, cookies and secret-shaped fields redacted by default in what you view and export.</li>
+        </ul>
+        <p><a href="guide-record-api-calls.html">How to record API calls with RequestFox</a>.</p>
+      </section>
+
+      <section class="block" id="code" aria-labelledby="code-title">
+        <h2 id="code-title">Copy a call as code</h2>
+        <p>DevTools copies a request as cURL or as fetch [2]. RequestFox copies any captured or composed request as code in 15 languages, cURL for bash and Windows cmd included, and keeps <code>{{variables}}</code> that hold secrets as written.</p>
+        <figure class="fig">
+          <div class="shot">
+            <picture><source srcset="img/copycode-dark.webp 1x, img/copycode-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/copycode-light.webp" srcset="img/copycode-light.webp 1x, img/copycode-light@2x.webp 2x" width="380" height="440" loading="lazy" alt="Copy as code open on a POST to /v1/cart, showing the request as Python requests code, with Copy and Close" /></picture>
+          </div>
+        </figure>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Chrome for Developers, "Inspect network activity". Checked 1 November 2026. <a href="https://developer.chrome.com/docs/devtools/network" rel="noopener noreferrer">developer.chrome.com</a></li>
+          <li>Chrome for Developers, "Network features reference". Checked 1 November 2026. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
+          <li>Chrome for Developers, "Override web content and HTTP response headers locally". Checked 1 November 2026. <a href="https://developer.chrome.com/docs/devtools/overrides" rel="noopener noreferrer">developer.chrome.com</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Keep DevTools. Add the judging.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="compare-postman.html">vs Postman</a></li>
+          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+          <li><a href="compare-bruno.html">vs Bruno</a></li>
+          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>For</h2>
+        <ul>
+          <li><a href="use-qa-testers.html">QA testers</a></li>
+          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+          <li><a href="use-api-developers.html">API developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

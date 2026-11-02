@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch</title>
+<meta name="description" content="Which API tool fits which job: RequestFox compared with Postman, the DevTools Network panel, Insomnia, Bruno and Hoppscotch, with RequestFox's own limits." />
+<link rel="canonical" href="https://requestfox.accessisight.com/compare.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch" />
+<meta property="og:description" content="Which API tool fits which job: RequestFox compared with Postman, the DevTools Network panel, Insomnia, Bruno and Hoppscotch, with RequestFox's own limits." />
+<meta property="og:url" content="https://requestfox.accessisight.com/compare.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-compare.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch" />
+<meta name="twitter:description" content="Which API tool fits which job: RequestFox compared with Postman, the DevTools Network panel, Insomnia, Bruno and Hoppscotch, with RequestFox's own limits." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-compare.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://requestfox.accessisight.com/compare.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare" aria-current="page">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Compare</span></li></ol></nav>
+      <h1 id="title">Which API tool fits which job</h1>
+      <p class="answer">Each of these tools is the right pick for some job. RequestFox is the one that watches the web app you are testing and points out the API problems as they happen. For designing and sharing APIs across a team, a desktop client such as Postman, Insomnia, Bruno or Hoppscotch fits better, and RequestFox imports from all four.</p>
+      <p class="byline">Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.3.0.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#short">The short answer</a></li>
+        <li><a href="#pages">Each comparison</a></li>
+        <li><a href="#limits">Where RequestFox falls short</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="short" aria-labelledby="short-title">
+        <h2 id="short-title">The short answer</h2>
+        <ul>
+          <li><strong>Testing a web app and want problems found for you:</strong> RequestFox.</li>
+          <li><strong>A raw look at everything one page load does, nothing to install:</strong> the DevTools Network panel.</li>
+          <li><strong>Designing, documenting and sharing APIs across a team:</strong> Postman or Insomnia.</li>
+          <li><strong>API requests kept as plain files in Git, next to the code:</strong> Bruno.</li>
+          <li><strong>An open-source client on the web you can self-host:</strong> Hoppscotch.</li>
+          <li><strong>Rules that redirect, rewrite or inject on every page, all the time:</strong> Requestly.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="pages" aria-labelledby="pages-title">
+        <h2 id="pages-title">Each comparison</h2>
+        <ul class="cards">
+          <li><a href="compare-postman.html">RequestFox vs Postman</a><p>Browser capture and flags, or team workspaces and more protocols.</p></li>
+          <li><a href="compare-devtools.html">RequestFox vs DevTools Network</a><p>The judging and the history, or the raw live view.</p></li>
+          <li><a href="compare-insomnia.html">RequestFox vs Insomnia</a><p>In the browser, or an open-source desktop client with plugins.</p></li>
+          <li><a href="compare-bruno.html">RequestFox vs Bruno</a><p>Capture what the app sent, or write requests as files in Git.</p></li>
+          <li><a href="compare-hoppscotch.html">RequestFox vs Hoppscotch</a><p>Your app's real calls, or a self-hostable client with realtime protocols.</p></li>
+        </ul>
+      </section>
+
+      <section class="block" id="limits" aria-labelledby="limits-title">
+        <h2 id="limits-title">Where RequestFox falls short</h2>
+        <p>Honest limits of RequestFox 2.3.0, so you are not surprised:</p>
+        <ul>
+          <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.</li>
+          <li>While recording, Compose sends from the page you are testing, with its cookies; with nothing recording it sends from the extension itself, without any page's cookies, after the browser asks once for that site.</li>
+          <li>No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.</li>
+          <li>An open stream keeps its first 64 KB; DevTools shows each event live.</li>
+          <li>Pre-request and post-response scripts run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
+          <li>No gRPC or MQTT client.</li>
+          <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Try it on the app you are testing today.</h2>
+    <p>Free, in Chrome and Firefox.</p>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="compare-postman.html">vs Postman</a></li>
+          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+          <li><a href="compare-bruno.html">vs Bruno</a></li>
+          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>For</h2>
+        <ul>
+          <li><a href="use-qa-testers.html">QA testers</a></li>
+          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+          <li><a href="use-api-developers.html">API developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

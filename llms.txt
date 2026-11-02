@@ -1,0 +1,55 @@
+# RequestFox
+
+> RequestFox is a free browser extension for Google Chrome and Mozilla Firefox that records every API call a web app makes while you test it, and automatically flags failed (4xx/5xx), slow, duplicate and retried requests, N+1 bursts, GraphQL and JSON-RPC errors returned with a 200 OK, and 401s caused by an expired token. It can replay, mock and export any request, and generate tests and load-test scripts from recorded traffic. It needs no account, has no server, and keeps all captured data on the user's own device. Current version: 2.3.0 (updated 2026-11-02).
+
+Key facts:
+
+- Type: browser extension (Chrome side panel, Firefox sidebar). Price: free, with no paid tier. Source code: MIT licence; repository not public.
+- Capture: fetch, XMLHttpRequest, WebSocket frames (Socket.IO frames read as events) and Server-Sent Events, across tabs, iframes and popups, including responses served by a service worker. Each call is listed the moment it starts; streams (SSE, NDJSON) keep their first 64 KB.
+- Detection: failed, slow, duplicate and retried requests; N+1 bursts (paths grouped into templates like /products/{id}/reviews); errors inside a 200 OK (GraphQL, JSON-RPC); 401/403 caused by an expired JWT (decoded locally, times only); API contract drift (a response's JSON shape changing); per-endpoint checks including JSON Schema. Each flagged call links to the user action (click or form submit) that triggered it, and failures are explained in plain words.
+- Search: free text, field tokens such as status:500 and host:api.example.com, and a leading "-" to leave matching requests out.
+- Testing: replay or edit-and-replay captured requests; compose requests with environments, {{variables}}, auth helpers (Bearer, Basic, Digest, API key, OAuth 2.0 with PKCE, OAuth 1.0a, JWT Bearer signing, AWS Signature v4, HMAC) and saved collections, sent through the page with its own cookies while recording, or from the extension itself (no page cookies) when nothing is recording or the page's CORS blocks it; chain saved requests into suites with pass/fail per step and data-driven runs. Pre-request and post-response scripts run in Chrome only, in a sandbox.
+- Mocking: rules that make a matching endpoint fail, slow down, pause for editing, or return a chosen status and body, without backend changes.
+- Import: Postman Collection v2.0/v2.1, Insomnia, Bruno, Hoppscotch, Thunder Client, OpenAPI 3, Swagger 2, HAR, cURL.
+- Export: self-contained HTML report, HAR, CSV, session JSON, Postman Collection, OpenAPI 3.0, code in 15 languages (cURL for bash and Windows cmd, PowerShell, fetch, Node.js, Python, HTTPie, Go, Java, C#, PHP, Ruby, Swift, Kotlin, Rust); Playwright and Cypress tests; GitHub and Linear issues pre-filled with a Markdown repro.
+- Examples and notes: save an answer as an example; notes on requests, collections and folders.
+- Advice: caching and compression advice on answers, and a check that an answer stays the same as last time.
+- WebSocket client: connects to any ws:// or wss:// server, with a Socket.IO mode.
+- Command line (Node, one file, downloaded from the panel): assert (checks), diff, conform (traffic vs an OpenAPI spec), probe (negative tests made from an OpenAPI spec, sent to a local API), mock (a local mock API from a spec or a session; --dynamic varies answers, --seed repeats them), loadtest; JUnit output.
+- Load testing: generates k6, JMeter (.jmx), Gatling (.scala) and Locust (.py) scripts from a recorded session, using each endpoint's measured p95 latency as its threshold.
+- Privacy: no account, no analytics, no telemetry; Authorization headers, cookies, secret-shaped fields and the page address are redacted by default in views and exports; site access is requested only when recording starts, or for the sites involved when Compose sends or a test suite runs with nothing recording.
+- Languages: 14 (English, Arabic, German, Spanish, French, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Turkish, Chinese (Simplified)).
+- Compared with the Chrome DevTools Network panel: DevTools lists every resource live and leaves the judging to the user; RequestFox flags problems automatically, keeps session history for comparing runs, and supports checks and mock rules. DevTools shows each event of an open stream live; RequestFox keeps the first 64 KB.
+- Compared with Postman and Bruno: RequestFox covers composing requests, environments and collections, and additionally captures the real calls a web app makes in the browser. While recording it sends through the page; with nothing recording, Compose sends from the extension directly, like a standalone client; when an API blocks the page's origin (CORS), Compose can send from the extension instead, after a click, using the site access allowed at Start and without the page's cookies, a step standalone clients do not need. It has no cloud workspace or team sync.
+- Compared with Insomnia and Hoppscotch: both are API clients you build requests in (Insomnia a desktop app with plugins and Local Vault, Git or cloud storage; Hoppscotch on the web, desktop or CLI, self-hostable, with Socket.IO and MQTT clients). RequestFox records the calls a web app makes and flags problems; it imports collections from both.
+- Compared with Requestly: Requestly offers a wider set of always-on traffic rules (redirects, script injection); RequestFox focuses on judging the calls (flags, checks, timing, the code and click behind each call).
+
+## Pages
+
+- [RequestFox: API Tester & Network Monitor for Chrome](https://requestfox.accessisight.com/): Free Chrome and Firefox extension that records every API call your web app makes, flags failed, slow and duplicate requests, and replays or mocks them.
+- [RequestFox Changelog: What's New in Each Release](https://requestfox.accessisight.com/changelog.html): What changed in each RequestFox release, newest first: new features, fixes and changes to the Chrome and Firefox extension, from its own changelog.
+- [RequestFox vs Bruno: In-Browser or Git-Native API Client](https://requestfox.accessisight.com/compare-bruno.html): RequestFox vs Bruno, from each tool's own docs: collections as files in Git versus capture in the browser, accounts, CLI, and when to use each.
+- [RequestFox vs Chrome DevTools Network Panel](https://requestfox.accessisight.com/compare-devtools.html): A Chrome DevTools Network alternative for API testing? What the Network panel does well, what RequestFox adds, and when to use each. Sourced, dated.
+- [RequestFox vs Hoppscotch: Two Ways to Test APIs Online](https://requestfox.accessisight.com/compare-hoppscotch.html): RequestFox vs Hoppscotch, from each tool's own docs: web, desktop or extension, realtime protocols, CORS, self-hosting, and when each one fits.
+- [RequestFox vs Insomnia: Browser Extension or Desktop Client](https://requestfox.accessisight.com/compare-insomnia.html): RequestFox vs Insomnia, from each tool's own docs: where each runs, storage and accounts, mocking, CLI, and when an in-browser tool fits better.
+- [RequestFox vs Postman: A Postman Alternative Extension](https://requestfox.accessisight.com/compare-postman.html): RequestFox vs Postman, from each tool's own docs: where each runs, account needs, browser capture, protocols, and when to use one, the other or both.
+- [RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch](https://requestfox.accessisight.com/compare.html): Which API tool fits which job: RequestFox compared with Postman, the DevTools Network panel, Insomnia, Bruno and Hoppscotch, with RequestFox's own limits.
+- [API Testing Extension FAQ: Chrome and Firefox · RequestFox](https://requestfox.accessisight.com/faq.html): Straight answers about testing APIs in the browser: which tool fits, finding failed or slow calls, GraphQL errors in a 200, mocking, exports and privacy.
+- [RequestFox Features: Capture, Flag, Mock and Test APIs](https://requestfox.accessisight.com/features.html): Everything RequestFox does in your browser: capture fetch, XHR, WebSocket and SSE, flag broken calls, replay, mock, check contracts, export tests.
+- [How to Run API Checks in CI From Saved Requests](https://requestfox.accessisight.com/guide-api-checks-in-ci.html): Export a RequestFox suite as a CI config, download the one-file command-line tool, and run your API checks in any pipeline with JUnit results. Node 18+.
+- [Mock an API Response in Chrome: Extension, No Backend](https://requestfox.accessisight.com/guide-mock-api-response.html): Return your own status, headers and body for any API call, or make it fail, slow down or pause, in Chrome or Firefox. No backend change, no proxy.
+- [Check Real API Calls Against an OpenAPI Spec](https://requestfox.accessisight.com/guide-openapi-contract-check.html): Link an OpenAPI 3 or Swagger 2 spec and see which live calls break it, which are not in it, and how much of the API you covered. In the browser or in CI.
+- [How to Record API Calls in Chrome or Firefox](https://requestfox.accessisight.com/guide-record-api-calls.html): Record every fetch, XHR, WebSocket and SSE call a website makes in Chrome or Firefox, with failed and slow calls flagged. Step by step, free, no account.
+- [How to Replay and Edit an API Request in Chrome](https://requestfox.accessisight.com/guide-replay-edit-request.html): Resend a captured API request as it was, or change its method, URL, headers or body first, right in Chrome or Firefox. With the page's own cookies.
+- [Guides: Record, Replay, Mock and Test APIs · RequestFox](https://requestfox.accessisight.com/guides.html): Step-by-step guides: record API calls in Chrome, replay and edit requests, mock responses, check calls against OpenAPI, and run API checks in CI.
+- [RequestFox Privacy Policy](https://requestfox.accessisight.com/privacy.html): RequestFox does not collect, transmit or sell any data. Everything it captures stays in your browser, on your device.
+- [For API Developers: See How Clients Really Call Your API](https://requestfox.accessisight.com/use-api-developers.html): Watch the real calls a web client makes to your API, catch contract drift against your OpenAPI spec, and turn traffic into checks, CI runs and load tests.
+- [For Frontend Developers: Debug the API Calls Your UI Makes](https://requestfox.accessisight.com/use-frontend-developers.html): See which component made each call, catch N+1 bursts and double fetches, mock the states you need, and check timing, without leaving the browser.
+- [API Testing for QA Testers: Catch What the UI Hides](https://requestfox.accessisight.com/use-qa-testers.html): For manual and exploratory testers: see the API calls behind every click, catch failed, slow and duplicate requests, and attach evidence to bug reports.
+
+The full text of every page, in one file: https://requestfox.accessisight.com/llms-full.txt
+
+## Install
+
+- [Chrome Web Store](https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb)
+- [Firefox Add-ons](https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/)

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For Frontend Developers: Debug the API Calls Your UI Makes</title>
+<meta name="description" content="See which component made each call, catch N+1 bursts and double fetches, mock the states you need, and check timing, without leaving the browser." />
+<link rel="canonical" href="https://requestfox.accessisight.com/use-frontend-developers.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="For Frontend Developers: Debug the API Calls Your UI Makes" />
+<meta property="og:description" content="See which component made each call, catch N+1 bursts and double fetches, mock the states you need, and check timing, without leaving the browser." />
+<meta property="og:url" content="https://requestfox.accessisight.com/use-frontend-developers.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-use-frontend-developers.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="For Frontend Developers: Debug the API Calls Your UI Makes" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="For Frontend Developers: Debug the API Calls Your UI Makes" />
+<meta name="twitter:description" content="See which component made each call, catch N+1 bursts and double fetches, mock the states you need, and check timing, without leaving the browser." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-use-frontend-developers.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "For frontend developers",
+      "item": "https://requestfox.accessisight.com/use-frontend-developers.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap page-hero-grid">
+      <div>
+        <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">For frontend developers</span></li></ol></nav>
+        <h1 id="title">For frontend developers: debug the calls your UI makes</h1>
+        <p class="answer">RequestFox shows every call your app makes with the click and the page functions behind it, flags double fetches, N+1 bursts and slow endpoints, and lets you mock loading, empty and error states in place. It runs beside your app, in the browser you already debug in.</p>
+        <p class="byline">For RequestFox 2.3.0.</p>
+      </div>
+      <figure class="fig">
+        <div class="shot">
+          <picture><source srcset="img/timeline-dark.webp 1x, img/timeline-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/timeline-light.webp" srcset="img/timeline-light.webp 1x, img/timeline-light@2x.webp 2x" width="380" height="560" fetchpriority="high" alt="The Network timeline: each call as a bar on a time ruler, with p50, p90 and p95 times, the slow and failed calls marked" /></picture>
+        </div>
+        <figcaption>The Timeline: what fired, when, and how long it took.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#why">Why a call fired</a></li>
+        <li><a href="#waste">Wasted calls</a></li>
+        <li><a href="#states">Every UI state</a></li>
+        <li><a href="#graphql">GraphQL and streams</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="why" aria-labelledby="why-title">
+        <h2 id="why-title">Why did that call fire?</h2>
+        <p>Each call is tied to the click or form submit that caused it, and Details shows "Called from": the page functions that made it, with the timing split (DNS, connect, TLS, waiting, download).</p>
+      </section>
+
+      <section class="block" id="waste" aria-labelledby="waste-title">
+        <h2 id="waste-title">Find wasted calls</h2>
+        <ul>
+          <li><span class="badge serious">RAPID 140ms</span> the same request twice in a moment, often an effect that runs twice.</li>
+          <li><span class="badge serious">N+1</span> one call per item in a list, where one batched call would do.</li>
+          <li>Performance lists the heaviest endpoints; the Timeline shows what waited on what.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="states" aria-labelledby="states-title">
+        <h2 id="states-title">See every UI state without touching the backend</h2>
+        <p>Mock an empty list, an error, a slow answer or a dropped connection, and check your loading, empty and error screens. Pause a call with a breakpoint to edit it on the way. <a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
+      </section>
+
+      <section class="block" id="graphql" aria-labelledby="graphql-title">
+        <h2 id="graphql-title">GraphQL, streams and sockets</h2>
+        <p>GraphQL calls are told apart by operation and errors inside a 200 OK are flagged; load the schema and captured calls are checked against it. Server-sent events and token streams are kept (their first 64 KB), and WebSocket frames are listed with the calls.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Debug your next feature with it.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Compare</h2>
+        <ul>
+          <li><a href="compare-postman.html">vs Postman</a></li>
+          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+          <li><a href="compare-bruno.html">vs Bruno</a></li>
+          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>For</h2>
+        <ul>
+          <li><a href="use-qa-testers.html">QA testers</a></li>
+          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+          <li><a href="use-api-developers.html">API developers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
