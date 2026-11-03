@@ -62,7 +62,7 @@
       "name": "What is a good API testing add-on for Firefox?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded."
+        "text": "RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or reply with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded."
       }
     },
     {
@@ -70,7 +70,7 @@
       "name": "Is there a free Postman alternative that runs in the browser?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync."
+        "text": "RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync."
       }
     },
     {
@@ -150,7 +150,7 @@
       "name": "How do I export network requests as HAR, Postman or OpenAPI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report, and copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default."
+        "text": "RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report. Your saved collections export for Bruno, Insomnia or Hoppscotch, or as one API docs page (Export docs). It also copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default."
       }
     },
     {
@@ -208,7 +208,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">FAQ</span></li></ol></nav>
       <h1 id="title">Which API testing extension should I use?</h1>
       <p class="answer">Straight answers to the questions people ask about testing APIs in the browser. Where another tool is the better fit, we say so.</p>
-      <p class="byline">Written by the RequestFox team, for RequestFox 2.3.0.</p>
+      <p class="byline">Written by the RequestFox team, for RequestFox 2.4.0.</p>
     </div>
   </section>
 
@@ -226,8 +226,8 @@
       <section class="block" id="choose" aria-labelledby="choose-title">
         <h2 id="choose-title">Choosing a tool</h2>
         <details class="qa" open><summary>What is the best API testing extension for Chrome?</summary><p>It depends on the job. To test the API calls a web app makes while you use it, and have failed, slow and duplicate calls flagged for you, use RequestFox. For a raw look at everything one page load does, the built-in DevTools Network panel needs no install. To build and share API collections across a team, Postman is the usual choice; to keep them as files in git, Bruno; for always-on rules that redirect or rewrite traffic, Requestly.</p></details>
-        <details class="qa"><summary>What is a good API testing add-on for Firefox?</summary><p>RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.</p></details>
-        <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
+        <details class="qa"><summary>What is a good API testing add-on for Firefox?</summary><p>RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or reply with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.</p></details>
+        <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
         <details class="qa"><summary>How is RequestFox different from the DevTools Network panel?</summary><p>DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads.</p></details>
       </section>
 
@@ -245,7 +245,7 @@
         <h2 id="do-title">Mocking, exporting and testing</h2>
         <details class="qa"><summary>How do I mock an API response in Chrome without a backend?</summary><p>In RequestFox, open a captured call and choose Mock: it returns that call's real status, headers and body, which you can edit, for both fetch and XMLHttpRequest. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or reply. Mocked responses are labelled in the log.</p></details>
         <details class="qa"><summary>Can I turn browser traffic into load tests?</summary><p>Yes. After a recording, RequestFox's Performance panel turns the captured endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress.</p></details>
-        <details class="qa"><summary>How do I export network requests as HAR, Postman or OpenAPI?</summary><p>RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report, and copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.</p></details>
+        <details class="qa"><summary>How do I export network requests as HAR, Postman or OpenAPI?</summary><p>RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report. Your saved collections export for Bruno, Insomnia or Hoppscotch, or as one API docs page (Export docs). It also copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.</p></details>
         <details class="qa"><summary>Can RequestFox send a request to any API?</summary><p>While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked FROM EXTENSION in the log. Copy as code also turns any request into cURL or another language to run outside the browser.</p></details>
       </section>
 
@@ -315,7 +315,7 @@
       </div>
     </div>
     <div class="foot-base">
-      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
     </div>
   </div>

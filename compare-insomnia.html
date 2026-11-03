@@ -72,7 +72,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs Insomnia</span></li></ol></nav>
       <h1 id="title">RequestFox vs Insomnia</h1>
       <p class="answer">Pick <strong>Insomnia</strong> for an open-source desktop client to design, debug and test APIs, with plugins, mock servers and a choice of local, Git or cloud storage. Pick <strong>RequestFox</strong> to test the calls a web app makes in the browser, flagged as they happen. RequestFox imports Insomnia exports.</p>
-      <p class="byline">Facts about Insomnia are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.</p>
+      <p class="byline">Facts about Insomnia are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.</p>
     </div>
   </section>
 
@@ -97,7 +97,7 @@
               <tr><th scope="row">Where it runs</th><td>A side panel in Chrome, a sidebar in Firefox</td><td>Desktop app for macOS, Windows and Ubuntu [1]</td></tr>
               <tr><th scope="row">Storage and account</th><td>In your browser; no account</td><td>Local Vault (on your device), Scratch Pad (before logging in), Git Sync, or Cloud Sync after you log in [2]</td></tr>
               <tr><th scope="row">Calls your web app makes</th><td>Recorded as you click, with problems flagged</td><td>You build the requests</td></tr>
-              <tr><th scope="row">Mocking</th><td>Mock, fail, slow or pause calls your app makes, in the browser</td><td>Mock servers that simulate endpoints, including cloud-hosted ones [1]</td></tr>
+              <tr><th scope="row">Mocking</th><td>Mock, fail, slow or pause calls your app makes, in the browser; mock sets that stay on, and in Chrome a script can rewrite a request or reply</td><td>Mock servers that simulate endpoints, including cloud-hosted ones [1]</td></tr>
               <tr><th scope="row">CI</th><td>A one-file CLI exported from the panel</td><td>Inso CLI [1]</td></tr>
               <tr><th scope="row">Extending it</th><td>No plugins (no third-party code)</td><td>Plugins [1]</td></tr>
               <tr><th scope="row">Source</th><td>Free; MIT licence, repository not public</td><td>Open source [1]</td></tr>
@@ -121,13 +121,13 @@
           <li>It works on what your app really sends, in the session you are signed in to.</li>
           <li>It flags failed, slow, duplicate and silently broken calls as you test, tied to your click.</li>
           <li>Nothing to install outside the browser, and no account for anything.</li>
-          <li>Imports Insomnia exports (v4 JSON and v5 YAML), so your requests come with you.</li>
+          <li>Imports Insomnia exports (v4 JSON and v5 YAML), and exports your collections as Insomnia v5 YAML, so your requests come with you and can go back.</li>
         </ul>
       </section>
 
       <section class="block" id="move" aria-labelledby="move-title">
         <h2 id="move-title">Bring your Insomnia requests, then run them in CI</h2>
-        <p>Import an Insomnia export (v4 JSON or v5 YAML) from Compose → Import &amp; export → Import a collection…. Chain the requests into a suite, and Export as CI config gives you a config file and a one-file command-line tool for your pipeline.</p>
+        <p>Import an Insomnia export (v4 JSON or v5 YAML) from Compose → Import → Import a collection…. Chain the requests into a suite, and Export as CI config gives you a config file and a one-file command-line tool for your pipeline.</p>
         <figure class="fig">
           <div class="shot">
             <picture><source srcset="img/suites-export-dark.webp 1x, img/suites-export-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/suites-export-light.webp" srcset="img/suites-export-light.webp 1x, img/suites-export-light@2x.webp 2x" width="380" height="640" loading="lazy" alt="A suite exported as a CI config: the dialog says what was saved, the command to run it and the secrets to set in CI, with Download the CLI as its main button" /></picture>
@@ -203,7 +203,7 @@
       </div>
     </div>
     <div class="foot-base">
-      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
     </div>
   </div>

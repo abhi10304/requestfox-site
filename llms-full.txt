@@ -1,6 +1,6 @@
 # RequestFox: the full text of every page
 
-Version 2.3.0, site updated 2026-11-02. The short guide is https://requestfox.accessisight.com/llms.txt.
+Version 2.4.0, site updated 2026-11-03. The short guide is https://requestfox.accessisight.com/llms.txt.
 
 ---
 
@@ -55,7 +55,7 @@ Every flag RequestFox raises
 
 ## Can I replay or edit a request?
 
-Yes. Replay any captured call as it was, or edit it first. Compose builds new requests with environments, {{variables}}, OAuth 2.0, OAuth 1.0a, JWT Bearer, AWS Signature v4 and saved collections, sent with the page's own cookies while recording, or from the extension itself.
+Yes. Replay any captured call as it was, or edit it first. Compose builds new requests with environments, {{variables}}, OAuth 2.0, OAuth 1.0a, JWT Bearer, AWS Signature v4 and saved collections, sent with the page's own cookies while recording, or from the extension itself. Several requests can stay open at once, and a cookie jar you switch on per site carries a sign-in to your next sends.
 
 Compose, with the answer under the request.
 
@@ -69,7 +69,7 @@ How to mock an API response in Chrome
 
 ## Can I import my Postman collection?
 
-Yes. RequestFox imports collections and specs from these, and exports Postman collections and OpenAPI 3.0 back out:
+Yes. RequestFox imports collections and specs from these (from a file, a whole folder or a URL), and exports Postman collections, collections for Bruno, Insomnia and Hoppscotch, and OpenAPI 3.0 back out:
 
 - Postman
 - Insomnia
@@ -124,7 +124,7 @@ Compare RequestFox with Postman, DevTools, Insomnia, Bruno and Hoppscotch
 
 - Interface languages: 14
 
-- Version: 2.3.0, what changed
+- Version: 2.4.0, what changed
 
 - Source code: MIT licence; repository not public
 
@@ -142,7 +142,7 @@ No. Everything RequestFox captures stays in your browser's storage on your devic
 
 **Is there a free Postman alternative that runs in the browser?**
 
-RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.
+RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.
 
 **How is RequestFox different from the DevTools Network panel?**
 
@@ -165,7 +165,245 @@ Address: https://requestfox.accessisight.com/changelog.html
 
 # Changelog
 
-What changed in the newest RequestFox releases, newest first. This page is built from the project's own changelog, so it says exactly what shipped. The current version is 2.3.0.
+What changed in the newest RequestFox releases, newest first. This page is built from the project's own changelog, so it says exactly what shipped. The current version is 2.4.0.
+
+## 2.4.0 3 November 2026
+
+### Open requests
+
+- Compose keeps up to five requests open at once, as plain chips above the URL. Opening a captured request (from the log or a past session), a Recent send, or New request (in ··· More, or the + after the chips) while another request is open puts it in a chip of its own instead of over the one you were writing; something already open shows its chip, with your edits. The strip only appears once a second request is open.
+- Each request keeps its own form, status line and answer. A send still out in a request you left finishes there; its answer is under it when you come back, not under the one on screen.
+- A dot after a chip's name says it has changes that are not saved; closing it asks first. × or a middle-click closes a chip. On a chip, Delete closes it and Esc closes the one on screen (Esc in a field still closes the panel). Ctrl/Cmd+W and Ctrl/Cmd+Tab stay the browser's: it reserves them, so the panel never takes them.
+- A saved request opens in Compose with a click on its name in its collection, tied to the collection (Send uses its settings). One already open, from there or from Recent, is shown instead of opened twice.
+- At 300 px the chips scroll sideways with no scrollbar (a mouse wheel over them moves them along), and an edge with more chips past it fades. A long name is cut with … inside its chip, and its tooltip has the whole request.
+- The strip is a tablist for the keyboard and screen readers: Tab reaches the chip on screen, the arrow keys (right to left in Arabic) and Home/End move along it and show the request reached, Delete closes the chip. A chip says its name and whether its changes are saved; closing one from the keyboard says which request is now on screen.
+- "Save to collection…" makes the request that saved request: named like it and tied to it. A saved request with changes gets Save changes in ··· More, which writes them into it (its name, notes, examples and checks stay).
+- Open requests come back when the panel opens again, the one on screen too, with their changes. A typed secret (a token, a password, an API key: the same rule as Recent) is never written to disk; a request opened again says which ones to type in again. A saved request with no changes comes back as it is saved in its collection now. A text over 100,000 characters is not kept either, and its request says so.
+- Fixed (Firefox): after the panel was reloaded, only the request on screen came back, and the others were lost. Firefox puts what was typed back in a reloaded page's fields, so Compose looked already in use and the kept requests were not brought back. Compose now starts empty and every kept request comes back.
+- A sixth request asks first: it names the request you looked at longest ago, and closes it only if you say so (saying when its changes would be lost).
+- Fixed: a request loaded into Compose kept the switched-off query parameters of the request shown before it.
+
+### Rule profiles that stay on (RP-1, RP-2)
+
+- Header and URL rules used to work only while recording. Settings → Header & URL rules → Profiles that stay on (closed until you open it) keeps named profiles: a name, the sites it covers and its rules. Switch a profile on and the browser applies its rules to those sites in every tab, with nothing recording, until you switch it off; they survive a browser restart. The rules are the ones you know: set or remove a request header, set or remove a response header, rewrite part of a URL; each can be limited to URLs containing some text. A profile with no site cannot be switched on, so a profile never applies to every site.
+- One quiet chip under the top bar names the profile that is on ("Rules on: Staging flags", or "2 rule profiles on"); its cross turns it off in one click, and the name opens the list. The chip shows only rules that really apply: a profile whose site access was taken away, or one the browser refused a rule of, is marked in the list ("Needs site access", "The browser refused a rule") and is not in the chip.
+- No new permission: the manifests already declare declarativeNetRequest and the optional host access. Switching a profile on asks the browser for just that profile's sites (or answers at once if you already allowed them at Start Recording). The privacy policy, the store text and the docs say so.
+- Import and Export share profiles as one JSON file (format in docs/RULE-PROFILES-FORMAT.md). It reads a ModHeader-style profile too. Header values that look like secrets (Authorization, Cookie, API keys, tokens) are left out of an export and come back switched off; an import never turns a profile on, and says what needs a look (no site yet, values left out, rules it could not read).
+- The recording-only rules are unchanged; a recording's own rules and a profile's rules are separate lists and never disturb each other.
+
+### Suite run options (RN-1)
+
+- A suite card has a quiet Run options… (closed until you open it): wait between steps (0 to 60000 ms, for an API that rate-limits), run the suite N times (1 to 100), and stop at the first failure. They are saved with the suite, shown as one line on the card while any is set, and used by Run and by Run once per row. A run that stopped at its first failure says so ("Stopped at the first failure — steps run: 2 of 3, passed: 1"), is never green, and the line is kept with the suite's last run. Stop also cuts a pause short.
+- Export as CI config writes delayMs, bail and iterations into the config (only the ones that are set), and a suite in a linked folder carries them to requestfox-ci run.
+- The CLI's assert and run take --delay-ms N, --bail and --iterations N, which override the config. --bail names how many requests were not run and lists them as skipped in a JUnit report; each repeat starts from the config's variables. A wrong value stops the run with exit code 2 before a request is sent.
+
+### The log as a table
+
+- A table button in the search bar shows the log as one line per call: method, path, status, time and size, plus host and flags when the panel is wider. Cards stay the default; the choice is remembered.
+- Click a heading to sort: the slowest, biggest, worst status or most flagged first, then the other way, then newest first again. The sorted heading carries aria-sort, and the line above the table says the order in words. A new call lands in its sorted place.
+- The Flags sort counts a stream's own flags (Stream error, Ended early, Paused) at their badges' weights, so a stream that errored or paused is no longer sorted as if it had no flag.
+- Drag a heading onto another to move its column there: a thin line shows where it will go, Escape cancels, and a short press still sorts. The Columns dialog lists the columns in their order with ↑ ↓ beside each (keyboard and a single click, no dragging needed), and Default order puts them back. The order is saved for the site, with the rest of its columns; taking an answer column away moves no other.
+- A row opens the call's full card under it, with every card action (Replay, Details, More…). Arrows, Home/End and Page Up/Down move between rows; Enter opens and closes; Escape closes. A jump to a call (the Timeline, a notification, a Top Issues chip) opens its row.
+- Built for long sessions: only the rows on screen are drawn, so a 5,000-call log renders and sorts within the Timeline's 300 ms budget (checked in real Chrome and Firefox by npm run test:browsers). In-flight calls and JS errors stay cards.
+- Add column above the table reads one value from each JSON answer by a path (data.items.length, $.user.id, items[*].id), offering the paths of an answer in the list as suggestions. A row with nothing there shows a quiet dash that says why. Sort by it like any column.
+- Columns (the same button) shows or hides the table's own columns (the path always shows) and takes up to four answer columns, side by side ("Add another"). The choice is saved for the site the session was recorded on; a site with none of its own starts with the answer column you chose last. A column that does not fit the panel's width waits until it is wider: your answer columns get the room before size, flags and host.
+- Group by host above the table puts a heading row over each host's calls: the host, its total, and its errors, repeats and slow calls when there are any (the tiles' own words). A click, Enter or Space on a heading folds its calls away and back. The sort still works, inside each group; the host with the newest (or slowest, or biggest…) call comes first. A jump to a call in a folded host unfolds it. Grouping is remembered; a 5,000-call log still draws only the rows on screen.
+
+### Session overview
+
+- A new button in the search bar opens the session's Overview: calls, errors (with the share), slow calls, repeats, what came back and the time span; the status code families; the five slowest calls; the findings by kind, in the card badges' words, each with the finding codes its calls have (RF-FAILED-5XX, RF-SLOW…; also in the Markdown); the hosts, most calls first.
+- Every line leads into the log: a slow call opens its card; a host or a finding shows only those calls (the search box's own host:, error:true, has:drift… filters).
+- Copy as Markdown puts the same in a bug report, in plain English like Copy bug report. Calls are named by host and path only: no query string (where tokens live), no headers, no bodies. It says whether the clipboard took it.
+- Calls over time: a small bar chart of how many calls started in each step of the session (a round step — 250 ms, 1 s, 10 s, 1 min… — at most 20 of them), its first and last times under it, and the same in words below ("120 calls over 240 s. Busiest: 18 in 10 s, from 12:03:10."). The words are its text alternative (the chart itself is hidden from screen readers), it has one calm colour (nothing is said by colour) and time runs left to right in every language. The Markdown names the busiest stretch.
+- A Paused finding kind: streams that stopped sending for a long time (the card's Paused badge), with their code RF-STREAM-PAUSED; a click opens the first one.
+- Fixed: what the panel says to a screen reader after you act ("Overview copied") could be replaced, before it was read, by a batch of new problems found while recording. A problems batch now waits until the panel's status line has been quiet for 5 seconds, and words still on their way never land over newer ones.
+
+### An answer's links and bytes
+
+- A web address in an answer's text (a card's Response, Compose's answer) is a link: a click opens it as a new GET request in Compose, in an open request of its own. On the same site, the call's headers come along (the browser's own and anything redaction hid stay out, and the status line says which to add back); to another site, none do. Ctrl/⌘- or middle-click is the browser's own.
+- In the JSON tree, a value that is an address, or a path from the site's root (/v1/items?page=2, read against the call's own address), shows a dotted line and offers Open as request first in its menu.
+- Hex (in a card beside Tree/Table, or Save for an image or protobuf kept as its bytes; in Compose beside Headers and Timing) shows any answer as bytes: an offset, sixteen bytes in hex and their ASCII per line, left to right in every language; where a line of sixteen does not fit (a 300 px panel), eight a line, so nothing scrolls sideways. A text answer is the UTF-8 of the text kept (it says so); bytes kept as base64 are shown as they are. The first 32 KB are drawn, and a longer answer says so. Copy hex copies what is drawn, Copy as base64 the whole answer. Hex is per answer, not remembered.
+
+### A list answer as a table
+
+- A JSON answer that is a list of objects (or holds one under a key, such as items or data.results) offers Table beside Tree, in a log card's Response and in Compose. No script: the list's place and row count, the first six columns (a nested object's keys are columns of their own), a column picker, 100 rows at a time.
+- A heading sorts (A to Z, Z to A, back to the answer's order). Copy as CSV copies every row with the columns shown, in the order shown; a text a spreadsheet would run as a formula is written as text. It says whether the clipboard took it.
+- Text, Tree or Table is one remembered choice. An answer that only looked like a list says so on the button.
+
+### Moving requests to and from other API apps
+
+- Compose's Import & export is two closed lists, Import and Export, each with its commonest action first (a collection, then curl; the workspace, then another app), instead of ten buttons in one row.
+- Export for another app: a collection's ··· menu, and Compose's Export list for every collection, save a file that Bruno (OpenCollection 1.0.0 YAML), Insomnia (v5 YAML) or Hoppscotch (JSON) opens. Folders, headers, off rows, query parameters, bodies, auth, collection settings and environments come along. Passwords, tokens and keys never do (there is no "export everything" here): each becomes a named variable, listed empty in the other app to fill in. The summary counts what those apps cannot hold (scripts, checks, saved responses, OAuth 1.0a / JWT / HMAC auth) and names the one next step in the other app.
+- Import reads Bruno 3+ OpenCollection files (one .yml), keeping the collection's headers, auth and variables as the collection's settings. Insomnia and Hoppscotch imports now pass a folder's or collection's headers and auth on to its requests, keep {{variables}} in query values and url-encoded bodies as written (they were percent-encoded), read Hoppscotch's url-encoded body text, and leave a {{variable}} alone when the base environment holds it empty. Bruno's older JSON export no longer doubles its query parameters.
+- The YAML writer quotes words other readers take for something else (yes, 0x1F, 1.0.0, dates) and writes U+0085, U+2028 and U+2029 escaped.
+
+### Import from a URL
+
+- Compose's Import list has Import from URL…: one field, one Import button. The address is read once from the extension (no cookies, no sign-in) after the browser asks for access to that one site, and goes through the same importer a file does: OpenAPI / Swagger (and the contract link), Postman, Insomnia, Bruno, Hoppscotch or HAR. A GitHub or GitLab page link becomes the raw file's address. Every failure stays in the dialog as one sentence with its next step: nothing at that address (404), a sign-in wall (401/403), a web page instead of the file, a file over 8 MB, a format RequestFox does not read, a site that did not answer in 20 s, or a site it was not allowed to read (CORS). Cancel stops the download.
+- Several addresses at once (NA4-2). The field takes one address per line (paste a list; Shift+Enter starts a line, Enter still imports), up to 20, with a repeated address read once. A line that is not a web address is named by its number before anything is fetched. The browser asks once for access to all their sites, inside the click; each address is then read in turn (with its own 20 s and "Loading 2 of 5 from …"), and ONE summary at the end, the same as Import a folder's, names each address with the collection it became or the reason it was not imported. Cancel stops the address being read and the rest. One address works exactly as before.
+
+### Import more
+
+- A WSDL split over files. xsd:import / xsd:include (schemaLocation) and wsdl:import (location) are now followed, up to 6 levels and 30 files. From Import from URL… a relative location is read from the WSDL's own folder; another site is asked for only when it is needed, with the same site-access prompt, and a refusal leaves that file out. From files, choose the .wsdl together with its .xsd files (or import their folder) and they are matched by path, else by file name. A file that could not be had is named in one sentence at the end of the summary, and its types stay comments in the envelope as before. Only http(s) addresses and plain relative names are followed.
+- Environments inherit. An environment can have a Parent environment (in its editor, folded away; absent while there is only one environment). It gets the parent's variables and secrets; its own values win. A parent that would make a loop is never offered, and deleting a parent frees its children. Sends, scripts, Copy as code, the suite's CI export and the CLI's --env use the inherited values; a workspace export and the folder files keep the parent link. Secret values stay in the vault under the environment that holds them.
+- Import a .env file. Import .env… in the environment editor (or a .env among the files of an import) makes an environment named from the file (.env.production is "production"). Values whose names read like credentials (token, secret, password, key, auth, cookie, session…) or whose address holds a password go to the vault; they are never written as plain values. With the vault locked or not set up they are left out and the summary says how many and what to do. ${OTHER} references are kept as written, not expanded.
+- Batch import. The Import a collection button takes several files at once, and Import a folder… takes a whole folder: specs, collections, WSDL and .env files are sorted by what they are and imported, schema files are read with the WSDL that uses them, and ONE summary names each file with what happened to it and the reason for any that were not imported. Other files in a folder (and node_modules, .git) are counted, not listed. A same-named collection is kept alongside as "(2)", never replaced. Up to 200 files, 8 MB each.
+
+### A default environment per collection (NA4-1)
+
+- Collection settings… and Folder settings… have Default environment. Sending a saved request from it (its row's Send, or Send in Compose when the request was opened from it) or opening it in Compose switches the environment list to that environment, and Compose's "From …" line names it. An environment you pick by hand while working there is kept, also when you come back from another collection (until the panel closes). A collection inside a folder takes the folder's unless it names its own; a pin whose environment was deleted counts as none. With no environments yet the list is off and says how to make one. A suite run keeps the environment it was started with. The workspace export and the folder files keep the pin (defaultEnvId).
+
+### OAuth 2.0 device code
+
+- A new sign-in method for OAuth profiles (RFC 8628): Get token shows the provider's page and a short code (Open page, Copy code, the time left), polls once per the provider's interval, adds 5 s on slow_down, and stops on access_denied or expired_token with one sentence and Start again. The token is stored encrypted in the vault; renewal uses the refresh token the provider returned. Discovery fills the device authorization URL.
+- requestfox-ci device-login does the same in a terminal or pipeline: page and code on stderr, the access token on stdout, or --out for a JSON file.
+
+### The QUERY method
+
+- QUERY (RFC 10008, June 2026: safe, repeatable, carries a body) is in every method list: Compose, Edit & replay, the breakpoint editor and fault rules. Compose opens the Body tab for it, and the body is sent. Replay and "Replay all" treat it like GET: nothing to confirm, since it cannot change data.
+- "Copy as code" writes QUERY in every language. PowerShell puts it in -CustomMethod (QUERY is not one of the values Invoke-WebRequest's -Method takes; the snippet says -CustomMethod needs PowerShell 7). JMeter's HTTP Request stops with "Unexpected method" on QUERY, so a .jmx keeps the sampler but switched off, with a note.
+- The CLI sends QUERY with its body (assert, diff, loadtest, run). OpenAPI 3.2 query operations are imported, mocked (mock --spec), contract-checked (conform) and probed (QUERY counts as a safe method, like GET).
+
+### Live streams
+
+- Event streams a page reads with fetch (server-sent events, NDJSON, a language model's token stream) are captured for as long as they stay open, not only their first 64 KB or 15 seconds. They are copied as the page reads them: nothing extra is read, and when the page closes a stream, the connection closes at once.
+- The newest whole events within the body limit are kept; older ones are trimmed and counted. Stop keeps the events that came so far and logs the stream straight away.
+- If the page goes away before its stream ends, the newest part seen live is kept.
+- A finished stream's card counts every event that came, says how many were trimmed (and the setting that keeps more), and why it ends there: Stop, the page closing it, a network error, or the page going away.
+- A stream's events are judged: an error event inside a 200 answer is flagged Stream error (with its message), a language-model stream that closes without its end marker is flagged Ended early, and a long pause between events is flagged Paused. A stream is Slow when its first event is late, not because it stays open. The verdict stays with the call in History, the HAR (a _stream field), the HTML report and copied text, and a HAR opened in History keeps it.
+- A language model's token stream reads as "Token stream · Events: N" with its text joined up, on its card (live and finished), in the HAR and in the copied text. This is parsing only: no model runs, and nothing is counted as tokens or cost.
+- While a stream is open, its card in the log counts the events so far, and Show events opens the newest ones as rows as they arrive, with a token stream's text joined up. The finished card replaces it when the stream ends.
+- A linked OpenAPI spec checks a stream item by item when its answer has an OpenAPI 3.2 itemSchema (server-sent events, JSON Lines / NDJSON, JSON text sequences), in the panel and in conform. An event is checked as { data, event, id, retry }, its JSON data against contentSchema, and a problem names its place in the stream (response body $[2].data). Trimmed events are listed as not checked; before, such an answer passed with nothing checked.
+- Streams a page reads with XMLHttpRequest or EventSource get the same live rows, kept events and verdicts as fetch streams, in History and the HAR too. An XHR stream is read as its text grows (one read as an arraybuffer, once it ends). An EventSource stream's rows are the events the page gets: every message, a server's event: error, and each named event the page listens for; each reconnect is a call of its own, and close() keeps what came.
+
+### API docs
+
+- Compose's Export list has a new button, Export docs (HTML): your saved collections as one web page. Each request is there with its notes, headers, auth, body and saved example answers, in the folders and collections you made, with a contents list. The page is one file with no script and no outside link, so it opens from disk, goes on a ticket or sits in git. Nothing to choose: passwords, tokens and keys are always replaced by {{variables}} (the same scrub as Export workspace; a secret it took out elsewhere is hidden in the notes too), and scripts, environment values and recorded traffic are never written. With nothing saved, a dialog says to save a request first. The same page, byte for byte, for the same collections: there is no date on it.
+- requestfox-ci docs --workspace <folder or workspace.json> --out docs.html writes that page from the folder RequestFox keeps for git (or an Export workspace file), with --title for the heading. No request is sent and no server is needed. It also ships inside the one-file CLI.
+
+### CLI
+
+- --http2 for assert, diff, loadtest, run and probe: every request goes over HTTP/2 with Node's own node:http2. On an https address the server must agree to HTTP/2 in the TLS handshake; on an http address it is h2c with prior knowledge. There is no quiet fall-back to HTTP/1.1: a server that does not speak HTTP/2 is an error that says so. A run's requests share one connection per server. HTTP/3 is not supported.
+- The protocol each request really came over (h2, h2c or http/1.1) is in the JUnit report (a protocol property on the request's first case), in loadtest --json (every result) and in probe --json (every case). A run on Node's plain fetch does not say, so nothing is written for it.
+- Fixed: with the CLI's own transport (--cert, --ca, --proxy, --insecure), a HEAD or 204 answer that names a content encoding failed with "unexpected end of file"; an empty body is no longer decoded.
+- The MCP server over HTTP (NA4-4). requestfox-mcp --http <port> serves the same seven tools over MCP's Streamable HTTP at http://127.0.0.1:<port>/mcp (--http 0 picks a free port; the address is printed on stderr, stdout stays empty). It listens on 127.0.0.1 only. A Host that is not that address (DNS rebinding) and an Origin that is not a local page are 403; --allow-origin <origin> lets one more in, and the refusal says so. --token <value> or REQUESTFOX_MCP_TOKEN (16 characters or more) makes every request carry Authorization: Bearer <token>, checked in constant time; else 401. One JSON-RPC message per POST, a JSON answer (202 for a notification); GET and DELETE are 405 (no stream, no session); an MCP-Protocol-Version it does not speak is 400 with the versions it does, so RequestFox's own MCP tester (and other 2026-07-28 clients) fall back to initialize. Tool calls run one at a time. No new tools.
+
+### Capture
+
+- Each captured WebSocket and SSE message in the WebSocket list says its size after its protocol: a text message's UTF-8 bytes (the whole message, also when only its first 64 KB is kept), a binary one's exact bytes. A line under the count adds up the listed messages ("Messages: 18.4 KB (12.1 KB received, 6.3 KB sent)"), and says "at least" when a message kept before 2.4.0 had no size. The WebSocket client's own text messages say their size beside their time.
+- Fixed: a stream from another site that the page read and then cancelled itself was called "Most likely blocked by CORS" in Chrome (which ends it with the same generic error). A page that read the answer's status was not blocked by CORS, so the card no longer says so; it keeps what came.
+- Record a site in every window (opt-in): with two or more browser windows open, Start offers Also record this site in my other windows. Ticked, a tab in another window is recorded while it is on that site (the host of the tab you started on) and stops being recorded when it leaves; other sites in those windows never are. The recording bar says Every window: <site>, with the number of recorded tabs on hover. The shortcut's Start remembers the box too.
+- Show page files (Settings → Noise filters, off by default): while you record, the page's own scripts, styles, images and fonts are listed too, each with a badge of its kind (Script, Style, Image, Font). They never raise an alert and are never flagged as duplicate or slow; one that fails (no answer, or 4xx/5xx) counts as an error. Switched off, the ones already listed step aside, and nothing extra listens to the browser.
+
+### Mocks & rules
+
+- Mock sets that stay on (MS-1): Settings → Mock sets that stay on (right under Mock or break an endpoint, closed until you open it) keeps named sets: a name, the sites whose pages it works on, and the rules it picks from Mock or break an endpoint (Mock, Fail, Slow, Network error and Cycle; the others need a recording). Switch a set on and those rules answer matching fetch() and XMLHttpRequest calls on those pages, in every tab, in Chrome and Firefox, with nothing recording, until you switch it off. A set names its rules rather than copying them: you edit a rule in one place, and a rule switched off there is off in the set too. A page's first calls wait (briefly) for the set, so a call made as the page starts is answered too. Pages already open get a set after a reload; switching it off or editing a rule reaches them at once. In a recorded tab a set's rules come after the recording's own and are logged like any mock.
+- The same quiet chip as rule profiles, beside it: "Mocks on: Checkout offline" (or "2 mock sets on"); its cross turns them off, its name opens the list. A set whose sites the browser was not allowed to reach, or whose page scripts the browser refused, is marked in the list and is not in the chip. A set with no site, or with no rule that is switched on, cannot be switched on; its form says which.
+- Fixed (Firefox): a mock set switched on showed "on" but answered nothing. Firefox's background never loaded the mock sets' code, so the set's page scripts were never registered. It does now. The "same answer as last time" checks had the same gap in Firefox: their code is loaded there now too.
+- No new permission: switching a set on asks for just its sites (the optional host access). The privacy policy and the store text say what a set does there. Import and Export share sets as one JSON file (docs/MOCK-SETS-FORMAT.md) with copies of their rules; values that look like secrets (tokens in a mocked body, credential headers, ?api_key=) are left out and counted; an import adds the rules to Mock or break an endpoint under the set's name and never turns a set on.
+- Rewrite the reply with a script (Chrome): a new mode in Mock or break an endpoint. The real call goes out; its reply goes to your own script before the page sees it, and the page gets what the script leaves in context.response (status, headers, body). The script runs in the same sandbox as pre/post-response scripts (no extension access, no network; rf.sendRequest is off here) while the RequestFox panel is open, and the page is only told the rule exists, never its code. The card says Rewritten (its body is what the page got; status and headers are the server's) or Not rewritten with why (the script failed, or no RequestFox panel answered — then the page gets the real reply: at once with no panel open, after 20 s at most otherwise). Both fetch() and XMLHttpRequest (axios, jQuery) replies are covered, for text bodies (an XHR's text, json, arraybuffer or blob reply); a synchronous XHR can't be held and goes through unchanged. Firefox can't run code typed into an extension, so there the mode isn't offered and the editor points to Mock and Header & URL rules.
+- Rewrite the request with a script (MS-2, Chrome): the same, before the call is sent. A matching fetch() or XMLHttpRequest call waits for your script and goes out with what it leaves in context.request (method, url, headers, body): a signed header, a field added to every body, one call sent to another host or with another method. A relative URL is read against the call's own; a GET or HEAD can't be given a body; a body that is not text (FormData, a file, a stream) reaches the script as null and is kept unless the script sets one. The card of the call that went out says Request rewritten, or Not rewritten with why (a bad method or URL, the script failed, or no panel answered — then the call goes as the page made it, after 20 s at most). Same sandbox, same limits; the page is only told the rule exists. An XHR the page aborts while it waits is never sent; a synchronous XHR can't wait and goes out unchanged. Firefox: not offered; the note there now says Header & URL rules change a request's headers and address.
+- The reply mode is now called Rewrite the reply with a script, so the two read apart in the Mode list.
+- WebSocket message rules (MS-3): a new mode in Mock or break an endpoint, WebSocket message. For a socket whose address contains the rule's text, it acts on text messages from the server (before the page's listeners and onmessage see them), to the server (in send()), or both, while recording. Only messages that contain: text, or a JSON field ($.type = price; $.type alone: the field is there); empty: every text message. Then: drop it; change it (replace every copy of a text, set a JSON field such as $.price to -1, or with nothing to find, replace the whole message); or, on Chrome, change it with a script (context.message.data, or context.message.drop = true) in the same sandbox as the rewrite scripts, with 3 s to answer — then the message goes on as it was. A socket's later messages wait behind one that is with a script, so the order never changes. Works in Firefox too (drop and change); there the script action isn't offered. The WebSocket list marks a message a rule touched Dropped or Changed (the text shown is what went on); a message injected from the panel is sent as typed; binary messages pass untouched. A path the rule can't read is named when you save it. The Method field steps aside for this mode (a socket has none).
+
+### gRPC-Web and Connect with your .proto files
+
+- Load .proto files… (under any protobuf answer, and on Compose's gRPC line) reads them with RequestFox's own parser: proto3, proto2 labels and editions, nested types, enums, maps, oneofs and services. Imports are found among the files you load; the well-known google.protobuf types are built in. The files are kept in this browser; a line that can't be read, or an import that isn't loaded, is named with its file.
+- A page's own gRPC-Web, Connect and protobuf answers are captured as their bytes (by fetch and by XHR) instead of "binary response — body not captured". Their gRPC status is the call's status: anything but OK is an error, as for a send.
+- An answer whose path is a loaded method reads as proto3 JSON with field and enum names (64-bit numbers as strings, bytes as base64, well-known types in their JSON forms); a field the files don't know keeps its number and wire type.
+- Compose has a gRPC-Web / Connect body type: pick the method and the protocol, write the message as JSON (an example is filled in), and Send encodes it with the .proto and sends it from the extension. A message that doesn't fit says which field and why. Server-streaming answers are read when the server ends them; client and bidirectional streams say plainly that a browser can't send them. Saved and Recent requests keep the method and protocol, Open in Compose opens a captured gRPC call of a loaded method in this body type, and Replay sends the same bytes again.
+- A page's gRPC-Web or Connect server stream is copied as the page reads it, for as long as it runs, and the page's own cancel closes the connection at once. Its newest whole messages within the body limit are kept and older ones trimmed and counted; its card says "Streaming…" while it is open, then "Messages: N", with a note when messages were trimmed or Stop ended it.
+- While a page's gRPC-Web or Connect server stream is open, its card says "Streaming… · Messages: N", and a quiet Show messages link opens its newest messages as rows as they arrive, the way an event stream's Show events does: up to 200, each read as fields (by name when your .proto files have the method) with its size in bytes. A message sent compressed is decompressed in the page first; one in an encoding the browser can't decompress says so, with the encoding's name.
+- Messages sent compressed with gzip or deflate (the grpc-encoding or connect-content-encoding header, or data that starts like either when the header can't be read) are decompressed with the browser's own DecompressionStream, in a page's calls and in Compose's sends (when the answer fits the body limit), so they read as fields instead of "compressed".
+- Messages sent compressed with brotli (br, named by the header: brotli data does not start with bytes that show what it is) are decompressed the same way where the browser's own DecompressionStream reads brotli. Where it doesn't, the card says "These gRPC frames are compressed with brotli, so they can't be read here", and an open stream's rows say "Compressed with brotli: not decoded here". Any other named encoding (snappy, zstd) is named the same way. RequestFox has no brotli decoder of its own.
+- Fixed: a grpc-web-text answer written in several pieces (padding between them) could not be read at all.
+
+### Testing MCP servers (MC-1)
+
+- Compose has an MCP server body type: a tester for MCP (Model Context Protocol) servers over Streamable HTTP. It sends the plain JSON-RPC 2.0 requests you pick and shows the answers. RequestFox runs no AI model; it only tests and inspects the server.
+- Connect (Send, in this mode) speaks the current MCP revision, 2026-07-28: server/discover, the protocol version in every request, and the MCP-Protocol-Version, Mcp-Method, Mcp-Name and Mcp-Param-* headers (a tool whose x-mcp-header breaks the spec's rules is left out, and Messages says why). A 2025-11-25, 2025-06-18 or 2025-03-26 server is reached through initialize instead; its session id stays in the panel's memory only, and Disconnect ends the session with DELETE.
+- It lists the server's tools, resources and prompts. A tool's arguments are a form built from its inputSchema (text, numbers, true/false, a fixed list, JSON for the rest), or JSON; a prompt's are text. Call tool, Read and Get prompt show the answer: text (JSON indented), images, the structured content, the tool's own error, or the server's error and its code. Messages lists every JSON-RPC message sent and received as it happens, progress and log notifications too, with secret values masked.
+- The URL, Auth (Bearer, Basic, API key, AWS, HMAC, OAuth 1.0a, JWT, an OAuth profile's token), Headers and environment apply as for any send. Digest is not used for MCP.
+- A server that asks for something only an AI client gives (sampling, a form, roots) is told no, and Messages says so; its ping is answered.
+- Save to collection… keeps the call: what it calls and its arguments. Opening it picks them once the server answers. An MCP call is not a suite step; the CLI and the Postman, Bruno, Insomnia and Hoppscotch exports leave it out, and the API docs page names it.
+- Each problem says what to do next: sign in (401), a local server that refuses the browser's Origin header (403), no MCP endpoint at the address (404), a session the server ended. stdio servers (a program a browser can't start) and the old HTTP+SSE transport (2024-11-05) are out of reach, and the panel says so.
+- MCP calls are not logged: they don't go into the log, Recent or History.
+
+### The LLM-call view (MC-2)
+
+- A call whose answer is shaped like an OpenAI-style API (Chat Completions, the Responses API, Completions; any OpenAI-compatible server), Anthropic Messages or Gemini generateContent, whole or streamed, gets an LLM call section in its card's Details, and an LLM call view under Compose's answer. It shows the API's shape, the model the answer names, how many messages the request sent, the token counts the answer itself gives (input, output, total, cached, written to cache, reasoning: each with the field it came from), the stop reason, how long the call took and, for a captured stream, when its first event came.
+- Only what the answer says: no counting, no cost (prices change). When the answer has no usage numbers the view says so, and for an OpenAI-style stream says how to ask for them (stream_options.include_usage).
+- Any other answer has no such section. RequestFox runs no AI model; this only reads answers.
+
+### SOAP
+
+- Import a WSDL. Import a collection takes a .wsdl (or .xml) file: each operation of each SOAP 1.1 or 1.2 service port becomes a POST request to the port's address, with SOAPAction (SOAP 1.1) or the action in Content-Type (SOAP 1.2) and an envelope with sample values from the schema in the file. A WSDL 2.0 file, XML that is not a WSDL, and broken XML each say what is wrong. Schemas in other files are read when they are given: see Import more below.
+- XPath checks on XML answers. A new check kind, XML (XPath), in Settings → Pass/fail checks, in a saved request's own checks, in the CLI's assert config ("type": "xpath") and in the background's judging of captured calls. A small XPath 1.0 reader of our own (no library); a name without a prefix matches any namespace, so //Price works on a SOAP answer. A check on an answer that is not XML, or with an XPath that cannot run, fails and says why. The supported subset is written out in docs/xpath-subset.md.
+- XML tree. An XML answer (SOAP, RSS) has the same Tree button as JSON, in a log card and in Compose. Click a row for its XPath and three actions: Copy XPath, Copy value, Check this value (adds an XPath check). Arrow keys, Home, End and Enter work as in the JSON tree; big elements show 100 children at a time.
+
+### No AI in RequestFox
+
+- Removed: the two helpers that used Chrome's built-in on-device model, Ask in plain English (the sparkle button by the search bar) and Suggest assertions (in a card's More menu), with their Settings group (AI) and its on-switch. RequestFox now contains no AI model and no AI code, and the privacy policy (section 5) says so.
+- Instead of Ask in plain English: the filter syntax. The funnel button (Filter syntax help) next to the search bar lists every token with click-to-add examples; "slow POST requests over 2 seconds" is method:POST latency:>2000.
+- Instead of Suggest assertions: Check this value in the JSON tree (one click adds a pass/fail check), the Pass/fail checks editor in Settings, and Convert for a script that only checks simple things.
+
+### GraphQL answers checked against the schema (GQ-1)
+
+- A captured GraphQL call to an endpoint with a kept schema now has its answer checked too, not only its operation: a value of the wrong type, null in a non-null field, a field the query did not ask for, and an asked field that is missing (one under @skip, @include or @defer may be). Unions and interfaces are followed by __typename. The card's Schema mismatch and Details name the place in the answer (data.product.price: expected Int!, got string), never the value; one problem in every item of a list is said once, with how many places.
+- Details has an Answer line: matches, does not match, or why it was not checked (cut at the body size limit, not JSON, an HTTP error, a request that already breaks the schema, a subscription).
+- The CLI: conform --graphql-schema <schema.graphql | introspection.json> checks a session's GraphQL calls and their answers, with or without --spec (--graphql-endpoint picks one endpoint when there are several); assert and run take --graphql-schema for their own sends. The README's "answers are not validated" limit is gone.
+- Custom scalars by what they declare (NA4-3). A scalar's @specifiedBy(url:) (SDL) or specifiedByURL (introspection; graphql-js 15's specifiedByUrl too) is kept with the schema and shown in Docs as a link. An answer value, and a literal in the operation, is then checked by it: an RFC 3339 date-time, date or time (the whole RFC 3339 is read with the scalar's name), a UUID (RFC 4122 / 9562), an absolute URL (RFC 3986 or the WHATWG URL standard), an email address (RFC 5321 / 5322); JSON takes anything. A scalar with no specifiedBy, or an address not recognised, takes any value as before. The place is named, never the value. Load asks for specifiedByURL and, when a server older than GraphQL's October 2021 edition refuses that field, asks once more without it.
+- Subscriptions in Compose (NA4-3). Send on a subscription opens the browser's WebSocket to the endpoint (https → wss, http → ws; a ws(s):// address as typed), offering graphql-transport-ws and the legacy graphql-ws; the server picks. Events come in live under Send, newest first (up to 200 kept on screen), each with its number, time and what the kept schema says of it ("matches the schema", or the first problem by place); a screen reader hears them at most once every 2 s, like the WebSocket client's replies. Send reads Stop meanwhile; Stop sends complete (legacy: stop and connection_terminate) and closes. Pings get their pong. The headers and auth go in connection_init's payload, by name and under headers (a browser WebSocket carries no headers). Connecting, waiting for the first event, the server's errors, a refused connection, 4401 / 4403 / 4406 / 4408 and other closes, no answer within 10 s, offline and a non-web address each say what happened and the next step. Nothing is recorded or kept.
+
+### Finding codes and CI baselines (GQ-2, GQ-3)
+
+- Every finding has a stable code, such as RF-FAILED-5XX, RF-SLOW, RF-CHECK-STATUS or RF-GQL-ANSWER-NULL (63 in all, listed in docs/finding-codes.md). The CLI prints it at the end of each failure line (assert, run, conform, probe, diff, and loadtest's broken limits), writes it as the finding property of each failing JUnit case and as code in probe --json. The HAR export has _findings on each flagged entry, and the session JSON export findings on each flagged request.
+- In the panel, a flagged call's Details starts with Flags: each code and what it found, and one Why is this flagged? button. Its dialog explains each code (why, and what to do) in the panel's language, offline, and names the CLI command that says the same. The HTML report shows each call's codes under its flags.
+- requestfox-ci explain <code> says why a finding is flagged, what to do and how to turn it off; with no code it lists them all. A typo names the nearest code.
+- --baseline <file> on assert, run, conform and probe: the run fails only on findings that are not in the file. --update-baseline writes the run's findings to it. The file is sorted JSON, one finding per line, with codes and places only (no answer data, query values or secrets); known findings are skipped JUnit cases that say so, and ones no longer seen are named.
+
+### Cookie jar (CJ-1 to CJ-4)
+
+- A cookie jar for the requests RequestFox sends itself (Compose, saved requests and suites with nothing recording). Turn it on for a site in Settings → Mocks, rules & checks → Cookie jar, or from Compose's ··· More → Cookies…: the cookies that site sets come back on your next sends to it, so a sign-in carries to the next call. The browser's own cookies are never sent or changed by it.
+- The rules are the browser's (RFC 6265): host-only or domain cookies, path, Secure (https, or this computer), Max-Age over Expires, the __Host- and __Secure- prefixes, at most 400 days. A deleted cookie (Max-Age=0) leaves the jar.
+- Compose's sent line says what the jar did in one sentence ("Sent from the extension → 200 (12 ms), with the jar's cookies: 1 sent, 1 kept"), or that the browser sent the request without them; nothing when the jar did nothing.
+- Each site's cookies: name, path, how long and HTTPS only (never the value); add, edit and delete them in one form, the value masked with Show beside it; Forget this site (it asks first); Import from this browser copies the browser's own cookies for that site. That button is the only thing that asks for the new optional cookies permission, in its click, with that site's access.
+- Session cookies are kept until the browser closes (session storage), the rest until they expire (local storage). A line says what is kept, in counts only; Clear the jar empties it. Values never go into an export, a linked folder, code, History, Recent, a report or the log.
+- How it works: one declarativeNetRequest session rule per send sets the Cookie header on the extension's own request to that origin and is removed when the send ends; the answer's Set-Cookie comes from webRequest (fetch() never shows it).
+- CLI: assert and run take --cookie-jar <file> (Netscape cookies.txt or JSON with Playwright's cookie fields). Its cookies go with each request to their site, each answer's Set-Cookie updates them (redirects are then followed hop by hop, so a sign-in's 302 keeps its cookie), and the file is written back when the run ends. A file that is not a jar is exit 2 before any request; values are never printed.
+
+### Slow down the whole tab (PT-1 to PT-3)
+
+- Chrome: Settings → Mocks, rules & checks → Slow down the whole tab. The tab in front loads as on Slow 3G (2 s, 400 kbit/s), Fast 3G (0.56 s, 1.4 Mbit/s), 4G (0.17 s, 8.1 Mbit/s), offline, or your own delay and speeds — the page and everything it loads, through Chrome's debugger (Network.enable, Network.emulateNetworkConditions and Network.disable, nothing else: Chrome applies network conditions only with the Network domain enabled; the events this produces are not listened to, read or kept).
+- The first time, one plain dialog says that Chrome then shows its own "started debugging this browser" bar, which can't be hidden; its Continue is what asks Chrome for the new optional debugger permission.
+- While it is on, a chip under the top bar says so; its × turns it off. Stop recording, closing the tab, closing the last panel or closing Chrome's bar turn it off too, and the line says which.
+- Firefox has no debugger API: the group says so in one line and opens a mock rule's Slow and Throttle modes instead.
+
+### Final logic and wording fixes
+
+- With "Show page files" switched off, the count tiles and the Overview no longer count the page files a recording kept; the Total matches the list.
+- When Chrome refuses the whole-tab slow-down because DevTools or another extension is already debugging that tab, the status line says so and what to do, in your language, instead of Chrome's English sentence.
+- Import .env with the vault locked now asks first: Unlock the vault, or Import without them. Esc, or a click beside the question, imports nothing (it is not an answer). Importing the same file again after unlocking fills the environment that has the same plain values in, instead of making "name (2)".
+- The environment editor lists the names a parent environment gives and which environment each comes from (names only, never values); a plain name starts your own line to override it.
+- The HTML report marks page files with a quiet Script, Style, Image or Font flag, and the CSV has a findings column with the finding codes.
+- A session file opened from disk keeps a call's stream summary, gRPC status and page-file kind only in the shape a recording gives them.
+- The privacy policy (all four copies) now names Import from a URL, a WSDL's linked schema files and the MCP server tester, and the Firefox reviewer notes list the device code sign-in's requests.
+- A GraphQL subscription belongs to the open request that started it. Showing another request (its chip, or New request) or picking another body type stops it, and that request's status line says so; its events come back with it. Send on any other request sends, instead of reading Stop. While Send reads Stop its tooltip says "Stop (Ctrl+Enter)", and a plain Send after a subscription clears that subscription's event list.
+- Sizes in the panel are in its language ("74 B" is "74 بايت" in Arabic, "74 o" in French), and Arabic milliseconds read "م.ث", so a duration or a size in Arabic no longer shows its unit on the wrong side. The HTML report and the command line keep B, KB and MB.
+- The .env and batch import summaries put a count after its word ("variables: 2, secrets kept in the vault: 1"), so one secret no longer reads "1 secrets".
+- The environment editor says above the inherited names what pressing one does: "Press a name to add it to your variables and set your own value."
+- The Columns dialog keeps ↑ before ↓ in Arabic.
+- Import from URL wraps a long address and grows to show it whole, instead of running it past the edge of the field.
+- The MCP server (bin/requestfox-mcp.js) uses only files in the folder it was started in, or below it: a session export, a folder of them, a spec, a data file or a baseline outside it is refused before it is looked at. Over --http without a token, the line it prints when it starts says that any program or local page on this computer can call the tools.
+- The privacy policy (all four copies) names the GraphQL subscription's WebSocket, and says cookies you add to the jar by hand or import from the browser are kept the same way; README's promise lists every kind of request RequestFox makes when you ask; the Chrome listing and the Firefox reviewer notes name Import from a URL and the MCP server where the policy does, and the reviewer notes describe Import from a URL's fetch and the subscription WebSocket.
+- Fixed: plain words in the log's search box now match the method and the status code as well as the URL, so "post" finds the POST calls and "500" the 500s. Before, only the URL was searched: "get" seemed to work because many addresses contain "get", while "post", "put" or "delete" found nothing. The search help says so in every language. MCP control's list_calls filter and the MCP server's search_requests (bin/requestfox-mcp.js, on a session file) match the same way.
+
+### MCP control
+
+- An AI agent you run on this computer can drive RequestFox through its own MCP server: node bin/requestfox-mcp.js --http 3333 --control. RequestFox runs no AI model. Off by default: Settings → Mocks, rules & checks → MCP control, Let a local MCP client control RequestFox, then the port and the one-time pairing code the server printed, and Connect. The browser asks for access to http://127.0.0.1 only; the manifests are unchanged.
+- 21 more tools while connected: recording (start, stop, list calls with the panel's search syntax, one call's details, replay), send_request (opens in Compose and sends from the extension), mock and fail rules (create, change, delete), rule profiles and mock sets on or off, saved requests and suites, HAR / report / docs exports, the whole-tab throttle (Chrome), clear the log, delete a collection.
+- Safe by default: the extension connects out to 127.0.0.1 (long-poll); the code is 8 letters and digits, compared in constant time, good once and for 10 minutes, one try a second, replaced after 5 wrong ones; the session key lives only in memory and an ended session's key is refused; a DNS-rebinding Host and every web page are refused (with --control, /mcp too). Each action is listed under MCP actions; answers are redacted as exports are (always) and scrubbed of every secret value the background knows; no tool reads the cookie jar, the vault, secret variables, OAuth tokens, or any Settings beyond the mock and fail rules it manages; a request with {{variables}} is refused and never carries the cookie jar; deleting, clearing, changing a rule you made, every request the agent writes or replays (to any address: the host is shown in bold) and a saved request or suite that changes data wait for your click; a request to the server's own port is refused; a rule made from MCP matches the address's path only; nothing asks for a permission; at most 120 calls a minute. While connected, a chip under the top bar says Controlled by a local MCP client, with Disconnect. Closing the panel or quitting the browser ends the session.
+- requestfox-mcp also speaks MCP 2026-07-28 (server/discover, the version in each request's _meta, resultType; a mismatched Mcp-Method header is -32020), and still answers initialize.
 
 ## 2.3.0 2 November 2026
 
@@ -420,92 +658,6 @@ What changed in the newest RequestFox releases, newest first. This page is built
 
 - The Help menu's About line shows the version ("RequestFox 2.2.1") in place of the personal signature, which no longer ships in any language.
 
-## 2.2.0 3 October 2026
-
-### More of the panel for your requests
-
-- While recording, the first request now starts about 200px from the top instead of about 370px — same controls, less height: the recording bar is one line (name, site, clock, Stop), the tiles are compact, the "5 of 13" match count sits inside the search bar like a find bar's, "This tab only" moved to the footer beside Clear and Export, and the endpoints that keep failing share one row that scrolls sideways.
-- The tiles count what the list shows. With "This tab only" on, they used to count every tab in the window, so "3 Error" could open a list of 1.
-- Name/value rows for Compose's Params, Headers and form Fields and an environment's Variables, with a fresh row to type into, × to remove, and common header names offered as you type. "Bulk edit" switches to the plain text for pasting a block (remembered).
-- Settings → Header overrides has a rule form: pick what the rule does, fill in the URL and header, Add. No url|header|Name|Value syntax to learn (the box stays for pasting many), and a | in a value is refused instead of silently cutting the value short.
-- Copy as code is syntax-coloured — strings, flags, keywords, comments — without changing a character of what gets copied.
-- One accent colour in dark mode instead of five glowing tile outlines; a standard gear for Settings and a waterfall icon for Timeline; slightly larger small text (the smallest sizes went from 9.5–10px to 10.5–11px).
-- "Running on Chrome" and the "Built by AJ" signature moved from the footer to the bottom of the Help menu.
-
-### What other API tools had, now here too
-
-- Expired tokens explained. A 401/403 sent with a Bearer JWT that had already expired gets a "Token expired" badge and a line saying how long before the call it ran out. Details shows any Bearer JWT's algorithm, issuer, audience, issue and expiry times against the call. It's read before redaction and keeps only those fields — never the subject, other claims or the signature.
-- N+1 detection. One endpoint called for id after id (/items/1, /items/2, … numbers, UUIDs or long hex ids) five or more times within 3 seconds shows as an "N+1" chip in the problems row; a click filters the log to it. The row is now called "Repeated problems".
-- Unset variables caught before sending. A {{name}} left in Compose's URL or headers after the environment is applied stops the send and names the variable and the environment, instead of going out as the literal text (a body may carry {{…}} on purpose, so it's left alone).
-- Format for Compose's JSON body: re-indents it with {{variables}} left exactly as written, and a body that looks like JSON but isn't says "Not valid JSON: …" under the box as you type.
-- Status pills name their code on hover: "404 Not Found".
-- Copy as code in 15 languages, adding C# (HttpClient), PHP (cURL), Ruby (Net::HTTP), Swift (URLSession), Kotlin (OkHttp) and Rust (reqwest), each with its own quoting: Kotlin's $, Swift/Rust \u{…}, PHP/Ruby single quotes (double-quoted with escapes when the text holds a control character), and C#'s rule that U+2028 can't sit raw in a string — the Rust and C# literals were compiled and checked byte for byte. Copy as code also wraps long lines instead of hiding them off to the side.
-- Right to left: the recording bar's separator and the "Triggered by" line read in the right order.
-
-### Calmer, easier to scan
-
-- Request cards lead with what the call was and whether it worked — method, path, status on the first line; the reason it was flagged, the time, duration and host on a quieter second line. Durations read "210 ms" / "4.2 s".
-- Colour only where something needs a look: a flagged request gets a stripe down its edge, a clean one doesn't, and the whole-card pink/amber tints are gone. Counter tiles stay neutral and their number turns red/amber only once there's something in it.
-- Body toggles (Headers, Response, …) keep their label and show a pressed look when open, so the action row no longer re-wraps on every click and fits on one line.
-- Every panel opens with its name as a real heading and two quiet round buttons, ? (that panel's walkthrough) and ×, instead of a "? How this panel works" text link.
-- The Timeline is a labelled waterfall: method and path beside each bar, the duration after it, every row in the session (it stopped after nine), and rows open from the keyboard.
-- Fewer things on screen at once: Compose's five import/export buttons sit in one closed "Import & export"; WebSocket shows captured activity first with "Inject a message" folded below; Settings' Done stays pinned at the bottom; History's Compare buttons appear once a session is ticked; the duplicate fox logo left the recording bar.
-- Past sessions read "Total 42 · Error 1 · Slow 2" instead of "42 reqs · 1 err · 0 dup · 2 slow · 0 js-err"; per-endpoint counts read "×2" instead of "1 reqs".
-- A request that never got an HTTP status says FAILED in its red pill with the browser's reason (net::ERR_CONNECTION_REFUSED) on a line under it. That string used to sit in the pill and, in Firefox's ~300px sidebar, squeezed the path into a one-letter-wide column. A cancelled beacon (ERR_ABORTED, not counted as an error) keeps its grey pill.
-- Long paths wrap between their parts (after / ? & =) instead of mid-word, and show two lines while the card is closed — all of it once opened.
-- In a ~300px sidebar the footer stays on one row.
-
-### Arabic (right-to-left)
-
-- URLs, durations, status codes, JSON bodies and headers stay left-to-right inside the mirrored UI: "/v1/orders" used to render as "v1/orders/", "236 ms" as "ms 236", and a JSON body's punctuation at the wrong ends of its lines. Typed text picks its own direction; disclosure and toggle chevrons point the way the text reads.
-
-### Accessibility
-
-- Coloured text now clears WCAG AA (4.5:1) in both themes: the green "200" pill was 2.95:1, a "301" 1.65:1, error/duplicate badges 3.3–3.8:1, the "Mock & fault rules on" chip 1.79:1. New text-safe status colours fix all of them, dark mode's muted grey went from 4.39:1 to 5.15:1 on panels, and the HTML report's grey labels from 3.4:1 to 5:1. A test now checks the ratios.
-- Body toggles expose aria-expanded; the WebSocket URL field has a real label; timeline rows are focusable buttons.
-
-### API
-
-- Paste a curl copied with Chrome/Edge DevTools' Copy as cURL (cmd) on Windows: its ^-escaped quotes used to come out as a body of ^^{^^a^^:1^}^. curl.exe … (how PowerShell users type it) is accepted too.
-- Copy as cURL leaves out Content-Length (wrong as soon as a body was cut off at the size limit, and the server then waits for bytes that never come) and HTTP/2 pseudo-headers, and turns Accept-Encoding into --compressed so the reply prints as text.
-- The session summary sent with every captured request is one pass over the log instead of four filtered copies of it.
-
-### API: see more, trust what you see
-
-- GraphQL and JSON-RPC failures are failures. A 200 OK whose body has a GraphQL errors list (on a request that is GraphQL) or a JSON-RPC 2.0 error is flagged as an error, badged GRAPHQL ERROR / RPC ERROR with the server's message on the card, counted, and notified. GraphQL APIs answer 200 to almost everything, so their failed calls used to be invisible. The CI tool fails on them too ("bodyErrors": false turns that off).
-- Every request's timing, as DevTools' Timing tab shows it: queued, DNS, connect (with TLS), waiting for the server, download, the HTTP version, and bytes on the wire against bytes decoded — under Details on any card, the biggest phase in bold. A cross-origin API without Timing-Allow-Origin shows only what the browser exposes, never made-up numbers.
-- Called from: the page functions that made each call (fetchProducts (catalog.js:142) ← loadNextPage …) — for a duplicate call, which code fired it. Both also go into "Copy bug report" and the HAR export.
-- HAR export uses the real timing split and HTTP version, real transferred/decoded sizes, and dates each entry from when the request started (it used the finish time, shifting every bar in a HAR viewer).
-- Bodies are shown exactly as sent. Pretty-printing JSON no longer changes values: a 64-bit id 1234567890123456789 used to display as …456800, a repeated key lost a copy, 1.50 became 1.5.
-- A binary request body (an upload, protobuf, gzip) is named for what it is instead of a wall of replacement characters, a file in a multipart form is marked by its name, and Replay won't send that stand-in as the body — Edit & Replay lets you supply one.
-
-### API: mocking and testing
-
-- Mock this response and Block this request on any card's More menu: one click turns a captured call into a mock that replays its status, headers and body, or into a network error — scoped to that call's method and URL.
-- Mock and fault rules can name a method (a GET mock no longer catches POST), a mock replays its own headers (fetch and XHR's getResponseHeader both see them — jQuery picks its parser from Content-Type), and a mocked 204/304 no longer throws inside the page's fetch().
-- New rule mode Network error: the call fails the way a dropped connection does — fetch() rejects, XHR fires error with status 0 — for testing offline and retry handling. Sequences take an offline step too.
-- Dynamic variables under Postman's own names, new on every send: {{$guid}}, {{$timestamp}}, {{$isoTimestamp}}, {{$randomInt}}, {{$randomEmail}}, {{$randomUserName}}, … — in Compose, saved requests, suites and the CI tool, with or without an environment.
-- Compose sends OPTIONS (a CORS preflight, by hand).
-- Compose has a Params tab: the URL's query as one name=value per line, kept in step with the URL both ways — {{variables}} are never encoded, a + reads as the space a server sees, the #fragment stays.
-- Compose's Body takes a Form (URL-encoded) or a Multipart form with files, as well as raw text. The page builds a real FormData, so the browser writes the multipart boundary; a saved multipart request keeps its text fields (a browser won't let an extension keep files, and says so).
-- Header rules can change what the page receives: urlContains|responseheader|Name|Value and urlContains|removeresponseheader|Name — e.g. add Access-Control-Allow-Origin while a backend's CORS isn't ready.
-- Open a connection in the WebSocket panel: a WebSocket client of its own — connect to any ws:///wss:// server, send (Ctrl+Enter), see every frame each way, with {{variables}} in the URL and messages.
-- Generated k6, Playwright and Cypress scripts escape a U+2028/U+2029 in a captured body or header — k6's JavaScript engine reads a raw one as a line break inside a string, a syntax error.
-
-### API: in and out
-
-- Copy as code… on any card: cURL (bash and Windows cmd), PowerShell, fetch, Node.js, Python requests, HTTPie, Go and Java, each following its own quoting rules and client limits (PowerShell 5.1's -ContentType, headers fetch() refuses). The Windows cURL doubles a backslash only where the C runtime would eat it — DevTools' own "Copy as cURL (cmd)" doubles every one, and curl.exe then sends them doubled (checked in a real cmd.exe), breaking a JSON body with an escape in it.
-- Import a collection… reads Postman, Insomnia (v4 JSON and v5 YAML), Bruno, Hoppscotch and Thunder Client exports and HAR files: folders as name prefixes, disabled headers and params left out, auth as headers, and each tool's variable syntax ({{ _.x }}, <<x>>) rewritten to {{x}} for your environments.
-- OpenAPI / Swagger import handles Swagger 2.0, $ref parameters and request bodies, allOf/oneOf, +json and form media types, server {variables}, sample values for formats (date-time, email, uuid), and turns security schemes into Authorization: Bearer {{scheme}}-style headers. Before, an allOf body or a $ref parameter came out empty.
-
-### Fixed
-
-- In a short window (about 640px tall or less) Compose's tab strip shrank to a 1px line and the Params box spilled over the row below it. An open panel now scrolls instead of squeezing its rows; a real-browser check in Chrome and Firefox holds it at 480px.
-
-### Store listing
-
-- npm run store-assets makes the Chrome Web Store / AMO screenshots (1280×800 and @2x), both promo tiles and a 47-second 1080p60 film from the real side panel, with no new dependencies: your local Chrome renders the compositions and its own H.264 encoder (WebCodecs) encodes the film, frame by frame. The film has original music and sound effects, written as code and rendered by Web Audio (pads, bass, soft drums, a tick for each arriving request and an alert for a failed one, clicks, whooshes), with the picture cut to the beat; AAC-encoded into the same MP4. Output lands in build/store/, with an index.html to look it all over.
-
 ## Get the newest version.
 
 The browser keeps RequestFox up to date by itself once it is installed.
@@ -523,7 +675,7 @@ Address: https://requestfox.accessisight.com/compare-bruno.html
 
 Pick Bruno to keep API requests as plain files in Git, next to your code, in an offline-first desktop client. Pick RequestFox to start from what your web app really sends in the browser, with problems flagged as you test. Neither needs an account, and RequestFox imports Bruno collections.
 
-Facts about Bruno are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about Bruno are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Side by side
 
@@ -539,7 +691,7 @@ Facts about Bruno are from its own documentation, checked 1 November 2026; sourc
 
 | Calls your web app makes | Recorded as you click, with problems flagged | You write the requests
 
-| CI | A one-file CLI exported from the panel | Bruno CLI runs collections from the terminal [2]
+| CI | A one-file CLI exported from the panel: assert, run, conform and loadtest, over HTTP/2 if you ask | Bruno CLI runs collections from the terminal [2]
 
 | Price | Free, no paid tier | No account needed; an email is asked for only if you buy a licence key [1]
 
@@ -561,7 +713,7 @@ Facts about Bruno are from its own documentation, checked 1 November 2026; sourc
 
 ## Requests as files, in Chrome too
 
-In Chrome, Import & export → Link a folder… writes your saved requests, environments, suites, checks and rules as files to a folder you pick, and keeps them up to date there, so they can live in Git next to the code. Bruno collections import from Compose → Import & export → Import a collection….
+In Chrome, Compose → Export → Link a folder… writes your saved requests, environments, suites, checks and rules as files to a folder you pick, and keeps them up to date there, so they can live in Git next to the code. Bruno collections import from Compose → Import → Import a collection….
 
 ## Sources
 
@@ -588,7 +740,7 @@ Address: https://requestfox.accessisight.com/compare-devtools.html
 
 Use the DevTools Network panel for a raw, live view of everything one page loads, with nothing to install. Use RequestFox when you test a flow and want the API problems pointed out, each tied to your click, kept in History and ready to mock, replay or export.
 
-Facts about DevTools are from Chrome's own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about DevTools are from Chrome's own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Side by side
 
@@ -596,15 +748,15 @@ Facts about DevTools are from Chrome's own documentation, checked 1 November 202
 
 | | RequestFox | DevTools Network panel
 
-| What it lists | API calls: fetch, XMLHttpRequest, WebSocket, server-sent events | Every resource the page loads [1]
+| What it lists | API calls: fetch, XMLHttpRequest, WebSocket, server-sent events, EventSource streams; as cards, a sortable table or a session Overview | Every resource the page loads [1]
 
 | Keeps the list | Every session, in History, to reopen and compare | Across page loads with Preserve log [2]
 
 | Finding problems | Flags failed, slow, duplicate and retried calls, N+1, errors inside a 200, expired tokens, changed shapes | You filter and read: by domain, status code and other properties, or inverted [2]
 
-| Changing answers | Mock, fail, slow, throttle or pause a call; labelled in the log | Local overrides of content and response headers, saved in a folder you choose [3]
+| Changing answers | Mock, fail, slow, throttle or pause a call, or in Chrome slow the whole tab; labelled in the log | Local overrides of content and response headers, saved in a folder you choose [3]
 
-| Export | HTML report, HAR, CSV, JSON, Postman, OpenAPI 3.0, tests, code in 15 languages | HAR (sensitive headers left out), Copy as cURL and as fetch [2]
+| Export | HTML report, HAR, CSV, JSON, Postman, Bruno, Insomnia, Hoppscotch, an API docs page, OpenAPI 3.0, tests, code in 15 languages | HAR (sensitive headers left out), Copy as cURL and as fetch [2]
 
 | Browsers | Chrome and Firefox | Chrome (Firefox has its own Network Monitor)
 
@@ -614,9 +766,9 @@ Facts about DevTools are from Chrome's own documentation, checked 1 November 202
 
 - It shows every resource (scripts, styles, images, fonts), not only API calls [1].
 
-- Network throttling and request blocking for the whole page [1].
+- Network throttling and request blocking for the whole page [1], built in and with nothing to allow. RequestFox's whole-tab throttle is Chrome only, optional and shows Chrome's own debugging bar.
 
-- Each event of an open stream shows live; RequestFox keeps a stream's first 64 KB.
+- Its EventStream tab filters an open stream's events with a regular expression [1]; RequestFox filters its rows with the log's search.
 
 ## What RequestFox adds
 
@@ -661,7 +813,7 @@ Address: https://requestfox.accessisight.com/compare-hoppscotch.html
 
 Pick Hoppscotch for an open-source API client on the web, desktop or CLI that teams can self-host, with WebSocket, SSE, Socket.IO and MQTT clients [3]. Pick RequestFox to record and judge the calls your own web app makes while you test it. RequestFox imports Hoppscotch collections.
 
-Facts about Hoppscotch are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about Hoppscotch are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Side by side
 
@@ -677,7 +829,7 @@ Facts about Hoppscotch are from its own documentation, checked 1 November 2026; 
 
 | CORS from the web app | Sends through the page while recording, or from the extension itself | An interceptor: the Hoppscotch Agent, a proxy or the browser extension [2]
 
-| Realtime clients | WebSocket and Socket.IO client; WebSocket, Socket.IO and SSE captured | WebSocket, SSE, Socket.IO and MQTT [3]
+| Realtime clients | WebSocket and Socket.IO client; WebSocket, Socket.IO and SSE captured, with live rows for fetch, XMLHttpRequest and EventSource streams | WebSocket, SSE, Socket.IO and MQTT [3]
 
 | Source | Free; MIT licence, repository not public | Source code open and auditable [1]
 
@@ -685,7 +837,7 @@ Facts about Hoppscotch are from its own documentation, checked 1 November 2026; 
 
 - Open source, and you can self-host it for a team [1].
 
-- An MQTT client, which RequestFox does not have [3].
+- An MQTT client [3]. RequestFox has none.
 
 - Runs on the web with no install at all [1].
 
@@ -726,7 +878,7 @@ Address: https://requestfox.accessisight.com/compare-insomnia.html
 
 Pick Insomnia for an open-source desktop client to design, debug and test APIs, with plugins, mock servers and a choice of local, Git or cloud storage. Pick RequestFox to test the calls a web app makes in the browser, flagged as they happen. RequestFox imports Insomnia exports.
 
-Facts about Insomnia are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about Insomnia are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Side by side
 
@@ -740,7 +892,7 @@ Facts about Insomnia are from its own documentation, checked 1 November 2026; so
 
 | Calls your web app makes | Recorded as you click, with problems flagged | You build the requests
 
-| Mocking | Mock, fail, slow or pause calls your app makes, in the browser | Mock servers that simulate endpoints, including cloud-hosted ones [1]
+| Mocking | Mock, fail, slow or pause calls your app makes, in the browser; mock sets that stay on, and in Chrome a script can rewrite a request or reply | Mock servers that simulate endpoints, including cloud-hosted ones [1]
 
 | CI | A one-file CLI exported from the panel | Inso CLI [1]
 
@@ -764,11 +916,11 @@ Facts about Insomnia are from its own documentation, checked 1 November 2026; so
 
 - Nothing to install outside the browser, and no account for anything.
 
-- Imports Insomnia exports (v4 JSON and v5 YAML), so your requests come with you.
+- Imports Insomnia exports (v4 JSON and v5 YAML), and exports your collections as Insomnia v5 YAML, so your requests come with you and can go back.
 
 ## Bring your Insomnia requests, then run them in CI
 
-Import an Insomnia export (v4 JSON or v5 YAML) from Compose → Import & export → Import a collection…. Chain the requests into a suite, and Export as CI config gives you a config file and a one-file command-line tool for your pipeline.
+Import an Insomnia export (v4 JSON or v5 YAML) from Compose → Import → Import a collection…. Chain the requests into a suite, and Export as CI config gives you a config file and a one-file command-line tool for your pipeline.
 
 How to run API checks in CI.
 
@@ -795,7 +947,7 @@ Address: https://requestfox.accessisight.com/compare-postman.html
 
 Pick Postman to design, document and share APIs across a team, with many protocols and shared workspaces. Pick RequestFox to test the API calls a real web app makes in the browser, with problems flagged for you and nothing to sign in to. They work together: RequestFox imports and exports Postman collections.
 
-Facts about Postman are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about Postman are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Side by side
 
@@ -809,7 +961,7 @@ Facts about Postman are from its own documentation, checked 1 November 2026; sou
 
 | Calls your web app makes | Recorded as you click, each flagged if it failed, dragged, fired twice or broke inside a 200 OK | Postman Interceptor, a browser extension, captures browser requests and cookies into Postman while the app is open [1]
 
-| Protocols for your own requests | HTTP (REST, GraphQL), WebSocket and Socket.IO; server-sent events captured | HTTP, WebSocket, Socket.IO, GraphQL, gRPC and MQTT [2]
+| Protocols for your own requests | HTTP (REST, GraphQL, SOAP), WebSocket and Socket.IO; gRPC-Web and Connect with your .proto files; MCP servers; server-sent events captured | HTTP, WebSocket, Socket.IO, GraphQL, gRPC and MQTT [2]
 
 | Team sharing | As files: collections, sessions, HAR, reports | Workspaces [2]
 
@@ -817,7 +969,7 @@ Facts about Postman are from its own documentation, checked 1 November 2026; sou
 
 - Team work: collections and environments live in workspaces you can share [2].
 
-- More protocols: gRPC and MQTT clients [2], which RequestFox does not have.
+- More protocols: gRPC and MQTT clients [2]. RequestFox sends gRPC-Web and Connect only, and has no MQTT client.
 
 - As a desktop app, it is not bound by a web page's CORS rules.
 
@@ -827,19 +979,19 @@ Facts about Postman are from its own documentation, checked 1 November 2026; sou
 
 - It judges the calls: failed, slow, duplicate and retried requests, N+1 bursts, GraphQL errors in a 200, expired tokens and changed shapes are flagged as they happen.
 
-- Mock and fault rules change the answers your app gets, labelled so nobody files them as bugs.
+- Mock and fault rules change the answers your app gets, labelled so nobody files them as bugs. Mock sets stay on with nothing recording, and in Chrome a script can rewrite a request or reply.
 
 - No account for anything, and nothing leaves your browser.
 
 ## Use both
 
-Import your Postman collections (v2.0 and v2.1) into RequestFox to send them from the browser, and export a recorded session as a Postman collection to keep working in Postman. Record the calls first.
+Import your Postman collections (v2.0 and v2.1) into RequestFox to send them from the browser, and export a recorded session or your saved collections as a Postman collection to keep working in Postman. Record the calls first.
 
 ## Move a Postman collection into RequestFox
 
 RequestFox reads Postman collection files (v2.0 and v2.1) and keeps what it can use.
 
-- Open Compose, then Import & export → Import a collection…, and pick the file.
+- Open Compose, then Import → Import a collection…, and pick the file.
 
 - RequestFox saves it as a collection of its own and says what it kept: variables and auth in the collection's settings, and the tests it turned into checks and chaining.
 
@@ -870,7 +1022,7 @@ Address: https://requestfox.accessisight.com/compare.html
 
 Each of these tools is the right pick for some job. RequestFox is the one that watches the web app you are testing and points out the API problems as they happen. For designing and sharing APIs across a team, a desktop client such as Postman, Insomnia, Bruno or Hoppscotch fits better, and RequestFox imports from all four.
 
-Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.3.0.
+Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## The short answer
 
@@ -910,7 +1062,7 @@ Your app's real calls, or a self-hostable client with realtime protocols.
 
 ## Where RequestFox falls short
 
-Honest limits of RequestFox 2.3.0, so you are not surprised:
+Honest limits of RequestFox 2.4.0, so you are not surprised:
 
 - It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.
 
@@ -918,11 +1070,11 @@ Honest limits of RequestFox 2.3.0, so you are not surprised:
 
 - No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.
 
-- An open stream keeps its first 64 KB; DevTools shows each event live.
+- An EventSource stream's live rows are the event types the page listens for: the browser hands a page no others.
 
-- Pre-request and post-response scripts run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.
+- Pre-request and post-response scripts, and rewriting a request or reply with a script, run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.
 
-- No gRPC or MQTT client.
+- No native gRPC or MQTT client (gRPC-Web and Connect only).
 
 - It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.
 
@@ -943,7 +1095,7 @@ Address: https://requestfox.accessisight.com/faq.html
 
 Straight answers to the questions people ask about testing APIs in the browser. Where another tool is the better fit, we say so.
 
-Written by the RequestFox team, for RequestFox 2.3.0.
+Written by the RequestFox team, for RequestFox 2.4.0.
 
 ## Choosing a tool
 
@@ -953,11 +1105,11 @@ It depends on the job. To test the API calls a web app makes while you use it, a
 
 **What is a good API testing add-on for Firefox?**
 
-RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.
+RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or reply with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.
 
 **Is there a free Postman alternative that runs in the browser?**
 
-RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.
+RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.
 
 **How is RequestFox different from the DevTools Network panel?**
 
@@ -1001,7 +1153,7 @@ Yes. After a recording, RequestFox's Performance panel turns the captured endpoi
 
 **How do I export network requests as HAR, Postman or OpenAPI?**
 
-RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report, and copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.
+RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report. Your saved collections export for Bruno, Insomnia or Hoppscotch, or as one API docs page (Export docs). It also copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.
 
 **Can RequestFox send a request to any API?**
 
@@ -1038,7 +1190,7 @@ Address: https://requestfox.accessisight.com/features.html
 
 RequestFox captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 The Timeline, one of the panel's views.
 
@@ -1048,7 +1200,9 @@ Press Start (or Alt Shift S) and use your app. RequestFox lists fetch, XMLHttpRe
 
 - A call shows as soon as it starts and turns SLOW live if it drags; its finished card replaces it.
 
-- Streams (server-sent events, NDJSON, token streams) keep their first 64 KB.
+- Live streams: server-sent events, NDJSON and token streams, read with fetch, XMLHttpRequest or EventSource, stay open as rows that fill as events arrive. RequestFox keeps the newest ones within the body limit, and flags error events, a missing end marker and long pauses. A page's gRPC-Web or Connect server stream is kept the same way.
+
+- The log can be a table: one line per call, sorted by a click on a heading, with columns that read a value out of each JSON answer (data.items.length), a Group by host view and a session Overview (calls, errors, slow calls, status families, the slowest five, hosts). A 5,000-call log only draws the rows on screen.
 
 - Each call is tied to the click or form submit that caused it.
 
@@ -1092,29 +1246,47 @@ Each call opens to its headers, body and Details: the timing split (DNS, connect
 
 - The Timeline puts every call on a time ruler; Performance lists the heaviest endpoints.
 
-- GraphQL calls are checked against a schema you load; gRPC-web answers are read without a schema.
+- GraphQL calls are checked against a schema you load, and so are their answers: a wrong type, a null in a non-null field or a missing field is named by its place in the answer. Every flagged call carries a stable finding code (such as RF-FAILED-5XX) and a "Why is this flagged?" explanation, offline.
+
+- gRPC-Web and Connect answers are read as fields once you load your .proto files (RequestFox's own parser), and by field number without them.
+
+- SOAP and XML: import a WSDL, read an XML answer as a tree, and add XPath checks (XPath 1.0 subset, our own reader).
+
+- A call to an LLM API (OpenAI-style, Anthropic or Gemini) shows the model, the token counts and the stop reason its own answer gives. Nothing is estimated, and no cost is shown.
 
 A JSON answer as a tree.
 
 ## Compose, replay and send
 
-Replay any captured call, or Edit & Replay it. Compose builds requests from scratch with Params, Headers, raw, form or multipart bodies, environments and {{variables}}, secret variables kept encrypted, and saved collections.
+Replay any captured call, or Edit & Replay it. Compose builds requests from scratch with Params, Headers, raw, form or multipart bodies, environments and {{variables}}, secret variables kept encrypted, and saved collections. Up to five requests stay open at once as chips above the URL, each with its own form and answer, and they come back when the panel opens again (typed secrets are never written to disk).
 
-- Auth: Basic, Bearer, API key, Digest, OAuth 2.0 (browser sign-in with PKCE, client credentials, refresh token, password), OpenID Connect discovery, OAuth 1.0a (HMAC, RSA and PLAINTEXT signatures), JWT Bearer signing (HS, RS and ES algorithms), AWS Signature v4 and an HMAC preset.
+- Auth: Basic, Bearer, API key, Digest, OAuth 2.0 (browser sign-in with PKCE, device code, client credentials, refresh token, password), OpenID Connect discovery, OAuth 1.0a (HMAC, RSA and PLAINTEXT signatures), JWT Bearer signing (HS, RS and ES algorithms), AWS Signature v4 and an HMAC preset.
 
-- Save an answer as an example, and keep notes on requests, collections and folders.
+- Save an answer as an example, and keep notes on requests, collections and folders. The QUERY method (a safe request with a body) is in every method list.
+
+- A cookie jar, per site and off until you turn it on, keeps the cookies a site sets so a sign-in carries to your next sends. It never touches the browser's own cookies, and cookie values never go into an export or the log. Importing the browser's cookies for a site is the one step that asks for an optional permission.
 
 - While recording, a send goes through the page with its cookies; with nothing recording it goes from the extension itself, without any page's cookies.
 
 - A WebSocket client connects to any ws:// or wss:// server, with a Socket.IO mode; captured Socket.IO frames read as events and their arguments.
 
+- An MCP server tester: connect to an MCP server over Streamable HTTP, list its tools, resources and prompts, and call one from a form built from its schema. It only sends the requests you pick and shows the answers.
+
 - Copy any request as code in 15 languages, cURL for bash and Windows cmd included.
 
-Import from Postman, Insomnia, Bruno, Hoppscotch, Thunder Client, OpenAPI 3, Swagger 2, HAR and cURL. How to replay and edit a request.
+- Environments can inherit from a parent, and a .env file imports as an environment (credential-like values go to the encrypted vault).
+
+Import from Postman, Insomnia, Bruno, Hoppscotch, Thunder Client, OpenAPI 3, Swagger 2, HAR and cURL, from a file, several files or a whole folder at once (batch import, with one summary of what happened to each file), or from a URL (Import from URL: the browser asks for access to that one site). How to replay and edit a request.
 
 ## Mocks and faults
 
 Make an endpoint fail, slow down, pause for editing, or return the answer you choose, with no backend change. "Mock this response" turns any captured call into a mock in one step.
+
+- Rule profiles and mock sets stay on with nothing recording: switch one on and its header, URL or mock rules apply to the sites it names in every tab, until you switch it off. A chip under the top bar says what is on. Each is one JSON file to share.
+
+- In Chrome, rewrite the request or the reply with a script: sign a header, add a field to every body, or change what the page gets back. In Chrome and Firefox, WebSocket message rules drop or change a socket's text messages by text or a JSON field.
+
+- In Chrome, Slow down the whole tab (Slow 3G, Fast 3G, 4G, offline or your own numbers) through the browser's debugger. It is optional, asks once, and Chrome then shows its own "started debugging this browser" bar. Firefox has no such API, so it offers each rule's Slow and Throttle modes instead. DevTools throttles with nothing to allow.
 
 Mock or break an endpoint, in Settings.
 
@@ -1130,7 +1302,7 @@ How to check API calls against OpenAPI.
 
 ## Export evidence and tests
 
-Export a session as a self-contained HTML report, HAR, CSV, session JSON, a Postman collection or an OpenAPI 3.0 spec built from the calls. Open a GitHub or Linear issue with the repro filled in. Turn a recording into tests:
+Export a session as a self-contained HTML report, HAR, CSV, session JSON, a Postman collection or an OpenAPI 3.0 spec built from the calls. Export your saved collections for Bruno, Insomnia or Hoppscotch (passwords, tokens and keys become empty variables to fill in), or as one API docs page (Export docs) with no script and no outside link. Open a GitHub or Linear issue with the repro filled in. Turn a recording into tests:
 
 - Playwright
 - Cypress
@@ -1139,7 +1311,7 @@ Export a session as a self-contained HTML report, HAR, CSV, session JSON, a Post
 - Gatling
 - Locust
 
-Run the same checks in CI with the command-line tool you download from the panel; it can also make negative tests from an OpenAPI spec (probe) and serve a mock API from one (mock). How to run API checks in CI.
+Run the same checks in CI with the command-line tool you download from the panel; it can also make negative tests from an OpenAPI spec (probe) and serve a mock API from one (mock). The CLI can send over HTTP/2 (--http2, no quiet fall-back to HTTP/1.1), write the docs page (docs), say why a finding is flagged (explain) and fail only on new findings (--baseline). How to run API checks in CI.
 
 ## Private by design
 
@@ -1151,9 +1323,11 @@ No account, no server, no analytics. Authorization headers, cookies and secret-s
 
 - No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.
 
-- Pre-request and post-response scripts run in Chrome only; Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.
+- Pre-request and post-response scripts, and rewriting a request or reply with a script, run in Chrome only; Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.
 
-- No native gRPC or MQTT client.
+- No native gRPC or MQTT client: gRPC-Web and Connect work from a browser; client and bidirectional streams cannot be sent from one.
+
+- RequestFox contains no AI model and no AI code. The MCP server tester and the LLM call view only test and inspect other services. MCP servers that run as a local program (stdio) are out of a browser's reach.
 
 - It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.
 
@@ -1174,7 +1348,7 @@ Address: https://requestfox.accessisight.com/guide-api-checks-in-ci.html
 
 Build a suite of saved requests in RequestFox, choose ··· → Export as CI config, then Download the CLI. Commit both files and run node requestfox-ci.mjs assert --config requestfox.config.json in your pipeline: it sends every request for real, checks every rule, and exits non-zero on a failure.
 
-Needs Node 18 or newer. For RequestFox 2.3.0.
+Needs Node 18 or newer. For RequestFox 2.4.0.
 
 Export as CI config, then Download the CLI.
 
@@ -1228,6 +1402,12 @@ A secret-looking value typed into a body, a query or a header is written as {{en
 
 - mock --spec openapi.yaml: a mock API on 127.0.0.1 from your spec; --dynamic varies its answers, and --seed 42 repeats them.
 
+- --http2 on assert, diff, loadtest, run and probe: every request goes over HTTP/2, and a server that does not speak it is an error (HTTP/3 is out of scope).
+
+- --baseline known.json on assert, run, conform and probe: fail only on findings that are not in the file; --update-baseline writes it. explain RF-SLOW says why a finding code is flagged and what to do.
+
+- docs --workspace folder --out docs.html: your saved requests as one API docs page, with no request sent.
+
 Run node requestfox-ci.mjs --help for every flag.
 
 ## Next
@@ -1250,7 +1430,7 @@ Address: https://requestfox.accessisight.com/guide-mock-api-response.html
 
 In RequestFox, open a captured call, choose ··· More → Mock this response, then change the status, headers or body in the rule. From then on the page gets your answer instead of the server's, for fetch and XMLHttpRequest, and the call is labelled MOCKED.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 Rules that mock or break endpoints.
 
@@ -1326,7 +1506,7 @@ Address: https://requestfox.accessisight.com/guide-openapi-contract-check.html
 
 Import your OpenAPI 3 or Swagger 2 spec into RequestFox; the import links it as the contract. Then record as usual: a call that breaks the spec shows SPEC MISMATCH with the reason, a call the spec does not have shows NOT IN SPEC, and Top Issues counts how many operations you covered.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 A call that breaks the linked spec, with the reason.
 
@@ -1394,7 +1574,7 @@ Address: https://requestfox.accessisight.com/guide-record-api-calls.html
 
 Install RequestFox, open the site, press Start (or Alt Shift S) and use the site as usual. Every fetch, XMLHttpRequest, WebSocket frame and server-sent event is listed the moment it starts, and failed, slow and repeated calls are flagged for you.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 A recording in progress.
 
@@ -1480,7 +1660,7 @@ Address: https://requestfox.accessisight.com/guide-replay-edit-request.html
 
 Record the call with RequestFox, open its card and press Replay to send it again as it was, or Edit & Replay to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 A request opened in Compose, with its answer.
 
@@ -1544,7 +1724,7 @@ Address: https://requestfox.accessisight.com/guides.html
 
 Short, step-by-step answers to the jobs people use RequestFox for. Each one names the buttons as they appear in the panel, and what to do when something does not work.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 ## All guides
 
@@ -1595,37 +1775,37 @@ Address: https://requestfox.accessisight.com/privacy.html
 
 RequestFox is a developer tool for Chrome and Firefox that watches and tests API traffic during manual QA. It does not collect, transmit, or sell any data. It has no server of its own, no analytics, no telemetry and no account.
 
-Last updated: 1 November 2026
+Last updated: 3 November 2026
 
 ## 1. What RequestFox stores
 
-Everything it captures (network requests and responses, console messages, WebSocket frames, optional screenshots) and everything you save (settings, collections, environments, sessions, saved WebSocket messages) lives only in your browser's own local storage and IndexedDB, on your own machine. If you choose Link a folder… (Chrome), your saved requests, environments, suites, checks and rules are also written as files to the folder you pick, and kept up to date there. Passwords, tokens and keys RequestFox recognises are written as {{placeholders}}, not their values. You can delete any session, or all of them, at any time from the extension. Authorization headers, cookies and fields that look like secrets are redacted by default in everything RequestFox keeps, shows in its log or exports; only Compose shows the answer to your own request as it came, and does not keep it in the log. Compose's Recent list keeps your last 100 Compose and saved-request sends with their answers on this device (in the browser's IndexedDB), redacted the way the log is (a typed Auth token, password or key is never kept there), until you press Clear under Recent. An answer you keep with Save as example stays on that saved request as it came, apart from cookies and Authorization headers, on this device only; the copies you share (Export workspace or Export to Postman without credentials, and a linked folder) replace values that look like secrets with {{placeholders}}. The answers the "Same answer as last time" check keeps are stored on this device with tokens, keys and session ids replaced by «scrubbed» before they are written. The unredacted copy needed to replay a request is kept only in memory and the browser's session storage, which is never written to disk, is readable only by the extension, and is cleared when the browser closes.
+Everything it captures (network requests and responses, console messages, WebSocket frames, optional screenshots) and everything you save (settings, collections, environments, sessions, saved WebSocket messages) lives only in your browser's own local storage and IndexedDB, on your own machine. If you choose Link a folder… (Chrome), your saved requests, environments, suites, checks and rules are also written as files to the folder you pick, and kept up to date there. Passwords, tokens and keys RequestFox recognises are written as {{placeholders}}, not their values. You can delete any session, or all of them, at any time from the extension. Authorization headers, cookies and fields that look like secrets are redacted by default in everything RequestFox keeps, shows in its log or exports; only Compose shows the answer to your own request as it came, and does not keep it in the log. Compose's Recent list keeps your last 100 Compose and saved-request sends with their answers on this device (in the browser's IndexedDB), redacted the way the log is (a typed Auth token, password or key is never kept there), until you press Clear under Recent. An answer you keep with Save as example stays on that saved request as it came, apart from cookies and Authorization headers, on this device only; the copies you share (Export workspace or Export to Postman without credentials, and a linked folder) replace values that look like secrets with {{placeholders}}. The answers the "Same answer as last time" check keeps are stored on this device with tokens, keys and session ids replaced by «scrubbed» before they are written. The unredacted copy needed to replay a request is kept only in memory and the browser's session storage, which is never written to disk, is readable only by the extension, and is cleared when the browser closes. If you turn on the cookie jar for a site (Settings, Cookie jar), the cookies that site sets in answers to the requests RequestFox sends itself, and any you add by hand or import from the browser, are kept on this device: those with an expiry in the browser's local storage until they expire or you clear them, session cookies only in the browser's session storage, which is never written to disk and is cleared when the browser closes. Their values never go into an export, a linked folder, code, History, Recent, a report or the log; Clear the jar deletes them all. While Slow down the whole tab (Chrome) is on, the tab's id and title and the speed you picked are kept in the browser's session storage, and removed when it goes off. MCP control keeps only whether it is switched on and the port you typed; its session key lives only in the panel's memory, and the list of MCP actions is kept in the browser's session storage, which is never written to disk, until the browser closes.
 
 ## 2. Requests you send
 
-RequestFox sends a network request only when you ask it to. Compose & Send, Replay and test suites send the request you built or captured to the URL in it, with the headers and body you set. With nothing recording, Compose & Send, a saved request's Send and the steps of a test suite you run go from the extension itself, to the same URL and without any page's cookies; the browser first asks you to allow those sites, unless you already did. If you configure an OAuth 2.0 profile, the browser's sign-in window opens at the provider's authorization URL, and the token exchange goes to the token URL you entered. "Fill from issuer" reads the OpenID Connect discovery document (/.well-known/openid-configuration) from the issuer address you entered. The WebSocket client connects to the address you type; in Socket.IO mode it sends the auth payload you entered to that server. If the page you test cannot reach an API on another origin, Compose can send the request from the extension instead, after you click "Send from the extension instead"; it goes to the same URL, without the page's cookies. After you choose a site this way, your later Compose sends and test-suite steps to that site also go from the extension until the browser closes, and Replay of a request sent this way goes the same way. A GET, HEAD or OPTIONS Replay that the page's CORS rules block is sent again from the extension by itself, the same way; any other method offers "Replay from the extension" first. The "Security probe (OPTIONS)" action asks you to confirm first, then sends one OPTIONS request to that request's own address. "Open GitHub issue" and "Open Linear issue" open your GitHub or Linear page in a new tab with the issue text in the link. None of these go to RequestFox or to anyone it works with, because there is no such party. They go to the servers you named, which see them as they would see any request from your browser.
+RequestFox sends a network request only when you ask it to. Compose & Send, Replay and test suites send the request you built or captured to the URL in it, with the headers and body you set. With nothing recording, Compose & Send, a saved request's Send and the steps of a test suite you run go from the extension itself, to the same URL and without any page's cookies; the browser first asks you to allow those sites, unless you already did. If you turn on the cookie jar for a site, those requests to that site also carry the cookies the jar holds for it, and the cookies its answers set go into the jar; the browser's own cookies are still neither sent nor changed. If you configure an OAuth 2.0 profile, the browser's sign-in window opens at the provider's authorization URL, and the token exchange goes to the token URL you entered. "Fill from issuer" reads the OpenID Connect discovery document (/.well-known/openid-configuration) from the issuer address you entered. Import from a URL reads the OpenAPI, collection or WSDL file at the address you type, without cookies, and the schema files a WSDL links to; for a file on another site the browser asks you first. The MCP server tester sends the requests you pick (list tools, call one, read a resource) to the server address you type; a server's request for a model completion is declined. MCP control, off until you turn it on (Settings, Mocks, rules & checks, MCP control), connects the panel to the RequestFox MCP server (requestfox-mcp) that you start yourself on this computer, at http://127.0.0.1 on the port you type, after you type the one-time pairing code it prints; it reaches nothing else. An AI agent you run can then ask RequestFox, through that server, to start or stop recording, read or clear the calls in the log, replay one, send a request from the extension (without any page's cookies or the cookie jar's) wherever your site access reaches, which after Start Recording is every site and after Connect every port on 127.0.0.1, add, change or delete mock and fail rules, switch rule profiles and mock sets on or off, run saved requests and test suites, delete a saved collection, export a HAR file, a report or the API docs, or slow down a tab once you have allowed the debugger permission yourself. Each action is listed in the panel under MCP actions. What goes back to the agent is redacted the way exports are, and it never gets the cookie jar, the vault, secret variables or OAuth tokens. A request the agent writes itself gets no {{variables}} filled in, so no secret variable or OAuth token can be sent where it asks; a saved request or suite it runs goes to its own saved address, as its Send does. RequestFox waits for your click before it deletes or clears anything, before it changes a rule you made, before every request the agent writes or replays (it shows you the address), and before a saved request or suite whose method changes data; a request to the server's own port is refused. The link itself sends nothing off this computer; what the agent does with the answers is up to that agent. In plain words: with MCP control on, what RequestFox observes is handed, redacted, to the program you paired on this computer, which may send it elsewhere. The link ends when you press Disconnect, close the panel or quit the browser, and after 8 hours at most. The WebSocket client connects to the address you type; in Socket.IO mode it sends the auth payload you entered to that server. A GraphQL subscription in Compose opens the browser's WebSocket to the endpoint you typed, with the request's headers and auth in its first message. If the page you test cannot reach an API on another origin, Compose can send the request from the extension instead, after you click "Send from the extension instead"; it goes to the same URL, without the page's cookies. After you choose a site this way, your later Compose sends and test-suite steps to that site also go from the extension until the browser closes, and Replay of a request sent this way goes the same way. A GET, HEAD or OPTIONS Replay that the page's CORS rules block is sent again from the extension by itself, the same way; any other method offers "Replay from the extension" first. The "Security probe (OPTIONS)" action asks you to confirm first, then sends one OPTIONS request to that request's own address. "Open GitHub issue" and "Open Linear issue" open your GitHub or Linear page in a new tab with the issue text in the link. None of these go to RequestFox or to anyone it works with, because there is no such party. They go to the servers you named, which see them as they would see any request from your browser.
 
 ## 3. Host access
 
-Access to websites is optional and requested only when you press Start Recording, or, for the sites involved, when you send a request from Compose or run a test suite with nothing recording. It is used to observe the network traffic of the tabs in the window you choose to record, for the features described in the store listing, and, when you choose "Send from the extension instead" or send from Compose or run a test suite with nothing recording, to send your request to that site from the extension (section 2). What it observes there never leaves your device. Once allowed, that access stays after you stop recording, until you remove it in your browser's settings for the extension.
+Access to websites is optional and requested only when you press Start Recording, or, for the sites involved, when you send a request from Compose or run a test suite with nothing recording, or switch on a rule profile or a mock set, or turn on the cookie jar for a site, or import from a URL or connect to an MCP server at an address on a site not yet allowed. It is used to observe the network traffic of the tabs in the window you choose to record, for the features described in the store listing, and, when you choose "Send from the extension instead" or send from Compose or run a test suite with nothing recording, to send your request to that site from the extension (section 2). What it observes there never leaves your device. The one exception is MCP control (section 2): while it is on, what an AI agent asks for is handed, redacted, to the program you paired on this computer, and that program may send it elsewhere. Once allowed, that access stays after you stop recording, until you remove it in your browser's settings for the extension. A rule profile you switch on (Settings, Header and URL rules, Profiles that stay on) uses this same access, only for the sites you named: it changes headers or addresses of requests to those sites, in every tab and with nothing recording, until you switch it off. A mock set you switch on (Settings, Mock sets that stay on) uses this same access, only for the sites you named: on the pages of those sites it answers the calls that match its rules with the mock answer, error or delay you set, in every tab and with nothing recording, until you switch it off. It records nothing there. The cookie jar uses this same access, only for the sites you turn it on for: it adds the jar's cookies to RequestFox's own requests to those sites and reads the cookies their answers set. MCP control asks for this same access for http://127.0.0.1 only, when you press Connect, and uses it only to reach the requestfox-mcp server on this computer. RequestFox never asks for site access or any other permission for an MCP client; an action that needs one works only when you have already allowed it.
 
 ## 4. OAuth tokens
 
 Tokens from an OAuth profile you configure are encrypted (AES-GCM) before they are written to browser storage. The decryption key is held only in memory and is never written to disk or sent anywhere. It is cleared when the background worker or the browser restarts, and you enter the passphrase again.
 
-## 5. On-device AI (Chrome only)
+## 5. No AI
 
-"Ask in plain English" search and "Suggest assertions" use Chrome's built-in on-device language model (Gemini Nano) through the browser's LanguageModel API. The prompt and the result stay on your device, and RequestFox sends nothing to any server for them. Chrome itself downloads and manages the model, once, under Google's terms. You can turn both off in Settings → AI (on-device). Firefox has no such model, so these features do not appear there.
+RequestFox contains no AI model and no AI code. RequestFox gives nothing you capture, type or send to any AI service, and no model runs in the extension. Everything it does with your requests is ordinary code that runs on your device. MCP control (section 2), off until you turn it on, lets an AI agent that you run yourself, outside RequestFox, ask RequestFox for actions over a link on this computer; the redacted answers go to that agent, and what it does with them (for example, sending them to its own AI service) is up to the agent you chose.
 
 ## 6. Permissions
 
 RequestFox asks for these browser permissions, each only for the job named:
 
-- scripting: put the capture scripts into the tab you record.
+- scripting: put the capture scripts into the tab you record, and, for a mock set you switch on, into the pages of the sites you named.
 
-- webRequest: read request and response details (method, address, headers, status, timing) of the tabs you record, while a recording is running.
+- webRequest: read request and response details (method, address, headers, status, timing) of the tabs you record, while a recording is running, and the cookies set in answers to RequestFox's own requests to a site whose cookie jar is on.
 
-- declarativeNetRequest: apply the header-override and URL-rewrite rules that you define yourself in Settings.
+- declarativeNetRequest: apply the header-override and URL-rewrite rules that you define yourself in Settings, while recording and, for a rule profile you switch on, with nothing recording, and add the cookie jar's cookies to RequestFox's own requests to a site you turned the jar on for.
 
 - storage and unlimitedStorage: keep your settings, collections and sessions on your device; the second lets long recordings be saved without hitting the browser's default storage limit.
 
@@ -1639,11 +1819,15 @@ RequestFox asks for these browser permissions, each only for the job named:
 
 - sidePanel (Chrome): show RequestFox in the browser's side panel. Firefox uses its own sidebar and needs no permission for it.
 
-- <all_urls> (optional host access): requested when you press Start Recording, or for the sites involved when you send from Compose or run a test suite with nothing recording, so Chrome or Firefox asks you first; Send from the extension instead uses the same access. See section 3.
+- <all_urls> (optional host access): requested when you press Start Recording, or for the sites involved when you send from Compose or run a test suite with nothing recording, or switch on a rule profile or a mock set, or turn on the cookie jar for a site, or import from a URL or connect to an MCP server at an address on a site not yet allowed, so Chrome or Firefox asks you first; Send from the extension instead uses the same access, and MCP control asks for it for http://127.0.0.1 only, when you press Connect. See section 3.
+
+- debugger (optional, Chrome only): requested only the first time you turn on Slow down the whole tab (Settings), after RequestFox has said that Chrome then shows its own "started debugging this browser" bar. It is used only to set the network conditions (a slower speed, or offline) of the one tab you pick. Chrome applies network conditions only while the DevTools protocol's Network domain is enabled, so RequestFox sends Network.enable, Network.emulateNetworkConditions and Network.disable and no other command; it does not listen to, read or store the events this produces, and reads nothing from the tab. It lets the tab go when you turn it off, stop recording, close the tab or the last open RequestFox panel, or close Chrome's bar. Firefox has no such permission, so this does not appear there.
+
+- cookies (optional): requested only when you press Import from this browser in the cookie jar, together with access to that one site, so Chrome or Firefox asks you first. It is used then, to read the browser's own cookies for that site and copy them into the jar; RequestFox never changes or deletes the browser's cookies.
 
 ## 7. Third parties
 
-Since RequestFox collects no data, it shares none. Requests you send (section 2) reach the servers you chose, nothing more.
+Since RequestFox collects no data, it shares none. Requests you send (section 2) reach the servers you chose, nothing more. With MCP control on, the redacted answers to what a connected AI agent asks for go to that agent (section 2).
 
 ## 8. Changes and contact
 
@@ -1666,7 +1850,7 @@ Address: https://requestfox.accessisight.com/use-api-developers.html
 
 RequestFox records what a real web client sends to your API, checks every call against your OpenAPI spec, flags answers whose shape changed, and turns that traffic into requests, checks, CI runs and load tests, all from the browser.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 Live calls checked against your spec.
 
@@ -1676,7 +1860,7 @@ Link your OpenAPI 3 or Swagger 2 spec: calls that break it show SPEC MISMATCH wi
 
 ## Send, chain and sign
 
-Compose with environments and secret variables, chain values from one answer into the next request, and sign with OAuth 2.0, AWS Signature v4 or an HMAC preset. Import your Postman, Insomnia, Bruno or Hoppscotch collections, or the spec itself.
+Compose with environments and secret variables, chain values from one answer into the next request, and sign with OAuth 2.0, AWS Signature v4 or an HMAC preset. Import your Postman, Insomnia, Bruno or Hoppscotch collections, or the spec itself, from a file, a folder or a URL, and export collections back out for Bruno, Insomnia or Hoppscotch. Send QUERY requests, sign in with OAuth device code, call SOAP services from a WSDL, or send gRPC-Web and Connect from your own .proto files.
 
 ## Load tests from real traffic
 
@@ -1701,7 +1885,7 @@ Address: https://requestfox.accessisight.com/use-frontend-developers.html
 
 RequestFox shows every call your app makes with the click and the page functions behind it, flags double fetches, N+1 bursts and slow endpoints, and lets you mock loading, empty and error states in place. It runs beside your app, in the browser you already debug in.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 The Timeline: what fired, when, and how long it took.
 
@@ -1723,7 +1907,7 @@ Mock an empty list, an error, a slow answer or a dropped connection, and check y
 
 ## GraphQL, streams and sockets
 
-GraphQL calls are told apart by operation and errors inside a 200 OK are flagged; load the schema and captured calls are checked against it. Server-sent events and token streams are kept (their first 64 KB), and WebSocket frames are listed with the calls.
+GraphQL calls are told apart by operation and errors inside a 200 OK are flagged; load the schema and captured calls are checked against it. Server-sent events and token streams (read with fetch, XMLHttpRequest or EventSource) show their events live, with error events, a missing end marker and long pauses flagged, and WebSocket frames are listed with the calls. To see how a page copes, rewrite a reply with a script or slow the whole tab down (both Chrome), or make an endpoint fail with a mock set that stays on.
 
 ## Debug your next feature with it.
 
@@ -1740,7 +1924,7 @@ Address: https://requestfox.accessisight.com/use-qa-testers.html
 
 A page can look fine while a call behind it failed, fired twice or returned an error inside a 200 OK. RequestFox watches every call while you test, flags those problems as they happen, ties each one to your click, and turns the session into evidence a developer can act on.
 
-For RequestFox 2.3.0.
+For RequestFox 2.4.0.
 
 Every session is kept in History.
 

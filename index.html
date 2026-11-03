@@ -42,8 +42,8 @@
   "url": "https://requestfox.accessisight.com/",
   "image": "https://requestfox.accessisight.com/img/og-index.jpg",
   "screenshot": "https://requestfox.accessisight.com/img/recording-light.webp",
-  "softwareVersion": "2.3.0",
-  "dateModified": "2026-11-02",
+  "softwareVersion": "2.4.0",
+  "dateModified": "2026-11-03",
   "isAccessibleForFree": true,
   "inLanguage": ["en", "ar", "de", "es", "fr", "hi", "id", "it", "ja", "ko", "pt-BR", "ru", "tr", "zh-CN"],
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -51,18 +51,19 @@
   "downloadUrl": ["https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb", "https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/"],
   "featureList": [
     "Captures fetch, XMLHttpRequest, WebSocket frames and Server-Sent Events across tabs, iframes and popups, including calls a service worker answers",
-    "Shows each call the moment it starts; streams keep their first 64 KB",
+    "Shows each call the moment it starts; live streams (fetch, XMLHttpRequest, EventSource) show their events as they arrive and are judged",
+    "Reads the log as cards, a sortable table with answer columns, grouped by host, or a session Overview",
     "Flags failed (4xx/5xx), slow, duplicate and retried requests, N+1 bursts, GraphQL and JSON-RPC errors inside a 200 OK, and 401s caused by an expired JWT",
     "Detects API contract drift when a response's JSON shape changes, and checks calls against a linked OpenAPI spec",
     "Per-endpoint checks on status, latency, fields, headers or a JSON Schema",
     "Replay and edit-and-replay any captured request",
-    "Mock responses, or make a call fail, slow down or pause for editing",
-    "Compose requests with environments, {{variables}}, auth helpers including OAuth 2.0, OAuth 1.0a, JWT Bearer signing and AWS Signature v4, and saved collections",
+    "Mock responses, or make a call fail, slow down or pause for editing; rule profiles and mock sets that stay on, and request or reply rewriting with a script (Chrome)",
+    "Compose requests with environments, {{variables}}, auth helpers including OAuth 2.0 (with device code), OAuth 1.0a, JWT Bearer signing and AWS Signature v4, saved collections, and several requests open at once",
     "Saved response examples and notes on requests, collections and folders",
     "A WebSocket client with a Socket.IO mode; captured Socket.IO frames read as events",
     "Advice on caching and compression, and a check that an answer stays the same as last time",
     "Imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, OpenAPI 3 and Swagger 2 specs, HAR files and cURL commands",
-    "Exports an HTML report, HAR, CSV, JSON, a Postman collection, OpenAPI 3.0, and code in 15 languages",
+    "Exports an HTML report, HAR, CSV, JSON, a Postman collection, collections for Bruno, Insomnia and Hoppscotch, an API docs page, OpenAPI 3.0, and code in 15 languages",
     "Generates Playwright and Cypress tests and k6, JMeter, Gatling and Locust load tests from recorded traffic",
     "Redacts Authorization headers, cookies and secret-shaped fields by default",
     "Runs entirely in the browser: no account, no server, no analytics"
@@ -115,7 +116,7 @@
       "name": "Is there a free Postman alternative that runs in the browser?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync."
+        "text": "RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync."
       }
     },
     {
@@ -230,7 +231,7 @@
 
       <section class="block" id="replay" aria-labelledby="replay-title">
         <h2 id="replay-title">Can I replay or edit a request?</h2>
-        <p>Yes. Replay any captured call as it was, or edit it first. Compose builds new requests with environments, <code>{{variables}}</code>, OAuth 2.0, OAuth 1.0a, JWT Bearer, AWS Signature v4 and saved collections, sent with the page's own cookies while recording, or from the extension itself.</p>
+        <p>Yes. Replay any captured call as it was, or edit it first. Compose builds new requests with environments, <code>{{variables}}</code>, OAuth 2.0, OAuth 1.0a, JWT Bearer, AWS Signature v4 and saved collections, sent with the page's own cookies while recording, or from the extension itself. Several requests can stay open at once, and a cookie jar you switch on per site carries a sign-in to your next sends.</p>
         <figure class="fig">
           <div class="shot">
             <picture><source srcset="img/compose-response-dark.webp 1x, img/compose-response-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/compose-response-light.webp" srcset="img/compose-response-light.webp 1x, img/compose-response-light@2x.webp 2x" width="380" height="620" loading="lazy" alt="Compose: a request and its indented JSON answer, with the headers open" /></picture>
@@ -248,7 +249,7 @@
 
       <section class="block" id="import" aria-labelledby="import-title">
         <h2 id="import-title">Can I import my Postman collection?</h2>
-        <p>Yes. RequestFox imports collections and specs from these, and exports Postman collections and OpenAPI 3.0 back out:</p>
+        <p>Yes. RequestFox imports collections and specs from these (from a file, a whole folder or a URL), and exports Postman collections, collections for Bruno, Insomnia and Hoppscotch, and OpenAPI 3.0 back out:</p>
         <ul class="chips" aria-label="Import formats"><li>Postman</li><li>Insomnia</li><li>Bruno</li><li>Hoppscotch</li><li>Thunder Client</li><li>OpenAPI 3</li><li>Swagger 2</li><li>HAR</li><li>cURL</li></ul>
       </section>
 
@@ -278,7 +279,7 @@
           <div><dt>Where your data lives</dt><dd>In your browser. There is no RequestFox server and no analytics.</dd></div>
           <div><dt>Secrets</dt><dd>Authorization headers, cookies and secret-shaped fields redacted by default</dd></div>
           <div><dt>Interface languages</dt><dd>14</dd></div>
-          <div><dt>Version</dt><dd>2.3.0, <a href="changelog.html">what changed</a></dd></div>
+          <div><dt>Version</dt><dd>2.4.0, <a href="changelog.html">what changed</a></dd></div>
           <div><dt>Source code</dt><dd>MIT licence; repository not public</dd></div>
           <div><dt>Made by</dt><dd>AccessiSight</dd></div>
         </dl>
@@ -288,7 +289,7 @@
         <h2 id="faq-title">Questions</h2>
         <details class="qa"><summary>Is RequestFox free?</summary><p>Yes. RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. It has no ads, no account and no paid tier.</p></details>
         <details class="qa"><summary>Does RequestFox send my data anywhere?</summary><p>No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording.</p></details>
-        <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
+        <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
         <details class="qa"><summary>How is RequestFox different from the DevTools Network panel?</summary><p>DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads.</p></details>
         <p><a href="faq.html">More questions and answers</a></p>
       </section>
@@ -352,7 +353,7 @@
       </div>
     </div>
     <div class="foot-base">
-      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
     </div>
   </div>

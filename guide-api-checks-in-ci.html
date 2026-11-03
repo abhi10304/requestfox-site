@@ -110,7 +110,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API checks in CI</span></li></ol></nav>
         <h1 id="title">How to run your API checks in CI</h1>
         <p class="answer">Build a suite of saved requests in RequestFox, choose ··· → Export as CI config, then Download the CLI. Commit both files and run <code>node requestfox-ci.mjs assert --config requestfox.config.json</code> in your pipeline: it sends every request for real, checks every rule, and exits non-zero on a failure.</p>
-        <p class="byline">Needs Node 18 or newer. For RequestFox 2.3.0.</p>
+        <p class="byline">Needs Node 18 or newer. For RequestFox 2.4.0.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -157,6 +157,9 @@
           <li><code>loadtest --vus 20 --duration 30s</code>: a local load test from the same config.</li>
           <li><code>probe --spec openapi.yaml --base http://localhost:3000</code>: tests made from your spec. Each case breaks one rule (a wrong type, a missing field, a value out of range) and your API must refuse it with a 4xx; calls that need sign-in are also sent without it. Local APIs only unless you allow otherwise; reads only unless you allow otherwise.</li>
           <li><code>mock --spec openapi.yaml</code>: a mock API on 127.0.0.1 from your spec; <code>--dynamic</code> varies its answers, and <code>--seed 42</code> repeats them.</li>
+          <li><code>--http2</code> on assert, diff, loadtest, run and probe: every request goes over HTTP/2, and a server that does not speak it is an error (HTTP/3 is out of scope).</li>
+          <li><code>--baseline known.json</code> on assert, run, conform and probe: fail only on findings that are not in the file; <code>--update-baseline</code> writes it. <code>explain RF-SLOW</code> says why a finding code is flagged and what to do.</li>
+          <li><code>docs --workspace folder --out docs.html</code>: your saved requests as one API docs page, with no request sent.</li>
         </ul>
         <p>Run <code>node requestfox-ci.mjs --help</code> for every flag.</p>
       </section>
@@ -219,7 +222,7 @@
       </div>
     </div>
     <div class="foot-base">
-      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
     </div>
   </div>

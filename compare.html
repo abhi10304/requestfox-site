@@ -66,7 +66,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Compare</span></li></ol></nav>
       <h1 id="title">Which API tool fits which job</h1>
       <p class="answer">Each of these tools is the right pick for some job. RequestFox is the one that watches the web app you are testing and points out the API problems as they happen. For designing and sharing APIs across a team, a desktop client such as Postman, Insomnia, Bruno or Hoppscotch fits better, and RequestFox imports from all four.</p>
-      <p class="byline">Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.3.0.</p>
+      <p class="byline">Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.4.0.</p>
     </div>
   </section>
 
@@ -105,14 +105,14 @@
 
       <section class="block" id="limits" aria-labelledby="limits-title">
         <h2 id="limits-title">Where RequestFox falls short</h2>
-        <p>Honest limits of RequestFox 2.3.0, so you are not surprised:</p>
+        <p>Honest limits of RequestFox 2.4.0, so you are not surprised:</p>
         <ul>
           <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.</li>
           <li>While recording, Compose sends from the page you are testing, with its cookies; with nothing recording it sends from the extension itself, without any page's cookies, after the browser asks once for that site.</li>
           <li>No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.</li>
-          <li>An open stream keeps its first 64 KB; DevTools shows each event live.</li>
-          <li>Pre-request and post-response scripts run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
-          <li>No gRPC or MQTT client.</li>
+          <li>An EventSource stream's live rows are the event types the page listens for: the browser hands a page no others.</li>
+          <li>Pre-request and post-response scripts, and rewriting a request or reply with a script, run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
+          <li>No native gRPC or MQTT client (gRPC-Web and Connect only).</li>
           <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
         </ul>
       </section>
@@ -176,7 +176,7 @@
       </div>
     </div>
     <div class="foot-base">
-      <p>RequestFox 2.3.0 · site updated <time datetime="2026-11-02">2 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
     </div>
   </div>
