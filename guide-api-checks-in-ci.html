@@ -103,7 +103,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-checks-in-ci" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
 <main id="main">
@@ -131,6 +131,8 @@
         <li><a href="#steps">Steps</a></li>
         <li><a href="#secrets">Secrets</a></li>
         <li><a href="#more">More commands</a></li>
+        <li><a href="#newman">Coming from Newman?</a></li>
+        <li><a href="#sources">Sources</a></li>
         <li><a href="#next">Next</a></li>
       </ol>
     </nav>
@@ -167,6 +169,26 @@
         <p>Run <code>node requestfox-ci.mjs --help</code> for every flag.</p>
       </section>
 
+      <section class="block" id="newman" aria-labelledby="newman-title">
+        <h2 id="newman-title">If you run Postman collections in Newman today</h2>
+        <p>Newman is Postman's command-line collection runner: <code>newman run my-collection.json -e my-environment.json</code> [1]. Postman's own documentation now recommends the Postman CLI instead, and says Newman only supports the v2.1 collection format [2]. RequestFox's command-line tool is a different tool, not a drop-in: it does not read Postman collection files. To move a collection across:</p>
+        <ol>
+          <li>Import the collection (v2.0 or v2.1) in Compose with Import → Import a collection…</li>
+          <li>Read the import summary. A Postman test made only of status, response-time, header or JSON-field assertions became checks on its request, and a value a script saved from the answer into a variable became a chaining row. Any other script is named in the summary, and RequestFox does not run Postman's <code>pm.*</code> code.</li>
+          <li>Put the requests in a suite, export it as a CI config and run <code>assert</code> as above.</li>
+        </ol>
+        <p>Anything a Postman script did beyond that has no equivalent, so check the summary before you switch a pipeline over.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Postman Learning Center, "Newman CLI Overview". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://learning.postman.com/docs/collections/using-newman-cli/installing-running-newman" rel="noopener noreferrer">learning.postman.com</a></li>
+          <li>Postman Learning Center, "Migrate scripts from Newman to the Postman CLI". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://learning.postman.com/docs/reference/newman-cli/newman-options" rel="noopener noreferrer">learning.postman.com</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+
       <section class="block" id="next" aria-labelledby="next-title">
         <h2 id="next-title">Next</h2>
         <ul class="cards">
@@ -193,8 +215,8 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-checks-in-ci" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-checks-in-ci" rel="noopener noreferrer">Firefox Add-ons</a></li>
           </ul>
         </div>
         <div>
@@ -205,6 +227,10 @@
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
             <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
           </ul>
         </div>
         <div>
@@ -215,6 +241,8 @@
             <li><a href="compare-insomnia.html">vs Insomnia</a></li>
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
           </ul>
         </div>
         <div>

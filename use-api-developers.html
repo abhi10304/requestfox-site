@@ -60,7 +60,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
 <main id="main">
@@ -89,6 +89,7 @@
         <li><a href="#send">Send and chain</a></li>
         <li><a href="#load">Load tests</a></li>
         <li><a href="#security">Passive security checks</a></li>
+        <li><a href="#example">A worked example</a></li>
       </ol>
     </nav>
     <div class="content">
@@ -111,14 +112,20 @@
         <h2 id="security-title">Passive security checks</h2>
         <p>Every answer is read for problems such as a token in a URL query, a JWT with alg "none", wildcard CORS with credentials, or card numbers in a response, and flagged SECURITY. These checks only read what was captured; nothing extra is sent.</p>
       </section>
+
+      <section class="block" id="example" aria-labelledby="example-title">
+        <h2 id="example-title">A worked example: a price that became a string</h2>
+        <p>Say you link your OpenAPI spec and click through the staging app. <code>GET /api/products/42</code> comes back <code>200</code>, and the page looks fine, but the card shows <span class="badge serious">Spec mismatch</span>. Details says the response body's <code>price</code> was a string where the spec expects a number. Another call shows <span class="badge serious">Not in spec</span>: the app uses an endpoint the spec does not describe. Press "Why is this flagged?" for the next step: Details names each place; fix the API or the spec.</p>
+        <p>The Spec coverage line counts how many of the spec's operations this session called, for example 3 of 6, so you also see what no one has exercised yet. To keep the check, export the session as JSON and run the command-line tool's <code>conform</code> against the spec in CI: it exits with 1 on a mismatch, so the build fails when the shape drifts again. <a href="guide-openapi-contract-check.html">How to check against OpenAPI</a>.</p>
+      </section>
     </div>
   </div>
 
   <section class="final" aria-labelledby="final-title">
     <h2 id="final-title">Point it at your staging app.</h2>
     <div class="cta">
-      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
-      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Add to Firefox</a>
     </div>
   </section>
 </main>
@@ -138,8 +145,8 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Firefox Add-ons</a></li>
           </ul>
         </div>
         <div>
@@ -150,6 +157,10 @@
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
             <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
           </ul>
         </div>
         <div>
@@ -160,6 +171,8 @@
             <li><a href="compare-insomnia.html">vs Insomnia</a></li>
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
           </ul>
         </div>
         <div>

@@ -254,7 +254,6 @@ h1 .badge { padding: 0.02em 0.34em 0.06em; font-size: 0.82em; font-weight: 650; 
 .stand3 dt { font-weight: 600; letter-spacing: -0.01em; }
 .stand3 dd { margin-top: 8px; color: var(--text-secondary); }
 .stand3 .us { border-color: color-mix(in srgb, var(--brand-fox) 45%, var(--hairline)); background: var(--stage); box-shadow: var(--shadow-card); }
-.stand3 .us dt { color: var(--brand-fox); }
 .stand3 .us dd { color: var(--text-primary); }
 .jobs-title { margin-top: 72px; }
 .jobs { margin-top: 16px; padding: 0; list-style: none; border-top: 1px solid var(--hairline); }
@@ -479,6 +478,7 @@ pre.cmd .no { color: #ff6d88; }
   .row, .row.flip { align-items: start; }
   .row-text, .row.flip .row-text { grid-column: 1 / -1; grid-row: 1; }
   .row > .plate, .row.flip > .plate, .row > .term, .row.flip > .term { grid-column: 1 / -1; grid-row: 2; margin-top: 32px; justify-self: start; }
+  .term pre.cmd { white-space: pre-wrap; }
   .page-hero-grid > :first-child, .page-hero-grid > .fig { grid-column: 1 / -1; }
   .page-hero-grid > .fig { margin-top: 32px; justify-self: start; }
   .page-hero > .wrap:not(.page-hero-grid) { display: block; }

@@ -103,7 +103,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-replay-edit-request" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
 <main id="main">
@@ -112,7 +112,7 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Replay and edit a request</span></li></ol></nav>
         <h1 id="title">How to replay and edit an API request</h1>
-        <p class="answer">Record the call with RequestFox, open its card and press Replay to send it again as it was, or Edit &amp; Replay to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session.</p>
+        <p class="answer">Record the call with RequestFox, a browser extension for Chrome and Firefox, open its card and press Replay to send it again as it was, or Edit &amp; Replay to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session. The browsers' own DevTools can do part of this: Chrome resends a request as an editable <code>fetch()</code> call in the Console, and Firefox has Edit and Resend.</p>
         <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
       </div>
       <figure class="fig">
@@ -131,6 +131,8 @@
         <li><a href="#steps">Steps</a></li>
         <li><a href="#cors">When the page's CORS rules block it</a></li>
         <li><a href="#outside">Outside the browser</a></li>
+        <li><a href="#devtools">Can DevTools resend a request?</a></li>
+        <li><a href="#sources">Sources</a></li>
         <li><a href="#next">Next</a></li>
       </ol>
     </nav>
@@ -154,6 +156,21 @@
       <section class="block" id="outside" aria-labelledby="outside-title">
         <h2 id="outside-title">Outside the browser</h2>
         <p>Copy as code gives you the same request in 15 languages, cURL for bash and Windows cmd included, plus PowerShell, fetch, Node.js, Python, HTTPie, Go, Java, C#, PHP, Ruby, Swift, Kotlin and Rust.</p>
+      </section>
+
+      <section class="block" id="devtools" aria-labelledby="devtools-title">
+        <h2 id="devtools-title">Can DevTools resend a request?</h2>
+        <p>Yes, in both browsers, with a different shape. In Chrome, right-click a fetchable request in the Network panel and choose "Edit and resend as fetch". DevTools opens the Console drawer with the request filled in as a <code>fetch()</code> call; edit the call there and press Enter to send it [1]. In Firefox, the Headers tab of the Network Monitor has a Resend button with two items: Resend sends the request again, and Edit and Resend lets you change the method, URL, request headers or body, then Send [2].</p>
+        <p>What RequestFox adds: the answer shows on the call's card and the call stays in the session History; a replay that the page's CORS rules block can be sent from the extension instead; and Open in Compose saves the request to a collection with environments and <code>{{variables}}</code>.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
+          <li>Firefox Source Docs, "Network request details". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_details/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">
@@ -182,8 +199,8 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-replay-edit-request" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-replay-edit-request" rel="noopener noreferrer">Firefox Add-ons</a></li>
           </ul>
         </div>
         <div>
@@ -194,6 +211,10 @@
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
             <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
           </ul>
         </div>
         <div>
@@ -204,6 +225,8 @@
             <li><a href="compare-insomnia.html">vs Insomnia</a></li>
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
           </ul>
         </div>
         <div>

@@ -47,11 +47,15 @@ The full text of every page, in one file: https://requestfox.accessisight.com/ll
 ## Guides
 
 - [How to Run API Checks in CI From Saved Requests](https://requestfox.accessisight.com/guide-api-checks-in-ci.html): Export a RequestFox suite as a CI config, download the one-file command-line tool, and run your API checks in any pipeline with JUnit results. Node 18+.
+- [API Testing in Firefox: Built-in Tools and Extensions](https://requestfox.accessisight.com/guide-api-testing-firefox.html): Test an API in Firefox: the Network Monitor's Edit and Resend, REST client add-ons such as RESTer and RESTED, and RequestFox. Dated, with limits.
+- [Find Duplicate and N+1 API Calls in a Web App](https://requestfox.accessisight.com/guide-duplicate-and-n-plus-one-api-calls.html): Spot API calls your page sends twice, and N+1 bursts of one request per id. By hand in DevTools, then flagged for you by RequestFox.
+- [GraphQL 200 OK With Errors: How to Spot and Catch It](https://requestfox.accessisight.com/guide-graphql-errors-in-200.html): Why GraphQL answers 200 OK with an errors list, how to spot it by hand, and how RequestFox flags it and fails a CI run on it. Sourced and dated.
+- [HAR to Postman: Three Ways, and What to Remove First](https://requestfox.accessisight.com/guide-har-to-postman.html): Turn a HAR file or a recording into a Postman collection: DevTools cURL, RequestFox, and what to remove from a HAR first. Sourced and dated.
 - [Mock an API Response in Chrome: Extension, No Backend](https://requestfox.accessisight.com/guide-mock-api-response.html): Return your own status, headers and body for any API call, or make it fail, slow down or pause, in Chrome or Firefox. No backend change, no proxy.
-- [Check Real API Calls Against an OpenAPI Spec](https://requestfox.accessisight.com/guide-openapi-contract-check.html): Link an OpenAPI 3 or Swagger 2 spec and see which live calls break it, which are not in it, and how much of the API you covered. In the browser or in CI.
+- [Validate API Responses Against OpenAPI in the Browser](https://requestfox.accessisight.com/guide-openapi-contract-check.html): Validate API responses against an OpenAPI 3 or Swagger 2 spec in Chrome or Firefox: see which calls break it or are missing, and run the check in CI.
 - [How to Record API Calls in Chrome or Firefox](https://requestfox.accessisight.com/guide-record-api-calls.html): Record every fetch, XHR, WebSocket and SSE call a website makes in Chrome or Firefox, with failed and slow calls flagged. Step by step, free, no account.
 - [How to Replay and Edit an API Request in Chrome](https://requestfox.accessisight.com/guide-replay-edit-request.html): Resend a captured API request as it was, or change its method, URL, headers or body first, right in Chrome or Firefox. With the page's own cookies.
-- [Guides: Record, Replay, Mock and Test APIs · RequestFox](https://requestfox.accessisight.com/guides.html): Step-by-step guides: record API calls in Chrome, replay and edit requests, mock responses, check calls against OpenAPI, and run API checks in CI.
+- [Guides: Record, Replay, Mock and Test APIs · RequestFox](https://requestfox.accessisight.com/guides.html): Guides: record API calls in Chrome or Firefox, replay, mock, find duplicate and N+1 calls, catch GraphQL errors in a 200, check OpenAPI, run in CI.
 
 ## Compare
 
@@ -60,13 +64,15 @@ The full text of every page, in one file: https://requestfox.accessisight.com/ll
 - [RequestFox vs Hoppscotch: Two Ways to Test APIs Online](https://requestfox.accessisight.com/compare-hoppscotch.html): Hoppscotch is an open-source API client you can self-host; RequestFox records and judges the calls your own web app makes. Sourced from each tool's docs.
 - [RequestFox vs Insomnia: Browser Extension or Desktop Client](https://requestfox.accessisight.com/compare-insomnia.html): Insomnia is a desktop client for designing and testing APIs; RequestFox is a browser extension that flags what your web app really sends. Where each fits.
 - [RequestFox vs Postman: A Postman Alternative Extension](https://requestfox.accessisight.com/compare-postman.html): Looking for a Postman alternative in the browser? Postman suits team workspaces; RequestFox records and flags what your web app sends. Sourced, dated.
-- [RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch](https://requestfox.accessisight.com/compare.html): Which API tool fits which job: RequestFox compared with Postman, the DevTools Network panel, Insomnia, Bruno and Hoppscotch, with RequestFox's own limits.
+- [RequestFox vs Requestly: Two Browser Extensions for APIs](https://requestfox.accessisight.com/compare-requestly.html): RequestFox and Requestly are both browser extensions for API calls. One records and flags them, the other intercepts and rewrites. Sourced, dated.
+- [RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch](https://requestfox.accessisight.com/compare.html): Which API tool fits which job: RequestFox vs Postman, DevTools, Insomnia, Bruno, Hoppscotch, Requestly and Postman Interceptor, with its own limits.
+- [Postman Interceptor Alternative: Capture API Calls](https://requestfox.accessisight.com/postman-interceptor-alternative.html): Postman Interceptor hands browser traffic to Postman. RequestFox is a browser extension that records and flags a web app's API calls on its own.
 
 ## For
 
 - [For API Developers: See How Clients Really Call Your API](https://requestfox.accessisight.com/use-api-developers.html): Watch the real calls a web client makes to your API, catch contract drift against your OpenAPI spec, and turn traffic into checks, CI runs and load tests.
 - [For Frontend Developers: Debug the API Calls Your UI Makes](https://requestfox.accessisight.com/use-frontend-developers.html): See which component made each call, catch N+1 bursts and double fetches, mock the states you need, and check timing, without leaving the browser.
-- [API Testing for QA Testers: Catch What the UI Hides](https://requestfox.accessisight.com/use-qa-testers.html): For manual and exploratory testers: see the API calls behind every click, catch failed, slow and duplicate requests, and attach evidence to bug reports.
+- [Manual API Testing Tool for QA Testers, No Code](https://requestfox.accessisight.com/use-qa-testers.html): A free browser extension for manual testers: see the API calls behind every click, catch failed and duplicate requests, and copy a bug report. No code.
 
 ## Optional
 

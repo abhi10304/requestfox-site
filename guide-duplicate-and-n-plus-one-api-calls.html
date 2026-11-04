@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Find Duplicate and N+1 API Calls in a Web App</title>
+<meta name="description" content="Spot API calls your page sends twice, and N+1 bursts of one request per id. By hand in DevTools, then flagged for you by RequestFox." />
+<link rel="canonical" href="https://requestfox.accessisight.com/guide-duplicate-and-n-plus-one-api-calls.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="Find Duplicate and N+1 API Calls in a Web App" />
+<meta property="og:description" content="Spot API calls your page sends twice, and N+1 bursts of one request per id. By hand in DevTools, then flagged for you by RequestFox." />
+<meta property="og:url" content="https://requestfox.accessisight.com/guide-duplicate-and-n-plus-one-api-calls.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Find Duplicate and N+1 API Calls in a Web App" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Find Duplicate and N+1 API Calls in a Web App" />
+<meta name="twitter:description" content="Spot API calls your page sends twice, and N+1 bursts of one request per id. By hand in DevTools, then flagged for you by RequestFox." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Duplicate and N+1 calls",
+      "item": "https://requestfox.accessisight.com/guide-duplicate-and-n-plus-one-api-calls.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide" aria-current="true">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-duplicate-and-n-plus-one-api-calls" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Duplicate and N+1 calls</span></li></ol></nav>
+      <h1 id="title">How to find duplicate and N+1 API calls in a web app</h1>
+      <p class="answer">A duplicate API call is the same request sent more than once, usually by accident. An N+1 pattern is one request per item in a list, such as <code>/items/1</code>, <code>/items/2</code>, <code>/items/3</code>, where one batched request would do. To find them, filter the DevTools Network panel to Fetch/XHR and look for repeats. Or record with <strong>RequestFox</strong>, a browser extension that marks a repeat as Rapid or Retry, shows a burst as an N+1 chip, and points to the click that caused each call.</p>
+      <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>. Facts about other tools are from their own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#twice">Why a call fires twice</a></li>
+        <li><a href="#n-plus-one">What N+1 means</a></li>
+        <li><a href="#by-hand">Find them by hand</a></li>
+        <li><a href="#flags">How RequestFox flags them</a></li>
+        <li><a href="#fix">How to fix them</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#next">Next</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="twice" aria-labelledby="twice-title">
+        <h2 id="twice-title">Why does my page send the same API call twice?</h2>
+        <p>Usual causes: two parts of the page ask for the same data, a click or a form submit is handled twice, or code sends the call again after a failure. Some repeats are on purpose, such as polling or a heartbeat.</p>
+        <p>While you build a React app, there is one more. With Strict Mode on, React runs one extra setup and cleanup cycle for every Effect in development [2], so a fetch inside an Effect can show up twice on your machine. React says these checks are development only and do not affect the production build [2]. Look at a production build before you call it a bug.</p>
+      </section>
+
+      <section class="block" id="n-plus-one" aria-labelledby="n-plus-one-title">
+        <h2 id="n-plus-one-title">What is an N+1 API call pattern?</h2>
+        <p>It is a performance problem where an application makes many network requests to fetch one type of resource: one request for each item in a list, instead of one combined request [1]. It often shows up when a page renders a list or a grid and each item loads its own data [1].</p>
+        <p>Each call costs time, and the cost adds up with the length of the list. Fixes depend on the app, and some of this may be on purpose [1]. Common ones: fetch the data for all items in one call, for example an endpoint that takes a list of ids; load an item's data only when it comes into view; or cache the data, or share one call between the parts that ask for it [1].</p>
+      </section>
+
+      <section class="block" id="by-hand" aria-labelledby="by-hand-title">
+        <h2 id="by-hand-title">How do I find duplicate calls by hand in DevTools?</h2>
+        <ol>
+          <li>Open the DevTools Network panel and choose the Fetch/XHR filter [3].</li>
+          <li>Reload the page or repeat the action, and look down the list for the same address more than once.</li>
+          <li>Look at the Waterfall, which orders requests by start time [3]. A stack of near-identical bars that start together is a burst.</li>
+          <li>To see what sent a call, hover over its Initiator column: for a call made by JavaScript it shows the stack trace leading up to the request [3].</li>
+        </ol>
+        <p>This works, and it costs nothing. The counting is by eye, and the list is gone when you close the panel.</p>
+      </section>
+
+      <section class="block" id="flags" aria-labelledby="flags-title">
+        <h2 id="flags-title">How does RequestFox flag duplicate and N+1 calls?</h2>
+        <p>Press Start, use the page, and look for these marks. They are the panel's own labels.</p>
+        <ul class="flag-list">
+          <li><span class="badge serious">Rapid 140 ms</span> the same call fired again within the rapid cutoff: likely a bug</li>
+          <li><span class="badge serious">Retry 900 ms</span> the same call sent again later, within the window: possibly a retry</li>
+          <li><span class="badge serious">N+1</span> one call per id in a quick burst</li>
+        </ul>
+        <p>How it decides:</p>
+        <ul>
+          <li><strong>Duplicates:</strong> the same method, address and body, from the same tab, inside the <em>Duplicate window</em> (2 seconds at first). A repeat sooner than the <em>Rapid-duplicate cutoff</em> (500 ms at first) is Rapid; a slower one is Retry. Both numbers are in Settings.</li>
+          <li><strong>N+1:</strong> five or more different ids on one endpoint inside three seconds show as an N+1 chip above the log, with the number of calls and how long the burst took. Click it to see them. A GraphQL operation or JSON-RPC method sent again and again with different variables counts too, inside one second.</li>
+          <li><strong>The cause:</strong> every flagged call is tied to the click or form submit that caused it, and Details → Called from lists the page code that made the call.</li>
+          <li><strong>Repeats you expect:</strong> on a card, ··· More → Stop flagging repeats keeps that endpoint's repeats, such as polling, from being flagged.</li>
+        </ul>
+        <p>RequestFox marks what it sees; you decide which repeats are bugs. It sees what a browser tab sends. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
+      </section>
+
+      <section class="block" id="fix" aria-labelledby="fix-title">
+        <h2 id="fix-title">How do I fix them, and check the fix?</h2>
+        <p>Pick the fix that fits [1]: one combined call, loading on demand, or a cache that shares one call. For a repeat that only shows in development, check a production build first [2].</p>
+        <p>Then record the same flow again. Every session is kept in History, so you can open the earlier one next to the new one and see whether the repeats are gone.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Sentry documentation, "N+1 API Calls". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://docs.sentry.io/product/issues/issue-details/performance-issues/n-one-api-calls/" rel="noopener noreferrer">docs.sentry.io</a></li>
+          <li>React documentation, "StrictMode". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://react.dev/reference/react/StrictMode" rel="noopener noreferrer">react.dev</a></li>
+          <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
+        </ol>
+        <p class="note">Something here out of date? Docs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">Next</h2>
+        <ul class="cards">
+          <li><a href="guide-record-api-calls.html">Record API calls</a><p>Start, use the site, read the flags, keep the evidence.</p></li>
+          <li><a href="use-frontend-developers.html">For frontend developers</a><p>Find the call behind a broken screen.</p></li>
+          <li><a href="compare-devtools.html">RequestFox vs DevTools Network</a><p>The judging and the history, or the raw live view.</p></li>
+          <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200 OK</a><p>A failed call that the status hides.</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Count the calls your page really makes.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-duplicate-and-n-plus-one-api-calls" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-duplicate-and-n-plus-one-api-calls" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-duplicate-and-n-plus-one-api-calls" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-duplicate-and-n-plus-one-api-calls" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

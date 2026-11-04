@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>API Testing in Firefox: Built-in Tools and Extensions</title>
+<meta name="description" content="Test an API in Firefox: the Network Monitor's Edit and Resend, REST client add-ons such as RESTer and RESTED, and RequestFox. Dated, with limits." />
+<link rel="canonical" href="https://requestfox.accessisight.com/guide-api-testing-firefox.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="API Testing in Firefox: Built-in Tools and Extensions" />
+<meta property="og:description" content="Test an API in Firefox: the Network Monitor's Edit and Resend, REST client add-ons such as RESTer and RESTED, and RequestFox. Dated, with limits." />
+<meta property="og:url" content="https://requestfox.accessisight.com/guide-api-testing-firefox.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="API Testing in Firefox: Built-in Tools and Extensions" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="API Testing in Firefox: Built-in Tools and Extensions" />
+<meta name="twitter:description" content="Test an API in Firefox: the Network Monitor's Edit and Resend, REST client add-ons such as RESTer and RESTED, and RequestFox. Dated, with limits." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "API testing in Firefox",
+      "item": "https://requestfox.accessisight.com/guide-api-testing-firefox.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide" aria-current="true">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API testing in Firefox</span></li></ol></nav>
+      <h1 id="title">API testing in Firefox: what is built in and which extensions help</h1>
+      <p class="answer">Firefox can already test an API call with no add-on: in the Network Monitor, choose Edit and Resend on a request, change its method, address, headers or body, and send it again. For more, add a Firefox extension. RESTer and RESTED are REST clients, where you write each request by hand. <strong>RequestFox</strong> is a browser extension that records the calls your web app makes and flags the ones that went wrong.</p>
+      <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>. Facts about Firefox and other add-ons are from their own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#built-in">What Firefox does on its own</a></li>
+        <li><a href="#addons">Which extensions test APIs</a></li>
+        <li><a href="#record">Record the calls a page makes</a></li>
+        <li><a href="#limits">What RequestFox does not do in Firefox</a></li>
+        <li><a href="#pick">Which one to use</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#next">Next</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="built-in" aria-labelledby="built-in-title">
+        <h2 id="built-in-title">What can Firefox do on its own?</h2>
+        <p>Firefox's Network Monitor lists the requests a page makes, and a request you pick can be sent again without any add-on [1][2]:</p>
+        <ul>
+          <li><strong>Resend</strong> sends the request again as it was [1][2].</li>
+          <li><strong>Edit and Resend</strong> opens an editor where you change the method, address, headers or body, then press Send [1].</li>
+          <li><strong>Copy</strong> offers the request as a cURL command or as a fetch() call [2].</li>
+          <li><strong>Save All As HAR</strong> writes the listed requests to a HAR file [2].</li>
+          <li><strong>Block URL</strong> blocks the chosen address for later requests [2].</li>
+        </ul>
+        <p>This is the quickest way to try one call you can already see. It works one request at a time, and which calls went wrong is for you to decide. The extensions below add more.</p>
+      </section>
+
+      <section class="block" id="addons" aria-labelledby="addons-title">
+        <h2 id="addons-title">Which Firefox extensions test APIs?</h2>
+        <p>These four are REST clients: you write a request and send it. The words in quotes are each listing's own summary, and the dates are the last update shown on Firefox Add-ons. They are listed in no order of merit.</p>
+        <div class="table-wrap" role="region" aria-labelledby="addons-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Extension</th><th scope="col">What its listing says</th><th scope="col">Last updated</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">RESTer</th><td>"A REST client for almost any web service." Sends requests with any method, address, body and headers; saves them in collections; keeps a history of requests and answers; Basic and OAuth 2 authorization [3]</td><td>August 2026</td></tr>
+              <tr><th scope="row">RESTED</th><td>"A REST client for the rest of us." The common HTTP methods, headers, saved requests and collections, URL templates, Basic auth, and import from HAR or Postman collections [4]</td><td>December 2021</td></tr>
+              <tr><th scope="row">Apier</th><td>"Fast API client for HTTP, GraphQL, SOAP, WebSocket, and Socket.IO." [5]</td><td>July 2026</td></tr>
+              <tr><th scope="row">API Request Tester</th><td>"Test and debug API requests directly from your browser." [6]</td><td>June 2024</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>A client is the right tool when you already know which request to send. RequestFox starts from the other end: it watches what your web app really sends, so there is nothing to retype.</p>
+      </section>
+
+      <section class="block" id="record" aria-labelledby="record-title">
+        <h2 id="record-title">How do I record the API calls a page makes in Firefox?</h2>
+        <ol>
+          <li>Add RequestFox from <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Firefox Add-ons</a>. There is no account to make.</li>
+          <li>Open the site you want to test. Open RequestFox's sidebar and press Start (or press <kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>; <kbd>Option</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd> on a Mac). The first time, Firefox asks you to allow access to the site.</li>
+          <li>Use the page. Every fetch, XMLHttpRequest, WebSocket frame and server-sent event is listed as it starts, tied to the click or form submit that caused it.</li>
+          <li>Read the flags. A call that failed, was slow, fired twice or hid an error inside a 200 OK is marked, and its card says why in plain words.</li>
+          <li>Press Replay to send a call again, or Edit &amp; Replay to change it first. While recording, the call goes through the page, with its cookies.</li>
+        </ol>
+        <p>The full steps, with the search box and what to do when nothing shows up, are in <a href="guide-record-api-calls.html">How to record API calls</a>. Sessions are kept in History, and you can export them as a HAR file, a Postman collection or an HTML report.</p>
+      </section>
+
+      <section class="block" id="limits" aria-labelledby="limits-title">
+        <h2 id="limits-title">What does RequestFox not do in Firefox?</h2>
+        <ul>
+          <li>Scripts that run before a request or after an answer, and rewriting a request or reply with a script, work in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values from one request to the next works in both.</li>
+          <li>Firefox has no debugger API for extensions, so there is no slow-down for the whole tab. Use a mock rule's Slow or Throttle mode for one endpoint instead.</li>
+          <li>Clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the window being recorded.</li>
+          <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool, and there is no team workspace or cloud sync: share work as files.</li>
+        </ul>
+        <p>Apart from these points, capture, flags, mocks, checks and exports are the same in Firefox as in Chrome. <a href="features.html">The feature list</a> says which feature is Chrome only.</p>
+      </section>
+
+      <section class="block" id="pick" aria-labelledby="pick-title">
+        <h2 id="pick-title">Which one should I use?</h2>
+        <ul>
+          <li><strong>To try one call you can already see:</strong> Edit and Resend in the Network Monitor. Nothing to install.</li>
+          <li><strong>To write requests by hand and keep them:</strong> a REST client such as RESTer or RESTED.</li>
+          <li><strong>To test your own web app as you click through it, with the broken calls found for you:</strong> RequestFox.</li>
+        </ul>
+        <p>They fit together. Record in RequestFox, and use the built-in tools for a quick look at one request.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Firefox Source Docs, "Network request details". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_details/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+          <li>Firefox Source Docs, "Network request list". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_list/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+          <li>Firefox Add-ons, RESTer. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/rester/" rel="noopener noreferrer">addons.mozilla.org</a></li>
+          <li>Firefox Add-ons, RESTED. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/rested/" rel="noopener noreferrer">addons.mozilla.org</a></li>
+          <li>Firefox Add-ons, Apier. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/apier/" rel="noopener noreferrer">addons.mozilla.org</a></li>
+          <li>Firefox Add-ons, API Request Tester. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/api-request-tester/" rel="noopener noreferrer">addons.mozilla.org</a></li>
+        </ol>
+        <p class="note">Something here out of date? Add-ons change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">Next</h2>
+        <ul class="cards">
+          <li><a href="guide-record-api-calls.html">Record API calls</a><p>Start, use the site, read the flags, keep the evidence.</p></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a><p>Send a captured call again, as it was or changed.</p></li>
+          <li><a href="compare-devtools.html">RequestFox vs DevTools Network</a><p>The judging and the history, or the raw live view.</p></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Return your own answer, or make a call fail.</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Record the calls of your own app in Firefox.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Add to Firefox, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Add to Chrome</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

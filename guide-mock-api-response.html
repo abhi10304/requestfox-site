@@ -97,7 +97,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
 <main id="main">
@@ -106,7 +106,7 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Mock an API response</span></li></ol></nav>
         <h1 id="title">How to mock an API response without a backend</h1>
-        <p class="answer">In RequestFox, open a captured call, choose ··· More → Mock this response, then change the status, headers or body in the rule. From then on the page gets your answer instead of the server's, for fetch and XMLHttpRequest, and the call is labelled MOCKED.</p>
+        <p class="answer">RequestFox is a browser extension that can mock an API response without a backend: open a captured call, choose ··· More → Mock this response, then change the status, headers or body in the rule. From then on the page gets your answer instead of the server's, for fetch and XMLHttpRequest, and the call is labelled MOCKED. Chrome DevTools local overrides and Mock Service Worker are two other ways, compared below.</p>
         <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
       </div>
       <figure class="fig">
@@ -125,7 +125,8 @@
         <li><a href="#steps">Steps</a></li>
         <li><a href="#modes">Break a call instead</a></li>
         <li><a href="#done">When you are done</a></li>
-        <li><a href="#devtools">With DevTools overrides</a></li>
+        <li><a href="#other-ways">DevTools overrides, MSW or an extension?</a></li>
+        <li><a href="#sources">Sources</a></li>
         <li><a href="#next">Next</a></li>
       </ol>
     </nav>
@@ -159,9 +160,30 @@
         <p>While any rule is on, the recording bar says "Mock &amp; fault rules on". Untick a rule to pause it, or open it and delete it.</p>
       </section>
 
-      <section class="block" id="devtools" aria-labelledby="devtools-title">
-        <h2 id="devtools-title">With DevTools local overrides</h2>
-        <p>Chrome DevTools can also override a response's content and headers: it saves the overrides as files in a folder you choose. RequestFox keeps its rules in the extension, labels the calls it changed, and can also fail, slow or pause a call. <a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a>.</p>
+      <section class="block" id="other-ways" aria-labelledby="other-ways-title">
+        <h2 id="other-ways-title">DevTools local overrides, Mock Service Worker or an extension?</h2>
+        <p>Three ways to change what an API call returns in the browser, side by side. Local overrides are part of Chrome DevTools, so there is nothing to install. Mock Service Worker is a library you add to your own app. An extension such as RequestFox works on any site and starts from a call it captured.</p>
+        <div class="table-wrap" role="region" aria-labelledby="other-ways-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">&nbsp;</th><th scope="col">DevTools local overrides</th><th scope="col">Mock Service Worker</th><th scope="col">RequestFox mock rule</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Where it lives</th><td>In Chrome DevTools; changes are saved as files in a folder you choose [1]</td><td>A library in your own project's code [2]</td><td>In the extension, beside your page</td></tr>
+              <tr><th scope="row">Needs the app's code</th><td>No; it can mock resources you have no access to [1]</td><td>Yes</td><td>No</td></tr>
+              <tr><th scope="row">What it changes</th><td>A response's content and headers, including XHR and fetch responses [1]</td><td>The requests your app makes: it intercepts, observes and changes them [2]</td><td>The status, headers and body of a call it captured; or it makes a call fail, slow down or pause</td></tr>
+              <tr><th scope="row">Worth knowing</th><td>It turns the browser cache off while overrides are on [1]</td><td>In the browser it uses the Service Worker API; in Node.js it works differently [2]</td><td>It changes fetch and XMLHttpRequest calls the page makes, and labels them MOCKED or SIMULATED</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a>.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Chrome for Developers, "Override web content and HTTP response headers locally". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/overrides" rel="noopener noreferrer">developer.chrome.com</a></li>
+          <li>Mock Service Worker, "Introduction". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://mswjs.io/docs/" rel="noopener noreferrer">mswjs.io</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">
@@ -190,8 +212,8 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response" rel="noopener noreferrer">Firefox Add-ons</a></li>
           </ul>
         </div>
         <div>
@@ -202,6 +224,10 @@
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
             <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
           </ul>
         </div>
         <div>
@@ -212,6 +238,8 @@
             <li><a href="compare-insomnia.html">vs Insomnia</a></li>
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
           </ul>
         </div>
         <div>

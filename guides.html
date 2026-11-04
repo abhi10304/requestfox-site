@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Guides: Record, Replay, Mock and Test APIs · RequestFox</title>
-<meta name="description" content="Step-by-step guides: record API calls in Chrome, replay and edit requests, mock responses, check calls against OpenAPI, and run API checks in CI." />
+<meta name="description" content="Guides: record API calls in Chrome or Firefox, replay, mock, find duplicate and N+1 calls, catch GraphQL errors in a 200, check OpenAPI, run in CI." />
 <link rel="canonical" href="https://requestfox.accessisight.com/guides.html" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RequestFox" />
 <meta property="og:title" content="Guides: Record, Replay, Mock and Test APIs · RequestFox" />
-<meta property="og:description" content="Step-by-step guides: record API calls in Chrome, replay and edit requests, mock responses, check calls against OpenAPI, and run API checks in CI." />
+<meta property="og:description" content="Guides: record API calls in Chrome or Firefox, replay, mock, find duplicate and N+1 calls, catch GraphQL errors in a 200, check OpenAPI, run in CI." />
 <meta property="og:url" content="https://requestfox.accessisight.com/guides.html" />
 <meta property="og:image" content="https://requestfox.accessisight.com/img/og-guides.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -27,7 +27,7 @@
 <meta property="og:image:alt" content="Guides: Record, Replay, Mock and Test APIs · RequestFox" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Guides: Record, Replay, Mock and Test APIs · RequestFox" />
-<meta name="twitter:description" content="Step-by-step guides: record API calls in Chrome, replay and edit requests, mock responses, check calls against OpenAPI, and run API checks in CI." />
+<meta name="twitter:description" content="Guides: record API calls in Chrome or Firefox, replay, mock, find duplicate and N+1 calls, catch GraphQL errors in a 200, check OpenAPI, run in CI." />
 <meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guides.jpg" />
 <meta property="og:locale" content="en_US" />
 <script type="application/ld+json">{
@@ -60,7 +60,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
-    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
 <main id="main">
@@ -90,6 +90,10 @@
           <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Your own answer, or a call that fails, drags or pauses.</p></li>
           <li><a href="guide-openapi-contract-check.html">Check calls against OpenAPI</a><p>Mismatches, calls not in the spec, and coverage.</p></li>
           <li><a href="guide-api-checks-in-ci.html">Run API checks in CI</a><p>A suite, a config file and one command.</p></li>
+          <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a><p>Edit and Resend, REST client add-ons, and RequestFox.</p></li>
+          <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200 OK</a><p>Spot a failed GraphQL call the status hides, and fail a CI run on it.</p></li>
+          <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 API calls</a><p>Find calls sent twice, and one request per id in a list.</p></li>
+          <li><a href="guide-har-to-postman.html">HAR to Postman</a><p>Three ways to get a browser's calls into Postman, and what to remove first.</p></li>
         </ul>
       </section>
 
@@ -109,8 +113,8 @@
   <section class="final" aria-labelledby="final-title">
     <h2 id="final-title">Follow a guide on your own app.</h2>
     <div class="cta">
-      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Add to Chrome, free</a>
-      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Add to Firefox</a>
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Add to Firefox</a>
     </div>
   </section>
 </main>
@@ -130,8 +134,8 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Firefox Add-ons</a></li>
           </ul>
         </div>
         <div>
@@ -142,6 +146,10 @@
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
             <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
+            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
+            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
+            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
           </ul>
         </div>
         <div>
@@ -152,6 +160,8 @@
             <li><a href="compare-insomnia.html">vs Insomnia</a></li>
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
           </ul>
         </div>
         <div>
