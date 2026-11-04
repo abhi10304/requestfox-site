@@ -1,116 +1,214 @@
 # RequestFox: the full text of every page
 
-Version 2.4.0, site updated 2026-11-03. The short guide is https://requestfox.accessisight.com/llms.txt.
+Version 2.4.0, site updated 2026-11-04. The short guide is https://requestfox.accessisight.com/llms.txt.
 
 ---
 
-# See every API call your app makes, and which ones broke.
+# See which API call Failed.
 
 Address: https://requestfox.accessisight.com/
 
-Free extension for Chrome and Firefox
+# See which API call Failed.
 
-# See every API call your app makes, and which ones broke.
-
-RequestFox records the requests a web app sends while you click through it. Failed, slow and repeated calls are flagged the moment they happen, tied to the click that caused them.
+RequestFox is a free API tester and network monitor in a side panel for Chrome and Firefox. It records every call your web app makes, flags the broken ones the moment they happen, and lets you replay, mock and test them.
 
 Add to Chrome, free
 Add to Firefox
 
-- No account
+No account. Nothing is sent to us. No AI inside.
 
-- Nothing is sent to us
+## Where RequestFox stands
 
-- Secrets redacted by default
+Each of these API testing tools is the right pick for some job. Pick RequestFox when you test a web app and want its API problems found for you, the moment they happen.
 
-shop.example.com/checkout
+- DevTools Network: Lists every request. You do the judging.
 
-The real side panel, docked beside the site you are testing. The page on the left is drawn as an outline.
+- Postman, Insomnia, Bruno, Hoppscotch: Send the requests you type.
 
-## How do I see every API call a page makes?
+- RequestFox: Records what your app really sends, says what broke, and sends yours too.
 
-Open the RequestFox side panel and press Start, or press Alt Shift S (Option Shift S on a Mac). Every fetch, XMLHttpRequest, WebSocket frame and server-sent event appears the moment it starts, across tabs, frames and pop-ups, even calls a service worker answers. Each call is tied to the click or form submit that caused it.
+### Which tool for which job
 
-How to record API calls in Chrome, step by step
+-
 
-## How do I find failed or slow API calls?
+Testing a web app and want problems found for you
 
-You don't have to look for them: they are flagged as they happen, with what went wrong in plain words.
+RequestFox. It records the calls as you click, flags what failed, dragged, fired twice or broke inside a 200 OK, and keeps every session.
 
-- FAILED refused, timed out, or a 4xx/5xx answer
+-
 
-- SLOW past your threshold, marked live while it waits
+A raw look at everything one page load does
 
-- RAPID 140ms the same call fired twice
+The DevTools Network panel. Built into the browser; you filter and read. RequestFox vs DevTools
 
-- GRAPHQL ERROR an error hidden inside a 200 OK
+-
 
-- Token expired a 401 caused by an expired JWT
+Designing, documenting and sharing APIs across a team
 
-- SCHEMA CHANGED the answer's shape changed since last time
+Postman or Insomnia. RequestFox imports from both and exports back to both. RequestFox vs Postman · RequestFox vs Insomnia
 
-A failed call opened: its answer, with Replay one click away.
+-
+
+Requests kept as plain files in Git, next to the code
+
+Bruno. In Chrome, RequestFox can keep a collection in a linked folder as files too. RequestFox vs Bruno
+
+-
+
+An open-source client on the web you can host yourself
+
+Hoppscotch. RequestFox has nothing to host: there is no server. RequestFox vs Hoppscotch
+
+### Where RequestFox falls short
+
+- It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.
+
+- No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.
+
+- Scripts run in Chrome only: Firefox does not let extensions run code typed at runtime.
+
+- No native gRPC or MQTT client (gRPC-Web and Connect only).
+
+Every comparison, with sources
+
+## Every problem, named in plain words
+
+Calls are judged as they finish. Pick a flag to read what the panel tells you about it.
+
+Flag
+Failed
+Slow
+GraphQL error
+Token expired
+Schema changed
+Flaky ×3
+
+POST /api/orders 500 412 ms
+
+Why is this flagged?
+
+The server failed while answering (a 5xx status).
+
+What to do: Look at the server's logs for this moment; Replay sends the same request again to see if it repeats.
+
+GET /api/search?q=boots 200 3.1 s
+
+Why is this flagged?
+
+The answer took longer than your slow limit.
+
+What to do: Timing in Details shows where the time went; the limit is in Settings.
+
+POST /graphql 200 96 ms
+
+Why is this flagged?
+
+The answer says the call failed, although its HTTP status is OK.
+
+What to do: Read the error in the answer: the status alone hides this failure.
+
+GET /api/me 401 54 ms
+
+Why is this flagged?
+
+The call was refused and the token it sent had already expired.
+
+What to do: Sign in again or refresh the token, then send the call again.
+
+GET /api/cart 200 120 ms
+
+Why is this flagged?
+
+The answer's shape (its fields and their types) is not what this call returned before.
+
+What to do: Open the shape diff on the card to see what changed.
+
+GET /api/stock/42 503 230 ms
+
+Why is this flagged?
+
+This call failed in some recorded sessions and passed in others.
+
+What to do: Compare a failing and a passing answer in History.
 
 Every flag RequestFox raises
 
-## Can I replay or edit a request?
+A failed call opened: its answer, with Replay one click away.
 
-Yes. Replay any captured call as it was, or edit it first. Compose builds new requests with environments, {{variables}}, OAuth 2.0, OAuth 1.0a, JWT Bearer, AWS Signature v4 and saved collections, sent with the page's own cookies while recording, or from the extension itself. Several requests can stay open at once, and a cookie jar you switch on per site carries a sign-in to your next sends.
+## From the flag to the fix
 
-Compose, with the answer under the request.
+01 Replay
+
+### Replay it, or edit it first
+
+Send any captured call again as it was, or change it in Compose. Environments, {{variables}}, OAuth 2.0 with device code, OAuth 1.0a, JWT Bearer and AWS Signature v4 are built in, and several requests can stay open at once.
+
+Keep saved examples and notes on requests and collections. A cookie jar you switch on per site carries a sign-in to your next sends, and the WebSocket client has a Socket.IO mode.
 
 How to replay and edit a request
 
-## Can I mock an API response without changing the backend?
+02 Mock
 
-Yes. A rule can return the answer you choose, make a call fail, slow it down or pause it so you can edit it. Calls you changed carry a MOCKED or SIMULATED label, so nobody mistakes them for real bugs.
+### Mock it, break it, slow it
 
-How to mock an API response in Chrome
+A rule returns the answer you choose, makes a call fail, slows it down, or pauses it so you can edit it, without touching the backend. Rule profiles and mock sets stay on when you want them to.
 
-## Can I import my Postman collection?
+In Chrome you can also slow the whole tab, or rewrite a request or reply with a script. Calls you changed carry a Mocked or Simulated label, so nobody mistakes them for real bugs.
 
-Yes. RequestFox imports collections and specs from these (from a file, a whole folder or a URL), and exports Postman collections, collections for Bruno, Insomnia and Hoppscotch, and OpenAPI 3.0 back out:
+How to mock an API response
 
-- Postman
-- Insomnia
-- Bruno
-- Hoppscotch
-- Thunder Client
-- OpenAPI 3
-- Swagger 2
-- HAR
-- cURL
+03 Test
 
-## Can I turn recorded traffic into tests?
+### Check it, then run the same checks in CI
 
-Yes. Add checks to an endpoint (status, time, fields, a JSON Schema), chain saved requests into suites, run the same checks in CI with the downloadable command-line tool, or generate scripts from a recording:
+Add checks to an endpoint: status, time, fields, headers or a JSON Schema, and chain saved requests into suites. The downloadable command-line tool runs them in your pipeline and fails the build when a check fails. You also get advice on caching and compression, and a check that an answer stays the same as last time.
 
-- Playwright
-- Cypress
-- k6
-- JMeter
-- Gatling
-- Locust
+Collections come in from Postman, Insomnia, Bruno, Hoppscotch and Thunder Client, OpenAPI 3, Swagger 2, WSDL, HAR and cURL. They go back out as Postman collections, collections for Bruno, Insomnia and Hoppscotch, OpenAPI 3.0, an API docs page, code in 15 languages, or Playwright, Cypress, k6, JMeter, Gatling and Locust scripts.
 
 How to run your API checks in CI
 
-## Where RequestFox fits
+$ node requestfox-ci.mjs assert --config requestfox.config.json
+✓ GET /api/me — status = 200 (actual: 200)
+✓ GET /api/cart — status = 200 (actual: 200)
+✓ GET /api/search?q=boots — status = 200 (actual: 200)
+✖ GET /api/search?q=boots — latency < 800ms (actual: 1305) [RF-CHECK-LATENCY]
+✖ POST /api/orders — status = 200 (actual: 500) [RF-CHECK-STATUS]
 
-### Instead of the Network panel
+5 assertion(s) checked.
 
-when you want problems flagged for you, sessions kept in History, and evidence you can export.
+A real run of the command-line tool against a small test shop API: two checks fail, so it exits with 1 and the pipeline stops.
 
-### Next to an API client
+04 AI tools
 
-when you want the calls your real app makes, with its cookies, rather than requests typed by hand.
+### Test your AI tools, with no AI inside
 
-### Not for traffic outside the browser
+RequestFox runs no AI model. It tests the AI tools you build: Compose connects to an MCP server and calls its tools, and a call to a language-model API shows the model, the token counts the answer gives, the stop reason and the time.
 
-Mobile and desktop apps need a proxy-based tool. RequestFox sees what a browser tab sends.
+With MCP control switched on (it is off by default), an AI agent on your own computer can record, replay and mock through RequestFox. Every send and replay waits for your click.
 
-Compare RequestFox with Postman, DevTools, Insomnia, Bruno and Hoppscotch
+How MCP control stays safe
+
+Controlled by a local MCP client
+
+Allow this MCP action?
+
+A local MCP client asks for this: Send POST shop.example.com/api/orders. Nothing happens unless you allow it.
+
+CancelAllow
+
+## Press Alt Shift S, then use your app.
+
+Every fetch, XMLHttpRequest, WebSocket frame and server-sent event appears the moment it starts, across tabs, frames and pop-ups, even calls a service worker answers.
+
+Each call is tied to the click or form submit that caused it, and every session is kept in History to compare with the next.
+
+On a Mac the keys are Option Shift S. Or open the side panel and press Start. How to record API calls, step by step
+
+Written for QA testers, frontend developers and API developers. All guides, including checking calls against an OpenAPI spec.
 
 ## Facts
+
+It reads collections from 5 other API apps, writes code in 15 languages, turns a recording into tests for 6 tools, and speaks 14 languages. It costs nothing.
 
 - Works in: Google Chrome (side panel) and Mozilla Firefox (sidebar)
 
@@ -132,25 +230,81 @@ Compare RequestFox with Postman, DevTools, Insomnia, Bruno and Hoppscotch
 
 ## Questions
 
-**Is RequestFox free?**
+### Is RequestFox free?
 
 Yes. RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. It has no ads, no account and no paid tier.
 
-**Does RequestFox send my data anywhere?**
+### Does RequestFox send my data anywhere?
 
 No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording.
 
-**Is there a free Postman alternative that runs in the browser?**
+### Does RequestFox use AI?
+
+No. RequestFox runs no AI model. It can test the AI tools you build: MCP servers, and the calls a page makes to a language-model API. With MCP control switched on, which is off by default, an AI agent on your own computer can drive it, and every send waits for your click.
+
+### Is there a free Postman alternative that runs in the browser?
 
 RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.
 
-**How is RequestFox different from the DevTools Network panel?**
+### How is RequestFox different from the DevTools Network panel?
 
 DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads.
 
 More questions and answers
 
-## Start your next test with the evidence already there.
+## Add it to Chrome or Firefox.
+
+Free, with no paid tier and no account.
+
+---
+
+# About RequestFox and AccessiSight
+
+Address: https://requestfox.accessisight.com/about.html
+
+# About RequestFox and AccessiSight
+
+RequestFox is a free API tester and network monitor for Chrome and Firefox, made by AccessiSight. It runs in your browser: there is no RequestFox server, no account and no analytics, and nothing you capture is sent to us.
+
+For RequestFox 2.4.0, checked 4 November 2026.
+
+## What RequestFox is
+
+A side panel in Chrome, a sidebar in Firefox. While you use the web app you are testing, it records every API call the app makes and flags the ones that failed, dragged, fired twice or broke inside a 200 OK, in plain words with what to do next.
+
+The same panel is also an API client, a way to mock or break a call without touching the backend, a set of checks you can run in CI with its downloadable command-line tool, and a tester for the AI tools you build. Everything it does
+
+## Who makes it
+
+RequestFox is made and published by AccessiSight, the RequestFox team. The comparison pages on this site are written by the same team; every fact they state about another tool comes from that tool's own documentation, linked and dated on each page. Every comparison, with sources
+
+## Why it is free
+
+RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. It has no ads, no account and no paid tier.
+
+## Where your data lives
+
+Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports. Requests you send yourself go to the servers you chose, and nowhere else.
+
+The privacy policy, in full
+
+## How it is built
+
+- No AI inside: RequestFox runs no AI model and gives nothing you capture, type or send to any AI service.
+
+- The extension ships no third-party code and takes no plugins.
+
+- Works in Google Chrome and Mozilla Firefox, in 14 interface languages.
+
+- It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.
+
+What changed in each version
+
+## Questions and bugs
+
+For a question about privacy or about how the extension behaves, write to the address in section 8 of the privacy policy. To say what works and what does not, leave a review on the Chrome Web Store or Firefox Add-ons listing.
+
+## See it on your own app.
 
 Free, in Chrome and Firefox.
 
@@ -732,11 +886,11 @@ Add to Firefox
 
 ---
 
-# RequestFox vs the Chrome DevTools Network panel
+# RequestFox vs the DevTools Network panel
 
 Address: https://requestfox.accessisight.com/compare-devtools.html
 
-# RequestFox vs the Chrome DevTools Network panel
+# RequestFox vs the DevTools Network panel
 
 Use the DevTools Network panel for a raw, live view of everything one page loads, with nothing to install. Use RequestFox when you test a flow and want the API problems pointed out, each tied to your click, kept in History and ready to mock, replay or export.
 
@@ -945,7 +1099,7 @@ Address: https://requestfox.accessisight.com/compare-postman.html
 
 # RequestFox vs Postman
 
-Pick Postman to design, document and share APIs across a team, with many protocols and shared workspaces. Pick RequestFox to test the API calls a real web app makes in the browser, with problems flagged for you and nothing to sign in to. They work together: RequestFox imports and exports Postman collections.
+RequestFox is a free Postman alternative that runs in the browser, though not a full replacement. Pick Postman to design, document and share APIs across a team, with many protocols and shared workspaces. Pick RequestFox to test the API calls a real web app makes in the browser, with problems flagged for you and nothing to sign in to. They work together: RequestFox imports and exports Postman collections.
 
 Facts about Postman are from its own documentation, checked 1 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.4.0.
 
@@ -1182,15 +1336,15 @@ Add to Firefox
 
 ---
 
-# Everything RequestFox does
+# What the RequestFox API tester does
 
 Address: https://requestfox.accessisight.com/features.html
 
-# Everything RequestFox does
+# What the RequestFox API tester does
 
-RequestFox captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.
+RequestFox is a free API tester and network monitor for Chrome and Firefox. It captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 The Timeline, one of the panel's views.
 
@@ -1204,6 +1358,12 @@ Press Start (or Alt Shift S) and use your app. RequestFox lists fetch, XMLHttpRe
 
 - The log can be a table: one line per call, sorted by a click on a heading, with columns that read a value out of each JSON answer (data.items.length), a Group by host view and a session Overview (calls, errors, slow calls, status families, the slowest five, hosts). A 5,000-call log only draws the rows on screen.
 
+- Table columns: Add column reads one value from each JSON answer by a path (data.items.length, $.user.id) and offers the paths of an answer as suggestions. Columns shows or hides the table's own columns, takes up to four answer columns, and puts them in the order you want (drag a heading, or use the arrows in the dialog). The choice is saved for the site.
+
+- The Overview has Copy as Markdown for a bug report (calls named by host and path only: no query string, headers or bodies) and a Calls over time bar chart, with the busiest stretch also written in words.
+
+- With two or more browser windows open, Start can also record the same site in your other windows. Show page files (Settings, off by default) lists the page's own scripts, styles, images and fonts too, each with a badge, and never raises an alert for them.
+
 - Each call is tied to the click or form submit that caused it.
 
 - Every session goes to History, to reopen, search and compare with another run.
@@ -1214,29 +1374,29 @@ Press Start (or Alt Shift S) and use your app. RequestFox lists fetch, XMLHttpRe
 
 These are the panel's own labels. Open a flagged call and it says what happened in plain words.
 
-- FAILED refused, timed out, or a 4xx/5xx answer
+- Failed refused, timed out, or a 4xx/5xx answer
 
-- SLOW past the slow threshold you set
+- Slow past the slow threshold you set
 
-- RAPID 140ms the same call fired twice in a moment
+- Rapid 140 ms the same call fired twice in a moment
 
-- RETRY 900ms sent again after it failed
+- Retry 900 ms sent again after it failed
 
 - N+1 one call per id in a quick burst
 
-- GRAPHQL ERROR an error inside a 200 OK
+- GraphQL error an error inside a 200 OK
 
-- RPC ERROR a JSON-RPC error inside a 200 OK
+- RPC error a JSON-RPC error inside a 200 OK
 
 - Token expired a 401 caused by an expired JWT
 
-- SCHEMA CHANGED the answer's JSON shape changed
+- Schema changed the answer's JSON shape changed
 
-- SPEC MISMATCH the call breaks your linked OpenAPI spec
+- Spec mismatch the call breaks your linked OpenAPI spec
 
-- ASSERTION FAILED one of your checks failed
+- Assertion failed one of your checks failed
 
-- SECURITY a passive finding, such as a token in a URL
+- Security a passive finding, such as a token in a URL
 
 ## Inspect without leaving the page
 
@@ -1244,13 +1404,19 @@ Each call opens to its headers, body and Details: the timing split (DNS, connect
 
 - JSON answers read as a tree you can filter, with a value's path one click away.
 
+- A web address in an answer is a link that opens a new GET request in Compose, and so is an address or a path from the site's root in the JSON tree (Open as request). On the same site the call's headers come along (not the ones redaction hid); to another site, none do.
+
+- Hex shows any answer as bytes (offset, hex and ASCII; a longer answer shows 32 KB and says so), with Copy hex and Copy as base64.
+
+- A JSON answer that is a list of objects offers Table beside Tree: the first six columns, a column picker, 100 rows at a time, sort by a heading, and Copy as CSV (a text a spreadsheet would run as a formula is written as text).
+
 - The Timeline puts every call on a time ruler; Performance lists the heaviest endpoints.
 
-- GraphQL calls are checked against a schema you load, and so are their answers: a wrong type, a null in a non-null field or a missing field is named by its place in the answer. Every flagged call carries a stable finding code (such as RF-FAILED-5XX) and a "Why is this flagged?" explanation, offline.
+- GraphQL calls are checked against a schema you load, and so are their answers: a wrong type, a null in a non-null field or a missing field is named by its place in the answer. A custom scalar that declares @specifiedBy is checked by it (a date-time, UUID, URL or email address); one that does not takes any value. Every flagged call carries a stable finding code (such as RF-FAILED-5XX) and a "Why is this flagged?" explanation, offline.
 
 - gRPC-Web and Connect answers are read as fields once you load your .proto files (RequestFox's own parser), and by field number without them.
 
-- SOAP and XML: import a WSDL, read an XML answer as a tree, and add XPath checks (XPath 1.0 subset, our own reader).
+- SOAP and XML: import a WSDL (a WSDL split over several files is followed), read an XML answer as a tree, and add XPath checks (XPath 1.0 subset, our own reader).
 
 - A call to an LLM API (OpenAI-style, Anthropic or Gemini) shows the model, the token counts and the stop reason its own answer gives. Nothing is estimated, and no cost is shown.
 
@@ -1267,6 +1433,10 @@ Replay any captured call, or Edit & Replay it. Compose builds requests from scra
 - A cookie jar, per site and off until you turn it on, keeps the cookies a site sets so a sign-in carries to your next sends. It never touches the browser's own cookies, and cookie values never go into an export or the log. Importing the browser's cookies for a site is the one step that asks for an optional permission.
 
 - While recording, a send goes through the page with its cookies; with nothing recording it goes from the extension itself, without any page's cookies.
+
+- A GraphQL subscription sent from Compose opens a WebSocket (graphql-transport-ws or the older graphql-ws) and lists the events live, each checked against the schema you loaded. Send reads Stop meanwhile. Headers and auth go in the connection's connection_init payload, because a browser WebSocket carries no headers. Nothing is recorded or kept.
+
+- A collection or folder can pin a Default environment: sending one of its saved requests, or opening it in Compose, switches to that environment. One you pick by hand is kept.
 
 - A WebSocket client connects to any ws:// or wss:// server, with a Socket.IO mode; captured Socket.IO frames read as events and their arguments.
 
@@ -1294,11 +1464,27 @@ How to mock an API response.
 
 ## Checks, contracts and suites
 
-Add pass/fail checks to an endpoint on status, time, fields, headers or a JSON Schema, or a check that an answer stays the same as last time. Advice on caching and compression points out a large text answer sent uncompressed, or the same answer downloaded again with nothing a cache could use. Link an OpenAPI spec and every call is checked against it, with coverage of the operations seen. Chain saved requests into suites, with pass or fail per step and data-driven runs.
+Add pass/fail checks to an endpoint on status, time, fields, headers or a JSON Schema, or a check that an answer stays the same as last time. Advice on caching and compression points out a large text answer sent uncompressed, or the same answer downloaded again with nothing a cache could use. Link an OpenAPI spec and every call is checked against it, with coverage of the operations seen. Chain saved requests into suites, with pass or fail per step and data-driven runs. Run options on a suite set a wait between steps (0 to 60 s, for an API that rate-limits), a number of runs (1 to 100) and stop at the first failure; Export as CI config carries them to requestfox-ci run, whose --delay-ms, --bail and --iterations override them.
 
 A call that breaks the linked OpenAPI spec.
 
 How to check API calls against OpenAPI.
+
+## MCP control: let a local agent drive RequestFox
+
+An AI agent that you run on your own computer can use RequestFox through its own MCP server. RequestFox itself runs no AI model; it only answers the tool calls an agent sends it. It is off by default.
+
+- Start the server with node bin/requestfox-mcp.js --http 3333 --control. In Settings, Mocks, rules & checks, turn on Let a local MCP client control RequestFox, type the port and the one-time pairing code the server printed, and press Connect. The browser asks for access to http://127.0.0.1 only.
+
+- 21 more tools while connected: start and stop recording, list calls with the panel's search syntax, read one call, replay it, send a request from Compose, create, change and delete mock and fail rules, switch rule profiles and mock sets on or off, run saved requests and suites, export a HAR, report or docs page, clear the log and delete a collection. The whole-tab throttle is Chrome only.
+
+- Pairing code: 8 letters and digits, good once and for 10 minutes, one try a second, replaced after 5 wrong ones. The session key stays in memory, and a session ends after 8 hours, when you press Disconnect, or when you close the panel or quit the browser.
+
+- Local only: the extension connects out to 127.0.0.1, and the server refuses web pages and DNS-rebinding hosts. A chip under the top bar says Controlled by a local MCP client. Every action is listed under MCP actions, and at most 120 tool calls run a minute.
+
+- Your click: sending or replaying a request (the host is shown), deleting a rule, changing a rule you made, clearing the log and deleting a collection each wait for you. So does a saved request or suite that changes data.
+
+- What it cannot reach: no tool reads the cookie jar, the vault, secret variables or OAuth tokens. A request with {{variables}} is refused. Answers are redacted as exports are.
 
 ## Export evidence and tests
 
@@ -1327,7 +1513,7 @@ No account, no server, no analytics. Authorization headers, cookies and secret-s
 
 - No native gRPC or MQTT client: gRPC-Web and Connect work from a browser; client and bidirectional streams cannot be sent from one.
 
-- RequestFox contains no AI model and no AI code. The MCP server tester and the LLM call view only test and inspect other services. MCP servers that run as a local program (stdio) are out of a browser's reach.
+- RequestFox contains no AI model and no AI code. The MCP server tester and the LLM call view only test and inspect other services, and MCP control only answers an agent you run yourself. MCP servers that run as a local program (stdio) are out of a browser's reach.
 
 - It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.
 
@@ -1348,7 +1534,7 @@ Address: https://requestfox.accessisight.com/guide-api-checks-in-ci.html
 
 Build a suite of saved requests in RequestFox, choose ··· → Export as CI config, then Download the CLI. Commit both files and run node requestfox-ci.mjs assert --config requestfox.config.json in your pipeline: it sends every request for real, checks every rule, and exits non-zero on a failure.
 
-Needs Node 18 or newer. For RequestFox 2.4.0.
+Needs Node 18 or newer. For RequestFox 2.4.0, checked 4 November 2026.
 
 Export as CI config, then Download the CLI.
 
@@ -1430,7 +1616,7 @@ Address: https://requestfox.accessisight.com/guide-mock-api-response.html
 
 In RequestFox, open a captured call, choose ··· More → Mock this response, then change the status, headers or body in the rule. From then on the page gets your answer instead of the server's, for fetch and XMLHttpRequest, and the call is labelled MOCKED.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 Rules that mock or break endpoints.
 
@@ -1498,15 +1684,15 @@ Loading, empty and error states without the backend.
 
 ---
 
-# How to check real API calls against an OpenAPI spec
+# Check API calls against an OpenAPI spec
 
 Address: https://requestfox.accessisight.com/guide-openapi-contract-check.html
 
-# How to check real API calls against an OpenAPI spec
+# Check API calls against an OpenAPI spec
 
-Import your OpenAPI 3 or Swagger 2 spec into RequestFox; the import links it as the contract. Then record as usual: a call that breaks the spec shows SPEC MISMATCH with the reason, a call the spec does not have shows NOT IN SPEC, and Top Issues counts how many operations you covered.
+Import your OpenAPI 3 or Swagger 2 spec into RequestFox; the import links it as the contract. Then record as usual: a call that breaks the spec shows “Spec mismatch” with the reason, a call the spec does not have shows “Not in spec”, and Top Issues counts how many operations you covered.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 A call that breaks the linked spec, with the reason.
 
@@ -1528,7 +1714,7 @@ Press Start and use the app. Calls to the spec's API are checked as they arrive;
 
 ### Read the marks
 
-SPEC MISMATCH gives one line of reason, for example "response body $.price: expected number, got string". NOT IN SPEC marks a call the spec does not document. Details lists every problem.
+“Spec mismatch” gives one line of reason, for example "response body $.price: expected number, got string". “Not in spec” marks a call the spec does not document. Details lists every problem.
 
 -
 
@@ -1574,11 +1760,11 @@ Address: https://requestfox.accessisight.com/guide-record-api-calls.html
 
 Install RequestFox, open the site, press Start (or Alt Shift S) and use the site as usual. Every fetch, XMLHttpRequest, WebSocket frame and server-sent event is listed the moment it starts, and failed, slow and repeated calls are flagged for you.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 A recording in progress.
 
-## Steps
+## Steps to record API calls in Chrome or Firefox
 
 -
 
@@ -1660,7 +1846,7 @@ Address: https://requestfox.accessisight.com/guide-replay-edit-request.html
 
 Record the call with RequestFox, open its card and press Replay to send it again as it was, or Edit & Replay to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 A request opened in Compose, with its answer.
 
@@ -1716,15 +1902,15 @@ Turn saved requests into a suite your pipeline runs.
 
 ---
 
-# Guides
+# API testing guides, step by step
 
 Address: https://requestfox.accessisight.com/guides.html
 
-# Guides
+# API testing guides, step by step
 
 Short, step-by-step answers to the jobs people use RequestFox for. Each one names the buttons as they appear in the panel, and what to do when something does not work.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 ## All guides
 
@@ -1775,7 +1961,7 @@ Address: https://requestfox.accessisight.com/privacy.html
 
 RequestFox is a developer tool for Chrome and Firefox that watches and tests API traffic during manual QA. It does not collect, transmit, or sell any data. It has no server of its own, no analytics, no telemetry and no account.
 
-Last updated: 3 November 2026
+Last updated: 4 November 2026
 
 ## 1. What RequestFox stores
 
@@ -1831,7 +2017,7 @@ Since RequestFox collects no data, it shares none. Requests you send (section 2)
 
 ## 8. Changes and contact
 
-We may update this policy from time to time; changes will appear on this page with a new date. Questions about this policy or the extension's behavior: email accessisight@gmail.com.
+We may update this policy from time to time; changes will appear on this page with a new date. Questions about this policy or the extension's behavior: email elyxaj@gmail.com.
 
 ## Nothing to sign up for. Nothing sent to us.
 
@@ -1842,21 +2028,21 @@ Add to Firefox
 
 ---
 
-# For API developers: see how clients really call your API
+# See how clients really call your API
 
 Address: https://requestfox.accessisight.com/use-api-developers.html
 
-# For API developers: see how clients really call your API
+# See how clients really call your API
 
 RequestFox records what a real web client sends to your API, checks every call against your OpenAPI spec, flags answers whose shape changed, and turns that traffic into requests, checks, CI runs and load tests, all from the browser.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 Live calls checked against your spec.
 
 ## Catch drift between the spec and what ships
 
-Link your OpenAPI 3 or Swagger 2 spec: calls that break it show SPEC MISMATCH with the reason, undocumented calls show NOT IN SPEC, and coverage counts the operations a test touched. Without a spec, SCHEMA CHANGED still marks an answer whose JSON shape changed. How to check against OpenAPI.
+Link your OpenAPI 3 or Swagger 2 spec: calls that break it show “Spec mismatch” with the reason, undocumented calls show “Not in spec”, and coverage counts the operations a test touched. Without a spec, SCHEMA CHANGED still marks an answer whose JSON shape changed. How to check against OpenAPI.
 
 ## Send, chain and sign
 
@@ -1877,15 +2063,15 @@ Add to Firefox
 
 ---
 
-# For frontend developers: debug the calls your UI makes
+# Debug the API calls your UI makes
 
 Address: https://requestfox.accessisight.com/use-frontend-developers.html
 
-# For frontend developers: debug the calls your UI makes
+# Debug the API calls your UI makes
 
 RequestFox shows every call your app makes with the click and the page functions behind it, flags double fetches, N+1 bursts and slow endpoints, and lets you mock loading, empty and error states in place. It runs beside your app, in the browser you already debug in.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 The Timeline: what fired, when, and how long it took.
 
@@ -1895,7 +2081,7 @@ Each call is tied to the click or form submit that caused it, and Details shows 
 
 ## Find wasted calls
 
-- RAPID 140ms the same request twice in a moment, often an effect that runs twice.
+- Rapid 140 ms the same request twice in a moment, often an effect that runs twice.
 
 - N+1 one call per item in a list, where one batched call would do.
 
@@ -1916,15 +2102,15 @@ Add to Firefox
 
 ---
 
-# For QA testers: catch the bugs the screen hides
+# Catch the API bugs the screen hides
 
 Address: https://requestfox.accessisight.com/use-qa-testers.html
 
-# For QA testers: catch the bugs the screen hides
+# Catch the API bugs the screen hides
 
 A page can look fine while a call behind it failed, fired twice or returned an error inside a 200 OK. RequestFox watches every call while you test, flags those problems as they happen, ties each one to your click, and turns the session into evidence a developer can act on.
 
-For RequestFox 2.4.0.
+For RequestFox 2.4.0, checked 4 November 2026.
 
 Every session is kept in History.
 

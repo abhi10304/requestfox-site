@@ -10,6 +10,9 @@
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="site.css" />
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
@@ -110,7 +113,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API checks in CI</span></li></ol></nav>
         <h1 id="title">How to run your API checks in CI</h1>
         <p class="answer">Build a suite of saved requests in RequestFox, choose ··· → Export as CI config, then Download the CLI. Commit both files and run <code>node requestfox-ci.mjs assert --config requestfox.config.json</code> in your pipeline: it sends every request for real, checks every rule, and exits non-zero on a failure.</p>
-        <p class="byline">Needs Node 18 or newer. For RequestFox 2.4.0.</p>
+        <p class="byline">Needs Node 18 or newer. For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -176,54 +179,58 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-cols">
-      <div>
-        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
         <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
       </div>
-      <div>
-        <h2>Product</h2>
-        <ul>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Guides</h2>
-        <ul>
-          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
-          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
-          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Compare</h2>
-        <ul>
-          <li><a href="compare-postman.html">vs Postman</a></li>
-          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
-          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
-          <li><a href="compare-bruno.html">vs Bruno</a></li>
-          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>For</h2>
-        <ul>
-          <li><a href="use-qa-testers.html">QA testers</a></li>
-          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
-          <li><a href="use-api-developers.html">API developers</a></li>
-        </ul>
-      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
-      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
     </div>
   </div>
 </footer>

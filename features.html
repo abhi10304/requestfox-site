@@ -10,6 +10,9 @@
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="color-scheme" content="light dark" />
 <link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="site.css" />
 <meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
@@ -65,9 +68,9 @@
     <div class="wrap page-hero-grid">
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Features</span></li></ol></nav>
-        <h1 id="title">Everything RequestFox does</h1>
-        <p class="answer"><strong>RequestFox</strong> captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.</p>
-        <p class="byline">For RequestFox 2.4.0.</p>
+        <h1 id="title">What the RequestFox API tester does</h1>
+        <p class="answer"><strong>RequestFox</strong> is a free API tester and network monitor for Chrome and Firefox. It captures the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.</p>
+        <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -88,6 +91,7 @@
         <li><a href="#compose">Compose and replay</a></li>
         <li><a href="#mock">Mocks and faults</a></li>
         <li><a href="#checks">Checks and contracts</a></li>
+        <li><a href="#mcp-control">MCP control</a></li>
         <li><a href="#export">Export and tests</a></li>
         <li><a href="#privacy">Privacy</a></li>
         <li><a href="#limits">Limits</a></li>
@@ -101,6 +105,9 @@
           <li>A call shows as soon as it starts and turns SLOW live if it drags; its finished card replaces it.</li>
           <li>Live streams: server-sent events, NDJSON and token streams, read with fetch, XMLHttpRequest or EventSource, stay open as rows that fill as events arrive. RequestFox keeps the newest ones within the body limit, and flags error events, a missing end marker and long pauses. A page's gRPC-Web or Connect server stream is kept the same way.</li>
           <li>The log can be a table: one line per call, sorted by a click on a heading, with columns that read a value out of each JSON answer (<code>data.items.length</code>), a Group by host view and a session Overview (calls, errors, slow calls, status families, the slowest five, hosts). A 5,000-call log only draws the rows on screen.</li>
+          <li>Table columns: <strong>Add column</strong> reads one value from each JSON answer by a path (<code>data.items.length</code>, <code>$.user.id</code>) and offers the paths of an answer as suggestions. <strong>Columns</strong> shows or hides the table's own columns, takes up to four answer columns, and puts them in the order you want (drag a heading, or use the arrows in the dialog). The choice is saved for the site.</li>
+          <li>The Overview has <strong>Copy as Markdown</strong> for a bug report (calls named by host and path only: no query string, headers or bodies) and a <strong>Calls over time</strong> bar chart, with the busiest stretch also written in words.</li>
+          <li>With two or more browser windows open, Start can also record the same site in your other windows. <strong>Show page files</strong> (Settings, off by default) lists the page's own scripts, styles, images and fonts too, each with a badge, and never raises an alert for them.</li>
           <li>Each call is tied to the click or form submit that caused it.</li>
           <li>Every session goes to History, to reopen, search and compare with another run.</li>
           <li>Search takes free text and tokens such as <code>status:500</code>, <code>host:api.example.com</code> and <code>path:/users/:id</code>; a leading <code>-</code> leaves matches out.</li>
@@ -111,18 +118,18 @@
         <h2 id="flags-title">Problems flagged for you</h2>
         <p>These are the panel's own labels. Open a flagged call and it says what happened in plain words.</p>
         <ul class="flag-list">
-          <li><span class="badge critical">FAILED</span> refused, timed out, or a 4xx/5xx answer</li>
-          <li><span class="badge warning">SLOW</span> past the slow threshold you set</li>
-          <li><span class="badge serious">RAPID 140ms</span> the same call fired twice in a moment</li>
-          <li><span class="badge serious">RETRY 900ms</span> sent again after it failed</li>
+          <li><span class="badge critical">Failed</span> refused, timed out, or a 4xx/5xx answer</li>
+          <li><span class="badge warning">Slow</span> past the slow threshold you set</li>
+          <li><span class="badge serious">Rapid 140 ms</span> the same call fired twice in a moment</li>
+          <li><span class="badge serious">Retry 900 ms</span> sent again after it failed</li>
           <li><span class="badge serious">N+1</span> one call per id in a quick burst</li>
-          <li><span class="badge critical">GRAPHQL ERROR</span> an error inside a 200 OK</li>
-          <li><span class="badge critical">RPC ERROR</span> a JSON-RPC error inside a 200 OK</li>
+          <li><span class="badge critical">GraphQL error</span> an error inside a 200 OK</li>
+          <li><span class="badge critical">RPC error</span> a JSON-RPC error inside a 200 OK</li>
           <li><span class="badge critical">Token expired</span> a 401 caused by an expired JWT</li>
-          <li><span class="badge info">SCHEMA CHANGED</span> the answer's JSON shape changed</li>
-          <li><span class="badge info">SPEC MISMATCH</span> the call breaks your linked OpenAPI spec</li>
-          <li><span class="badge critical">ASSERTION FAILED</span> one of your checks failed</li>
-          <li><span class="badge warning">SECURITY</span> a passive finding, such as a token in a URL</li>
+          <li><span class="badge info">Schema changed</span> the answer's JSON shape changed</li>
+          <li><span class="badge info">Spec mismatch</span> the call breaks your linked OpenAPI spec</li>
+          <li><span class="badge critical">Assertion failed</span> one of your checks failed</li>
+          <li><span class="badge warning">Security</span> a passive finding, such as a token in a URL</li>
         </ul>
       </section>
 
@@ -131,10 +138,13 @@
         <p>Each call opens to its headers, body and Details: the timing split (DNS, connect, TLS, waiting, download), the HTTP version, bytes on the wire, and the page functions that made the call.</p>
         <ul>
           <li>JSON answers read as a tree you can filter, with a value's path one click away.</li>
+          <li>A web address in an answer is a link that opens a new GET request in Compose, and so is an address or a path from the site's root in the JSON tree (<strong>Open as request</strong>). On the same site the call's headers come along (not the ones redaction hid); to another site, none do.</li>
+          <li><strong>Hex</strong> shows any answer as bytes (offset, hex and ASCII; a longer answer shows 32 KB and says so), with Copy hex and Copy as base64.</li>
+          <li>A JSON answer that is a list of objects offers <strong>Table</strong> beside Tree: the first six columns, a column picker, 100 rows at a time, sort by a heading, and Copy as CSV (a text a spreadsheet would run as a formula is written as text).</li>
           <li>The Timeline puts every call on a time ruler; Performance lists the heaviest endpoints.</li>
-          <li>GraphQL calls are checked against a schema you load, and so are their answers: a wrong type, a null in a non-null field or a missing field is named by its place in the answer. Every flagged call carries a stable finding code (such as <code>RF-FAILED-5XX</code>) and a "Why is this flagged?" explanation, offline.</li>
+          <li>GraphQL calls are checked against a schema you load, and so are their answers: a wrong type, a null in a non-null field or a missing field is named by its place in the answer. A custom scalar that declares <code>@specifiedBy</code> is checked by it (a date-time, UUID, URL or email address); one that does not takes any value. Every flagged call carries a stable finding code (such as <code>RF-FAILED-5XX</code>) and a "Why is this flagged?" explanation, offline.</li>
           <li>gRPC-Web and Connect answers are read as fields once you load your <code>.proto</code> files (RequestFox's own parser), and by field number without them.</li>
-          <li>SOAP and XML: import a WSDL, read an XML answer as a tree, and add XPath checks (XPath 1.0 subset, our own reader).</li>
+          <li>SOAP and XML: import a WSDL (a WSDL split over several files is followed), read an XML answer as a tree, and add XPath checks (XPath 1.0 subset, our own reader).</li>
           <li>A call to an LLM API (OpenAI-style, Anthropic or Gemini) shows the model, the token counts and the stop reason its own answer gives. Nothing is estimated, and no cost is shown.</li>
         </ul>
         <figure class="fig">
@@ -153,6 +163,8 @@
           <li>Save an answer as an example, and keep notes on requests, collections and folders. The QUERY method (a safe request with a body) is in every method list.</li>
           <li>A cookie jar, per site and off until you turn it on, keeps the cookies a site sets so a sign-in carries to your next sends. It never touches the browser's own cookies, and cookie values never go into an export or the log. Importing the browser's cookies for a site is the one step that asks for an optional permission.</li>
           <li>While recording, a send goes through the page with its cookies; with nothing recording it goes from the extension itself, without any page's cookies.</li>
+          <li>A GraphQL <code>subscription</code> sent from Compose opens a WebSocket (graphql-transport-ws or the older graphql-ws) and lists the events live, each checked against the schema you loaded. Send reads Stop meanwhile. Headers and auth go in the connection's <code>connection_init</code> payload, because a browser WebSocket carries no headers. Nothing is recorded or kept.</li>
+          <li>A collection or folder can pin a <strong>Default environment</strong>: sending one of its saved requests, or opening it in Compose, switches to that environment. One you pick by hand is kept.</li>
           <li>A WebSocket client connects to any <code>ws://</code> or <code>wss://</code> server, with a Socket.IO mode; captured Socket.IO frames read as events and their arguments.</li>
           <li>An MCP server tester: connect to an MCP server over Streamable HTTP, list its tools, resources and prompts, and call one from a form built from its schema. It only sends the requests you pick and shows the answers.</li>
           <li>Copy any request as code in 15 languages, cURL for bash and Windows cmd included.</li>
@@ -180,14 +192,27 @@
 
       <section class="block" id="checks" aria-labelledby="checks-title">
         <h2 id="checks-title">Checks, contracts and suites</h2>
-        <p>Add pass/fail checks to an endpoint on status, time, fields, headers or a JSON Schema, or a check that an answer stays the same as last time. Advice on caching and compression points out a large text answer sent uncompressed, or the same answer downloaded again with nothing a cache could use. Link an OpenAPI spec and every call is checked against it, with coverage of the operations seen. Chain saved requests into suites, with pass or fail per step and data-driven runs.</p>
+        <p>Add pass/fail checks to an endpoint on status, time, fields, headers or a JSON Schema, or a check that an answer stays the same as last time. Advice on caching and compression points out a large text answer sent uncompressed, or the same answer downloaded again with nothing a cache could use. Link an OpenAPI spec and every call is checked against it, with coverage of the operations seen. Chain saved requests into suites, with pass or fail per step and data-driven runs. <strong>Run options</strong> on a suite set a wait between steps (0 to 60 s, for an API that rate-limits), a number of runs (1 to 100) and stop at the first failure; <strong>Export as CI config</strong> carries them to <code>requestfox-ci run</code>, whose <code>--delay-ms</code>, <code>--bail</code> and <code>--iterations</code> override them.</p>
         <figure class="fig">
           <div class="shot">
-            <picture><source srcset="img/contract-details-dark.webp 1x, img/contract-details-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/contract-details-light.webp" srcset="img/contract-details-light.webp 1x, img/contract-details-light@2x.webp 2x" width="380" height="740" loading="lazy" alt="A call marked SPEC MISMATCH: its Details say the response body's price was a string where the spec expects a number; another call is NOT IN SPEC; spec coverage 3 of 6 operations" /></picture>
+            <picture><source srcset="img/contract-details-dark.webp 1x, img/contract-details-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/contract-details-light.webp" srcset="img/contract-details-light.webp 1x, img/contract-details-light@2x.webp 2x" width="380" height="740" loading="lazy" alt="A call marked “Spec mismatch” because its price is a string where the spec expects a number, another “Not in spec”, and spec coverage 3 of 6" /></picture>
           </div>
           <figcaption>A call that breaks the linked OpenAPI spec.</figcaption>
         </figure>
         <p><a href="guide-openapi-contract-check.html">How to check API calls against OpenAPI</a>.</p>
+      </section>
+
+      <section class="block" id="mcp-control" aria-labelledby="mcp-control-title">
+        <h2 id="mcp-control-title">MCP control: let a local agent drive RequestFox</h2>
+        <p>An AI agent that you run on your own computer can use RequestFox through its own MCP server. RequestFox itself runs no AI model; it only answers the tool calls an agent sends it. It is off by default.</p>
+        <ul>
+          <li>Start the server with <code>node bin/requestfox-mcp.js --http 3333 --control</code>. In Settings, Mocks, rules &amp; checks, turn on <strong>Let a local MCP client control RequestFox</strong>, type the port and the one-time pairing code the server printed, and press Connect. The browser asks for access to <code>http://127.0.0.1</code> only.</li>
+          <li>21 more tools while connected: start and stop recording, list calls with the panel's search syntax, read one call, replay it, send a request from Compose, create, change and delete mock and fail rules, switch rule profiles and mock sets on or off, run saved requests and suites, export a HAR, report or docs page, clear the log and delete a collection. The whole-tab throttle is Chrome only.</li>
+          <li>Pairing code: 8 letters and digits, good once and for 10 minutes, one try a second, replaced after 5 wrong ones. The session key stays in memory, and a session ends after 8 hours, when you press Disconnect, or when you close the panel or quit the browser.</li>
+          <li>Local only: the extension connects out to 127.0.0.1, and the server refuses web pages and DNS-rebinding hosts. A chip under the top bar says <strong>Controlled by a local MCP client</strong>. Every action is listed under <strong>MCP actions</strong>, and at most 120 tool calls run a minute.</li>
+          <li>Your click: sending or replaying a request (the host is shown), deleting a rule, changing a rule you made, clearing the log and deleting a collection each wait for you. So does a saved request or suite that changes data.</li>
+          <li>What it cannot reach: no tool reads the cookie jar, the vault, secret variables or OAuth tokens. A request with <code>{{variables}}</code> is refused. Answers are redacted as exports are.</li>
+        </ul>
       </section>
 
       <section class="block" id="export" aria-labelledby="export-title">
@@ -209,7 +234,7 @@
           <li>No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.</li>
           <li>Pre-request and post-response scripts, and rewriting a request or reply with a script, run in Chrome only; Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
           <li>No native gRPC or MQTT client: gRPC-Web and Connect work from a browser; client and bidirectional streams cannot be sent from one.</li>
-          <li>RequestFox contains no AI model and no AI code. The MCP server tester and the LLM call view only test and inspect other services. MCP servers that run as a local program (stdio) are out of a browser's reach.</li>
+          <li>RequestFox contains no AI model and no AI code. The MCP server tester and the LLM call view only test and inspect other services, and MCP control only answers an agent you run yourself. MCP servers that run as a local program (stdio) are out of a browser's reach.</li>
           <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
         </ul>
       </section>
@@ -227,54 +252,58 @@
 </main>
 <footer class="site-footer">
   <div class="wrap">
-    <div class="foot-cols">
-      <div>
-        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
         <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
       </div>
-      <div>
-        <h2>Product</h2>
-        <ul>
-          <li><a href="features.html">Features</a></li>
-          <li><a href="changelog.html">Changelog</a></li>
-          <li><a href="faq.html">FAQ</a></li>
-          <li><a href="privacy.html">Privacy</a></li>
-          <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
-          <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Guides</h2>
-        <ul>
-          <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
-          <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
-          <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>Compare</h2>
-        <ul>
-          <li><a href="compare-postman.html">vs Postman</a></li>
-          <li><a href="compare-devtools.html">vs DevTools Network</a></li>
-          <li><a href="compare-insomnia.html">vs Insomnia</a></li>
-          <li><a href="compare-bruno.html">vs Bruno</a></li>
-          <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
-        </ul>
-      </div>
-      <div>
-        <h2>For</h2>
-        <ul>
-          <li><a href="use-qa-testers.html">QA testers</a></li>
-          <li><a href="use-frontend-developers.html">Frontend developers</a></li>
-          <li><a href="use-api-developers.html">API developers</a></li>
-        </ul>
-      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
     </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-03">3 November 2026</time> · 14 interface languages</p>
-      <p>Made by AccessiSight. No cookies, no analytics on this site.</p>
+      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
     </div>
   </div>
 </footer>
