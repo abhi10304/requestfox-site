@@ -1,0 +1,26 @@
+{
+  "panel": "7d45320a4174b810a034fe9dfb12f313e4cfef046395eaf8c808eb2e433884bf",
+  "sources": [
+    "extension/sidepanel.html",
+    "extension/sidepanel.css",
+    "extension/lib/shared-tokens.css",
+    "extension/log-render.js",
+    "extension/_locales/en/messages.json"
+  ],
+  "scenes": [
+    "recording",
+    "expanded",
+    "compose-response",
+    "fault-editor",
+    "timeline",
+    "json-tree",
+    "contract-details",
+    "suites-export",
+    "history",
+    "postman-import-summary",
+    "copycode",
+    "ws-client",
+    "folder-linked",
+    "mock"
+  ]
+}

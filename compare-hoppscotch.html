@@ -66,6 +66,7 @@
       <a href="compare.html" data-nav="compare" aria-current="true">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-hoppscotch" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-hoppscotch" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -75,7 +76,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs Hoppscotch</span></li></ol></nav>
       <h1 id="title">RequestFox vs Hoppscotch</h1>
       <p class="answer">Pick <strong>Hoppscotch</strong> for an open-source API client on the web, desktop or CLI that teams can self-host, with WebSocket, SSE, Socket.IO and MQTT clients [3]. Pick <strong>RequestFox</strong> to record and judge the calls your own web app makes while you test it. RequestFox imports Hoppscotch collections.</p>
-      <p class="byline">Facts about Hoppscotch are from its own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.4.0.</p>
+      <p class="byline">Facts about Hoppscotch are from its own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.5.0.</p>
     </div>
   </section>
 
@@ -97,12 +98,12 @@
           <table class="cmp">
             <thead><tr><th scope="col">&nbsp;</th><th scope="col">RequestFox</th><th scope="col">Hoppscotch</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Where it runs</th><td>A side panel in Chrome, a sidebar in Firefox</td><td>Web, Mac, Windows, Linux and CLI; the web app needs no install [1]</td></tr>
-              <tr><th scope="row">Self-hosting</th><td>Nothing to host: there is no server</td><td>Host it on your own server for your team [1]</td></tr>
-              <tr><th scope="row">Calls your web app makes</th><td>Recorded as you click, with problems flagged</td><td>You build the requests</td></tr>
-              <tr><th scope="row">CORS from the web app</th><td>Sends through the page while recording, or from the extension itself</td><td>An interceptor: the Hoppscotch Agent, a proxy or the browser extension [2]</td></tr>
-              <tr><th scope="row">Realtime clients</th><td>WebSocket and Socket.IO client; WebSocket, Socket.IO and SSE captured, with live rows for fetch, XMLHttpRequest and EventSource streams</td><td>WebSocket, SSE, Socket.IO and MQTT [3]</td></tr>
-              <tr><th scope="row">Source</th><td>Free; MIT licence, repository not public</td><td>Source code open and auditable [1]</td></tr>
+              <tr><th scope="row">Where it runs</th><td data-col="RequestFox">A side panel in Chrome, a sidebar in Firefox</td><td data-col="Hoppscotch">Web, Mac, Windows, Linux and CLI; the web app needs no install [1]</td></tr>
+              <tr><th scope="row">Self-hosting</th><td data-col="RequestFox">Nothing to host: there is no server</td><td data-col="Hoppscotch">Host it on your own server for your team [1]</td></tr>
+              <tr><th scope="row">Calls your web app makes</th><td data-col="RequestFox">Recorded as you click, with problems flagged</td><td data-col="Hoppscotch">You build the requests</td></tr>
+              <tr><th scope="row">CORS from the web app</th><td data-col="RequestFox">Sends through the page while recording, or from the extension itself</td><td data-col="Hoppscotch">An interceptor: the Hoppscotch Agent, a proxy or the browser extension [2]</td></tr>
+              <tr><th scope="row">Realtime clients</th><td data-col="RequestFox">WebSocket and Socket.IO client; WebSocket, Socket.IO and SSE recorded, with live rows for fetch, XMLHttpRequest and EventSource streams</td><td data-col="Hoppscotch">WebSocket, SSE, Socket.IO and MQTT [3]</td></tr>
+              <tr><th scope="row">Source</th><td data-col="RequestFox">Free; MIT licence, repository not public</td><td data-col="Hoppscotch">Source code open and auditable [1]</td></tr>
             </tbody>
           </table>
         </div>
@@ -121,7 +122,7 @@
         <h2 id="requestfox-title">Where RequestFox is different</h2>
         <ul>
           <li>It records what your app really sends and flags the problems, tied to your click.</li>
-          <li>Mock and fault rules change the answers your app receives.</li>
+          <li>Mock and fault rules change the responses your app receives.</li>
           <li>History keeps every session to compare runs, and exports evidence for bug reports.</li>
         </ul>
       </section>
@@ -180,14 +181,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -199,7 +198,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -214,8 +214,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

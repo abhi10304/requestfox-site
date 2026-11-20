@@ -56,7 +56,7 @@
   "url": "https://requestfox.accessisight.com/about.html",
   "about": { "@id": "https://requestfox.accessisight.com/#app" },
   "publisher": { "@id": "https://requestfox.accessisight.com/#publisher" },
-  "dateModified": "2026-11-04"
+  "dateModified": "2026-11-19"
 }
 </script>
 </head>
@@ -71,6 +71,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -79,8 +80,8 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">About</span></li></ol></nav>
       <h1 id="title">About RequestFox and AccessiSight</h1>
-      <p class="answer"><strong>RequestFox</strong> is a free API tester and network monitor for Chrome and Firefox, made by AccessiSight. It runs in your browser: there is no RequestFox server, no account and no analytics, and nothing you capture is sent to us.</p>
-      <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
+      <p class="answer"><strong>RequestFox</strong> is a free API tester and network monitor for Chrome and Firefox, made by AccessiSight. It runs in your browser: there is no RequestFox server, no account and no analytics, and nothing you record is sent to us.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
     </div>
   </section>
 
@@ -115,24 +116,25 @@
 
       <section class="block" id="data" aria-labelledby="data-title">
         <h2 id="data-title">Where your data lives</h2>
-        <p>Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports. Requests you send yourself go to the servers you chose, and nowhere else.</p>
+        <p>Everything RequestFox records stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports. Requests you send yourself go to the servers you chose, and nowhere else.</p>
         <p><a href="privacy.html">The privacy policy, in full</a></p>
       </section>
 
       <section class="block" id="built" aria-labelledby="built-title">
         <h2 id="built-title">How it is built</h2>
         <ul>
-          <li>No AI inside: RequestFox runs no AI model and gives nothing you capture, type or send to any AI service.</li>
+          <li>No AI inside: RequestFox runs no AI model and gives nothing you record, type or send to any AI service.</li>
           <li>The extension ships no third-party code and takes no plugins.</li>
           <li>Works in Google Chrome and Mozilla Firefox, in 14 interface languages.</li>
-          <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
+          <li>It is free. Its code is <a href="licence.html">MIT-licensed</a> and ships readable inside the extension, so you can <a href="privacy.html#check">check it yourself</a>; the source repository is not public.</li>
         </ul>
         <p><a href="changelog.html">What changed in each version</a></p>
       </section>
 
       <section class="block" id="contact" aria-labelledby="contact-title">
         <h2 id="contact-title">Questions and bugs</h2>
-        <p>For a question about privacy or about how the extension behaves, write to the address in section 8 of the <a href="privacy.html#contact">privacy policy</a>. To say what works and what does not, leave a review on the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer">Firefox Add-ons</a> listing.</p>
+        <p>Something not working? Write to us at the address in section 8 of the <a href="privacy.html#contact">privacy policy</a> and say which browser and version, or use Help → Report a problem… in the panel: it copies a short text for you to paste, or opens your own mail program, and sends nothing itself. If Help does not show it, press All tours first. For a question about privacy or about how the extension behaves, write to the same address. If RequestFox helps you, a review on the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=about" rel="noopener noreferrer">Firefox Add-ons</a> helps others find it.</p>
+        <p id="security">Found a security problem? Write to the same address with “RequestFox security” in the subject; you get a reply within 7 days. The address is also in <a href=".well-known/security.txt">security.txt</a>.</p>
       </section>
     </div>
   </div>
@@ -170,14 +172,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -189,7 +189,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -204,8 +205,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

@@ -60,6 +60,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=use-api-developers" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -69,8 +70,8 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">For API developers</span></li></ol></nav>
         <h1 id="title">See how clients really call your API</h1>
-        <p class="answer">RequestFox records what a real web client sends to your API, checks every call against your OpenAPI spec, flags answers whose shape changed, and turns that traffic into requests, checks, CI runs and load tests, all from the browser.</p>
-        <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
+        <p class="answer">RequestFox records what a real web client sends to your API, checks every call against your OpenAPI spec, flags responses whose shape changed, and turns that traffic into requests, checks, CI runs and load tests, all from the browser.</p>
+        <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -95,12 +96,12 @@
     <div class="content">
       <section class="block" id="contract" aria-labelledby="contract-title">
         <h2 id="contract-title">Catch drift between the spec and what ships</h2>
-        <p>Link your OpenAPI 3 or Swagger 2 spec: calls that break it show “Spec mismatch” with the reason, undocumented calls show “Not in spec”, and coverage counts the operations a test touched. Without a spec, SCHEMA CHANGED still marks an answer whose JSON shape changed. <a href="guide-openapi-contract-check.html">How to check against OpenAPI</a>.</p>
+        <p>Link your OpenAPI 3 or Swagger 2 spec: calls that break it show “Spec mismatch” with the reason, undocumented calls show “Not in spec”, and coverage counts the operations a test touched. Without a spec, Schema changed still marks a response whose JSON shape changed. <a href="guide-openapi-contract-check.html">How to check against OpenAPI</a>.</p>
       </section>
 
       <section class="block" id="send" aria-labelledby="send-title">
         <h2 id="send-title">Send, chain and sign</h2>
-        <p>Compose with environments and secret variables, chain values from one answer into the next request, and sign with OAuth 2.0, AWS Signature v4 or an HMAC preset. Import your Postman, Insomnia, Bruno or Hoppscotch collections, or the spec itself, from a file, a folder or a URL, and export collections back out for Bruno, Insomnia or Hoppscotch. Send QUERY requests, sign in with OAuth device code, call SOAP services from a WSDL, or send gRPC-Web and Connect from your own <code>.proto</code> files.</p>
+        <p>Compose with environments and secret variables, chain values from one response into the next request, and sign with OAuth 2.0, AWS Signature v4 or an HMAC preset. Import your Postman, Insomnia, Bruno or Hoppscotch collections, or the spec itself, from a file, a folder or a URL, and export collections back out for Bruno, Insomnia or Hoppscotch. Send QUERY requests, sign in with OAuth device code, call SOAP services from a WSDL, or send gRPC-Web and Connect from your own <code>.proto</code> files.</p>
       </section>
 
       <section class="block" id="load" aria-labelledby="load-title">
@@ -110,7 +111,7 @@
 
       <section class="block" id="security" aria-labelledby="security-title">
         <h2 id="security-title">Passive security checks</h2>
-        <p>Every answer is read for problems such as a token in a URL query, a JWT with alg "none", wildcard CORS with credentials, or card numbers in a response, and flagged SECURITY. These checks only read what was captured; nothing extra is sent.</p>
+        <p>Every response is read for problems such as a token in a URL query, a JWT with alg "none", wildcard CORS with credentials, or card numbers in a response, and flagged Security. These checks only read what was recorded; nothing extra is sent.</p>
       </section>
 
       <section class="block" id="example" aria-labelledby="example-title">
@@ -153,14 +154,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -172,7 +171,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -187,8 +187,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox : testeur d’API et moniteur réseau pour Chrome et Firefox</title>
+<meta name="description" content="Testeur d’API et moniteur réseau gratuit pour Chrome et Firefox : enregistre les appels d’API de votre application, signale ceux qui échouent, sont lents ou en double, les rejoue et les simule." />
+<link rel="canonical" href="https://requestfox.accessisight.com/fr/" />
+<link rel="alternate" hreflang="en" href="https://requestfox.accessisight.com/" />
+<link rel="alternate" hreflang="es" href="https://requestfox.accessisight.com/es/" />
+<link rel="alternate" hreflang="hi" href="https://requestfox.accessisight.com/hi/" />
+<link rel="alternate" hreflang="zh-CN" href="https://requestfox.accessisight.com/zh-cn/" />
+<link rel="alternate" hreflang="ar" href="https://requestfox.accessisight.com/ar/" />
+<link rel="alternate" hreflang="pt-BR" href="https://requestfox.accessisight.com/pt-br/" />
+<link rel="alternate" hreflang="fr" href="https://requestfox.accessisight.com/fr/" />
+<link rel="alternate" hreflang="ru" href="https://requestfox.accessisight.com/ru/" />
+<link rel="alternate" hreflang="ja" href="https://requestfox.accessisight.com/ja/" />
+<link rel="alternate" hreflang="de" href="https://requestfox.accessisight.com/de/" />
+<link rel="alternate" hreflang="ko" href="https://requestfox.accessisight.com/ko/" />
+<link rel="alternate" hreflang="id" href="https://requestfox.accessisight.com/id/" />
+<link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
+<link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
+<link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="../icon128.png" />
+<link rel="icon" href="../icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+<link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="../site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox : testeur d’API et moniteur réseau pour Chrome et Firefox" />
+<meta property="og:description" content="Testeur d’API et moniteur réseau gratuit pour Chrome et Firefox : enregistre les appels d’API de votre application, signale ceux qui échouent, sont lents ou en double, les rejoue et les simule." />
+<meta property="og:url" content="https://requestfox.accessisight.com/fr/" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-index.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox : testeur d’API et moniteur réseau pour Chrome et Firefox" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox : testeur d’API et moniteur réseau pour Chrome et Firefox" />
+<meta name="twitter:description" content="Testeur d’API et moniteur réseau gratuit pour Chrome et Firefox : enregistre les appels d’API de votre application, signale ceux qui échouent, sont lents ou en double, les rejoue et les simule." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-index.jpg" />
+<meta property="og:locale" content="fr_FR" />
+<link rel="preload" as="image" href="../img/recording-light.webp" imagesrcset="../img/recording-light.webp 1x, ../img/recording-light@2x.webp 2x" media="(prefers-color-scheme: light)" fetchpriority="high" />
+<link rel="preload" as="image" href="../img/recording-dark.webp" imagesrcset="../img/recording-dark.webp 1x, ../img/recording-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" fetchpriority="high" />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "@id": "https://requestfox.accessisight.com/#app",
+  "name": "RequestFox",
+  "alternateName": "RequestFox – API Tester & Network Monitor",
+  "description": "A free Chrome and Firefox extension that records the API calls a web app makes while you test it, flags the failed, slow and duplicate ones automatically, and lets you replay, mock and export them.",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "API testing and network monitoring",
+  "operatingSystem": "Google Chrome, Mozilla Firefox",
+  "url": "https://requestfox.accessisight.com/",
+  "image": "https://requestfox.accessisight.com/img/og-index.jpg",
+  "screenshot": "https://requestfox.accessisight.com/img/recording-light.webp",
+  "softwareVersion": "2.5.0",
+  "dateModified": "2026-11-19",
+  "isAccessibleForFree": true,
+  "inLanguage": ["en", "ar", "de", "es", "fr", "hi", "id", "it", "ja", "ko", "pt-BR", "ru", "tr", "zh-CN"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "@id": "https://requestfox.accessisight.com/#publisher", "name": "AccessiSight", "url": "https://requestfox.accessisight.com/" },
+  "author": { "@id": "https://requestfox.accessisight.com/#publisher" },
+  "downloadUrl": ["https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb", "https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/"],
+  "featureList": [
+    "Records fetch, XMLHttpRequest, WebSocket frames and Server-Sent Events across tabs, iframes and popups, including calls a service worker answers",
+    "Shows each call the moment it starts; live streams (fetch, XMLHttpRequest, EventSource) show their events as they arrive and are judged",
+    "Reads the log as cards, a sortable table with response columns, grouped by host, or a session Overview",
+    "Flags failed (4xx/5xx), slow, duplicate and retried requests, N+1 bursts, GraphQL and JSON-RPC errors inside a 200 OK, and 401s caused by an expired JWT, and says why in plain words with what to do",
+    "Detects API contract drift when a response's JSON shape changes, and checks calls against a linked OpenAPI spec or GraphQL schema",
+    "Per-endpoint checks on status, latency, fields, headers, a JSON Schema or XPath",
+    "Replay and edit-and-replay any recorded request",
+    "Mock responses, or make a call fail, slow down or pause for editing; rule sets and mock sets that stay on, request or response rewriting with a script, and slowing the whole tab (Chrome)",
+    "Compose requests with environments, {{variables}}, auth helpers including OAuth 2.0 (with device code), OAuth 1.0a, JWT Bearer signing and AWS Signature v4, saved collections, a cookie jar, and several requests open at once",
+    "Saved response examples and notes on requests, collections and folders",
+    "A WebSocket client with a Socket.IO mode; recorded Socket.IO frames read as events",
+    "Tests MCP servers, reads calls to language-model APIs, and can be driven by a local AI agent over MCP with every send waiting for a click; RequestFox itself runs without any AI model",
+    "Advice on caching and compression, and a check that a response stays the same as last time",
+    "Imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, OpenAPI 3 and Swagger 2 specs, WSDL, HAR files and cURL commands",
+    "Exports an HTML report, HAR, CSV, JSON, a Postman collection, collections for Bruno, Insomnia and Hoppscotch, an API docs page, OpenAPI 3.0, and code in 15 languages",
+    "Generates Playwright and Cypress tests and k6, JMeter, Gatling and Locust load tests from recorded traffic",
+    "Redacts Authorization headers, cookies and secret-shaped fields by default",
+    "Runs entirely in the browser: no account, no server, no analytics"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://requestfox.accessisight.com/#publisher",
+  "name": "AccessiSight",
+  "url": "https://requestfox.accessisight.com/",
+  "logo": "https://requestfox.accessisight.com/icon128.png",
+  "brand": { "@type": "Brand", "name": "RequestFox" },
+  "sameAs": ["https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb", "https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/", "https://www.youtube.com/@RequestFox"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "RequestFox",
+  "url": "https://requestfox.accessisight.com/",
+  "inLanguage": "en",
+  "publisher": { "@type": "Organization", "@id": "https://requestfox.accessisight.com/#publisher", "name": "AccessiSight" }
+}
+</script>
+</head>
+<body class="home">
+<a class="skip" lang="en" href="#main">Skip to content</a>
+<header class="site-header" lang="en">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="../features.html">Features</a>
+      <a href="../guides.html" data-nav="guide">Guides</a>
+      <a href="../compare.html" data-nav="compare">Compare</a>
+      <a href="../faq.html">FAQ</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 id="hero-title">Voyez quel appel d’API est en <span class="badge critical" data-ui>Échec</span>.</h1>
+        <p class="lede">Sans login, fonctionne hors ligne. RequestFox est un testeur d’API et moniteur réseau gratuit, dans un panneau latéral pour Chrome et Firefox. Il enregistre chaque appel de votre application web, signale ceux qui cassent au moment même où ils se produisent, et vous permet de les rejouer, de les simuler et de les tester.</p>
+        <div class="cta">
+          <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer">Ajouter à Chrome, gratuit</a>
+          <a class="btn btn-quiet" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer">Ajouter à Firefox</a>
+        </div>
+        <p class="fine">Pas de compte. Rien ne nous est envoyé. Pas d’IA dedans.</p>
+      </div>
+      <figure class="stage">
+        <div class="stage-shot">
+          <picture>
+            <source srcset="../img/recording-dark.webp 1x, ../img/recording-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" />
+            <img src="../img/recording-light.webp" srcset="../img/recording-light.webp 1x, ../img/recording-light@2x.webp 2x" width="380" height="660" alt="Le panneau latéral de RequestFox enregistrant un paiement : 13 appels, avec une erreur GraphQL dans un 200, un appel de paiement en échec et un 404 signalés" fetchpriority="high" />
+          </picture>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sect stand-full" id="stand" aria-labelledby="stand-title">
+    <div class="wrap">
+      <div class="sect-head">
+        <h2 id="stand-title">Où se situe RequestFox</h2>
+        <p>Chacun de ces outils de test d’API est le bon choix pour une tâche. Choisissez RequestFox quand vous testez une application web et voulez que ses problèmes d’API soient trouvés pour vous, au moment même où ils se produisent.</p>
+      </div>
+      <dl class="stand3">
+        <div><dt>DevTools Network</dt><dd>Liste chaque requête. C’est à vous de juger.</dd></div>
+        <div><dt>Postman, Insomnia, Bruno, Hoppscotch</dt><dd>Envoient les requêtes que vous tapez.</dd></div>
+        <div class="us"><dt>RequestFox</dt><dd>Enregistre ce que votre application envoie vraiment, dit ce qui a cassé, et envoie aussi les vôtres.</dd></div>
+      </dl>
+      <h3 class="jobs-title">Quel outil pour quelle tâche</h3>
+      <ul class="jobs">
+        <li class="us"><p class="job">Tester une application web et faire trouver les problèmes pour vous</p><p class="pick"><strong>RequestFox.</strong> Il enregistre les appels pendant que vous cliquez, signale ce qui a échoué, traîné, été envoyé deux fois ou cassé dans un 200 OK, et garde chaque session.</p></li>
+        <li><p class="job">Un regard brut sur tout ce que fait un chargement de page</p><p class="pick"><strong>Le panneau Réseau des DevTools.</strong> Intégré au navigateur ; vous filtrez et vous lisez. <a href="../compare-devtools.html">RequestFox ou DevTools</a></p></li>
+        <li><p class="job">Concevoir, documenter et partager des API en équipe</p><p class="pick"><strong>Postman ou Insomnia.</strong> RequestFox importe depuis les deux et exporte vers les deux. <a href="../compare-postman.html">RequestFox ou Postman</a> · <a href="../compare-insomnia.html">RequestFox ou Insomnia</a></p></li>
+        <li><p class="job">Des requêtes gardées en simples fichiers dans Git, à côté du code</p><p class="pick"><strong>Bruno.</strong> Dans Chrome, RequestFox peut aussi garder une collection en fichiers dans un dossier lié. <a href="../compare-bruno.html">RequestFox ou Bruno</a></p></li>
+        <li><p class="job">Un client web open source que vous hébergez vous-même</p><p class="pick"><strong>Hoppscotch.</strong> RequestFox n’a rien à héberger : il n’y a pas de serveur. <a href="../compare-hoppscotch.html">RequestFox ou Hoppscotch</a></p></li>
+      </ul>
+      <div class="short">
+        <h3>Là où RequestFox ne suffit pas</h3>
+        <ul>
+          <li>Il voit ce qu’envoie un onglet du navigateur. Les applications mobiles et de bureau demandent un outil proxy comme <a href="../compare-proxy-tools.html">HTTP Toolkit, Proxyman ou Charles</a>.</li>
+          <li>Pas d’espace d’équipe ni de synchronisation cloud, par choix. Partagez votre travail en fichiers : collections, sessions, HAR et rapports.</li>
+          <li>Les scripts ne tournent que dans Chrome : Firefox ne laisse pas les extensions exécuter du code tapé à l’exécution.</li>
+          <li>Pas de client gRPC ou MQTT natif (gRPC-Web et Connect seulement).</li>
+        </ul>
+        <p><a href="../compare.html">Toutes les comparaisons, avec leurs sources</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sect flags" id="flags" aria-labelledby="flags-title">
+    <div class="wrap flags-grid">
+      <div class="flags-copy">
+        <h2 id="flags-title">Chaque problème, nommé en mots simples</h2>
+        <p>Les appels sont jugés dès qu’ils se terminent. Choisissez un signalement pour lire ce que le panneau en dit.</p>
+        <div class="explorer" data-ui>
+          <fieldset class="picks">
+            <legend class="sr">Signalement</legend>
+            <label><input type="radio" name="flag" id="f1" checked /><span class="badge critical">Échec</span></label>
+            <label><input type="radio" name="flag" id="f2" /><span class="badge warning">Lent</span></label>
+            <label><input type="radio" name="flag" id="f3" /><span class="badge critical">Erreur GraphQL</span></label>
+            <label><input type="radio" name="flag" id="f4" /><span class="badge critical">Jeton expiré</span></label>
+            <label><input type="radio" name="flag" id="f5" /><span class="badge info">Schéma modifié</span></label>
+            <label><input type="radio" name="flag" id="f6" /><span class="badge serious">Instable ×3</span></label>
+          </fieldset>
+          <div class="why w1"><p class="call"><b>POST</b> /api/orders <span class="code bad">500</span> <span class="ms">412 ms</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>Le serveur a échoué en répondant (statut 5xx).</p><p class="w-do">Que faire : Consultez les journaux du serveur à ce moment ; « Rejouer » renvoie la même requête pour voir si cela se reproduit.</p></div>
+          <div class="why w2"><p class="call"><b>GET</b> /api/search?q=boots <span class="code">200</span> <span class="ms">3.1 s</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>La réponse a pris plus de temps que votre seuil de lenteur.</p><p class="w-do">Que faire : « Durées », dans « Détails », montre où le temps est passé ; le seuil est dans les Paramètres.</p></div>
+          <div class="why w3"><p class="call"><b>POST</b> /graphql <span class="code">200</span> <span class="ms">96 ms</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>La réponse dit que l’appel a échoué, bien que son statut HTTP soit OK.</p><p class="w-do">Que faire : Lisez l’erreur dans la réponse : le statut seul cache cet échec.</p></div>
+          <div class="why w4"><p class="call"><b>GET</b> /api/me <span class="code bad">401</span> <span class="ms">54 ms</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>L’appel a été refusé et le jeton envoyé avait déjà expiré.</p><p class="w-do">Que faire : Reconnectez-vous ou renouvelez le jeton, puis renvoyez l’appel.</p></div>
+          <div class="why w5"><p class="call"><b>GET</b> /api/cart <span class="code">200</span> <span class="ms">120 ms</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>La structure de la réponse (ses champs et leurs types) n’est plus celle que cet appel renvoyait avant.</p><p class="w-do">Que faire : Ouvrez la différence de structure sur la carte pour voir ce qui a changé.</p></div>
+          <div class="why w6"><p class="call"><b>GET</b> /api/stock/42 <span class="code bad">503</span> <span class="ms">230 ms</span></p><p class="w-h">Pourquoi est-ce signalé ?</p><p>Cet appel a échoué dans certaines sessions enregistrées et réussi dans d’autres.</p><p class="w-do">Que faire : Comparez une réponse en échec et une réponse réussie dans l’Historique.</p></div>
+        </div>
+        <p class="more"><a href="../features.html#flags">Tous les signalements de RequestFox</a></p>
+      </div>
+      <figure class="plate flags-shot">
+        <picture><source srcset="../img/expanded-dark.webp 1x, ../img/expanded-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="../img/expanded-light.webp" srcset="../img/expanded-light.webp 1x, ../img/expanded-light@2x.webp 2x" width="380" height="480" loading="lazy" alt="Un appel en échec (404) ouvert dans le journal : sa réponse JSON, avec Rejouer, Simuler et Plus" /></picture>
+        <figcaption>Un appel en échec, ouvert : sa réponse, avec « Rejouer » à un clic.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="sect inside" id="inside" aria-labelledby="inside-title">
+    <div class="wrap">
+      <h2 id="inside-title">Du signalement à la correction</h2>
+      <article class="row" aria-labelledby="r1">
+        <div class="row-text">
+          <p class="eyebrow">01 Rejouer</p>
+          <h3 id="r1">Rejouez-le, ou modifiez-le d’abord</h3>
+          <p>Renvoyez n’importe quel appel enregistré tel quel, ou modifiez-le dans « Composer ». Environnements, <code>{{variables}}</code>, OAuth 2.0 avec code d’appareil, OAuth 1.0a, JWT Bearer et AWS Signature v4 sont intégrés, et plusieurs requêtes peuvent rester ouvertes à la fois.</p>
+          <p>Gardez des exemples et des notes sur les requêtes et les collections. Un stockage de cookies que vous activez par site emporte une connexion dans vos envois suivants, et le client WebSocket a un mode Socket.IO.</p>
+          <p><a href="../guide-replay-edit-request.html">Comment rejouer et modifier une requête</a></p>
+        </div>
+        <figure class="plate"><picture><source srcset="../img/compose-response-dark.webp 1x, ../img/compose-response-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="../img/compose-response-light.webp" srcset="../img/compose-response-light.webp 1x, ../img/compose-response-light@2x.webp 2x" width="380" height="620" loading="lazy" alt="Composer : une requête et sa réponse JSON indentée, avec les en-têtes ouverts" /></picture></figure>
+      </article>
+      <article class="row flip" aria-labelledby="r2">
+        <div class="row-text">
+          <p class="eyebrow">02 Simuler</p>
+          <h3 id="r2">Simulez-le, cassez-le, ralentissez-le</h3>
+          <p>Ouvrez un appel et appuyez sur « Simuler » : son vrai statut et son vrai corps sont là, prêts à changer. Appuyez encore sur « Simuler », rechargez la page, et la page reçoit votre réponse. Une règle peut aussi faire échouer un appel, le ralentir ou le mettre en pause, sans toucher au backend. Les jeux de règles et les jeux de simulations restent actifs quand vous le voulez.</p>
+          <p>Dans Chrome, vous pouvez aussi ralentir tout l’onglet, ou réécrire une requête ou une réponse avec un script. Les appels que vous avez modifiés portent une étiquette <span class="badge info" data-ui>Simulée</span> ou <span class="badge info" data-ui>Panne injectée</span>, pour que personne ne les prenne pour de vrais bugs.</p>
+          <p><a href="guide-mock-api-response.html">Comment simuler une réponse d’API</a></p>
+        </div>
+        <figure class="plate"><picture><source srcset="../img/mock-dark.webp 1x, ../img/mock-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="../img/mock-light.webp" srcset="../img/mock-light.webp 1x, ../img/mock-light@2x.webp 2x" width="380" height="570" loading="lazy" alt="La boîte de dialogue Simuler d’un appel enregistré : son statut et son corps à modifier, et le bouton Simuler" /></picture></figure>
+      </article>
+      <article class="row" aria-labelledby="r3">
+        <div class="row-text">
+          <p class="eyebrow">03 Tester</p>
+          <h3 id="r3">Vérifiez-le, puis lancez les mêmes vérifications en CI</h3>
+          <p>Ajoutez des contrôles à un endpoint : statut, durée, champs, en-têtes ou un JSON Schema, et enchaînez des requêtes enregistrées en suites. L’outil en ligne de commande à télécharger les exécute dans votre pipeline et fait échouer le build quand un contrôle échoue. Vous recevez aussi des conseils sur le cache et la compression, et un contrôle qu’une réponse reste la même que la dernière fois.</p>
+          <p>Les collections arrivent de Postman, Insomnia, Bruno, Hoppscotch et Thunder Client, OpenAPI 3, Swagger 2, WSDL, HAR et cURL. Elles repartent en collections Postman, collections pour Bruno, Insomnia et Hoppscotch, OpenAPI 3.0, une page de documentation d’API, du code dans 15 langages, ou des scripts Playwright, Cypress, k6, JMeter, Gatling et Locust.</p>
+          <p><a href="../guide-api-checks-in-ci.html">Comment lancer vos vérifications d’API en CI</a></p>
+        </div>
+        <figure class="term">
+          <pre class="cmd"><code><span class="prompt">$</span> node requestfox-ci.mjs assert --config requestfox.config.json
+<span class="ok">✓</span> GET /api/me — status = 200 (actual: 200)
+<span class="ok">✓</span> GET /api/cart — status = 200 (actual: 200)
+<span class="ok">✓</span> GET /api/search?q=boots — status = 200 (actual: 200)
+<span class="no">✖</span> GET /api/search?q=boots — latency &lt; 800ms (actual: 1305) [RF-CHECK-LATENCY]
+<span class="no">✖</span> POST /api/orders — status = 200 (actual: 500) [RF-CHECK-STATUS]
+
+5 assertion(s) checked.</code></pre>
+          <figcaption>Une vraie exécution de l’outil en ligne de commande contre une petite API de boutique de test : deux contrôles échouent, il se termine donc avec le code 1 et le pipeline s’arrête.</figcaption>
+        </figure>
+      </article>
+      <article class="row flip" aria-labelledby="r4">
+        <div class="row-text">
+          <p class="eyebrow">04 Outils d’IA</p>
+          <h3 id="r4">Testez vos outils d’IA, sans IA dedans</h3>
+          <p>RequestFox n’exécute aucun modèle d’IA. Il teste les outils d’IA que vous construisez : « Composer » se connecte à un serveur MCP et appelle ses outils, et un appel à une API de modèle de langage montre le modèle, les nombres de jetons donnés par la réponse, la raison d’arrêt et la durée.</p>
+          <p>Avec le contrôle MCP activé (il est désactivé par défaut), un agent d’IA sur votre propre ordinateur peut enregistrer, rejouer et simuler via RequestFox. Chaque envoi et chaque rejeu attendent votre clic.</p>
+          <p><a href="../features.html#mcp-control">Comment le contrôle MCP reste sûr</a></p>
+        </div>
+        <div class="plate p-note">
+          <div class="dialog" data-ui role="img" aria-label="Le panneau demande : Autoriser cette action MCP ? Un client MCP local demande ceci : Envoyer POST shop.example.com/api/orders. Rien ne se passe sans votre accord. Boutons : Annuler, Autoriser.">
+            <p class="d-chip">Contrôlé par un client MCP local</p>
+            <p class="d-title">Autoriser cette action MCP ?</p>
+            <p class="d-body">Un client MCP local demande ceci : Envoyer <b>POST</b> shop.example.com/api/orders. Rien ne se passe sans votre accord.</p>
+            <p class="d-btns"><span class="d-btn">Annuler</span><span class="d-btn d-main">Autoriser</span></p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sect start" id="start" aria-labelledby="start-title">
+    <div class="wrap">
+      <h2 id="start-title">Appuyez sur <span class="keys"><kbd>Alt</kbd> <kbd>Shift</kbd> <kbd>S</kbd>,</span> puis utilisez votre application.</h2>
+      <div class="start-cols">
+        <p>Chaque fetch, XMLHttpRequest, trame WebSocket et événement envoyé par le serveur apparaît dès qu’il commence, à travers onglets, cadres et fenêtres pop-up, même les appels auxquels répond un service worker.</p>
+        <p>Chaque appel est relié au clic ou à l’envoi de formulaire qui l’a causé, et chaque session est gardée dans l’Historique pour la comparer avec la suivante.</p>
+        <p>Sur un Mac, les touches sont <kbd>Option</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>. Ou ouvrez le panneau latéral et appuyez sur « Démarrer l’enregistrement ». <a href="guide-record-api-calls.html">Comment enregistrer des appels d’API, pas à pas</a></p>
+      </div>
+      <p class="for">Écrit pour <a href="../use-qa-testers.html">les testeurs QA</a>, <a href="../use-frontend-developers.html">les développeurs frontend</a> et <a href="../use-api-developers.html">les développeurs d’API</a>. <a href="../guides.html">Tous les guides</a>, dont <a href="../guide-openapi-contract-check.html">vérifier des appels par rapport à une spécification OpenAPI</a>.</p>
+    </div>
+  </section>
+
+  <section class="sect numbers" id="facts" aria-labelledby="facts-title">
+    <div class="wrap">
+      <h2 id="facts-title" class="sr">Faits</h2>
+      <p class="figures">Il lit les collections de <b>5&nbsp;autres applications d’API</b>, écrit du code dans <b>15&nbsp;langages</b>, transforme un enregistrement en tests pour <b>6&nbsp;outils</b> et parle <b>14&nbsp;langues</b>. Il ne coûte <b>rien</b>.</p>
+      <dl class="spec">
+        <div><dt>Fonctionne dans</dt><dd>Google Chrome (panneau latéral) et Mozilla Firefox (barre latérale)</dd></div>
+        <div><dt>Prix</dt><dd>Gratuit, sans offre payante</dd></div>
+        <div><dt>Compte</dt><dd>Aucun</dd></div>
+        <div><dt>Où vivent vos données</dt><dd>Dans votre navigateur. Il n’y a ni serveur RequestFox ni mesure d’audience.</dd></div>
+        <div><dt>Secrets</dt><dd>En-têtes Authorization, cookies et champs qui ressemblent à des secrets, masqués par défaut</dd></div>
+        <div><dt>Langues de l’interface</dt><dd>14</dd></div>
+        <div><dt>Version</dt><dd>2.5.0, <a href="../changelog.html">ce qui a changé</a></dd></div>
+        <div><dt>Code source</dt><dd>Licence MIT ; dépôt non public</dd></div>
+        <div><dt>Fait par</dt><dd>AccessiSight</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sect questions" id="faq" aria-labelledby="faq-title">
+    <div class="wrap">
+      <h2 id="faq-title">Questions</h2>
+      <div class="qa-open"><h3>RequestFox est-il gratuit ?</h3><div class="a"><p>Oui. RequestFox est gratuit, et notre promesse est écrite ici : rien de ce que vous pouvez utiliser gratuitement aujourd’hui ne deviendra payant plus tard. Il n’a ni publicité, ni compte, ni offre payante.</p></div></div>
+      <div class="qa-open"><h3>RequestFox envoie-t-il mes données quelque part ?</h3><div class="a"><p>Non. Tout ce que RequestFox enregistre reste dans le stockage de votre navigateur, sur votre appareil. Il n’y a ni serveur RequestFox, ni mesure d’audience, ni compte. Les en-têtes Authorization, les cookies et les champs qui ressemblent à des secrets sont masqués par défaut dans tout ce que RequestFox garde, journalise ou exporte (« Composer » montre la réponse à votre propre requête telle qu’elle est arrivée ; sa liste des envois récents garde vos 100 derniers, masqués, sur cet appareil jusqu’à ce que vous appuyiez sur « Effacer »), et l’accès aux sites n’est demandé que quand vous appuyez sur « Démarrer l’enregistrement » ou, pour les sites concernés, quand vous envoyez depuis « Composer » ou lancez une suite de tests sans enregistrement en cours.</p></div></div>
+      <div class="qa-open"><h3>RequestFox utilise-t-il l’IA ?</h3><div class="a"><p>Non. RequestFox n’exécute aucun modèle d’IA. Il peut tester les outils d’IA que vous construisez : des serveurs MCP, et les appels qu’une page fait à une API de modèle de langage. Avec le contrôle MCP activé, désactivé par défaut, un agent d’IA sur votre propre ordinateur peut le piloter, et chaque envoi attend votre clic.</p></div></div>
+      <div class="qa-open"><h3>Existe-t-il une alternative gratuite à Postman qui fonctionne dans le navigateur ?</h3><div class="a"><p>RequestFox est une extension de navigateur gratuite qui compose et envoie des requêtes avec des environnements, des {{variables}}, des aides d’authentification dont OAuth 2.0 et des collections enregistrées, importe les collections de Postman, Insomnia, Bruno, Hoppscotch et Thunder Client, et exporte des collections Postman et des collections pour Bruno, Insomnia et Hoppscotch. Contrairement à un client autonome, il enregistre aussi les appels que votre application web fait vraiment. Il n’a ni espace de travail cloud ni synchronisation d’équipe.</p></div></div>
+      <div class="qa-open"><h3>En quoi RequestFox diffère-t-il du panneau Réseau des DevTools ?</h3><div class="a"><p>Les DevTools montrent chaque requête et vous laissent juger. RequestFox signale les appels en échec, lents, en double et relancés au moment où ils se produisent, relie chacun au clic qui l’a causé, vérifie vos règles par endpoint et garde chaque session pour que vous compariez l’exécution d’aujourd’hui à celle d’hier. Les DevTools sont meilleurs pour une vue brute et en direct de tout ce que charge une page.</p></div></div>
+      <p class="more"><a href="../faq.html">Plus de questions et réponses</a></p>
+    </div>
+  </section>
+
+  <section class="sect final" aria-labelledby="final-title">
+    <div class="wrap">
+      <h2 id="final-title">Ajoutez-le à <a class="word-btn" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer" aria-label="Ajouter RequestFox à Chrome, gratuit">Chrome</a> ou à <a class="word-btn quiet" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer" aria-label="Ajouter RequestFox à Firefox, gratuit">Firefox</a>.</h2>
+      <p>Gratuit, sans offre payante et sans compte.</p>
+    </div>
+  </section>
+</main>
+<footer class="site-footer" lang="en">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../changelog.html">Changelog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=home-fr" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="../guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="../guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="../guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="../cli.html">Command line</a></li>
+            <li><a href="../guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="../compare-postman.html">vs Postman</a></li>
+            <li><a href="../compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="../compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="../compare-bruno.html">vs Bruno</a></li>
+            <li><a href="../compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="../compare-requestly.html">vs Requestly</a></li>
+            <li><a href="../postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="../compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="../use-qa-testers.html">QA testers</a></li>
+            <li><a href="../use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="../use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="../fonts/OFL.txt">SIL Open Font License</a>).</p>
+      <nav class="foot-langs" aria-label="Languages"><p>This page in: <a href="../" hreflang="en" lang="en">English</a> · <a href="../es/" hreflang="es" lang="es">Español</a> · <a href="../hi/" hreflang="hi" lang="hi">हिन्दी</a> · <a href="../zh-cn/" hreflang="zh-CN" lang="zh-CN">中文(简体)</a> · <a href="../ar/" hreflang="ar" lang="ar" dir="rtl">العربية</a> · <a href="../pt-br/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="./" hreflang="fr" lang="fr" aria-current="true">Français</a> · <a href="../ru/" hreflang="ru" lang="ru">Русский</a> · <a href="../ja/" hreflang="ja" lang="ja">日本語</a> · <a href="../de/" hreflang="de" lang="de">Deutsch</a> · <a href="../ko/" hreflang="ko" lang="ko">한국어</a> · <a href="../id/" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="../tr/" hreflang="tr" lang="tr">Türkçe</a> · <a href="../it/" hreflang="it" lang="it">Italiano</a></p></nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

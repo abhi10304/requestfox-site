@@ -60,6 +60,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guides" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -69,7 +70,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Guides</span></li></ol></nav>
       <h1 id="title">API testing guides, step by step</h1>
       <p class="answer">Short, step-by-step answers to the jobs people use RequestFox for. Each one names the buttons as they appear in the panel, and what to do when something does not work.</p>
-      <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
     </div>
   </section>
 
@@ -86,14 +87,30 @@
         <h2 id="all-title">All guides</h2>
         <ul class="cards">
           <li><a href="guide-record-api-calls.html">Record the API calls a website makes</a><p>Start, use the site, read the flags, keep the evidence.</p></li>
-          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a><p>Send a captured call again, as it was or changed.</p></li>
-          <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Your own answer, or a call that fails, drags or pauses.</p></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a><p>Send a recorded call again, as it was or changed.</p></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Your own response, or a call that fails, drags or pauses.</p></li>
+          <li><a href="guide-change-request-headers.html">Change a request header</a><p>Set, remove or rewrite a header or a URL on a site, while you test or all the time.</p></li>
+          <li><a href="guide-slow-down-network.html">Slow down or cut off the network</a><p>One call slow, throttled or offline, or a whole tab on Slow 3G.</p></li>
+          <li><a href="guide-test-websocket.html">Test a WebSocket or Socket.IO server</a><p>Connect, send text, bytes or events, and read why a socket closed.</p></li>
+          <li><a href="guide-cors-blocked-call.html">Find why a call is blocked by CORS</a><p>The rule that failed, what the server really sent, and the fix.</p></li>
+          <li><a href="guide-401-expired-token.html">Tell if a 401 comes from an expired token</a><p>When the token ran out, what the server said, and renewing it in Compose.</p></li>
+          <li><a href="guide-bug-report-evidence.html">Send a bug report with the evidence</a><p>One call, its steps and console, secrets hidden, or a whole session.</p></li>
+          <li><a href="guide-import-postman-collection.html">Import a Postman collection</a><p>Its requests, variables, auth and tests, run in the browser.</p></li>
           <li><a href="guide-openapi-contract-check.html">Check calls against OpenAPI</a><p>Mismatches, calls not in the spec, and coverage.</p></li>
           <li><a href="guide-api-checks-in-ci.html">Run API checks in CI</a><p>A suite, a config file and one command.</p></li>
+          <li><a href="cli.html">The command line</a><p>Every command, flag and config field, and the exit codes.</p></li>
           <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a><p>Edit and Resend, REST client add-ons, and RequestFox.</p></li>
           <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200 OK</a><p>Spot a failed GraphQL call the status hides, and fail a CI run on it.</p></li>
           <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 API calls</a><p>Find calls sent twice, and one request per id in a list.</p></li>
           <li><a href="guide-har-to-postman.html">HAR to Postman</a><p>Three ways to get a browser's calls into Postman, and what to remove first.</p></li>
+          <li><a href="guide-har-file-viewer.html">Open a HAR file offline</a><p>Read every call in a HAR file with the failed, slow and repeated ones flagged, nothing uploaded.</p></li>
+          <li><a href="guide-sanitize-har-file.html">Clean a HAR file before sharing</a><p>What a HAR holds, what Chrome removes, and how RequestFox hides tokens, cookies and passwords.</p></li>
+          <li><a href="guide-test-mcp-server.html">Test an MCP server</a><p>Connect over HTTP, list the tools, call one from a form, and copy the request as cURL.</p></li>
+          <li><a href="guide-intercept-api-calls-chrome.html">Intercept API calls in Chrome</a><p>DevTools overrides and Resend, or an extension: change a response or a request, and the limits.</p></li>
+          <li><a href="guide-copy-as-curl-and-convert.html">Copy as cURL and convert</a><p>Copy a request as cURL, paste it into RequestFox, and copy it out as code in 15 languages.</p></li>
+          <li><a href="guide-test-server-sent-events.html">Test server-sent events</a><p>Send a request to an SSE endpoint, watch events arrive, and see error events and early endings flagged.</p></li>
+          <li><a href="guide-mock-api-playwright-cypress.html">Mock an API for Playwright or Cypress</a><p>How the frameworks mock, and where RequestFox helps: real responses, browser mocks, exported API tests.</p></li>
+          <li><a href="guide-see-api-calls-firefox-edge-safari.html">API calls in Firefox, Edge and Safari</a><p>Where the Network tool is in each browser, and which of them RequestFox runs in.</p></li>
         </ul>
       </section>
 
@@ -101,11 +118,15 @@
         <h2 id="keys-title">Keyboard shortcuts</h2>
         <dl class="spec">
           <div><dt><kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd></dt><dd>Start or stop recording; opens the panel</dd></div>
-          <div><dt><kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>M</kbd></dt><dd>Switch between Full, Background and Mini</dd></div>
-          <div><dt><kbd>Esc</kbd></dt><dd>Close the open panel and go back where you were</dd></div>
+          <div><dt><kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>M</kbd></dt><dd>Switch the panel to Full, Background or Mini</dd></div>
+          <div><dt><kbd>/</kbd></dt><dd>Jump to the search box</dd></div>
+          <div><dt><kbd>F6</kbd> (back: <kbd>Shift</kbd>&nbsp;<kbd>F6</kbd>)</dt><dd>Move to the next part of the panel: top bar, start bar, filters, calls, footer</dd></div>
+          <div><dt><kbd>Ctrl</kbd>&nbsp;<kbd>Enter</kbd> (Mac: <kbd>Cmd</kbd>&nbsp;<kbd>Enter</kbd>)</dt><dd>Send from any Compose field</dd></div>
+          <div><dt><kbd>Ctrl</kbd>&nbsp;<kbd>S</kbd> (Mac: <kbd>Cmd</kbd>&nbsp;<kbd>S</kbd>)</dt><dd>Save the request in Compose: changes go into the saved request; a new one opens Save to collection</dd></div>
+          <div><dt><kbd>Esc</kbd></dt><dd>Close a dialog or menu, or the open panel, and go back where you were</dd></div>
           <div><dt><kbd>Enter</kbd> in Compose's address</dt><dd>Send</dd></div>
         </dl>
-        <p>On a Mac, Option+Shift instead of Alt+Shift. Help → Keyboard shortcuts lists them in the panel; change them at chrome://extensions/shortcuts.</p>
+        <p>On a Mac, Option+Shift instead of Alt+Shift. Help → Keyboard shortcuts lists them in the panel. Change the first two at chrome://extensions/shortcuts (Firefox: about:addons, the gear, Manage Extension Shortcuts).</p>
       </section>
     </div>
   </div>
@@ -142,14 +163,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -161,7 +180,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -176,8 +196,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

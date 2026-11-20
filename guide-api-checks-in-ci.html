@@ -103,6 +103,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-checks-in-ci" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-checks-in-ci" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -113,7 +114,7 @@
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API checks in CI</span></li></ol></nav>
         <h1 id="title">How to run your API checks in CI</h1>
         <p class="answer">Build a suite of saved requests in RequestFox, choose ··· → Export as CI config, then Download the CLI. Commit both files and run <code>node requestfox-ci.mjs assert --config requestfox.config.json</code> in your pipeline: it sends every request for real, checks every rule, and exits non-zero on a failure.</p>
-        <p class="byline">Needs Node 18 or newer. For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
+        <p class="byline">Needs Node 18 or newer. For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -140,11 +141,11 @@
       <section class="block" id="steps" aria-labelledby="steps-title">
         <h2 id="steps-title">Steps</h2>
         <ol class="howto">
-          <li><h3>Make a suite</h3><p>Open Test suites from the top bar's ··· menu, name a suite and add saved requests as steps, in order. Add pass/fail checks on status, time, fields, headers or a JSON Schema.</p></li>
-          <li><h3>Export it as a CI config</h3><p>On the suite's card choose ··· → Export as CI config. You get <code>requestfox.config.json</code>: the steps, what each one extracts, saved auth and the checks that apply.</p></li>
-          <li><h3>Download the CLI</h3><p>Press Download the CLI in the same dialog. You get <code>requestfox-ci.mjs</code>: one file, no dependencies, shipped inside the extension.</p></li>
-          <li><h3>Commit both files</h3><p>Put them next to each other in your repository.</p></li>
-          <li><h3>Run it in the pipeline</h3><p>Add a step that runs <code>node requestfox-ci.mjs assert --config requestfox.config.json --reporter junit --out results.xml</code> and publish results.xml with your CI's JUnit report.</p></li>
+          <li><h3>Make a suite</h3><p>Open <span class="ui">Test suites</span> from the top bar's ··· menu, name a suite and add saved requests as steps, in order. Add pass/fail checks on status, time, fields, headers or a JSON Schema.</p></li>
+          <li><h3>Export it as a CI config</h3><p>On the suite's card choose ··· → <span class="ui">Export as CI config</span>. You get <code>requestfox.config.json</code>: the steps, what each one extracts, saved auth and the checks that apply.</p></li>
+          <li><h3>Download the CLI</h3><p>Press <span class="ui">Download the CLI</span> in the same dialog. You get <code>requestfox-ci.mjs</code>: one file, no dependencies, shipped inside the extension.</p></li>
+          <li data-ui="none"><h3>Commit both files</h3><p>Put them next to each other in your repository.</p></li>
+          <li data-ui="none"><h3>Run it in the pipeline</h3><p>Add a step that runs <code>node requestfox-ci.mjs assert --config requestfox.config.json --reporter junit --out results.xml</code> and publish results.xml with your CI's JUnit report.</p></li>
         </ol>
         <pre class="cmd"><code>node requestfox-ci.mjs assert --config requestfox.config.json --reporter junit --out results.xml</code></pre>
       </section>
@@ -152,29 +153,32 @@
       <section class="block" id="secrets" aria-labelledby="secrets-title">
         <h2 id="secrets-title">Secrets stay out of the file</h2>
         <p>A secret-looking value typed into a body, a query or a header is written as <code>{{env:NAME}}</code>, and the dialog lists the names. Set them as CI secrets; the run stops before any request when one is missing.</p>
+        <p>The command must also name each variable the config may read, so a changed config cannot read the job's other secrets: add <code>--allow-env NAME</code> (names separated by commas, or the flag again; <code>*</code> allows all), or set <code>REQUESTFOX_ALLOW_ENV=NAME,NAME</code>. The command the export dialog shows already carries the names it wrote. Without it the run stops before any request with exit code 2 and one sentence: "This config reads the environment variable NAME. Add --allow-env NAME to the command to allow it."</p>
+        <pre class="cmd"><code>node requestfox-ci.mjs assert --config requestfox.config.json --allow-env API_TOKEN --reporter junit --out results.xml</code></pre>
+        <p>In the log and the JUnit file, values of fields and headers that look like secrets are shown as "hidden". A step with no check fails when the response is 4xx or 5xx.</p>
       </section>
 
       <section class="block" id="more" aria-labelledby="more-title">
         <h2 id="more-title">More commands</h2>
         <ul>
-          <li><code>diff --save-baseline</code>, then <code>diff</code>: fail when an answer's shape changed since the baseline.</li>
+          <li><code>diff --save-baseline</code>, then <code>diff</code>: fail when a response's shape changed since the baseline.</li>
           <li><code>conform --spec openapi.yaml --session session.json</code>: check a recorded session against your spec. <a href="guide-openapi-contract-check.html">How</a>.</li>
           <li><code>loadtest --vus 20 --duration 30s</code>: a local load test from the same config.</li>
           <li><code>probe --spec openapi.yaml --base http://localhost:3000</code>: tests made from your spec. Each case breaks one rule (a wrong type, a missing field, a value out of range) and your API must refuse it with a 4xx; calls that need sign-in are also sent without it. Local APIs only unless you allow otherwise; reads only unless you allow otherwise.</li>
-          <li><code>mock --spec openapi.yaml</code>: a mock API on 127.0.0.1 from your spec; <code>--dynamic</code> varies its answers, and <code>--seed 42</code> repeats them.</li>
+          <li><code>mock --spec openapi.yaml</code>: a mock API on 127.0.0.1 from your spec; <code>--dynamic</code> varies its responses, and <code>--seed 42</code> repeats them.</li>
           <li><code>--http2</code> on assert, diff, loadtest, run and probe: every request goes over HTTP/2, and a server that does not speak it is an error (HTTP/3 is out of scope).</li>
           <li><code>--baseline known.json</code> on assert, run, conform and probe: fail only on findings that are not in the file; <code>--update-baseline</code> writes it. <code>explain RF-SLOW</code> says why a finding code is flagged and what to do.</li>
           <li><code>docs --workspace folder --out docs.html</code>: your saved requests as one API docs page, with no request sent.</li>
         </ul>
-        <p>Run <code>node requestfox-ci.mjs --help</code> for every flag.</p>
+        <p>Every command, flag and config field is on <a href="cli.html">the command line page</a>; in a terminal, <code>node requestfox-ci.mjs &lt;command&gt; --help</code> prints one command's flags.</p>
       </section>
 
       <section class="block" id="newman" aria-labelledby="newman-title">
         <h2 id="newman-title">If you run Postman collections in Newman today</h2>
         <p>Newman is Postman's command-line collection runner: <code>newman run my-collection.json -e my-environment.json</code> [1]. Postman's own documentation now recommends the Postman CLI instead, and says Newman only supports the v2.1 collection format [2]. RequestFox's command-line tool is a different tool, not a drop-in: it does not read Postman collection files. To move a collection across:</p>
         <ol>
-          <li>Import the collection (v2.0 or v2.1) in Compose with Import → Import a collection…</li>
-          <li>Read the import summary. A Postman test made only of status, response-time, header or JSON-field assertions became checks on its request, and a value a script saved from the answer into a variable became a chaining row. Any other script is named in the summary, and RequestFox does not run Postman's <code>pm.*</code> code.</li>
+          <li>Import the collection (v2.0 or v2.1) in <span class="ui">Compose</span> with <span class="ui">Import</span> → <span class="ui">Import a collection…</span></li>
+          <li>Read the import summary. A Postman test made only of status, response-time, header or JSON-field assertions became checks on its request, and a value a script saved from the response into a variable became a chaining row. Any other script is named in the summary, and RequestFox does not run Postman's <code>pm.*</code> code.</li>
           <li>Put the requests in a suite, export it as a CI config and run <code>assert</code> as above.</li>
         </ol>
         <p>Anything a Postman script did beyond that has no equivalent, so check the summary before you switch a pipeline over.</p>
@@ -223,14 +227,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -242,7 +244,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -257,8 +260,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

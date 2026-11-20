@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox CLI: Commands, Flags, Config and Exit Codes</title>
+<meta name="description" content="Every command, flag and config field of requestfox-ci.mjs, the one-file RequestFox command line for CI, its exit codes and how to download it." />
+<link rel="canonical" href="https://requestfox.accessisight.com/cli.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox CLI: Commands, Flags, Config and Exit Codes" />
+<meta property="og:description" content="Every command, flag and config field of requestfox-ci.mjs, the one-file RequestFox command line for CI, its exit codes and how to download it." />
+<meta property="og:url" content="https://requestfox.accessisight.com/cli.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-cli.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox CLI: Commands, Flags, Config and Exit Codes" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox CLI: Commands, Flags, Config and Exit Codes" />
+<meta name="twitter:description" content="Every command, flag and config field of requestfox-ci.mjs, the one-file RequestFox command line for CI, its exit codes and how to download it." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-cli.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Command line",
+      "item": "https://requestfox.accessisight.com/cli.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=cli" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=cli" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Command line</span></li></ol></nav>
+      <h1 id="title">The RequestFox command line</h1>
+      <p class="answer"><code>requestfox-ci.mjs</code> is RequestFox's command line: one file with no dependencies, for Node 18 or newer, that you download from the panel. Run <code>node requestfox-ci.mjs &lt;command&gt;</code> in a terminal or a CI job. It exits 0 when everything passed, 1 when a check or finding failed, and 2 when the command could not run.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#get">Get the file</a></li>
+        <li><a href="#commands">Commands</a></li>
+        <li><a href="#exit">Exit codes</a></li>
+        <li><a href="#secrets">Environment variables</a></li>
+        <li><a href="#config">The config file</a></li>
+        <li><a href="#flags">Flags several commands share</a></li>
+        <li><a href="#help">Help in the terminal</a></li>
+        <li><a href="#next">Next</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="get" aria-labelledby="get-title">
+        <h2 id="get-title">Get the file</h2>
+        <p>The command line ships inside the extension, so there is nothing to install and its version is the extension's. Two buttons save it:</p>
+        <ul>
+          <li>From a test suite: on the suite's card choose ··· → Export as CI config, then press Download the CLI in the dialog. You get <code>requestfox.config.json</code> and <code>requestfox-ci.mjs</code>. <a href="guide-api-checks-in-ci.html">The CI guide</a> goes through it step by step.</li>
+          <li>From <span class="ui">Settings → Sign-in, cookies &amp; connections → MCP control</span>: press <span class="ui">Download the CLI</span>.</li>
+        </ul>
+        <p>Put the file next to your config and check that it runs:</p>
+        <pre class="cmd"><code>node requestfox-ci.mjs --version</code></pre>
+        <p>It prints <code>requestfox-ci 2.5.0</code>.</p>
+      </section>
+
+      <section class="block" id="commands" aria-labelledby="commands-title">
+        <h2 id="commands-title">Commands</h2>
+        <p>Twelve commands. Each line shows the flags it needs; <code>node requestfox-ci.mjs &lt;command&gt; --help</code> prints all of its flags.</p>
+        <div class="table-wrap" role="region" aria-labelledby="commands-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Command</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>assert --config &lt;file&gt;</code></th><td>Sends every request in the config for real and checks every rule. A step with no check fails when the response is 4xx or 5xx.</td></tr>
+              <tr><th scope="row"><code>diff --config &lt;file&gt;</code></th><td>Compares each response's shape with a saved baseline. <code>--save-baseline</code> writes the baseline first.</td></tr>
+              <tr><th scope="row"><code>run &lt;folder&gt;</code></th><td>Runs a workspace folder (the one RequestFox keeps for git) or a <code>workspace.json</code>, suite by suite. <code>--suite</code> and <code>--env</code> pick one suite and one environment.</td></tr>
+              <tr><th scope="row"><code>loadtest --config &lt;file&gt;</code></th><td>Sends the config's requests from many virtual users (<code>--vus 10 --duration 30s</code>), at a fixed rate (<code>--rate 50</code>), or in steps until the API slows down (<code>--find-breakpoint</code>). Load-test only a system you own or have permission to test.</td></tr>
+              <tr><th scope="row"><code>merge-results --file &lt;file&gt; --file &lt;file&gt;</code></th><td>Combines <code>loadtest --json</code> files written on several machines into one result.</td></tr>
+              <tr><th scope="row"><code>conform --spec &lt;file&gt; --session &lt;file&gt;</code></th><td>Checks a recorded session or HAR against an OpenAPI spec, or against a GraphQL schema with <code>--graphql-schema</code>. Exit 1 on a mismatch or a call that is not in the spec. <a href="guide-openapi-contract-check.html">How</a>.</td></tr>
+              <tr><th scope="row"><code>probe --spec &lt;file&gt; --base &lt;address&gt;</code></th><td>Makes tests from an OpenAPI spec and sends them: each case breaks one rule, and your API must refuse it with a 4xx. Careful by default: this computer only, GET, HEAD, OPTIONS and QUERY only, 5 requests a second and at most 200 cases, unless you allow more.</td></tr>
+              <tr><th scope="row"><code>mock --spec &lt;file&gt;</code></th><td>A local mock server on 127.0.0.1, from a spec, from a recorded session (<code>--session</code>) or from a workspace's saved examples (<code>--workspace</code>). <code>--dynamic</code> varies the responses; <code>--seed 42</code> repeats them.</td></tr>
+              <tr><th scope="row"><code>docs --workspace &lt;folder&gt; --out docs.html</code></th><td>Your saved collections as one HTML page of API docs, with no request sent. Passwords, tokens and keys become <code>{{variables}}</code>.</td></tr>
+              <tr><th scope="row"><code>device-login --device-url &lt;address&gt; --token-url &lt;address&gt; --client-id &lt;id&gt;</code></th><td>OAuth 2.0 device code sign-in: shows the page and the code, waits for you to approve, and prints the access token.</td></tr>
+              <tr><th scope="row"><code>explain &lt;code&gt;</code></th><td>What a finding code such as RF-SLOW means, why it is flagged and what to do. With no code it lists them all.</td></tr>
+              <tr><th scope="row"><code>mcp --http &lt;port&gt; --control</code></th><td>RequestFox's MCP server, for an AI tool on this computer, over stdio or, with <code>--http</code>, over HTTP on 127.0.0.1. <code>--control</code> lets the panel pair with it (<span class="ui">Settings → MCP control</span>). RequestFox runs no AI model.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="exit" aria-labelledby="exit-title">
+        <h2 id="exit-title">Exit codes</h2>
+        <div class="table-wrap" role="region" aria-labelledby="exit-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Code</th><th scope="col">Means</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">0</th><td>Everything passed.</td></tr>
+              <tr><th scope="row">1</th><td>A check or a finding failed. A load test fails only on a threshold; with none it exits 0.</td></tr>
+              <tr><th scope="row">2</th><td>The command could not run, for example: an unknown flag, a config that does not load, a missing baseline, scripts without <code>--allow-scripts</code>, or an environment variable that is not allowed.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="secrets" aria-labelledby="secrets-title">
+        <h2 id="secrets-title">Environment variables and secrets</h2>
+        <p>A config reads a secret as <code>{{env:NAME}}</code>, so the value stays out of the file. The command must name each variable it may read: add <code>--allow-env NAME</code> (names separated by commas, or the flag again; <code>*</code> allows all), or set <code>REQUESTFOX_ALLOW_ENV=NAME,NAME</code>. Without it the run stops before any request, with exit code 2 and one sentence that names the variable.</p>
+        <pre class="cmd"><code>node requestfox-ci.mjs assert --config requestfox.config.json --allow-env API_TOKEN</code></pre>
+        <p>In the log and the JUnit file, values of fields and headers that look like secrets are shown as "hidden".</p>
+      </section>
+
+      <section class="block" id="config" aria-labelledby="config-title">
+        <h2 id="config-title">The config file</h2>
+        <p><code>assert</code>, <code>diff</code> and <code>loadtest</code> read <code>requestfox.config.json</code> (<code>--config &lt;file&gt;</code>). A suite card's ··· → Export as CI config writes one; you can also write it by hand. A small one:</p>
+        <pre class="cmd"><code>{
+  "baseUrl": "http://localhost:3000",
+  "requests": [
+    { "name": "List users", "method": "GET", "path": "/users" }
+  ],
+  "assertions": [
+    { "pattern": "/users", "type": "status", "op": "=", "value": 200 },
+    { "pattern": "/users", "type": "latency", "op": "&lt;", "value": 800 }
+  ]
+}</code></pre>
+
+        <h3 id="config-top">Top level</h3>
+        <div class="table-wrap" role="region" aria-labelledby="config-top" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Field</th><th scope="col">What it is</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>baseUrl</code></th><td>Required. A full address, like http://localhost:3000. <code>{{env:NAME}}</code> and <code>{{name}}</code> from <code>variables</code> work in it.</td></tr>
+              <tr><th scope="row"><code>requests</code></th><td>Required for assert and diff: the steps, in order (fields below).</td></tr>
+              <tr><th scope="row"><code>variables</code></th><td><code>{ "name": "value" }</code>, used as <code>{{name}}</code> in any step.</td></tr>
+              <tr><th scope="row"><code>data</code></th><td>Rows for a data-driven run, <code>[{ "sku": "A-1" }, ...]</code>: the steps run once per row, each row's fields as <code>{{sku}}</code>.</td></tr>
+              <tr><th scope="row"><code>dataFile</code></th><td>The same rows from a CSV or JSON file beside the config.</td></tr>
+              <tr><th scope="row"><code>assertions</code></th><td>The checks (fields below). A step that no check applies to fails on a 4xx or 5xx.</td></tr>
+              <tr><th scope="row"><code>timeoutMs</code></th><td>Time limit for each request, in ms.</td></tr>
+              <tr><th scope="row"><code>scriptTimeoutMs</code></th><td>Time limit for each script, in ms.</td></tr>
+              <tr><th scope="row"><code>delayMs</code></th><td>Wait between steps, 0 to 60000 ms (<code>--delay-ms</code>).</td></tr>
+              <tr><th scope="row"><code>bail</code></th><td><code>true</code>: stop at the first failure (<code>--bail</code>).</td></tr>
+              <tr><th scope="row"><code>iterations</code></th><td>Repeat the whole run 1 to 100 times (<code>--iterations</code>).</td></tr>
+              <tr><th scope="row"><code>retryCount</code></th><td>Send a step that did not pass again, 0 to 10 times.</td></tr>
+              <tr><th scope="row"><code>httpErrors</code></th><td><code>false</code>: a 4xx or 5xx fails a step only through a check.</td></tr>
+              <tr><th scope="row"><code>bodyErrors</code></th><td><code>false</code>: an error inside a 2xx response (GraphQL, JSON-RPC) does not fail the step.</td></tr>
+              <tr><th scope="row"><code>security</code></th><td><code>false</code>: no security scan of the responses. <code>"securityHeaders": false</code> leaves out the header checks; <code>"securityHeuristics": true</code> adds the guesses.</td></tr>
+              <tr><th scope="row"><code>failOnSecurity</code></th><td><code>true</code>: a security finding fails the run.</td></tr>
+              <tr><th scope="row"><code>baselineFile</code></th><td>Where diff keeps the shapes (by default <code>.requestfox-baseline.json</code> beside the config).</td></tr>
+              <tr><th scope="row"><code>name</code></th><td>The run's name in the reports.</td></tr>
+              <tr><th scope="row"><code>loadTest</code></th><td>loadtest's own options (below).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="config-request">Each request</h3>
+        <div class="table-wrap" role="region" aria-labelledby="config-request" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Field</th><th scope="col">What it is</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>name</code></th><td>The step's name in the log and the reports.</td></tr>
+              <tr><th scope="row"><code>method</code>, <code>path</code></th><td><code>"GET"</code> and <code>"/users/42"</code>, added to baseUrl (a full address works too).</td></tr>
+              <tr><th scope="row"><code>headers</code></th><td><code>{ "Name": "value" }</code></td></tr>
+              <tr><th scope="row"><code>body</code></th><td>The body: text, or a JSON value.</td></tr>
+              <tr><th scope="row"><code>auth</code></th><td>The sign-in an exported suite carries, like <code>{ "type": "bearer", ... }</code>.</td></tr>
+              <tr><th scope="row"><code>extract</code></th><td>Values to save from the response, used as <code>{{name}}</code> by later steps.</td></tr>
+              <tr><th scope="row"><code>pathVariables</code></th><td>Values for the <code>:name</code> parts of the path.</td></tr>
+              <tr><th scope="row"><code>preRequestScript</code>, <code>postResponseScript</code></th><td>Scripts; they need <code>--allow-scripts</code>.</td></tr>
+              <tr><th scope="row"><code>timeoutMs</code></th><td>This request's own time limit, in ms.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="config-check">Each check in "assertions"</h3>
+        <div class="table-wrap" role="region" aria-labelledby="config-check" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Field</th><th scope="col">What it is</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>pattern</code></th><td>Part of the request addresses it applies to, like <code>"/users"</code>.</td></tr>
+              <tr><th scope="row"><code>type</code></th><td>status, latency, field, header, xpath, schema or same.</td></tr>
+              <tr><th scope="row"><code>path</code></th><td>The field (like <code>data.items[0].id</code>), the header name or the XPath.</td></tr>
+              <tr><th scope="row"><code>op</code></th><td><code>=</code> <code>!=</code> <code>&lt;</code> <code>&lt;=</code> <code>&gt;</code> <code>&gt;=</code> <code>exists</code> <code>notexists</code> <code>contains</code> <code>notcontains</code> <code>matches</code></td></tr>
+              <tr><th scope="row"><code>value</code></th><td>What to compare with.</td></tr>
+              <tr><th scope="row"><code>enabled</code></th><td><code>false</code>: switched off (counted once in the summary).</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 id="config-load">"loadTest"</h3>
+        <div class="table-wrap" role="region" aria-labelledby="config-load" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Field</th><th scope="col">What it is</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>vus</code>, <code>durationSec</code>, <code>rampUpSec</code>, <code>iterations</code></th><td>Virtual users, how long, the ramp-up, and runs per user.</td></tr>
+              <tr><th scope="row"><code>stages</code></th><td><code>[{ "duration": "30s", "targetVus": 10 }, ...]</code> in place of vus and durationSec.</td></tr>
+              <tr><th scope="row"><code>arrivalRate</code></th><td><code>{ "ratePerSec": 50, "maxVus": 100 }</code>: a fixed rate (the open model).</td></tr>
+              <tr><th scope="row"><code>thresholds</code></th><td>p95, p99, maxLatencyMs, errorRatePct, droppedIterationsPct: the run fails when one is passed. With none, loadtest always exits 0.</td></tr>
+              <tr><th scope="row"><code>requests</code>, <code>data</code>, <code>dataFile</code></th><td>The load test's own steps and rows (otherwise the top-level ones).</td></tr>
+              <tr><th scope="row"><code>healthCheck</code></th><td><code>{ "path": "/health", "intervalSec": 5 }</code>: checked while the test runs.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="flags" aria-labelledby="flags-title">
+        <h2 id="flags-title">Flags several commands share</h2>
+        <div class="table-wrap" role="region" aria-labelledby="flags-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">Flag</th><th scope="col">What it does</th></tr></thead>
+            <tbody>
+              <tr><th scope="row"><code>--var name=value</code></th><td>Sets <code>{{name}}</code> for this run; give the flag again for more. Commands: assert, diff, loadtest and run.</td></tr>
+              <tr><th scope="row"><code>--allow-env NAME</code></th><td>Lets the config read these environment variables (above). Commands: assert, diff, loadtest, run and mcp.</td></tr>
+              <tr><th scope="row"><code>--allow-scripts</code></th><td>Runs the pre-request and post-response scripts a config or folder holds; without it, one with scripts is refused. A script runs in a worker thread with its Node powers removed, but that is not a security sandbox: use it only for files you trust. Commands: assert, diff, run and mcp.</td></tr>
+              <tr><th scope="row"><code>--reporter junit</code></th><td>Writes a JUnit XML report to the file <code>--out</code> names, for your CI's test view. assert and run also write json and html: <code>--reporter junit,json,html</code>. Commands: assert, diff, run and conform.</td></tr>
+              <tr><th scope="row"><code>--baseline &lt;file&gt;</code>, <code>--update-baseline</code></th><td>Fails only on findings that are not in the file; <code>--update-baseline</code> writes this run's findings to it instead. Commit it: it holds codes and places only, no values or secrets. Commands: assert, run, conform and probe.</td></tr>
+              <tr><th scope="row"><code>--http2</code></th><td>Sends every request over HTTP/2: h2 on an https address, h2c on an http one. A server that does not speak it is an error, never a quiet fall-back to HTTP/1.1. Commands: assert, diff, loadtest, run and probe.</td></tr>
+              <tr><th scope="row"><code>--cert &lt;file&gt;</code>, <code>--key &lt;file&gt;</code></th><td>A client certificate (mTLS). Commands: assert, diff, loadtest, run and probe.</td></tr>
+              <tr><th scope="row"><code>--ca &lt;file&gt;</code></th><td>Trusts a private certificate authority as well; give it again for more. Commands: assert, diff, loadtest, run and probe.</td></tr>
+              <tr><th scope="row"><code>--proxy &lt;address&gt;</code></th><td>Goes through an http proxy. Commands: assert, diff, loadtest, run and probe.</td></tr>
+              <tr><th scope="row"><code>--insecure</code></th><td>Skips certificate checks, for a staging server only. Commands: assert, diff, loadtest, run and probe.</td></tr>
+              <tr><th scope="row"><code>--location-trusted</code></th><td>On a redirect to another site, sends the credential headers (Authorization, Cookie, API keys) on too. Without it they stay behind and one line says so. Commands: assert, diff, loadtest and run.</td></tr>
+              <tr><th scope="row"><code>--cookie-jar &lt;file&gt;</code></th><td>Keeps cookies between requests, like a browser: read from the file, updated by each response and written back when the run ends. Values are never printed; keep the file out of git. Commands: assert and run.</td></tr>
+              <tr><th scope="row"><code>--data &lt;file&gt;</code></th><td>Runs the steps once per row of a CSV file (its first line names the columns) or a JSON list of objects, in place of the config's own rows. A missing, empty or broken file stops the run before any request. Commands: assert and run.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="help" aria-labelledby="help-title">
+        <h2 id="help-title">Help in the terminal</h2>
+        <p>The file carries the same help, so you can read it offline:</p>
+        <ul>
+          <li><code>node requestfox-ci.mjs --help</code>: every command on one screen, and the exit codes.</li>
+          <li><code>node requestfox-ci.mjs assert --help</code>: one command and all of its flags.</li>
+          <li><code>node requestfox-ci.mjs help config</code>: the config file's fields, as in the tables above.</li>
+          <li><code>node requestfox-ci.mjs explain RF-SLOW</code>: what a finding code on a failure line means.</li>
+          <li><code>node requestfox-ci.mjs mcp --help</code>: the MCP server's flags.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">Next</h2>
+        <ul class="cards">
+          <li><a href="guide-api-checks-in-ci.html">Run API checks in CI</a><p>A suite, a config file and one command.</p></li>
+          <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a><p>Live calls versus your spec, with coverage.</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=cli" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=cli" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
+    </div>
+  </div>
+</footer>
+</body>
+</html>

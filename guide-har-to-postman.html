@@ -21,14 +21,14 @@
 <meta property="og:title" content="HAR to Postman: Three Ways, and What to Remove First" />
 <meta property="og:description" content="Turn a HAR file or a recording into a Postman collection: DevTools cURL, RequestFox, and what to remove from a HAR first. Sourced and dated." />
 <meta property="og:url" content="https://requestfox.accessisight.com/guide-har-to-postman.html" />
-<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-har-to-postman.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="HAR to Postman: Three Ways, and What to Remove First" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="HAR to Postman: Three Ways, and What to Remove First" />
 <meta name="twitter:description" content="Turn a HAR file or a recording into a Postman collection: DevTools cURL, RequestFox, and what to remove from a HAR first. Sourced and dated." />
-<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-har-to-postman.jpg" />
 <meta property="og:locale" content="en_US" />
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -66,6 +66,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-har-to-postman" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-har-to-postman" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -75,7 +76,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">HAR to Postman</span></li></ol></nav>
       <h1 id="title">HAR to Postman: three ways to get your browser's API calls into Postman</h1>
       <p class="answer">Postman's import page lists Postman files, API specs, cURL commands and other API clients. A HAR file is not on the list [1]. Three routes end in something Postman does list: copy a call as cURL in DevTools and import it; read the HAR in <strong>RequestFox</strong>, a browser extension, and export a Postman collection; or skip the HAR, record the calls in RequestFox and export the collection. A HAR can hold cookies and tokens, so read it before you share it.</p>
-      <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>. Facts about Postman and browsers are from their own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about Postman and browsers are from their own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
     </div>
   </section>
 
@@ -121,8 +122,8 @@
       <section class="block" id="har" aria-labelledby="har-title">
         <h2 id="har-title">Way 2: how do I turn a HAR file into a Postman collection with RequestFox?</h2>
         <ol>
-          <li>In RequestFox, open Compose, go to Import &amp; export and press Import a collection…. Pick the <code>.har</code> file. RequestFox saves the requests in it as a collection you can send, copy as code or edit.</li>
-          <li>Open the collection's More menu and choose Export to Postman…. If the collection holds a real token, password, API key or cookie, RequestFox asks first. The default button, Export without credentials, writes each one as a <code>{{variable}}</code> for you to fill in.</li>
+          <li>In RequestFox, open <span class="ui">Compose</span>, open <span class="ui">Import</span> and press <span class="ui">Import a collection…</span>. Pick the <code>.har</code> file. RequestFox saves the requests in it as a collection you can send, copy as code or edit.</li>
+          <li>Open the collection's <span class="ui">More</span> menu and choose <span class="ui">Export…</span>, then <span class="ui">Postman</span>. If the collection holds a real token, password, API key or cookie, RequestFox asks first. The default button, <span class="ui">Export without credentials</span>, writes each one as a <code>{{variable}}</code> for you to fill in.</li>
           <li>In Postman, choose Use resources or import, open the Import tab and pick the file [1]. The file is a Postman Collection v2.1.</li>
         </ol>
         <p>Reading a HAR, RequestFox leaves out the Cookie header, Host, Connection, Content-Length and HTTP/2 pseudo-headers. It keeps the other headers, Authorization included, so take secrets out of the HAR first or let the export remove them.</p>
@@ -130,12 +131,12 @@
 
       <section class="block" id="record" aria-labelledby="record-title">
         <h2 id="record-title">Way 3: how do I skip the HAR and record in RequestFox?</h2>
-        <p>If you can reproduce the flow, record it again. Press Start in RequestFox, use the site, press Stop, then press Export (bottom right) and choose Postman Collection. Sessions you recorded earlier are in History: on a session, ··· More → Postman. No HAR file with your tokens in it is needed, and RequestFox redacts Authorization headers, cookies and secret-shaped fields by default in what you view or export. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
+        <p>If you can reproduce the flow, record it again. Press Start in RequestFox, use the site, press Stop, then press Export (bottom right) and choose Postman collection. Sessions you recorded earlier are in History: on a session, ··· More → Postman collection, the same words as the Export menu. No HAR file with your tokens in it is needed, and RequestFox redacts Authorization headers, cookies and secret-shaped fields by default in what you view or export. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
       </section>
 
       <section class="block" id="remove" aria-labelledby="remove-title">
         <h2 id="remove-title">What should I remove from a HAR file before I share it?</h2>
-        <p>A HAR is a copy of what your browser sent and received. Chrome leaves Cookie, Set-Cookie and Authorization headers out of the file by default, and only includes them if you turn on a setting and choose the "with sensitive data" export [2]. Tokens can also sit in an address, a request body or an answer, so read the file before you send it to anyone. If you use Firefox, check what its file holds.</p>
+        <p>A HAR is a copy of what your browser sent and received. Chrome leaves Cookie, Set-Cookie and Authorization headers out of the file by default, and only includes them if you turn on a setting and choose the "with sensitive data" export [2]. Tokens can also sit in an address, a request body or a response, so read the file before you send it to anyone. If you use Firefox, check what its file holds.</p>
         <p>RequestFox's Security mark flags some of these as you record, such as a token in an address.</p>
       </section>
 
@@ -152,9 +153,9 @@
       <section class="block" id="next" aria-labelledby="next-title">
         <h2 id="next-title">Next</h2>
         <ul class="cards">
-          <li><a href="postman-interceptor-alternative.html">Postman Interceptor alternative</a><p>Capture in the browser on its own, or hand the capture to Postman.</p></li>
+          <li><a href="postman-interceptor-alternative.html">Postman Interceptor alternative</a><p>Record in the browser on its own, or hand the traffic to Postman.</p></li>
           <li><a href="guide-record-api-calls.html">Record API calls</a><p>Start, use the site, read the flags, keep the evidence.</p></li>
-          <li><a href="compare-postman.html">RequestFox vs Postman</a><p>Browser capture and flags, or team workspaces and more protocols.</p></li>
+          <li><a href="compare-postman.html">RequestFox vs Postman</a><p>Browser recording and flags, or team workspaces and more protocols.</p></li>
         </ul>
       </section>
     </div>
@@ -192,14 +193,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -211,7 +210,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -226,8 +226,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

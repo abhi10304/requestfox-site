@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Test an MCP Server in Your Browser: Tools and Resources</title>
+<meta name="description" content="Connect to an MCP server over HTTP from Chrome or Firefox, call a tool from a form, and copy the request as cURL. RequestFox runs no AI model." />
+<link rel="canonical" href="https://requestfox.accessisight.com/guide-test-mcp-server.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="Test an MCP Server in Your Browser: Tools and Resources" />
+<meta property="og:description" content="Connect to an MCP server over HTTP from Chrome or Firefox, call a tool from a form, and copy the request as cURL. RequestFox runs no AI model." />
+<meta property="og:url" content="https://requestfox.accessisight.com/guide-test-mcp-server.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Test an MCP Server in Your Browser: Tools and Resources" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Test an MCP Server in Your Browser: Tools and Resources" />
+<meta name="twitter:description" content="Connect to an MCP server over HTTP from Chrome or Firefox, call a tool from a form, and copy the request as cURL. RequestFox runs no AI model." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Test an MCP server",
+      "item": "https://requestfox.accessisight.com/guide-test-mcp-server.html"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to test an MCP server from your browser",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Choose the MCP server body type",
+      "text": "Press Compose in the top bar, open the Body tab and set Body type to MCP server. The tester works over Streamable HTTP, with MCP 2026-07-28 servers and 2025 ones."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Type the address and connect",
+      "text": "Type the server's address in the URL box. It needs to be an http:// or https:// address. Press Connect. The line under it says what RequestFox is asking, then which server you are connected to and which MCP version it speaks."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Pick a tool, a resource or a prompt",
+      "text": "The three lists are Tools, Resources and Prompts, each headed with its count. A tool marked Read-only or Changes data says so. Press Refresh lists if the server's lists changed."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Fill in the arguments",
+      "text": "Under Arguments RequestFox builds a form from the tool's input schema and marks each required field. Edit as JSON switches to raw JSON, and Edit as form back again."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Call it and read the response",
+      "text": "Press Call tool (Read for a resource, Get prompt for a prompt). The badge says Result, Tool error (the tool ran and reported an error) or an error code from the server. If the tool has an output schema, RequestFox says whether the result matches it. The Messages list under the result shows everything that went over the wire."
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide" aria-current="true">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Test an MCP server</span></li></ol></nav>
+      <h1 id="title">How to test an MCP server from your browser</h1>
+      <p class="answer">In RequestFox, a browser extension for Chrome and Firefox, open Compose, set the body type to MCP server, type the server's address (it often ends in /mcp) and press Connect. RequestFox lists the server's tools, resources and prompts. Pick a tool, fill the form it builds from the tool's input schema, and press Call tool to read the response. The requests are plain JSON-RPC over HTTP, and RequestFox runs no AI model: it sends only what you pick.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about the MCP Inspector are from its own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#steps">Steps</a></li>
+        <li><a href="#copy">Copy the request</a></li>
+        <li><a href="#fails">If it does not connect</a></li>
+        <li><a href="#inspector">RequestFox or the MCP Inspector?</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#next">Next</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="steps" aria-labelledby="steps-title">
+        <h2 id="steps-title">How do I test an MCP server?</h2>
+        <ol class="howto">
+          <li><h3>Choose the MCP server body type</h3><p>Press <span class="ui">Compose</span> in the top bar, open the <span class="ui">Body</span> tab and set <span class="ui">Body type</span> to <span class="ui">MCP server</span>. The tester works over Streamable HTTP, with MCP 2026-07-28 servers and 2025 ones.</p></li>
+          <li><h3>Type the address and connect</h3><p>Type the server's address in the URL box. It needs to be an <code>http://</code> or <code>https://</code> address. Press <span class="ui">Connect</span>. The line under it says what RequestFox is asking, then which server you are connected to and which MCP version it speaks.</p></li>
+          <li><h3>Pick a tool, a resource or a prompt</h3><p>The three lists are Tools, Resources and Prompts, each headed with its count. A tool marked <span class="ui">Read-only</span> or <span class="ui">Changes data</span> says so. Press <span class="ui">Refresh lists</span> if the server's lists changed.</p></li>
+          <li><h3>Fill in the arguments</h3><p>Under <span class="ui">Arguments</span> RequestFox builds a form from the tool's input schema and marks each required field. <span class="ui">Edit as JSON</span> switches to raw JSON, and <span class="ui">Edit as form</span> back again.</p></li>
+          <li><h3>Call it and read the response</h3><p>Press <span class="ui">Call tool</span> (<span class="ui">Read</span> for a resource, <span class="ui">Get prompt</span> for a prompt). The badge says <span class="ui">Result</span>, <span class="ui">Tool error</span> (the tool ran and reported an error) or an error code from the server. If the tool has an output schema, RequestFox says whether the result matches it. The Messages list under the result shows everything that went over the wire.</p></li>
+        </ol>
+      </section>
+
+      <section class="block" id="copy" aria-labelledby="copy-title">
+        <h2 id="copy-title">Can I copy what was sent?</h2>
+        <p>Yes. Under a result press <span class="ui">Copy as request</span>. The dialog shows the JSON-RPC request RequestFox sent for that call, with secrets hidden, and offers it as <span class="ui">Copy as cURL</span> or <span class="ui">Copy as JSON</span>. Paste it into a bug report, or run the cURL command to reproduce the call outside the browser.</p>
+      </section>
+
+      <section class="block" id="fails" aria-labelledby="fails-title">
+        <h2 id="fails-title">What if it does not connect?</h2>
+        <ul>
+          <li><strong>Nothing answers.</strong> Is the server running, and is the address right? RequestFox says the server did not answer. A 404 usually means the path: it often ends in <code>/mcp</code>.</li>
+          <li><strong>The server wants a sign-in (HTTP 401).</strong> Press <span class="ui">Sign in…</span> to sign in with the server's own sign-in server, or set a token in the Auth tab. RequestFox asks before it goes to a sign-in server, and says at which step a sign-in stopped.</li>
+          <li><strong>HTTP 403.</strong> Check the Auth tab. A server on your own computer may also refuse the browser's Origin header; allow it in the server.</li>
+          <li><strong>You are offline, or RequestFox has no permission for the site.</strong> It says so; allow the site when the browser asks, then connect again.</li>
+          <li><strong>An old server.</strong> If the server does not answer a POST, RequestFox tries the older HTTP+SSE transport (2024-11-05) before it gives up.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="inspector" aria-labelledby="inspector-title">
+        <h2 id="inspector-title">Should I use RequestFox or the MCP Inspector?</h2>
+        <p>The MCP Inspector is the project's reference tool for testing and debugging MCP servers. It runs through <code>npx</code> on your computer, in a browser, on the command line or in a terminal, and it can launch a local server by its command [1]. It needs Node.js [1].</p>
+        <p>RequestFox is already in your browser, and it tests servers that answer over HTTP. It cannot start a stdio server: a stdio server is a program, and a browser cannot start one. Use the Inspector for that. For a server on a web address, the two do the same jobs; RequestFox keeps the call beside your other requests, environments and sign-ins.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Model Context Protocol, "MCP Inspector". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://modelcontextprotocol.io/docs/tools/inspector" rel="noopener noreferrer">modelcontextprotocol.io</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">Next</h2>
+        <ul class="cards">
+          <li><a href="guide-test-websocket.html">Test a WebSocket or Socket.IO server</a><p>Connect, send, and read why a socket closed.</p></li>
+          <li><a href="guide-401-expired-token.html">Tell if a 401 comes from an expired token</a><p>When the token ran out, and renewing it in Compose.</p></li>
+          <li><a href="features.html">The feature list</a><p>Including MCP control, for an agent you run on your own computer, with every send waiting for your click.</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Call an MCP tool from your browser.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-test-mcp-server" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
+    </div>
+  </div>
+</footer>
+</body>
+</html>

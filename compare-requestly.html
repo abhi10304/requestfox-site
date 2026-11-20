@@ -21,14 +21,14 @@
 <meta property="og:title" content="RequestFox vs Requestly: Two Browser Extensions for APIs" />
 <meta property="og:description" content="RequestFox and Requestly are both browser extensions for API calls. One records and flags them, the other intercepts and rewrites. Sourced, dated." />
 <meta property="og:url" content="https://requestfox.accessisight.com/compare-requestly.html" />
-<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-compare-requestly.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="RequestFox vs Requestly: Two Browser Extensions for APIs" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="RequestFox vs Requestly: Two Browser Extensions for APIs" />
 <meta name="twitter:description" content="RequestFox and Requestly are both browser extensions for API calls. One records and flags them, the other intercepts and rewrites. Sourced, dated." />
-<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-compare-requestly.jpg" />
 <meta property="og:locale" content="en_US" />
 <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -66,6 +66,7 @@
       <a href="compare.html" data-nav="compare" aria-current="true">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-requestly" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-requestly" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -75,7 +76,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs Requestly</span></li></ol></nav>
       <h1 id="title">RequestFox vs Requestly: two browser extensions for working with API calls</h1>
       <p class="answer">RequestFox and Requestly are both browser extensions that work with the API calls a web app makes. Pick <strong>Requestly</strong> to intercept and rewrite traffic with rules, in many browsers and, with its desktop app, beyond the browser. Pick <strong>RequestFox</strong> to record the calls a web app makes, have the broken ones flagged for you, and test them, with no account and nothing sent to us. They do different jobs, and some people run both.</p>
-      <p class="byline">Facts about Requestly are from its own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.4.0.</p>
+      <p class="byline">Facts about Requestly are from its own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.5.0.</p>
     </div>
   </section>
 
@@ -97,14 +98,14 @@
           <table class="cmp">
             <thead><tr><th scope="col">&nbsp;</th><th scope="col">RequestFox</th><th scope="col">Requestly</th></tr></thead>
             <tbody>
-              <tr><th scope="row">What it is</th><td>A browser extension that records and judges the calls a web app makes, and lets you replay, mock, check and export them</td><td>A browser extension that intercepts and changes browser traffic with rules [2]. It is also an API client, and a BrowserStack product [5]</td></tr>
-              <tr><th scope="row">Rules that change traffic</th><td>Mock and fault rules for an endpoint; header and URL rules that can stay on with nothing recording; in Chrome, a script that rewrites a request or reply</td><td>Rules that modify headers, bodies and query parameters, redirect, replace strings, delay, cancel, map to local or remote files, change the user agent, and insert scripts [1]</td></tr>
-              <tr><th scope="row">Watching traffic</th><td>Every call is recorded, tied to the click that caused it and kept in History; failed, slow, duplicate and retried calls, N+1 bursts and errors inside a 200 OK are flagged</td><td>A network traffic table, session recording and HAR import [1]</td></tr>
-              <tr><th scope="row">Browsers</th><td>Chrome and Firefox</td><td>Chrome, Firefox, Edge, Brave, Arc, Vivaldi and Opera; Safari with fewer features [1][2]</td></tr>
-              <tr><th scope="row">Beyond the browser</th><td>Browser tabs only</td><td>With its desktop app: mobile devices, simulators, desktop apps, Node.js and the terminal [1]</td></tr>
-              <tr><th scope="row">Team sharing</th><td>As files: collections, sessions, HAR, reports</td><td>Team Workspaces [1]</td></tr>
-              <tr><th scope="row">Price</th><td>Free, with no paid tier</td><td>Its HTTP Interceptor page says "Free to use" [3]; its pricing page lists plans for the API platform from $10 per user per month, billed annually, with a 30-day trial [4]</td></tr>
-              <tr><th scope="row">Source code</th><td>Free; MIT licence, repository not public</td><td>Its HTTP Interceptor page calls it open source [3]</td></tr>
+              <tr><th scope="row">What it is</th><td data-col="RequestFox">A browser extension that records and judges the calls a web app makes, and lets you replay, mock, check and export them</td><td data-col="Requestly">A browser extension that intercepts and changes browser traffic with rules [2]. It is also an API client, and a BrowserStack product [5]</td></tr>
+              <tr><th scope="row">Rules that change traffic</th><td data-col="RequestFox">Mock and fault rules for an endpoint; header and URL rules that can stay on with nothing recording; in Chrome, a script that rewrites a request or response</td><td data-col="Requestly">Rules that modify headers, bodies and query parameters, redirect, replace strings, delay, cancel, map to local or remote files, change the user agent, and insert scripts [1]</td></tr>
+              <tr><th scope="row">Watching traffic</th><td data-col="RequestFox">Every call is recorded, tied to the click that caused it and kept in History; failed, slow, duplicate and retried calls, N+1 bursts and errors inside a 200 OK are flagged</td><td data-col="Requestly">A network traffic table, session recording and HAR import [1]</td></tr>
+              <tr><th scope="row">Browsers</th><td data-col="RequestFox">Chrome and Firefox</td><td data-col="Requestly">Chrome, Firefox, Edge, Brave, Arc, Vivaldi and Opera; Safari with fewer features [1][2]</td></tr>
+              <tr><th scope="row">Beyond the browser</th><td data-col="RequestFox">Browser tabs only</td><td data-col="Requestly">With its desktop app: mobile devices, simulators, desktop apps, Node.js and the terminal [1]</td></tr>
+              <tr><th scope="row">Team sharing</th><td data-col="RequestFox">As files: collections, sessions, HAR, reports</td><td data-col="Requestly">Team Workspaces [1]</td></tr>
+              <tr><th scope="row">Price</th><td data-col="RequestFox">Free, with no paid tier</td><td data-col="Requestly">Its HTTP Interceptor page says "Free to use" [3]; its pricing page lists plans for the API platform from $10 per user per month, billed annually, with a 30-day trial [4]</td></tr>
+              <tr><th scope="row">Source code</th><td data-col="RequestFox">Free; MIT licence, repository not public</td><td data-col="Requestly">Its HTTP Interceptor page calls it open source [3]</td></tr>
             </tbody>
           </table>
         </div>
@@ -126,15 +127,15 @@
         <ul>
           <li>It judges the calls. Failed, slow, duplicate and retried requests, N+1 bursts, GraphQL errors in a 200, expired tokens and changed shapes are flagged as they happen, each tied to the click that caused it.</li>
           <li>It keeps every session, so you can compare today's run with yesterday's, and turns a recording into checks you can run in CI.</li>
-          <li>No account for anything, and nothing leaves your browser.</li>
-          <li>Mock and fault rules label the calls they change, so nobody files a mocked answer as a bug.</li>
+          <li>No account for anything, and nothing is sent to us.</li>
+          <li>Mock and fault rules label the calls they change, so nobody files a mocked response as a bug.</li>
         </ul>
         <p>Where RequestFox falls short, so you are not surprised:</p>
         <ul>
-          <li>It runs in Chrome and Firefox. It sees what a browser tab sends; mobile and desktop apps need a proxy-based tool.</li>
+          <li>It runs in Chrome and Firefox. It sees what a browser tab sends; mobile and desktop apps need a proxy tool such as <a href="compare-proxy-tools.html">HTTP Toolkit, Proxyman or Charles</a>.</li>
           <li>It has no rule that puts script or style into a page.</li>
           <li>There is no team workspace or cloud sync, by design. Share work as files.</li>
-          <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
+          <li>It is free. Its code is <a href="licence.html">MIT-licensed</a> and ships readable inside the extension, so you can <a href="privacy.html#check">check it yourself</a>; the source repository is not public.</li>
         </ul>
       </section>
 
@@ -189,14 +190,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -208,7 +207,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -223,8 +223,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RequestFox or a Proxy Tool: HTTP Toolkit, Proxyman, Charles</title>
+<meta name="description" content="A browser extension or a proxy app? What RequestFox, HTTP Toolkit, Proxyman and Charles each see and change, and what they cost. Sourced, dated." />
+<link rel="canonical" href="https://requestfox.accessisight.com/compare-proxy-tools.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="RequestFox or a Proxy Tool: HTTP Toolkit, Proxyman, Charles" />
+<meta property="og:description" content="A browser extension or a proxy app? What RequestFox, HTTP Toolkit, Proxyman and Charles each see and change, and what they cost. Sourced, dated." />
+<meta property="og:url" content="https://requestfox.accessisight.com/compare-proxy-tools.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-compare-proxy-tools.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="RequestFox or a Proxy Tool: HTTP Toolkit, Proxyman, Charles" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="RequestFox or a Proxy Tool: HTTP Toolkit, Proxyman, Charles" />
+<meta name="twitter:description" content="A browser extension or a proxy app? What RequestFox, HTTP Toolkit, Proxyman and Charles each see and change, and what they cost. Sourced, dated." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-compare-proxy-tools.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Compare",
+      "item": "https://requestfox.accessisight.com/compare.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "vs proxy tools",
+      "item": "https://requestfox.accessisight.com/compare-proxy-tools.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide">Guides</a>
+      <a href="compare.html" data-nav="compare" aria-current="true">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs proxy tools</span></li></ol></nav>
+      <h1 id="title">RequestFox or a proxy tool: HTTP Toolkit, Proxyman and Charles</h1>
+      <p class="answer">RequestFox is a browser extension: it sees the calls a web app makes in a Chrome or Firefox tab, with nothing else to set up. HTTP Toolkit, Proxyman and Charles are apps you install on your computer that sit between your apps and the internet: they see the traffic of whatever you send through them, phones and desktop apps included, once that app or device trusts their certificate for HTTPS. Pick a <strong>proxy tool</strong> when the traffic is not in a browser tab. Pick <strong>RequestFox</strong> when it is, and you want the broken calls flagged for you, with no certificate, no proxy setting and no account.</p>
+      <p class="byline">Facts about HTTP Toolkit, Proxyman and Charles are from their own pages, checked <time datetime="2026-11-15">15 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.5.0.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#table">Side by side</a></li>
+        <li><a href="#proxies">Where the proxy tools are stronger</a></li>
+        <li><a href="#requestfox">Where RequestFox is different</a></li>
+        <li><a href="#together">Use both</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="table" aria-labelledby="table-title">
+        <h2 id="table-title">How do they compare, side by side?</h2>
+        <div class="table-wrap" role="region" aria-labelledby="table-title" tabindex="0">
+          <table class="cmp">
+            <thead><tr><th scope="col">&nbsp;</th><th scope="col">RequestFox</th><th scope="col">HTTP Toolkit</th><th scope="col">Proxyman</th><th scope="col">Charles</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">What it is</th><td data-col="RequestFox">A browser extension that records and judges the calls a web app makes, and lets you replay, mock, check and export them</td><td data-col="HTTP Toolkit">An open-source app for debugging, testing and building with HTTP, on Windows, Linux and Mac [1]</td><td data-col="Proxyman">A native macOS app to capture, decrypt and mock HTTP(S) traffic; its page also lists Windows, Linux, iOS and Android [4]</td><td data-col="Charles">An HTTP proxy, HTTP monitor and reverse proxy for Windows, macOS and Linux [6]</td></tr>
+              <tr><th scope="row">Whose traffic it sees</th><td data-col="RequestFox">The browser tabs you record, in Chrome and Firefox</td><td data-col="HTTP Toolkit">Android and iOS apps, whole devices, Docker containers, browser windows, terminals and backend processes [1][2]</td><td data-col="Proxyman">iOS and Android devices and the iOS Simulator, with standalone iOS and Android apps [4]</td><td data-col="Charles">The HTTP and HTTPS traffic between your machine and the internet; iOS devices and simulators once they trust its certificate [6][9]</td></tr>
+              <tr><th scope="row">HTTPS</th><td data-col="RequestFox">Read inside the browser: no certificate to trust, no proxy to set</td><td data-col="HTTP Toolkit">Captured; a client you set up by hand must trust its certificate [1][2]</td><td data-col="Proxyman">Decrypted and shown in plain text [4]</td><td data-col="Charles">SSL proxying shows it in plain text; each device must trust the Charles root certificate, and on Android only apps you control [7][9]</td></tr>
+              <tr><th scope="row">Changing traffic</th><td data-col="RequestFox">Mock, fail, slow down or pause one call for editing; header and URL rules; in Chrome, a script that rewrites a request or response</td><td data-col="HTTP Toolkit">Request and response breakpoints in the free plan; automatic rewrite rules, mock responses, errors and timeouts in Pro [3]</td><td data-col="Proxyman">Breakpoints, Map Local and JavaScript scripts [4], in the paid licences; the free trial leaves them out [5]</td><td data-col="Charles">Breakpoints, Map Local, Map Remote, Rewrite, and slower connections with the bandwidth and latency you set [7][8]</td></tr>
+              <tr><th scope="row">Price</th><td data-col="RequestFox">Free, with no paid tier</td><td data-col="HTTP Toolkit">A free Hobbyist plan; Professional and Team plans are paid [3]</td><td data-col="Proxyman">A free trial with limited features; licences from $89 for one device, paid once, with a year of updates [5]</td><td data-col="Charles">A 30-day trial; $50 a licence when you buy one to four [10]</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="block" id="proxies" aria-labelledby="proxies-title">
+        <h2 id="proxies-title">Where are the proxy tools stronger?</h2>
+        <ul>
+          <li>Traffic from outside the browser: phones, simulators, desktop apps, Docker containers and terminals [1][4][6].</li>
+          <li>HTTPS from any app or device that trusts their certificate, mobile apps included [2][4][9].</li>
+          <li>One place to change the traffic of every app at once: breakpoints in all three [3][4][7], Map Local in Proxyman and Charles [4][8], Rewrite and Map Remote in Charles [8].</li>
+          <li>Charles slows the whole connection, with the bandwidth and latency you choose [7].</li>
+          <li>HTTP Toolkit is open source, by its own page [1].</li>
+        </ul>
+      </section>
+
+      <section class="block" id="requestfox" aria-labelledby="requestfox-title">
+        <h2 id="requestfox-title">Where is RequestFox different?</h2>
+        <ul>
+          <li>Nothing to set up but the extension: no certificate to trust, no proxy setting, and the rest of your computer's traffic is left alone.</li>
+          <li>It judges the calls. Failed, slow, duplicate and retried requests, N+1 bursts, GraphQL errors in a 200, expired tokens and changed shapes are flagged as they happen, each tied to the click that caused it.</li>
+          <li>It keeps every session, so you can compare today's run with yesterday's, and turns a recording into checks you can run in CI.</li>
+          <li>Mock and fault rules label the calls they change, so nobody files a mocked response as a bug.</li>
+          <li>No account for anything, and nothing is sent to us.</li>
+        </ul>
+        <p>Where RequestFox falls short, so you are not surprised:</p>
+        <ul>
+          <li>It sees what a browser tab sends, in Chrome and Firefox: not a phone, a desktop app or a terminal.</li>
+          <li>Slowing a whole tab works in Chrome only; Firefox offers each rule's Slow and Throttle modes instead.</li>
+          <li>Rewriting a request or response with a script runs in Chrome only.</li>
+          <li>It is free. Its code is <a href="licence.html">MIT-licensed</a> and ships readable inside the extension, so you can <a href="privacy.html#check">check it yourself</a>; the source repository is not public.</li>
+        </ul>
+      </section>
+
+      <section class="block" id="together" aria-labelledby="together-title">
+        <h2 id="together-title">Can I use both?</h2>
+        <p>Yes. They do different jobs. Use a proxy tool for the phone build or the desktop app; use RequestFox for the web app in the browser, where it flags the broken calls and turns a flow into checks. <a href="guide-record-api-calls.html">How to record the API calls a web app makes</a>. Also: <a href="compare-requestly.html">RequestFox vs Requestly</a> and <a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a>.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>HTTP Toolkit, home page. Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://httptoolkit.com/" rel="noopener noreferrer">httptoolkit.com</a></li>
+          <li>HTTP Toolkit docs, "Intercepting". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://httptoolkit.com/docs/getting-started/intercepting/" rel="noopener noreferrer">httptoolkit.com</a></li>
+          <li>HTTP Toolkit, "Pricing". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://httptoolkit.com/pricing/" rel="noopener noreferrer">httptoolkit.com</a></li>
+          <li>Proxyman, home page. Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://proxyman.com/" rel="noopener noreferrer">proxyman.com</a></li>
+          <li>Proxyman, "Pricing". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://proxyman.com/pricing" rel="noopener noreferrer">proxyman.com</a></li>
+          <li>Charles, home page. Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://www.charlesproxy.com/" rel="noopener noreferrer">charlesproxy.com</a></li>
+          <li>Charles, "About Charles". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://www.charlesproxy.com/overview/about-charles/" rel="noopener noreferrer">charlesproxy.com</a></li>
+          <li>Charles documentation, "Tools". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://www.charlesproxy.com/documentation/tools/" rel="noopener noreferrer">charlesproxy.com</a></li>
+          <li>Charles documentation, "SSL Certificates". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://www.charlesproxy.com/documentation/using-charles/ssl-certificates/" rel="noopener noreferrer">charlesproxy.com</a></li>
+          <li>Charles, "Buy". Checked <time datetime="2026-11-15">15 November 2026</time>. <a href="https://www.charlesproxy.com/buy/" rel="noopener noreferrer">charlesproxy.com</a></li>
+        </ol>
+        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Try RequestFox for the web app, next to your proxy tool.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-proxy-tools" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
+    </div>
+  </div>
+</footer>
+</body>
+</html>

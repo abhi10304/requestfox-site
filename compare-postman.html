@@ -66,6 +66,7 @@
       <a href="compare.html" data-nav="compare" aria-current="true">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-postman" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare-postman" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -75,7 +76,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="compare.html">Compare</a></li><li><span aria-current="page">vs Postman</span></li></ol></nav>
       <h1 id="title">RequestFox vs Postman</h1>
       <p class="answer">RequestFox is a free Postman alternative that runs in the browser, though not a full replacement. Pick <strong>Postman</strong> to design, document and share APIs across a team, with many protocols and shared workspaces. Pick <strong>RequestFox</strong> to test the API calls a real web app makes in the browser, with problems flagged for you and nothing to sign in to. They work together: RequestFox imports and exports Postman collections.</p>
-      <p class="byline">Facts about Postman are from its own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.4.0.</p>
+      <p class="byline">Facts about Postman are from its own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below. Written by the RequestFox team, for RequestFox 2.5.0.</p>
     </div>
   </section>
 
@@ -99,11 +100,11 @@
           <table class="cmp">
             <thead><tr><th scope="col">&nbsp;</th><th scope="col">RequestFox</th><th scope="col">Postman</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Where it runs</th><td>A side panel in Chrome, a sidebar in Firefox</td><td>Desktop app and web app [1]</td></tr>
-              <tr><th scope="row">Without an account</th><td>Everything</td><td>The lightweight API Client builds and sends requests and keeps history; collections and environments need a workspace, which needs an account [2]</td></tr>
-              <tr><th scope="row">Calls your web app makes</th><td>Recorded as you click, each flagged if it failed, dragged, fired twice or broke inside a 200 OK</td><td>Postman Interceptor, a browser extension, captures browser requests and cookies into Postman while the app is open [1]</td></tr>
-              <tr><th scope="row">Protocols for your own requests</th><td>HTTP (REST, GraphQL, SOAP), WebSocket and Socket.IO; gRPC-Web and Connect with your .proto files; MCP servers; server-sent events captured</td><td>HTTP, WebSocket, Socket.IO, GraphQL, gRPC and MQTT [2]</td></tr>
-              <tr><th scope="row">Team sharing</th><td>As files: collections, sessions, HAR, reports</td><td>Workspaces [2]</td></tr>
+              <tr><th scope="row">Where it runs</th><td data-col="RequestFox">A side panel in Chrome, a sidebar in Firefox</td><td data-col="Postman">Desktop app and web app [1]</td></tr>
+              <tr><th scope="row">Without an account</th><td data-col="RequestFox">Everything</td><td data-col="Postman">The lightweight API Client builds and sends requests and keeps history; collections and environments need a workspace, which needs an account [2]</td></tr>
+              <tr><th scope="row">Calls your web app makes</th><td data-col="RequestFox">Recorded as you click, each flagged if it failed, dragged, fired twice or broke inside a 200 OK</td><td data-col="Postman">Postman Interceptor, a browser extension, captures browser requests and cookies into Postman while the app is open [1]</td></tr>
+              <tr><th scope="row">Protocols for your own requests</th><td data-col="RequestFox">HTTP (REST, GraphQL, SOAP), WebSocket and Socket.IO; gRPC-Web and Connect with your .proto files; MCP servers; server-sent events recorded</td><td data-col="Postman">HTTP, WebSocket, Socket.IO, GraphQL, gRPC and MQTT [2]</td></tr>
+              <tr><th scope="row">Team sharing</th><td data-col="RequestFox">As files: collections, sessions, HAR, reports</td><td data-col="Postman">Workspaces [2]</td></tr>
             </tbody>
           </table>
         </div>
@@ -129,8 +130,8 @@
         <ul>
           <li>It starts from what your app really sends, in the session you are signed in to, so there is nothing to retype.</li>
           <li>It judges the calls: failed, slow, duplicate and retried requests, N+1 bursts, GraphQL errors in a 200, expired tokens and changed shapes are flagged as they happen.</li>
-          <li>Mock and fault rules change the answers your app gets, labelled so nobody files them as bugs. Mock sets stay on with nothing recording, and in Chrome a script can rewrite a request or reply.</li>
-          <li>No account for anything, and nothing leaves your browser.</li>
+          <li>Mock and fault rules change the responses your app gets, labelled so nobody files them as bugs. Mock sets stay on with nothing recording, and in Chrome a script can rewrite a request or response.</li>
+          <li>No account for anything, and nothing is sent to us.</li>
         </ul>
       </section>
 
@@ -143,11 +144,12 @@
         <h2 id="import-title">Move a Postman collection into RequestFox</h2>
         <p>RequestFox reads Postman collection files (v2.0 and v2.1) and keeps what it can use.</p>
         <ol>
-          <li>Open Compose, then Import → Import a collection…, and pick the file.</li>
+          <li>Open <span class="ui">Compose</span>, then <span class="ui">Import</span> → <span class="ui">Import a collection…</span>, and pick the file.</li>
           <li>RequestFox saves it as a collection of its own and says what it kept: variables and auth in the collection's settings, and the tests it turned into checks and chaining.</li>
           <li>Scripts it could not turn into checks are listed by name, so nothing is dropped silently.</li>
           <li>Send any request from the collection, or copy it as code.</li>
         </ol>
+        <p>Step by step, with the tests that come along and what to set up again: <a href="guide-import-postman-collection.html">how to import a Postman collection</a>.</p>
         <figure class="fig">
           <div class="shot">
             <picture><source srcset="img/postman-import-summary-dark.webp 1x, img/postman-import-summary-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="img/postman-import-summary-light.webp" srcset="img/postman-import-summary-light.webp 1x, img/postman-import-summary-light@2x.webp 2x" width="380" height="500" loading="lazy" alt="A Postman collection just imported: its requests, variables and auth kept, checks made from its tests, and one script not translated" /></picture>
@@ -199,14 +201,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -218,7 +218,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -233,8 +234,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

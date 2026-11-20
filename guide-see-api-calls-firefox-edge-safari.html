@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>See API Calls in Firefox, Edge and Safari: Where to Look</title>
+<meta name="description" content="Where the Network tool is in Firefox, Edge and Safari, how to read a page's API calls, and which of these browsers RequestFox runs in." />
+<link rel="canonical" href="https://requestfox.accessisight.com/guide-see-api-calls-firefox-edge-safari.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="icon128.png" />
+<link rel="icon" href="icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="See API Calls in Firefox, Edge and Safari: Where to Look" />
+<meta property="og:description" content="Where the Network tool is in Firefox, Edge and Safari, how to read a page's API calls, and which of these browsers RequestFox runs in." />
+<meta property="og:url" content="https://requestfox.accessisight.com/guide-see-api-calls-firefox-edge-safari.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="See API Calls in Firefox, Edge and Safari: Where to Look" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="See API Calls in Firefox, Edge and Safari: Where to Look" />
+<meta name="twitter:description" content="Where the Network tool is in Firefox, Edge and Safari, how to read a page's API calls, and which of these browsers RequestFox runs in." />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-default.jpg" />
+<meta property="og:locale" content="en_US" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://requestfox.accessisight.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "API calls in Firefox, Edge and Safari",
+      "item": "https://requestfox.accessisight.com/guide-see-api-calls-firefox-edge-safari.html"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox home"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="Site">
+      <a href="features.html">Features</a>
+      <a href="guides.html" data-nav="guide" aria-current="true">Guides</a>
+      <a href="compare.html" data-nav="compare">Compare</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Chrome</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API calls in Firefox, Edge and Safari</span></li></ol></nav>
+      <h1 id="title">How to see the API calls a page makes in Firefox, Edge or Safari</h1>
+      <p class="answer">Every one of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where it is differs by browser, and the steps for each are below. To keep the calls after you close the tools and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome and Firefox; Safari is not supported.</p>
+      <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about browsers are from their own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ol>
+        <li><a href="#firefox">Firefox</a></li>
+        <li><a href="#edge">Edge</a></li>
+        <li><a href="#safari">Safari</a></li>
+        <li><a href="#extension">Keeping and judging the calls</a></li>
+        <li><a href="#sources">Sources</a></li>
+        <li><a href="#next">Next</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="firefox" aria-labelledby="firefox-title">
+        <h2 id="firefox-title">How do I see API calls in Firefox?</h2>
+        <ol>
+          <li>Open the Network Monitor with Ctrl+Shift+E (Cmd+Opt+E on a Mac), or from the Browser Tools menu choose Network [1].</li>
+          <li>Use the page. Opening the tool starts monitoring, and it keeps recording while the developer tools stay open [1].</li>
+          <li>Filter the list with the XHR button, and right-click a request for Copy as cURL, Copy as Fetch or Save All As HAR [2].</li>
+        </ol>
+        <p>Firefox can also edit a request and send it again with Edit and Resend. <a href="guide-api-testing-firefox.html">API testing in Firefox</a> has that, and the add-ons that help.</p>
+      </section>
+
+      <section class="block" id="edge" aria-labelledby="edge-title">
+        <h2 id="edge-title">How do I see API calls in Microsoft Edge?</h2>
+        <ol>
+          <li>Right-click the page and choose Inspect, or press Ctrl+Shift+J (Command+Option+J on a Mac) [3].</li>
+          <li>On the Activity Bar choose the Network tab. If it is not there, click More tools [3].</li>
+          <li>Refresh the page. The Network Log lists each request with its status, type, initiator and time, and you can narrow it with the Filter box or by resource type [3].</li>
+        </ol>
+        <p>The tool logs only after DevTools is open, so open it before you load the page [3].</p>
+      </section>
+
+      <section class="block" id="safari" aria-labelledby="safari-title">
+        <h2 id="safari-title">How do I see API calls in Safari?</h2>
+        <ol>
+          <li>Turn on the developer tools: choose Safari, then Settings, open Advanced and select Show features for web developers [4].</li>
+          <li>A Develop menu now appears in the menu bar, with the developer tools [4].</li>
+          <li>Open Web Inspector and choose its Network tab [5].</li>
+        </ol>
+        <p>RequestFox does not run in Safari. In Safari, the Network tab of Web Inspector is the way to see a page's calls.</p>
+      </section>
+
+      <section class="block" id="extension" aria-labelledby="extension-title">
+        <h2 id="extension-title">Can I keep the calls and have the broken ones flagged?</h2>
+        <p>Yes, in Chrome and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in <span class="ui">History</span>. Press <span class="ui">Start Recording</span>, use the page, press <span class="ui">Stop</span>. <a href="guide-record-api-calls.html">How to record API calls</a> has every step.</p>
+        <p>RequestFox is in the Chrome Web Store and Firefox Add-ons. It is not listed for other browsers, so for those use the built-in tool above.</p>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">Sources</h2>
+        <ol class="sources">
+          <li>Firefox Source Docs, "Network Monitor". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+          <li>Firefox Source Docs, "Network request list". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_list/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+          <li>Microsoft Learn, "Inspect network activity". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://learn.microsoft.com/en-us/microsoft-edge/devtools/network/" rel="noopener noreferrer">learn.microsoft.com</a></li>
+          <li>Apple Support, "Use the developer tools in the Develop menu in Safari". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac" rel="noopener noreferrer">support.apple.com</a></li>
+          <li>Apple Support, "Safari Web Inspector Guide: Network tab". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://support.apple.com/guide/safari-developer/network-tab-dev1b2aeb4e2/mac" rel="noopener noreferrer">support.apple.com</a></li>
+        </ol>
+        <p class="note">Something here out of date? Browsers change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">Next</h2>
+        <ul class="cards">
+          <li><a href="guide-record-api-calls.html">Record API calls</a><p>Start, use the site, read the flags, keep the evidence.</p></li>
+          <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a><p>Edit and Resend, REST client add-ons, and RequestFox.</p></li>
+          <li><a href="compare-devtools.html">RequestFox vs DevTools Network</a><p>The judging and the history, or the raw live view.</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <h2 id="final-title">Record the calls in Chrome or Firefox.</h2>
+    <div class="cta">
+      <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Chrome, free</a>
+      <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Firefox</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="compare-postman.html">vs Postman</a></li>
+            <li><a href="compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="compare-bruno.html">vs Bruno</a></li>
+            <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="compare-requestly.html">vs Requestly</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="use-qa-testers.html">QA testers</a></li>
+            <li><a href="use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
+    </div>
+  </div>
+</footer>
+</body>
+</html>

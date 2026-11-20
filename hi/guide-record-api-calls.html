@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="hi" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें</title>
+<meta name="description" content="Chrome या Firefox में कोई वेबसाइट जो भी fetch, XHR, WebSocket और SSE कॉल करती है, उसे रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<link rel="canonical" href="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="en" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="es" href="https://requestfox.accessisight.com/es/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="hi" href="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://requestfox.accessisight.com/zh-cn/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ar" href="https://requestfox.accessisight.com/ar/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="pt-BR" href="https://requestfox.accessisight.com/pt-br/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="fr" href="https://requestfox.accessisight.com/fr/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ru" href="https://requestfox.accessisight.com/ru/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ja" href="https://requestfox.accessisight.com/ja/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="de" href="https://requestfox.accessisight.com/de/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ko" href="https://requestfox.accessisight.com/ko/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="id" href="https://requestfox.accessisight.com/id/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
+<meta name="referrer" content="strict-origin-when-cross-origin" />
+<meta name="color-scheme" content="light dark" />
+<link rel="icon" href="../icon128.png" />
+<link rel="icon" href="../icon.svg" type="image/svg+xml" sizes="any" />
+<link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+<link rel="preload" href="../fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="../site.css" />
+<meta name="theme-color" content="#f9f9f7" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="RequestFox" />
+<meta property="og:title" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
+<meta property="og:description" content="Chrome या Firefox में कोई वेबसाइट जो भी fetch, XHR, WebSocket और SSE कॉल करती है, उसे रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<meta property="og:url" content="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
+<meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
+<meta name="twitter:description" content="Chrome या Firefox में कोई वेबसाइट जो भी fetch, XHR, WebSocket और SSE कॉल करती है, उसे रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
+<meta property="og:locale" content="hi_IN" />
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "होम",
+      "item": "https://requestfox.accessisight.com/hi/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "गाइड",
+      "item": "https://requestfox.accessisight.com/guides.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "API कॉल रिकॉर्ड करें",
+      "item": "https://requestfox.accessisight.com/hi/guide-record-api-calls.html"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "कोई वेबसाइट जो HTTPS रिक्वेस्ट (API कॉल) करती है, उन्हें कैसे रिकॉर्ड करें",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "RequestFox इंस्टॉल करें",
+      "text": "इसे Chrome Web Store या Firefox Add-ons से जोड़ें। किसी चीज़ के लिए साइन अप नहीं करना।"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "वह साइट खोलें जिसे आप टेस्ट करना चाहते हैं",
+      "text": "कोई भी सामान्य वेब पेज चलेगा। ब्राउज़र के अपने पेज, जैसे एक्सटेंशन पेज, नया टैब या Web Store, रिकॉर्ड नहीं किए जा सकते; कोशिश करने पर RequestFox यह बता देता है।"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "“रिकॉर्डिंग शुरू करें” दबाएँ",
+      "text": "साइड पैनल (Firefox में साइडबार) खोलने के लिए RequestFox आइकन पर क्लिक करें और रिकॉर्डिंग शुरू करें दबाएँ, या Alt+Shift+S दबाएँ (Mac पर Option+Shift+S)। पहली बार ब्राउज़र साइट का एक्सेस देने को कहता है: अनुमति दें।"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "साइट को हमेशा की तरह इस्तेमाल करें",
+      "text": "जिस फ़्लो को आप टेस्ट कर रहे हैं, उसमें क्लिक करते जाएँ। हर कॉल शुरू होते ही दिखती है, उस क्लिक या फ़ॉर्म सबमिट से जुड़ी हुई जिससे वह हुई। किसी पेज की बिल्कुल शुरुआती कॉल (साइन-इन, कॉन्फ़िग, फ़ीचर फ़्लैग) न छूटें, इसके लिए रिकॉर्डिंग शुरू करें दबाने से पहले “शुरुआती कॉल रिकॉर्ड करने के लिए पेज रीलोड करें” पर टिक करें।"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "फ़्लैग पढ़ें",
+      "text": "जो कॉल फ़ेल हुईं, धीमी रहीं, दो बार गईं या 200 OK के अंदर टूटीं, उन पर निशान लगता है। किसी एक को खोलकर उसके header, body, टाइमिंग और कारण को सीधे शब्दों में देखें।"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 6,
+      "name": "रोकें, और सबूत रखें",
+      "text": "रोकें दबाएँ। सेशन फिर से खोलने और तुलना के लिए हिस्ट्री में रखा जाता है। एक्सपोर्ट से इसे HTML रिपोर्ट, HAR, CSV या JSON के रूप में सेव करें, या किसी एक कॉल को कोड के रूप में कॉपी करें।"
+    }
+  ]
+}</script>
+</head>
+<body>
+<a class="skip" href="#main">सीधे सामग्री पर जाएँ</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="./" aria-label="RequestFox मुखपृष्ठ"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">Request<span class="fox">Fox</span></span></a>
+    <nav class="site-nav" aria-label="साइट">
+      <a href="../features.html">सुविधाएँ</a>
+      <a href="../guides.html" data-nav="guide" aria-current="true">गाइड</a>
+      <a href="../compare.html" data-nav="compare">तुलना</a>
+      <a href="../faq.html">अक्सर पूछे जाने वाले सवाल</a>
+    </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer" aria-label="RequestFox को Firefox में जोड़ें">Firefox</a>
+    <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome में जोड़ें</a>
+  </div>
+</header>
+<main id="main">
+  <section class="page-hero" aria-labelledby="title">
+    <div class="wrap page-hero-grid">
+      <div>
+        <nav class="crumbs" aria-label="ब्रेडक्रंब"><ol><li><a href="./">होम</a></li><li><a href="../guides.html">गाइड</a></li><li><span aria-current="page">API कॉल रिकॉर्ड करें</span></li></ol></nav>
+        <h1 id="title">कोई वेबसाइट जो HTTPS रिक्वेस्ट (API कॉल) करती है, उन्हें कैसे रिकॉर्ड करें</h1>
+        <p class="answer">किसी पेज की API कॉल देखने के लिए अपने ब्राउज़र का DevTools खोलें, Network चुनें और Fetch/XHR (Firefox में XHR) पर फ़िल्टर करें; कुछ इंस्टॉल नहीं करना। उन्हें रखने, गड़बड़ वाली कॉल फ़्लैग करवाने और उन्हें फिर से भेजने या एक्सपोर्ट करने के लिए RequestFox जैसा ब्राउज़र एक्सटेंशन इस्तेमाल करें: इसे इंस्टॉल करें, साइट खोलें, “रिकॉर्डिंग शुरू करें” दबाएँ (या <kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>) और साइट को हमेशा की तरह इस्तेमाल करें। हर fetch, XMLHttpRequest, WebSocket फ़्रेम और सर्वर-सेंट इवेंट शुरू होते ही सूची में आ जाता है।</p>
+        <p class="byline">RequestFox 2.5.0 के लिए, <time datetime="2026-11-19">19 नवंबर 2026</time> को जाँचा गया।</p>
+      </div>
+      <figure class="fig">
+        <div class="shot">
+          <picture><source srcset="../img/recording-dark.webp 1x, ../img/recording-dark@2x.webp 2x" media="(prefers-color-scheme: dark)" /><img src="../img/recording-light.webp" srcset="../img/recording-light.webp 1x, ../img/recording-light@2x.webp 2x" width="380" height="660" fetchpriority="high" alt="shop.example.com पर Checkout flow नाम की एक रिकॉर्डिंग: 13 कॉल, दोहराई गई कॉल, एरर, धीमी कॉल और JS एरर की गिनती के साथ, सबसे नई कॉल सबसे ऊपर" /></picture>
+        </div>
+        <figcaption>चल रही एक रिकॉर्डिंग।</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="wrap layout">
+    <nav class="toc" aria-label="इस पेज पर">
+      <p class="toc-title">इस पेज पर</p>
+      <ol>
+        <li><a href="#devtools">पहले DevTools से</a></li>
+        <li><a href="#steps">चरण</a></li>
+        <li><a href="#search">कोई कॉल ढूँढें</a></li>
+        <li><a href="#trouble">अगर कुछ न दिखे</a></li>
+        <li><a href="#sources">स्रोत</a></li>
+        <li><a href="#next">आगे</a></li>
+      </ol>
+    </nav>
+    <div class="content">
+      <section class="block" id="devtools" aria-labelledby="devtools-title">
+        <h2 id="devtools-title">पहले, ब्राउज़र का अपना तरीका: DevTools का Network पैनल</h2>
+        <p>किसी पेज की API कॉल देखने के लिए एक्सटेंशन की ज़रूरत नहीं है। Chrome में DevTools (F12) खोलें, Network चुनें और Fetch/XHR फ़िल्टर पर क्लिक करें। किसी request पर राइट-क्लिक करके Copy चुनें और उसे cURL या fetch के रूप में कॉपी करें, और पेज लोड के बीच request रखने के लिए Preserve log पर टिक करें [1]। Firefox में Network Monitor, Ctrl+Shift+E (Mac पर Cmd+Opt+E) से खुलता है [2]; उसका XHR बटन सूची फ़िल्टर करता है, और Copy as cURL और Copy as Fetch राइट-क्लिक मेन्यू में हैं [3]।</p>
+        <p>DevTools सब कुछ लाइव दिखाता है पर परखना आप पर छोड़ता है, और बंद करते ही सूची चली जाती है। RequestFox फ़्लैग, हिस्ट्री और एक्सपोर्ट जोड़ता है। <a href="../compare-devtools.html">RequestFox बनाम DevTools का Network पैनल</a>।</p>
+      </section>
+
+      <section class="block" id="steps" aria-labelledby="steps-title">
+        <h2 id="steps-title">Chrome या Firefox में API कॉल रिकॉर्ड करने के चरण</h2>
+        <ol class="howto">
+          <li data-ui="none"><h3>RequestFox इंस्टॉल करें</h3><p>इसे <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome Web Store</a> या <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Firefox Add-ons</a> से जोड़ें। किसी चीज़ के लिए साइन अप नहीं करना।</p></li>
+          <li data-ui="none"><h3>वह साइट खोलें जिसे आप टेस्ट करना चाहते हैं</h3><p>कोई भी सामान्य वेब पेज चलेगा। ब्राउज़र के अपने पेज, जैसे एक्सटेंशन पेज, नया टैब या Web Store, रिकॉर्ड नहीं किए जा सकते; कोशिश करने पर RequestFox यह बता देता है।</p></li>
+          <li><h3>“रिकॉर्डिंग शुरू करें” दबाएँ</h3><p>साइड पैनल (Firefox में साइडबार) खोलने के लिए RequestFox आइकन पर क्लिक करें और <span class="ui">रिकॉर्डिंग शुरू करें</span> दबाएँ, या Alt+Shift+S दबाएँ (Mac पर Option+Shift+S)। पहली बार ब्राउज़र साइट का एक्सेस देने को कहता है: अनुमति दें।</p></li>
+          <li><h3>साइट को हमेशा की तरह इस्तेमाल करें</h3><p>जिस फ़्लो को आप टेस्ट कर रहे हैं, उसमें क्लिक करते जाएँ। हर कॉल शुरू होते ही दिखती है, उस क्लिक या फ़ॉर्म सबमिट से जुड़ी हुई जिससे वह हुई। किसी पेज की बिल्कुल शुरुआती कॉल (साइन-इन, कॉन्फ़िग, फ़ीचर फ़्लैग) न छूटें, इसके लिए <span class="ui">रिकॉर्डिंग शुरू करें</span> दबाने से पहले “<span class="ui">शुरुआती कॉल रिकॉर्ड करने के लिए पेज रीलोड करें</span>” पर टिक करें।</p></li>
+          <li data-ui="none"><h3>फ़्लैग पढ़ें</h3><p>जो कॉल फ़ेल हुईं, धीमी रहीं, दो बार गईं या 200 OK के अंदर टूटीं, उन पर निशान लगता है। किसी एक को खोलकर उसके header, body, टाइमिंग और कारण को सीधे शब्दों में देखें।</p></li>
+          <li><h3>रोकें, और सबूत रखें</h3><p><span class="ui">रोकें</span> दबाएँ। सेशन फिर से खोलने और तुलना के लिए <span class="ui">हिस्ट्री</span> में रखा जाता है। <span class="ui">एक्सपोर्ट</span> से इसे HTML रिपोर्ट, HAR, CSV या JSON के रूप में सेव करें, या किसी एक कॉल को कोड के रूप में कॉपी करें।</p></li>
+        </ol>
+      </section>
+
+      <section class="block" id="search" aria-labelledby="search-title">
+        <h2 id="search-title">लंबी रिकॉर्डिंग में एक कॉल ढूँढें</h2>
+        <p>खोज बॉक्स में लिखें। हर शब्द का मेल खाना ज़रूरी है, किसी भी क्रम में, और फ़िल्टर सूची को छोटा करते हैं:</p>
+        <ul>
+          <li><code>status:500</code> या <code>method:POST</code></li>
+          <li><code>host:api.example.com</code>, या किसी होस्ट को बाहर रखने के लिए <code>-host:cdn.example.com</code></li>
+          <li><code>path:/users/:id</code>, किसी एक एंडपॉइंट की हर कॉल के लिए, id चाहे जो हो</li>
+        </ul>
+      </section>
+
+      <section class="block" id="trouble" aria-labelledby="trouble-title">
+        <h2 id="trouble-title">अगर कुछ न दिखे</h2>
+        <ul>
+          <li><strong>सूची कहती है कि पहले कोई साइट खोलें:</strong> आपने ब्राउज़र के किसी पेज पर “रिकॉर्डिंग शुरू करें” दबाया। साइट खोलें, फिर “रिकॉर्डिंग शुरू करें” दबाएँ।</li>
+          <li><strong>आपने एक्सेस न देने का चुनाव किया:</strong> फिर से “रिकॉर्डिंग शुरू करें” दबाएँ और अनुमति दें। बाद में आप अपने ब्राउज़र की एक्सटेंशन सेटिंग्स में यह एक्सेस हटा सकते हैं।</li>
+          <li><strong>रिकॉर्डिंग के दौरान सूची खाली है:</strong> पेज ने अभी तक कोई कॉल नहीं की है। डेटा लोड करने वाली किसी चीज़ पर क्लिक करें, या पेज रीलोड करें।</li>
+          <li><strong>शॉर्टकट कुछ नहीं करता:</strong> हो सकता है कोई दूसरा एक्सटेंशन उसे इस्तेमाल कर रहा हो। उसे chrome://extensions/shortcuts पर फिर से सेट करें (Firefox: about:addons, गियर, Manage Extension Shortcuts)।</li>
+        </ul>
+      </section>
+
+      <section class="block" id="sources" aria-labelledby="sources-title">
+        <h2 id="sources-title">स्रोत</h2>
+        <ol class="sources">
+          <li>Chrome for Developers, “Network features reference”। <time datetime="2026-11-04">4 नवंबर 2026</time> को जाँचा गया। <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
+          <li>Firefox Source Docs, “Network Monitor”। <time datetime="2026-11-04">4 नवंबर 2026</time> को जाँचा गया। <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+          <li>Firefox Source Docs, “Network request list”। <time datetime="2026-11-04">4 नवंबर 2026</time> को जाँचा गया। <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_list/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
+        </ol>
+        <p class="note">यहाँ कुछ पुराना हो गया है? <a href="../privacy.html#contact">प्राइवेसी पॉलिसी</a> में दिए पते पर हमें बताएँ, हम ठीक कर देंगे।</p>
+      </section>
+
+      <section class="block" id="next" aria-labelledby="next-title">
+        <h2 id="next-title">आगे</h2>
+        <ul class="cards">
+          <li><a href="../guide-replay-edit-request.html">किसी request को फिर से भेजें और बदलें</a><p>रिकॉर्ड की गई कॉल दोबारा भेजें, बदलकर या वैसी ही।</p></li>
+          <li><a href="guide-mock-api-response.html">API response का mock बनाएँ</a><p>अपना response लौटाएँ, या किसी कॉल को फ़ेल करें।</p></li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer" lang="en">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-about">
+        <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
+        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Product</h2>
+          <ul>
+            <li><a href="../features.html">Features</a></li>
+            <li><a href="../changelog.html">Changelog</a></li>
+            <li><a href="../faq.html">FAQ</a></li>
+            <li><a href="../about.html">About</a></li>
+            <li><a href="../privacy.html">Privacy</a></li>
+            <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome Web Store</a></li>
+            <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Firefox Add-ons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Guides</h2>
+          <ul>
+            <li><a href="guide-record-api-calls.html">Record API calls</a></li>
+            <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
+            <li><a href="../guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="../guide-change-request-headers.html">Change a request header</a></li>
+            <li><a href="../guide-api-checks-in-ci.html">API checks in CI</a></li>
+            <li><a href="../cli.html">Command line</a></li>
+            <li><a href="../guides.html">All guides</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Compare</h2>
+          <ul>
+            <li><a href="../compare-postman.html">vs Postman</a></li>
+            <li><a href="../compare-devtools.html">vs DevTools Network</a></li>
+            <li><a href="../compare-insomnia.html">vs Insomnia</a></li>
+            <li><a href="../compare-bruno.html">vs Bruno</a></li>
+            <li><a href="../compare-hoppscotch.html">vs Hoppscotch</a></li>
+            <li><a href="../compare-requestly.html">vs Requestly</a></li>
+            <li><a href="../postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="../compare.html">All comparisons</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>For</h2>
+          <ul>
+            <li><a href="../use-qa-testers.html">QA testers</a></li>
+            <li><a href="../use-frontend-developers.html">Frontend developers</a></li>
+            <li><a href="../use-api-developers.html">API developers</a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
+    <div class="foot-base">
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
+      <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="../fonts/OFL.txt">SIL Open Font License</a>).</p>
+      <nav class="foot-langs" aria-label="Languages"><p>This page in: <a href="../guide-record-api-calls.html" hreflang="en" lang="en">English</a> · <a href="../es/guide-record-api-calls.html" hreflang="es" lang="es">Español</a> · <a href="guide-record-api-calls.html" hreflang="hi" lang="hi" aria-current="true">हिन्दी</a> · <a href="../zh-cn/guide-record-api-calls.html" hreflang="zh-CN" lang="zh-CN">中文(简体)</a> · <a href="../ar/guide-record-api-calls.html" hreflang="ar" lang="ar" dir="rtl">العربية</a> · <a href="../pt-br/guide-record-api-calls.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="../fr/guide-record-api-calls.html" hreflang="fr" lang="fr">Français</a> · <a href="../ru/guide-record-api-calls.html" hreflang="ru" lang="ru">Русский</a> · <a href="../ja/guide-record-api-calls.html" hreflang="ja" lang="ja">日本語</a> · <a href="../de/guide-record-api-calls.html" hreflang="de" lang="de">Deutsch</a> · <a href="../ko/guide-record-api-calls.html" hreflang="ko" lang="ko">한국어</a> · <a href="../id/guide-record-api-calls.html" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="../tr/guide-record-api-calls.html" hreflang="tr" lang="tr">Türkçe</a> · <a href="../it/guide-record-api-calls.html" hreflang="it" lang="it">Italiano</a></p></nav>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

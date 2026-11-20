@@ -65,7 +65,7 @@
       "name": "What is a good API testing add-on for Firefox?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or reply with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded."
+        "text": "RequestFox runs in Firefox as a sidebar with the same recording, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or response with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded."
       }
     },
     {
@@ -129,7 +129,7 @@
       "name": "How do I know when an API response changed shape?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags SCHEMA CHANGED when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema."
+        "text": "RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags Schema changed when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema."
       }
     },
     {
@@ -137,7 +137,7 @@
       "name": "How do I mock an API response in Chrome without a backend?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "In RequestFox, open a captured call and choose Mock: it returns that call's real status, headers and body, which you can edit, for both fetch and XMLHttpRequest. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or reply. Mocked responses are labelled in the log."
+        "text": "In RequestFox, press Mock on a recorded call's card: the dialog holds that call's real status and body, which you can change, and Mock it returns them, with the call's headers, for the page's fetch and XMLHttpRequest calls. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or response. Mocked responses are labelled in the log."
       }
     },
     {
@@ -145,7 +145,7 @@
       "name": "Can I turn browser traffic into load tests?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. After a recording, RequestFox's Performance panel turns the captured endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress."
+        "text": "Yes. After a recording, RequestFox's Performance panel turns the recorded endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress."
       }
     },
     {
@@ -161,7 +161,7 @@
       "name": "Can RequestFox send a request to any API?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked FROM EXTENSION in the log. Copy as code also turns any request into cURL or another language to run outside the browser."
+        "text": "While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked From extension in the log. Copy as code also turns any request into cURL or another language to run outside the browser."
       }
     },
     {
@@ -169,7 +169,7 @@
       "name": "Does RequestFox send my data anywhere?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording."
+        "text": "No. Everything RequestFox records stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the response to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording."
       }
     },
     {
@@ -177,7 +177,7 @@
       "name": "Is RequestFox free? Is it open source?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public. It has no ads, no account and no paid tier."
+        "text": "RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is MIT-licensed and ships readable inside the extension, so you can check it yourself; the source repository is not public. It has no ads, no account and no paid tier."
       }
     },
     {
@@ -202,6 +202,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html" aria-current="page">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=faq" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=faq" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -211,7 +212,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">FAQ</span></li></ol></nav>
       <h1 id="title">Which API testing extension should I use?</h1>
       <p class="answer">Straight answers to the questions people ask about testing APIs in the browser. Where another tool is the better fit, we say so.</p>
-      <p class="byline">Written by the RequestFox team, for RequestFox 2.4.0.</p>
+      <p class="byline">Written by the RequestFox team, for RequestFox 2.5.0.</p>
     </div>
   </section>
 
@@ -229,7 +230,7 @@
       <section class="block" id="choose" aria-labelledby="choose-title">
         <h2 id="choose-title">Choosing a tool</h2>
         <details class="qa" open><summary>What is the best API testing extension for Chrome?</summary><p>It depends on the job. To test the API calls a web app makes while you use it, and have failed, slow and duplicate calls flagged for you, use RequestFox. For a raw look at everything one page load does, the built-in DevTools Network panel needs no install. To build and share API collections across a team, Postman is the usual choice; to keep them as files in git, Bruno; for always-on rules that redirect or rewrite traffic, Requestly.</p></details>
-        <details class="qa"><summary>What is a good API testing add-on for Firefox?</summary><p>RequestFox runs in Firefox as a sidebar with the same capture, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or reply with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.</p></details>
+        <details class="qa"><summary>What is a good API testing add-on for Firefox?</summary><p>RequestFox runs in Firefox as a sidebar with the same recording, flags, mocks, checks and exports as in Chrome. Firefox's own Network Monitor is built in and shows every request. In Firefox, pre-request and post-response scripts, and rewriting a request or response with a script, don't run (Firefox does not let extensions run code typed at runtime; chaining values between requests still works). One small difference: clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the one being recorded.</p></details>
         <details class="qa"><summary>Is there a free Postman alternative that runs in the browser?</summary><p>RequestFox is a free browser extension that composes and sends requests with environments, {{variables}}, auth helpers including OAuth 2.0 and saved collections, imports Postman, Insomnia, Bruno, Hoppscotch and Thunder Client collections, and exports Postman collections and collections for Bruno, Insomnia and Hoppscotch. Unlike a standalone client it also records the calls your web app really makes. It has no cloud workspace or team sync.</p></details>
         <details class="qa"><summary>How is RequestFox different from the DevTools Network panel?</summary><p>DevTools shows every request and leaves the judging to you. RequestFox flags failed, slow, duplicate and retried calls as they happen, ties each one to the click that caused it, checks your per-endpoint rules, and keeps every session so you can compare today's run with yesterday's. DevTools is better for a raw, live view of everything a page loads.</p></details>
       </section>
@@ -241,21 +242,21 @@
         <details class="qa"><summary>How do I catch GraphQL errors that come back as 200 OK?</summary><p>GraphQL servers often answer 200 OK with an errors array in the body, so the status column looks fine. Check each response body for a non-empty errors key, and treat it as a failure in your client and tests. RequestFox reads GraphQL and JSON-RPC responses and flags these errors automatically, with the server's own message.</p></details>
         <details class="qa"><summary>Why does an API return 401 when the token looks fine?</summary><p>Often the access token expired minutes earlier and was never refreshed. The middle part of a JWT is base64url-encoded JSON with an exp time you can compare with the response's Date header. RequestFox decodes the bearer token locally, reading only its times, issuer and audience, and says on the request when an expired token caused the 401 or 403.</p></details>
         <details class="qa"><summary>How can I spot N+1 API calls in the browser?</summary><p>Look for one path called again and again with only an id changing, like /products/101/reviews, /products/102/reviews, in a short burst. RequestFox turns paths into templates such as /products/{id}/reviews and flags the burst as N+1. The fix is a batch endpoint or including the data in the list response.</p></details>
-        <details class="qa"><summary>How do I know when an API response changed shape?</summary><p>RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags SCHEMA CHANGED when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema.</p></details>
+        <details class="qa"><summary>How do I know when an API response changed shape?</summary><p>RequestFox remembers the JSON shape each endpoint returned earlier in the session and flags Schema changed when a field is added, removed or changes type, with exactly what differs. For a fixed contract, add a per-endpoint check with a JSON Schema.</p></details>
       </section>
 
       <section class="block" id="do" aria-labelledby="do-title">
         <h2 id="do-title">Mocking, exporting and testing</h2>
-        <details class="qa"><summary>How do I mock an API response in Chrome without a backend?</summary><p>In RequestFox, open a captured call and choose Mock: it returns that call's real status, headers and body, which you can edit, for both fetch and XMLHttpRequest. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or reply. Mocked responses are labelled in the log.</p></details>
-        <details class="qa"><summary>Can I turn browser traffic into load tests?</summary><p>Yes. After a recording, RequestFox's Performance panel turns the captured endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress.</p></details>
+        <details class="qa"><summary>How do I mock an API response in Chrome without a backend?</summary><p>In RequestFox, press Mock on a recorded call's card: the dialog holds that call's real status and body, which you can change, and Mock it returns them, with the call's headers, for the page's fetch and XMLHttpRequest calls. A fault rule can instead make a call fail like a dropped connection, add delay, or pause it so you can edit the request or response. Mocked responses are labelled in the log.</p></details>
+        <details class="qa"><summary>Can I turn browser traffic into load tests?</summary><p>Yes. After a recording, RequestFox's Performance panel turns the recorded endpoints into a runnable k6, JMeter, Gatling or Locust script, with your chosen users, ramp-up and duration, and each endpoint's measured p95 latency as its pass/fail threshold. It can also export end-to-end tests for Playwright or Cypress.</p></details>
         <details class="qa"><summary>How do I export network requests as HAR, Postman or OpenAPI?</summary><p>RequestFox exports a recorded session as a HAR file, a Postman collection, an OpenAPI 3.0 spec built from the calls, CSV, session JSON or a self-contained HTML report. Your saved collections export for Bruno, Insomnia or Hoppscotch, or as one API docs page (Export docs). It also copies any single request as code in 15 languages, cURL for bash and Windows cmd included. Authorization headers, cookies and secret-shaped fields are redacted by default.</p></details>
-        <details class="qa"><summary>Can RequestFox send a request to any API?</summary><p>While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked FROM EXTENSION in the log. Copy as code also turns any request into cURL or another language to run outside the browser.</p></details>
+        <details class="qa"><summary>Can RequestFox send a request to any API?</summary><p>While recording, Compose and Replay send through the page you are testing, with its cookies and session. With nothing recording, Compose sends the request itself, without any page's cookies, after the browser asks once for that site. When an API blocks the page's origin (CORS), Compose offers Send from the extension instead, and a Replay is sent again from the extension by itself: no page cookies, marked From extension in the log. Copy as code also turns any request into cURL or another language to run outside the browser.</p></details>
       </section>
 
       <section class="block" id="trust" aria-labelledby="trust-title">
         <h2 id="trust-title">Privacy and cost</h2>
-        <details class="qa"><summary>Does RequestFox send my data anywhere?</summary><p>No. Everything RequestFox captures stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the answer to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording.</p></details>
-        <details class="qa"><summary>Is RequestFox free? Is it open source?</summary><p>RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public. It has no ads, no account and no paid tier.</p></details>
+        <details class="qa"><summary>Does RequestFox send my data anywhere?</summary><p>No. Everything RequestFox records stays in your browser's storage on your device. There is no RequestFox server, no analytics and no account. Authorization headers, cookies and secret-shaped fields are redacted by default in everything RequestFox keeps, logs or exports (Compose shows the response to your own request as it came; its Recent list keeps your last 100 sends, redacted, on this device until you press Clear), and site access is asked for only when you press Start, or, for the sites involved, when you send from Compose or run a test suite with nothing recording.</p></details>
+        <details class="qa"><summary>Is RequestFox free? Is it open source?</summary><p>RequestFox is free, and our promise is written here: nothing you can use for free today will be put behind a paywall later. Its code is <a href="licence.html">MIT-licensed</a> and ships readable inside the extension, so you can <a href="privacy.html#check">check it yourself</a>; the source repository is not public. It has no ads, no account and no paid tier.</p></details>
         <details class="qa"><summary>Which languages does RequestFox speak?</summary><p>The interface is available in 14 languages: English, Arabic (right to left), Chinese (Simplified), French, German, Hindi, Indonesian, Italian, Japanese, Korean, Portuguese (Brazil), Russian, Spanish and Turkish. It follows the browser's language, or you can pick one in Settings.</p></details>
       </section>
     </div>
@@ -294,14 +295,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -313,7 +312,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -328,8 +328,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>

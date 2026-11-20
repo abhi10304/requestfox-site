@@ -3,9 +3,24 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>How to Record API Calls in Chrome or Firefox</title>
-<meta name="description" content="Record every fetch, XHR, WebSocket and SSE call a website makes in Chrome or Firefox, with failed and slow calls flagged. Step by step, free, no account." />
+<title>How to Record HTTPS Requests in Chrome or Firefox</title>
+<meta name="description" content="Record the HTTPS requests a website makes in Chrome or Firefox: fetch, XHR, WebSocket and SSE, with failed and slow ones flagged. Free, no account." />
 <link rel="canonical" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="en" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="es" href="https://requestfox.accessisight.com/es/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="hi" href="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="zh-CN" href="https://requestfox.accessisight.com/zh-cn/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ar" href="https://requestfox.accessisight.com/ar/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="pt-BR" href="https://requestfox.accessisight.com/pt-br/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="fr" href="https://requestfox.accessisight.com/fr/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ru" href="https://requestfox.accessisight.com/ru/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ja" href="https://requestfox.accessisight.com/ja/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="de" href="https://requestfox.accessisight.com/de/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="ko" href="https://requestfox.accessisight.com/ko/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="id" href="https://requestfox.accessisight.com/id/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
+<link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
 <meta name="color-scheme" content="light dark" />
@@ -18,16 +33,16 @@
 <meta name="theme-color" content="#020817" media="(prefers-color-scheme: dark)" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RequestFox" />
-<meta property="og:title" content="How to Record API Calls in Chrome or Firefox" />
-<meta property="og:description" content="Record every fetch, XHR, WebSocket and SSE call a website makes in Chrome or Firefox, with failed and slow calls flagged. Step by step, free, no account." />
+<meta property="og:title" content="How to Record HTTPS Requests in Chrome or Firefox" />
+<meta property="og:description" content="Record the HTTPS requests a website makes in Chrome or Firefox: fetch, XHR, WebSocket and SSE, with failed and slow ones flagged. Free, no account." />
 <meta property="og:url" content="https://requestfox.accessisight.com/guide-record-api-calls.html" />
 <meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="How to Record API Calls in Chrome or Firefox" />
+<meta property="og:image:alt" content="How to Record HTTPS Requests in Chrome or Firefox" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="How to Record API Calls in Chrome or Firefox" />
-<meta name="twitter:description" content="Record every fetch, XHR, WebSocket and SSE call a website makes in Chrome or Firefox, with failed and slow calls flagged. Step by step, free, no account." />
+<meta name="twitter:title" content="How to Record HTTPS Requests in Chrome or Firefox" />
+<meta name="twitter:description" content="Record the HTTPS requests a website makes in Chrome or Firefox: fetch, XHR, WebSocket and SSE, with failed and slow ones flagged. Free, no account." />
 <meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
 <meta property="og:locale" content="en_US" />
 <script type="application/ld+json">{
@@ -57,7 +72,7 @@
 <script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to record the API calls a website makes",
+  "name": "How to record the HTTPS requests (API calls) a website makes",
   "step": [
     {
       "@type": "HowToStep",
@@ -75,13 +90,13 @@
       "@type": "HowToStep",
       "position": 3,
       "name": "Press Start",
-      "text": "Click the RequestFox icon to open the side panel (the sidebar in Firefox) and press Start, or press Alt+Shift+S (Option+Shift+S on a Mac). The first time, the browser asks you to allow access to the site: allow it."
+      "text": "Click the RequestFox icon to open the side panel (the sidebar in Firefox) and press Start Recording, or press Alt+Shift+S (Option+Shift+S on a Mac). The first time, the browser asks you to allow access to the site: allow it."
     },
     {
       "@type": "HowToStep",
       "position": 4,
       "name": "Use the site as usual",
-      "text": "Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To catch a page's very first calls (sign-in, config, feature flags), tick \"Reload the page to catch its startup calls\" before you press Start."
+      "text": "Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick \"Reload the page to record its startup calls\" before you press Start Recording."
     },
     {
       "@type": "HowToStep",
@@ -109,6 +124,7 @@
       <a href="compare.html" data-nav="compare">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -117,9 +133,9 @@
     <div class="wrap page-hero-grid">
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Record API calls</span></li></ol></nav>
-        <h1 id="title">How to record the API calls a website makes</h1>
+        <h1 id="title">How to record the HTTPS requests (API calls) a website makes</h1>
         <p class="answer">To see the API calls a page makes, open your browser's DevTools, choose Network and filter to Fetch/XHR (XHR in Firefox); nothing to install. To keep them, have the bad ones flagged, and replay or export them, use a browser extension such as RequestFox: install it, open the site, press Start (or <kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>) and use the site as usual. Every fetch, XMLHttpRequest, WebSocket frame and server-sent event is listed the moment it starts.</p>
-        <p class="byline">For RequestFox 2.4.0, checked <time datetime="2026-11-04">4 November 2026</time>.</p>
+        <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
       </div>
       <figure class="fig">
         <div class="shot">
@@ -152,12 +168,12 @@
       <section class="block" id="steps" aria-labelledby="steps-title">
         <h2 id="steps-title">Steps to record API calls in Chrome or Firefox</h2>
         <ol class="howto">
-          <li><h3>Install RequestFox</h3><p>Add it from the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Firefox Add-ons</a>. There is nothing to sign up for.</p></li>
-          <li><h3>Open the site you want to test</h3><p>Any normal web page works. Browser pages such as the extensions page, a new tab or the Web Store cannot be recorded; RequestFox says so if you try.</p></li>
-          <li><h3>Press Start</h3><p>Click the RequestFox icon to open the side panel (the sidebar in Firefox) and press Start, or press Alt+Shift+S (Option+Shift+S on a Mac). The first time, the browser asks you to allow access to the site: allow it.</p></li>
-          <li><h3>Use the site as usual</h3><p>Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To catch a page's very first calls (sign-in, config, feature flags), tick "Reload the page to catch its startup calls" before you press Start.</p></li>
-          <li><h3>Read the flags</h3><p>Calls that failed, were slow, fired twice or broke inside a 200 OK are marked. Open one to see its headers, body, timing and the reason in plain words.</p></li>
-          <li><h3>Stop, and keep the evidence</h3><p>Press Stop. The session is kept in History to reopen and compare. Export it as an HTML report, HAR, CSV or JSON, or copy one call as code.</p></li>
+          <li data-ui="none"><h3>Install RequestFox</h3><p>Add it from the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Firefox Add-ons</a>. There is nothing to sign up for.</p></li>
+          <li data-ui="none"><h3>Open the site you want to test</h3><p>Any normal web page works. Browser pages such as the extensions page, a new tab or the Web Store cannot be recorded; RequestFox says so if you try.</p></li>
+          <li><h3>Press Start</h3><p>Click the RequestFox icon to open the side panel (the sidebar in Firefox) and press <span class="ui">Start Recording</span>, or press Alt+Shift+S (Option+Shift+S on a Mac). The first time, the browser asks you to allow access to the site: allow it.</p></li>
+          <li><h3>Use the site as usual</h3><p>Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick "<span class="ui">Reload the page to record its startup calls</span>" before you press <span class="ui">Start Recording</span>.</p></li>
+          <li data-ui="none"><h3>Read the flags</h3><p>Calls that failed, were slow, fired twice or broke inside a 200 OK are marked. Open one to see its headers, body, timing and the reason in plain words.</p></li>
+          <li><h3>Stop, and keep the evidence</h3><p>Press <span class="ui">Stop</span>. The session is kept in <span class="ui">History</span> to reopen and compare. <span class="ui">Export</span> it as an HTML report, HAR, CSV or JSON, or copy one call as code.</p></li>
         </ol>
       </section>
 
@@ -177,7 +193,7 @@
           <li><strong>The list says to open a site first:</strong> you pressed Start on a browser page. Open the site, then press Start.</li>
           <li><strong>You chose not to allow access:</strong> press Start again and allow it. You can remove the access later in your browser's settings for the extension.</li>
           <li><strong>The list is empty while recording:</strong> the page has made no calls yet. Click something that loads data, or reload the page.</li>
-          <li><strong>The shortcut does nothing:</strong> another extension may use it. Set it again at chrome://extensions/shortcuts.</li>
+          <li><strong>The shortcut does nothing:</strong> another extension may use it. Set it again at chrome://extensions/shortcuts (Firefox: about:addons, the gear, Manage Extension Shortcuts).</li>
         </ul>
       </section>
 
@@ -194,8 +210,8 @@
       <section class="block" id="next" aria-labelledby="next-title">
         <h2 id="next-title">Next</h2>
         <ul class="cards">
-          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a><p>Send a captured call again, changed or not.</p></li>
-          <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Return your own answer, or make a call fail.</p></li>
+          <li><a href="guide-replay-edit-request.html">Replay and edit a request</a><p>Send a recorded call again, changed or not.</p></li>
+          <li><a href="guide-mock-api-response.html">Mock an API response</a><p>Return your own response, or make a call fail.</p></li>
         </ul>
       </section>
     </div>
@@ -225,14 +241,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -244,7 +258,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -259,8 +274,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      <nav class="foot-langs" aria-label="Languages"><p>This page in: <a href="guide-record-api-calls.html" hreflang="en" lang="en" aria-current="true">English</a> · <a href="es/guide-record-api-calls.html" hreflang="es" lang="es">Español</a> · <a href="hi/guide-record-api-calls.html" hreflang="hi" lang="hi">हिन्दी</a> · <a href="zh-cn/guide-record-api-calls.html" hreflang="zh-CN" lang="zh-CN">中文(简体)</a> · <a href="ar/guide-record-api-calls.html" hreflang="ar" lang="ar" dir="rtl">العربية</a> · <a href="pt-br/guide-record-api-calls.html" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a> · <a href="fr/guide-record-api-calls.html" hreflang="fr" lang="fr">Français</a> · <a href="ru/guide-record-api-calls.html" hreflang="ru" lang="ru">Русский</a> · <a href="ja/guide-record-api-calls.html" hreflang="ja" lang="ja">日本語</a> · <a href="de/guide-record-api-calls.html" hreflang="de" lang="de">Deutsch</a> · <a href="ko/guide-record-api-calls.html" hreflang="ko" lang="ko">한국어</a> · <a href="id/guide-record-api-calls.html" hreflang="id" lang="id">Bahasa Indonesia</a> · <a href="tr/guide-record-api-calls.html" hreflang="tr" lang="tr">Türkçe</a> · <a href="it/guide-record-api-calls.html" hreflang="it" lang="it">Italiano</a></p></nav>
     </div>
   </div>
 </footer>

@@ -60,6 +60,7 @@
       <a href="compare.html" data-nav="compare" aria-current="page">Compare</a>
       <a href="faq.html">FAQ</a>
     </nav>
+    <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=compare" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -69,7 +70,7 @@
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">Compare</span></li></ol></nav>
       <h1 id="title">Which API tool fits which job</h1>
       <p class="answer">Each of these tools is the right pick for some job. RequestFox is the one that watches the web app you are testing and points out the API problems as they happen. For designing and sharing APIs across a team, a desktop client such as Postman, Insomnia, Bruno or Hoppscotch fits better, and RequestFox imports from all four.</p>
-      <p class="byline">Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.4.0.</p>
+      <p class="byline">Facts about other tools come from their own documentation, linked on each page. Written by the RequestFox team, for RequestFox 2.5.0.</p>
     </div>
   </section>
 
@@ -92,33 +93,37 @@
           <li><strong>API requests kept as plain files in Git, next to the code:</strong> Bruno.</li>
           <li><strong>An open-source client on the web you can self-host:</strong> Hoppscotch.</li>
           <li><strong>Rules that redirect, rewrite or inject on every page, all the time:</strong> <a href="compare-requestly.html">Requestly</a>.</li>
+          <li><strong>Traffic from a phone, a desktop app or the terminal:</strong> a proxy tool such as <a href="compare-proxy-tools.html">HTTP Toolkit, Proxyman or Charles</a>.</li>
         </ul>
       </section>
 
       <section class="block" id="pages" aria-labelledby="pages-title">
         <h2 id="pages-title">Each comparison</h2>
         <ul class="cards">
-          <li><a href="compare-postman.html">RequestFox vs Postman</a><p>Browser capture and flags, or team workspaces and more protocols.</p></li>
+          <li><a href="compare-postman.html">RequestFox vs Postman</a><p>Browser recording and flags, or team workspaces and more protocols.</p></li>
           <li><a href="compare-devtools.html">RequestFox vs DevTools Network</a><p>The judging and the history, or the raw live view.</p></li>
           <li><a href="compare-insomnia.html">RequestFox vs Insomnia</a><p>In the browser, or an open-source desktop client with plugins.</p></li>
-          <li><a href="compare-bruno.html">RequestFox vs Bruno</a><p>Capture what the app sent, or write requests as files in Git.</p></li>
+          <li><a href="compare-bruno.html">RequestFox vs Bruno</a><p>Record what the app sent, or write requests as files in Git.</p></li>
           <li><a href="compare-hoppscotch.html">RequestFox vs Hoppscotch</a><p>Your app's real calls, or a self-hostable client with realtime protocols.</p></li>
           <li><a href="compare-requestly.html">RequestFox vs Requestly</a><p>Two browser extensions: record and flag the calls, or intercept and rewrite them.</p></li>
-          <li><a href="postman-interceptor-alternative.html">RequestFox vs Postman Interceptor</a><p>Capture in the browser on its own, or hand the capture to Postman.</p></li>
+          <li><a href="compare-proxy-tools.html">RequestFox vs proxy tools</a><p>A browser tab, with nothing to set up, or any app through a proxy: HTTP Toolkit, Proxyman, Charles.</p></li>
+          <li><a href="postman-interceptor-alternative.html">RequestFox vs Postman Interceptor</a><p>Record in the browser on its own, or hand the traffic to Postman.</p></li>
+          <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a><p>A free alternative with no account at all, and what Insomnia, Thunder Client and Postman say on their own pricing pages.</p></li>
+          <li><a href="compare-thunder-client.html">RequestFox vs Thunder Client</a><p>Your web app's real calls in the browser, or requests kept in your editor: free limits and prices from their pages.</p></li>
         </ul>
       </section>
 
       <section class="block" id="limits" aria-labelledby="limits-title">
         <h2 id="limits-title">Where RequestFox falls short</h2>
-        <p>Honest limits of RequestFox 2.4.0, so you are not surprised:</p>
+        <p>Honest limits of RequestFox 2.5.0, so you are not surprised:</p>
         <ul>
-          <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy-based tool.</li>
+          <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy tool such as <a href="compare-proxy-tools.html">HTTP Toolkit, Proxyman or Charles</a>.</li>
           <li>While recording, Compose sends from the page you are testing, with its cookies; with nothing recording it sends from the extension itself, without any page's cookies, after the browser asks once for that site.</li>
           <li>No team workspace or cloud sync, by design. Share work as files: collections, sessions, HAR and reports.</li>
           <li>An EventSource stream's live rows are the event types the page listens for: the browser hands a page no others.</li>
-          <li>Pre-request and post-response scripts, and rewriting a request or reply with a script, run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
+          <li>Pre-request and post-response scripts, and rewriting a request or response with a script, run in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values between requests works in both.</li>
           <li>No native gRPC or MQTT client (gRPC-Web and Connect only).</li>
-          <li>It is free. Its code is MIT-licensed and ships readable inside the extension; the source repository is not public.</li>
+          <li>It is free. Its code is <a href="licence.html">MIT-licensed</a> and ships readable inside the extension, so you can <a href="privacy.html#check">check it yourself</a>; the source repository is not public.</li>
         </ul>
       </section>
     </div>
@@ -157,14 +162,12 @@
           <h2>Guides</h2>
           <ul>
             <li><a href="guide-record-api-calls.html">Record API calls</a></li>
-            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
             <li><a href="guide-mock-api-response.html">Mock an API response</a></li>
-            <li><a href="guide-openapi-contract-check.html">Check against OpenAPI</a></li>
+            <li><a href="guide-replay-edit-request.html">Replay and edit a request</a></li>
+            <li><a href="guide-change-request-headers.html">Change a request header</a></li>
             <li><a href="guide-api-checks-in-ci.html">API checks in CI</a></li>
-            <li><a href="guide-api-testing-firefox.html">API testing in Firefox</a></li>
-            <li><a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200</a></li>
-            <li><a href="guide-duplicate-and-n-plus-one-api-calls.html">Duplicate and N+1 calls</a></li>
-            <li><a href="guide-har-to-postman.html">HAR to Postman</a></li>
+            <li><a href="cli.html">Command line</a></li>
+            <li><a href="guides.html">All guides</a></li>
           </ul>
         </div>
         <div>
@@ -176,7 +179,8 @@
             <li><a href="compare-bruno.html">vs Bruno</a></li>
             <li><a href="compare-hoppscotch.html">vs Hoppscotch</a></li>
             <li><a href="compare-requestly.html">vs Requestly</a></li>
-            <li><a href="postman-interceptor-alternative.html">vs Postman Interceptor</a></li>
+            <li><a href="postman-alternative-no-login.html">Postman alternative, no login</a></li>
+            <li><a href="compare.html">All comparisons</a></li>
           </ul>
         </div>
         <div>
@@ -191,8 +195,9 @@
     </div>
     <p class="foot-name" aria-hidden="true" translate="no">RequestFox</p>
     <div class="foot-base">
-      <p>RequestFox 2.4.0 · site updated <time datetime="2026-11-04">4 November 2026</time> · 14 interface languages</p>
+      <p>RequestFox 2.5.0 · site updated <time datetime="2026-11-19">19 November 2026</time> · 14 interface languages</p>
       <p>Made by AccessiSight. No cookies, no analytics on this site. Set in the Inter typeface (<a href="fonts/OFL.txt">SIL Open Font License</a>).</p>
+      
     </div>
   </div>
 </footer>
