@@ -1451,7 +1451,7 @@ Each call costs time, and the cost adds up with the length of the list. Fixes de
 
 - To see what sent a call, hover over its Initiator column: for a call made by JavaScript it shows the stack trace leading up to the request [3].
 
-This works, and it costs nothing. The counting is by eye, and the list is gone when you close the panel.
+This works, and it costs nothing. The counting is by eye, and the list is gone when you close the panel. For the failed and slow calls, see how to find failed and slow API calls in Chrome.
 
 ## How does RequestFox flag duplicate and N+1 calls?
 
@@ -1516,6 +1516,129 @@ Add to Firefox
 
 ---
 
+# How to find failed and slow API calls in Chrome
+
+Address: https://requestfox.accessisight.com/guide-find-failed-and-slow-api-calls.html
+
+Open DevTools (Ctrl Shift J), click Network, choose Fetch/XHR, tick Preserve log, then sort by Status to see the failed calls and by Time to see the slow ones. That needs no install. A call that fails inside a 200 OK still looks fine there. RequestFox, a browser extension, counts the failed and slow calls while you use the site, and marks the ones that fail inside a 200.
+
+For RequestFox 2.5.0, checked 19 November 2026. Facts about Chrome are from its own documentation, checked 4 November 2026; sources below.
+
+## How do I find failed and slow requests in Chrome DevTools?
+
+### Open the Network panel
+
+Press Ctrl Shift J (Cmd Option J on a Mac), then click the Network tab [2]. DevTools records requests while it is open [2], so open it before you do the thing that breaks.
+
+### Show only API calls
+
+Click the Fetch/XHR button among the type filters [1]. Tick Preserve log, and DevTools keeps the requests across page loads until you untick it [1]. Without it, a page that reloads after the error clears the list.
+
+### Find the failed calls
+
+Click the Status column header to sort by it [1]. The column shows the HTTP code, for example 200 or 404. A request that failed before it got a response shows (failed) followed by the error message, and a CORS failure shows CORS error [1]. To see only one code, type status-code:500 in the Filter box [1]. To see everything except what the filter matches, tick Invert next to the box [1].
+
+### Find the slow calls
+
+Click the Time column header to sort by it [1]. Time is the total duration, from the start of the request to the last byte of the response [1]. For another view, right-click the table header, hover Waterfall and pick Start Time, Response Time, End Time, Total Duration or Latency [1]. To find big responses, filter with larger-than:1000, which is the same as larger-than:1k [1].
+
+### See where the time went
+
+Click a slow request and open its Timing tab [1]. The phases include Queueing, Stalled, DNS Lookup, Initial connection, Request sent, Waiting (TTFB) and Content Download. Waiting (TTFB) is the browser waiting for the first byte of the response; it includes one round trip of latency and the time the server took to prepare the response [1].
+
+### Search every response
+
+Press Ctrl F (Cmd F on a Mac) in the Network panel. The Search tab opens and looks through request headers, payloads and responses; click a result and the matching request is highlighted [1]. Use it to find which call returned an error message you saw on screen.
+
+## What can DevTools not show me?
+
+- One call at a time. You sort and read a long table, then open each suspect to read its response. The table does not count how many calls failed or were slow.
+
+- Errors inside a 200. The Status column shows the HTTP code. An API that sends a 200 and puts the failure in the body, as GraphQL does, looks fine in the list. You find it by opening the response, or by searching for the error text. GraphQL errors in a 200 OK.
+
+- It only keeps what you watched. DevTools records while it is open, and Preserve log has to be ticked before the page moves on.
+
+- The cause is a separate hunt. For a request started by a script, the Initiator column links to the line in the source file [1]; you follow it by hand for each call.
+
+## How does RequestFox find them for me?
+
+- Press Start Recording, then use the site. Every API call shows up in the panel, with the failed, slow and repeated ones marked. How to record API calls.
+
+- Read the counts. Above the calls are buttons for Duplicate, Failed, Slow and JS errors. Click one to see only those calls, and click it again to see them all.
+
+- Know what counts as Failed. A call is Failed when its status is 400 or higher, when it never got a status (connection refused, a CORS block, aborted), or when the response says it failed inside a 200 OK: a GraphQL errors list, a JSON-RPC error, a SOAP fault, an error event inside an event stream, or a gRPC status other than OK. Those calls carry their own mark, such as GraphQL error, so you can tell them from a plain 500.
+
+- Know what counts as Slow. A call is Slow when it takes longer than your slow limit. The limit starts at 3 seconds, and you change it in Settings under When to flag a call, in the box Flag a call as slow after (ms). The Slow mark on a card says the limit in its tooltip.
+
+- Check Repeated problems. When endpoints keep failing or being slow, they are listed above the log under Repeated problems, with how many times each failed or was slow, so one bad endpoint does not hide among hundreds of cards.
+
+- Open a call to see why. Its Timing section shows where the time went: queued, DNS lookup, connect, waiting for the server, download. For a call to another site, the browser hides the breakdown unless that server allows it, and the card says so. Called from lists the page code that made the call.
+
+- Send it again. Press Replay on a card to resend that exact request and see whether it still fails. For a POST, PUT, PATCH or DELETE it asks first, because a repeat can change real data. Replay and edit a request.
+
+RequestFox marks what it sees; you decide what is a bug. A call that your own mock or fault rule changed is marked Mocked or Simulated, so a test you set up is not mistaken for a real failure.
+
+## Which should I use when?
+
+|
+
+| You want to | Use
+
+| Look at one call right now, with nothing installed | DevTools. It is built in, exact, and shows every phase of a request.
+
+| Filter by one status code or one size | DevTools. The Filter box does that in one line.
+
+| Know how many calls failed or were slow in a whole session | RequestFox. The counts sit above the log, and you can click them.
+
+| Catch a failure the status code hides | RequestFox marks GraphQL, JSON-RPC, SOAP and stream errors in a 200. In DevTools you read the body.
+
+| Find the code that made a call, or send it again | RequestFox: Called from and Replay on the card.
+
+| Keep the evidence after you close the tab | RequestFox keeps each session in History. Send a bug report with the evidence.
+
+They work together: DevTools for the exact one-call view, RequestFox for the whole session. RequestFox vs DevTools Network.
+
+## Sources
+
+- Chrome for Developers, "Network features reference". Checked 4 November 2026. developer.chrome.com
+
+- Chrome for Developers, "Inspect network activity". Checked 4 November 2026. developer.chrome.com
+
+Something here out of date? Docs change. Tell us at the address in the privacy policy and we will fix it.
+
+## Next
+
+- Record API calls
+
+Start, use the site, read the flags, keep the evidence.
+
+- GraphQL errors in a 200 OK
+
+A failed call that the status hides.
+
+- Duplicate and N+1 API calls
+
+Find calls sent twice, and one request per id in a list.
+
+- Slow down or cut off the network
+
+Make one call slow or offline to test how your page copes.
+
+- Replay and edit a request
+
+Send a recorded call again, as it was or changed.
+
+- Send a bug report with the evidence
+
+One call, its steps and console, secrets hidden.
+
+## See which calls broke the page.
+
+Add to Chrome, free
+Add to Firefox
+
+---
+
 # GraphQL returns 200 OK with errors: how to spot and catch it
 
 Address: https://requestfox.accessisight.com/guide-graphql-errors-in-200.html
@@ -1561,7 +1684,7 @@ Every error has a message. It may also have locations (the line and column in yo
 
 - Open its response and look for errors. The status column will still say 200.
 
-This works for one call you are already looking at. It does not warn you about the one you did not open.
+This works for one call you are already looking at. It does not warn you about the one you did not open. For failed and slow calls in general, see how to find failed and slow API calls in Chrome.
 
 ## How does RequestFox catch it for me?
 
@@ -2947,6 +3070,10 @@ Spot a failed GraphQL call the status hides, and fail a CI run on it.
 - Duplicate and N+1 API calls
 
 Find calls sent twice, and one request per id in a list.
+
+- Find failed and slow API calls in Chrome
+
+DevTools filters and sorting, then RequestFox counts the failed and slow ones for you.
 
 - HAR to Postman
 
