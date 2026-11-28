@@ -69,7 +69,7 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Look for the GraphQL error mark",
-      "text": "A call whose response holds an errors list is marked \"GraphQL error\", and it is listed among the session's findings in the Session overview. A 4xx or 5xx response is already marked Failed by its status."
+      "text": "A call whose response holds an errors list is marked \"GraphQL error\", and it's listed among the session's findings in the Session overview. A 4xx or 5xx response is already marked Failed by its status."
     },
     {
       "@type": "HowToStep",
@@ -106,7 +106,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">GraphQL errors in a 200</span></li></ol></nav>
       <h1 id="title">GraphQL returns 200 OK with errors: how to spot and catch it</h1>
-      <p class="answer">A GraphQL call can come back 200 OK and still have failed. Read the response body: if it has a top-level <code>errors</code> list, something went wrong, in all of the call or only in part of it, whatever the HTTP status says. <strong>RequestFox</strong>, a browser extension for Chrome and Firefox, marks such a call "GraphQL error", and its command-line tool can fail a CI run on it.</p>
+      <p class="answer">A GraphQL call can come back 200 OK and still have failed. Read the response body. If it has a top-level <code>errors</code> list, something went wrong, in all of the call or just part of it, whatever the HTTP status says. <strong>RequestFox</strong>, a browser extension for Chrome and Firefox, marks such a call "GraphQL error", and its command-line tool can fail a CI run on it.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about GraphQL and other tools are from their own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -131,12 +131,12 @@
         <p>A GraphQL response is a JSON object. Its <code>data</code> entry holds the result and its <code>errors</code> entry holds what went wrong [1]. A field that fails is replaced with null while the rest of the result still arrives, so one response can hold both [1].</p>
         <p>HTTP has no status code for "partly worked". The GraphQL project's guidance is that a response with a data entry that is not null gets a 2xx status, even when it also has errors [2]. The GraphQL-over-HTTP draft says the same, and calls a 4xx or 5xx "not appropriate" for a partial result [3].</p>
         <p>When a request fails before it runs, because of a syntax or validation error, the response has no data entry. Servers usually answer 400 then, but the GraphQL project notes that some older servers answer 2xx when the response type is <code>application/json</code> [2]. Some APIs use 200 for every error in the application itself: monday.com's API documentation says it answers 200 OK for those and keeps other statuses for problems in transport [4].</p>
-        <p>So the status is not enough. Read the body.</p>
+        <p>So the status isn't enough. Read the body.</p>
       </section>
 
       <section class="block" id="shape" aria-labelledby="shape-title">
         <h2 id="shape-title">What does a GraphQL error look like?</h2>
-        <p>An example: the user was found, but one field of it failed.</p>
+        <p>For example, the user was found but one of its fields failed:</p>
         <pre class="cmd"><code>{
   "data": { "user": { "name": "Ada", "photo": null } },
   "errors": [
@@ -155,28 +155,28 @@
         <h2 id="by-hand-title">How do I spot it in the browser by hand?</h2>
         <ol>
           <li>Open the DevTools Network panel and choose the Fetch/XHR filter [5].</li>
-          <li>Click the GraphQL call. A GraphQL API is typically one address ending in <code>/graphql</code> [2], so the address does not say which operation it was: read the request to find out.</li>
+          <li>Click the GraphQL call. A GraphQL API is typically one address ending in <code>/graphql</code> [2], so the address doesn't tell you which operation it was. Read the request to find out.</li>
           <li>Open its response and look for <code>errors</code>. The status column will still say 200.</li>
         </ol>
-        <p>This works for one call you are already looking at. It does not warn you about the one you did not open. For failed and slow calls in general, see <a href="guide-find-failed-and-slow-api-calls.html">how to find failed and slow API calls in Chrome</a>.</p>
+        <p>This works for one call you're already looking at. It won't warn you about the one you didn't open. For failed and slow calls in general, see <a href="guide-find-failed-and-slow-api-calls.html">how to find failed and slow API calls in Chrome</a>.</p>
       </section>
 
       <section class="block" id="catch" aria-labelledby="catch-title">
         <h2 id="catch-title">How does RequestFox catch it for me?</h2>
         <ol class="howto">
           <li><h3>Record the calls</h3><p>Press <span class="ui">Start Recording</span> in RequestFox and use your app. <a href="guide-record-api-calls.html">How to record API calls</a>.</p></li>
-          <li><h3>Look for the GraphQL error mark</h3><p>A call whose response holds an <code>errors</code> list is marked "<span class="ui">GraphQL error</span>", and it is listed among the session's findings in the <span class="ui">Session overview</span>. A 4xx or 5xx response is already marked <span class="ui">Failed</span> by its status.</p></li>
+          <li><h3>Look for the GraphQL error mark</h3><p>A call whose response holds an <code>errors</code> list is marked "<span class="ui">GraphQL error</span>", and it's listed among the session's findings in the <span class="ui">Session overview</span>. A 4xx or 5xx response is already marked <span class="ui">Failed</span> by its status.</p></li>
           <li data-ui="none"><h3>Open the call</h3><p>The card shows the first error's message and, when there are more, how many. Open it to read the whole response.</p></li>
           <li><h3>Press "<span class="ui">Why is this flagged?</span>"</h3><p>The finding code is <code>RF-GQL-ERROR</code>. The panel explains it offline, and <code>requestfox-ci explain RF-GQL-ERROR</code> says the same in a terminal.</p></li>
         </ol>
-        <p>What RequestFox looks for, so you know what it will and will not flag:</p>
+        <p>What RequestFox looks for, so you know what it will and won't flag:</p>
         <ul>
           <li>The response is JSON with an <code>errors</code> list in which every error is an object with a text <code>message</code>.</li>
-          <li>The call looks like GraphQL: its address contains "graphql", or a <code>?query=</code> holds an operation, or the request body has a <code>query</code> that reads like a GraphQL document or a persisted-query id. A REST API that lists "errors" for its own reasons is not marked as GraphQL.</li>
+          <li>The call looks like GraphQL: its address contains "graphql", or a <code>?query=</code> holds an operation, or the request body has a <code>query</code> that reads like a GraphQL document or a persisted-query id. A REST API that lists "errors" for its own reasons isn't marked as GraphQL.</li>
           <li>A batch (a list of responses) counts if any one of them failed.</li>
-          <li>A response cut off at the body size limit is not read.</li>
+          <li>A response cut off at the body size limit isn't read.</li>
         </ul>
-        <p>A server that reports failure some other way, such as a field named <code>error</code> or a status inside <code>data</code>, is not caught by this rule. Add a check on that field to the endpoint instead: checks can test fields, status, time and headers.</p>
+        <p>This rule won't catch a server that reports failure some other way, such as a field named <code>error</code> or a status inside <code>data</code>. For that, add a check on the field to the endpoint: checks can test fields, status, time and headers.</p>
       </section>
 
       <section class="block" id="ci" aria-labelledby="ci-title">
@@ -198,7 +198,7 @@
           <li>monday.com developer documentation, "Error handling". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.monday.com/api-reference/docs/error-handling" rel="noopener noreferrer">developer.monday.com</a></li>
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Specs and APIs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Specs and APIs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

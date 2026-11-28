@@ -75,7 +75,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API calls in Firefox, Edge and Safari</span></li></ol></nav>
       <h1 id="title">How to see the API calls a page makes in Firefox, Edge or Safari</h1>
-      <p class="answer">Every one of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where it is differs by browser, and the steps for each are below. To keep the calls after you close the tools and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome and Firefox; Safari is not supported.</p>
+      <p class="answer">Each of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where you find it differs by browser, so the steps for each are below. If you want to keep the calls after you close the tools, and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome and Firefox; Safari is not supported.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about browsers are from their own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -100,14 +100,14 @@
           <li>Use the page. Opening the tool starts monitoring, and it keeps recording while the developer tools stay open [1].</li>
           <li>Filter the list with the XHR button, and right-click a request for Copy as cURL, Copy as Fetch or Save All As HAR [2].</li>
         </ol>
-        <p>Firefox can also edit a request and send it again with Edit and Resend. <a href="guide-api-testing-firefox.html">API testing in Firefox</a> has that, and the add-ons that help.</p>
+        <p>Firefox can also edit a request and send it again with Edit and Resend. <a href="guide-api-testing-firefox.html">API testing in Firefox</a> covers that, plus the add-ons that help.</p>
       </section>
 
       <section class="block" id="edge" aria-labelledby="edge-title">
         <h2 id="edge-title">How do I see API calls in Microsoft Edge?</h2>
         <ol>
           <li>Right-click the page and choose Inspect, or press Ctrl+Shift+J (Command+Option+J on a Mac) [3].</li>
-          <li>On the Activity Bar choose the Network tab. If it is not there, click More tools [3].</li>
+          <li>On the Activity Bar choose the Network tab. If it isn't there, click More tools [3].</li>
           <li>Refresh the page. The Network Log lists each request with its status, type, initiator and time, and you can narrow it with the Filter box or by resource type [3].</li>
         </ol>
         <p>The tool logs only after DevTools is open, so open it before you load the page [3].</p>
@@ -120,13 +120,13 @@
           <li>A Develop menu now appears in the menu bar, with the developer tools [4].</li>
           <li>Open Web Inspector and choose its Network tab [5].</li>
         </ol>
-        <p>RequestFox does not run in Safari. In Safari, the Network tab of Web Inspector is the way to see a page's calls.</p>
+        <p>RequestFox does not run in Safari. In Safari, use the Network tab of Web Inspector to see a page's calls.</p>
       </section>
 
       <section class="block" id="extension" aria-labelledby="extension-title">
         <h2 id="extension-title">Can I keep the calls and have the broken ones flagged?</h2>
         <p>Yes, in Chrome and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in <span class="ui">History</span>. Press <span class="ui">Start Recording</span>, use the page, press <span class="ui">Stop</span>. <a href="guide-record-api-calls.html">How to record API calls</a> has every step.</p>
-        <p>RequestFox is in the Chrome Web Store and Firefox Add-ons. It is not listed for other browsers, so for those use the built-in tool above.</p>
+        <p>RequestFox is in the Chrome Web Store and Firefox Add-ons. It isn't listed for other browsers, so for those, use the built-in tool above.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -138,7 +138,7 @@
           <li>Apple Support, "Use the developer tools in the Develop menu in Safari". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://support.apple.com/guide/safari/use-the-developer-tools-in-the-develop-menu-sfri20948/mac" rel="noopener noreferrer">support.apple.com</a></li>
           <li>Apple Support, "Safari Web Inspector Guide: Network tab". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://support.apple.com/guide/safari-developer/network-tab-dev1b2aeb4e2/mac" rel="noopener noreferrer">support.apple.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Browsers change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Browsers change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

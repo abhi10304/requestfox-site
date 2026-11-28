@@ -96,13 +96,13 @@
     <div class="content">
       <section class="block" id="twice" aria-labelledby="twice-title">
         <h2 id="twice-title">Why does my page send the same API call twice?</h2>
-        <p>Usual causes: two parts of the page ask for the same data, a click or a form submit is handled twice, or code sends the call again after a failure. Some repeats are on purpose, such as polling or a heartbeat.</p>
-        <p>While you build a React app, there is one more. With Strict Mode on, React runs one extra setup and cleanup cycle for every Effect in development [2], so a fetch inside an Effect can show up twice on your machine. React says these checks are development only and do not affect the production build [2]. Look at a production build before you call it a bug.</p>
+        <p>The usual causes: two parts of the page ask for the same data, a click or a form submit is handled twice, or code sends the call again after a failure. Some repeats are on purpose, like polling or a heartbeat.</p>
+        <p>If you're building a React app, there's one more. With Strict Mode on, React runs one extra setup and cleanup cycle for every Effect in development [2], so a fetch inside an Effect can show up twice on your machine. React says these checks are development only and don't affect the production build [2]. Look at a production build before you call it a bug.</p>
       </section>
 
       <section class="block" id="n-plus-one" aria-labelledby="n-plus-one-title">
         <h2 id="n-plus-one-title">What is an N+1 API call pattern?</h2>
-        <p>It is a performance problem where an application makes many network requests to fetch one type of resource: one request for each item in a list, instead of one combined request [1]. It often shows up when a page renders a list or a grid and each item loads its own data [1].</p>
+        <p>It's a performance problem where an application makes many network requests to fetch one type of resource: one request for each item in a list, instead of one combined request [1]. It often shows up when a page renders a list or a grid and each item loads its own data [1].</p>
         <p>Each call costs time, and the cost adds up with the length of the list. Fixes depend on the app, and some of this may be on purpose [1]. Common ones: fetch the data for all items in one call, for example an endpoint that takes a list of ids; load an item's data only when it comes into view; or cache the data, or share one call between the parts that ask for it [1].</p>
       </section>
 
@@ -114,12 +114,12 @@
           <li>Look at the Waterfall, which orders requests by start time [3]. A stack of near-identical bars that start together is a burst.</li>
           <li>To see what sent a call, hover over its Initiator column: for a call made by JavaScript it shows the stack trace leading up to the request [3].</li>
         </ol>
-        <p>This works, and it costs nothing. The counting is by eye, and the list is gone when you close the panel. For the failed and slow calls, see <a href="guide-find-failed-and-slow-api-calls.html">how to find failed and slow API calls in Chrome</a>.</p>
+        <p>This works, and it costs nothing. But you count by eye, and the list is gone when you close the panel. For the failed and slow calls, see <a href="guide-find-failed-and-slow-api-calls.html">how to find failed and slow API calls in Chrome</a>.</p>
       </section>
 
       <section class="block" id="flags" aria-labelledby="flags-title">
         <h2 id="flags-title">How does RequestFox flag duplicate and N+1 calls?</h2>
-        <p>Press Start, use the page, and look for these marks. They are the panel's own labels.</p>
+        <p>Press Start, use the page, and look for these marks. They're the panel's own labels.</p>
         <ul class="flag-list">
           <li><span class="badge serious">Duplicate · after 140 ms</span> the same call fired again within the rapid cutoff: likely a bug</li>
           <li><span class="badge serious">Retry · after 900 ms</span> the same call sent again later, within the window: possibly a retry</li>
@@ -132,13 +132,13 @@
           <li><strong>The cause:</strong> every flagged call is tied to the click or form submit that caused it, and Details → Called from lists the page code that made the call.</li>
           <li><strong>Repeats you expect:</strong> on a card, ··· More → Stop flagging repeats keeps that endpoint's repeats, such as polling, from being flagged.</li>
         </ul>
-        <p>RequestFox marks what it sees; you decide which repeats are bugs. It sees what a browser tab sends. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
+        <p>RequestFox marks what it sees, and you decide which repeats are bugs. It only sees what a browser tab sends. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
       </section>
 
       <section class="block" id="fix" aria-labelledby="fix-title">
         <h2 id="fix-title">How do I fix them, and check the fix?</h2>
         <p>Pick the fix that fits [1]: one combined call, loading on demand, or a cache that shares one call. For a repeat that only shows in development, check a production build first [2].</p>
-        <p>Then record the same flow again. Every session is kept in History, so you can open the earlier one next to the new one and see whether the repeats are gone.</p>
+        <p>Then record the same flow again. Every session stays in History, so you can open the earlier one next to the new one and see whether the repeats are gone.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -148,7 +148,7 @@
           <li>React documentation, "StrictMode". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://react.dev/reference/react/StrictMode" rel="noopener noreferrer">react.dev</a></li>
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Docs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Docs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

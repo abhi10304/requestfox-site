@@ -63,7 +63,7 @@
       "@type": "HowToStep",
       "position": 1,
       "name": "Open the Network panel",
-      "text": "Press Ctrl Shift J (Cmd Option J on a Mac), then click the Network tab [2]. DevTools records requests while it is open [2], so open it before you do the thing that breaks."
+      "text": "Press Ctrl Shift J (Cmd Option J on a Mac), then click the Network tab [2]. DevTools only records requests while it's open [2], so open it before you do the thing that breaks."
     },
     {
       "@type": "HowToStep",
@@ -81,19 +81,19 @@
       "@type": "HowToStep",
       "position": 4,
       "name": "Find the slow calls",
-      "text": "Click the Time column header to sort by it [1]. Time is the total duration, from the start of the request to the last byte of the response [1]. For another view, right-click the table header, hover Waterfall and pick Start Time, Response Time, End Time, Total Duration or Latency [1]. To find big responses, filter with larger-than:1000, which is the same as larger-than:1k [1]."
+      "text": "Click the Time column header to sort by it [1]. Time is the total duration, from the start of the request to the last byte of the response [1]. To sort the Waterfall by a different timing, right-click the table header, hover Waterfall and pick Start Time, Response Time, End Time, Total Duration or Latency [1]. To find big responses, filter with larger-than:1000; larger-than:1k works too [1]."
     },
     {
       "@type": "HowToStep",
       "position": 5,
       "name": "See where the time went",
-      "text": "Click a slow request and open its Timing tab [1]. The phases include Queueing, Stalled, DNS Lookup, Initial connection, Request sent, Waiting (TTFB) and Content Download. Waiting (TTFB) is the browser waiting for the first byte of the response; it includes one round trip of latency and the time the server took to prepare the response [1]."
+      "text": "Click a slow request and open its Timing tab [1]. The phases include Queueing, Stalled, DNS Lookup, Initial connection, Request sent, Waiting (TTFB) and Content Download. Waiting (TTFB) is the time the browser waits for the first byte of the response. It includes one round trip of latency and the time the server took to prepare the response [1]."
     },
     {
       "@type": "HowToStep",
       "position": 6,
       "name": "Search every response",
-      "text": "Press Ctrl F (Cmd F on a Mac) in the Network panel. The Search tab opens and looks through request headers, payloads and responses; click a result and the matching request is highlighted [1]. Use it to find which call returned an error message you saw on screen."
+      "text": "Press Ctrl F (Cmd F on a Mac) in the Network panel. The Search tab opens and looks through request headers, payloads and responses. Click a result and the matching request is highlighted [1]. It's a quick way to find which call returned an error message you saw on screen."
     }
   ]
 }</script>
@@ -118,7 +118,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Failed and slow calls</span></li></ol></nav>
       <h1 id="title">How to find failed and slow API calls in Chrome</h1>
-      <p class="answer">Open DevTools (<kbd>Ctrl</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>J</kbd>), click Network, choose Fetch/XHR, tick Preserve log, then sort by Status to see the failed calls and by Time to see the slow ones. That needs no install. A call that fails inside a 200 OK still looks fine there. <strong>RequestFox</strong>, a browser extension, counts the failed and slow calls while you use the site, and marks the ones that fail inside a 200.</p>
+      <p class="answer">Open DevTools (<kbd>Ctrl</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>J</kbd>), click Network, choose Fetch/XHR, tick Preserve log, then sort by Status to see the failed calls and by Time to see the slow ones. You don't need to install anything. But a call that fails inside a 200 OK still looks fine there. <strong>RequestFox</strong>, a browser extension, counts the failed and slow calls while you use the site, and marks the ones that fail inside a 200.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about Chrome are from its own documentation, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -139,22 +139,22 @@
       <section class="block" id="devtools" aria-labelledby="devtools-title">
         <h2 id="devtools-title">How do I find failed and slow requests in Chrome DevTools?</h2>
         <ol class="howto">
-          <li data-ui="none"><h3>Open the Network panel</h3><p>Press <kbd>Ctrl</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>J</kbd> (<kbd>Cmd</kbd>&nbsp;<kbd>Option</kbd>&nbsp;<kbd>J</kbd> on a Mac), then click the Network tab [2]. DevTools records requests while it is open [2], so open it before you do the thing that breaks.</p></li>
+          <li data-ui="none"><h3>Open the Network panel</h3><p>Press <kbd>Ctrl</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>J</kbd> (<kbd>Cmd</kbd>&nbsp;<kbd>Option</kbd>&nbsp;<kbd>J</kbd> on a Mac), then click the Network tab [2]. DevTools only records requests while it's open [2], so open it before you do the thing that breaks.</p></li>
           <li data-ui="none"><h3>Show only API calls</h3><p>Click the Fetch/XHR button among the type filters [1]. Tick Preserve log, and DevTools keeps the requests across page loads until you untick it [1]. Without it, a page that reloads after the error clears the list.</p></li>
           <li data-ui="none"><h3>Find the failed calls</h3><p>Click the Status column header to sort by it [1]. The column shows the HTTP code, for example 200 or 404. A request that failed before it got a response shows <code>(failed)</code> followed by the error message, and a CORS failure shows CORS error [1]. To see only one code, type <code>status-code:500</code> in the Filter box [1]. To see everything except what the filter matches, tick Invert next to the box [1].</p></li>
-          <li data-ui="none"><h3>Find the slow calls</h3><p>Click the Time column header to sort by it [1]. Time is the total duration, from the start of the request to the last byte of the response [1]. For another view, right-click the table header, hover Waterfall and pick Start Time, Response Time, End Time, Total Duration or Latency [1]. To find big responses, filter with <code>larger-than:1000</code>, which is the same as <code>larger-than:1k</code> [1].</p></li>
-          <li data-ui="none"><h3>See where the time went</h3><p>Click a slow request and open its Timing tab [1]. The phases include Queueing, Stalled, DNS Lookup, Initial connection, Request sent, Waiting (TTFB) and Content Download. Waiting (TTFB) is the browser waiting for the first byte of the response; it includes one round trip of latency and the time the server took to prepare the response [1].</p></li>
-          <li data-ui="none"><h3>Search every response</h3><p>Press <kbd>Ctrl</kbd>&nbsp;<kbd>F</kbd> (<kbd>Cmd</kbd>&nbsp;<kbd>F</kbd> on a Mac) in the Network panel. The Search tab opens and looks through request headers, payloads and responses; click a result and the matching request is highlighted [1]. Use it to find which call returned an error message you saw on screen.</p></li>
+          <li data-ui="none"><h3>Find the slow calls</h3><p>Click the Time column header to sort by it [1]. Time is the total duration, from the start of the request to the last byte of the response [1]. To sort the Waterfall by a different timing, right-click the table header, hover Waterfall and pick Start Time, Response Time, End Time, Total Duration or Latency [1]. To find big responses, filter with <code>larger-than:1000</code>; <code>larger-than:1k</code> works too [1].</p></li>
+          <li data-ui="none"><h3>See where the time went</h3><p>Click a slow request and open its Timing tab [1]. The phases include Queueing, Stalled, DNS Lookup, Initial connection, Request sent, Waiting (TTFB) and Content Download. Waiting (TTFB) is the time the browser waits for the first byte of the response. It includes one round trip of latency and the time the server took to prepare the response [1].</p></li>
+          <li data-ui="none"><h3>Search every response</h3><p>Press <kbd>Ctrl</kbd>&nbsp;<kbd>F</kbd> (<kbd>Cmd</kbd>&nbsp;<kbd>F</kbd> on a Mac) in the Network panel. The Search tab opens and looks through request headers, payloads and responses. Click a result and the matching request is highlighted [1]. It's a quick way to find which call returned an error message you saw on screen.</p></li>
         </ol>
       </section>
 
       <section class="block" id="limits" aria-labelledby="limits-title">
         <h2 id="limits-title">What can DevTools not show me?</h2>
         <ul>
-          <li><strong>One call at a time.</strong> You sort and read a long table, then open each suspect to read its response. The table does not count how many calls failed or were slow.</li>
+          <li><strong>One call at a time.</strong> You sort and read a long table, then open each suspect to read its response. The table doesn't count how many calls failed or were slow.</li>
           <li><strong>Errors inside a 200.</strong> The Status column shows the HTTP code. An API that sends a 200 and puts the failure in the body, as GraphQL does, looks fine in the list. You find it by opening the response, or by searching for the error text. <a href="guide-graphql-errors-in-200.html">GraphQL errors in a 200 OK</a>.</li>
-          <li><strong>It only keeps what you watched.</strong> DevTools records while it is open, and Preserve log has to be ticked before the page moves on.</li>
-          <li><strong>The cause is a separate hunt.</strong> For a request started by a script, the Initiator column links to the line in the source file [1]; you follow it by hand for each call.</li>
+          <li><strong>It only keeps what you watched.</strong> DevTools records while it's open, and you have to tick Preserve log before the page moves on.</li>
+          <li><strong>The cause is a separate hunt.</strong> For a request started by a script, the Initiator column links to the line in the source file [1], and you follow it by hand for each call.</li>
         </ul>
       </section>
 
@@ -165,11 +165,11 @@
           <li><strong>Read the counts.</strong> Above the calls are buttons for <span class="ui">Duplicate</span>, <span class="ui">Failed</span>, <span class="ui">Slow</span> and <span class="ui">JS errors</span>. Click one to see only those calls, and click it again to see them all.</li>
           <li><strong>Know what counts as Failed.</strong> A call is Failed when its status is 400 or higher, when it never got a status (connection refused, a CORS block, aborted), or when the response says it failed inside a 200 OK: a GraphQL <code>errors</code> list, a JSON-RPC <code>error</code>, a SOAP fault, an error event inside an event stream, or a gRPC status other than OK. Those calls carry their own mark, such as <span class="ui">GraphQL error</span>, so you can tell them from a plain 500.</li>
           <li><strong>Know what counts as Slow.</strong> A call is Slow when it takes longer than your slow limit. The limit starts at 3 seconds, and you change it in <span class="ui">Settings</span> under <span class="ui">When to flag a call</span>, in the box <span class="ui">Flag a call as slow after (ms)</span>. The Slow mark on a card says the limit in its tooltip.</li>
-          <li><strong>Check Repeated problems.</strong> When endpoints keep failing or being slow, they are listed above the log under <span class="ui">Repeated problems</span>, with how many times each failed or was slow, so one bad endpoint does not hide among hundreds of cards.</li>
+          <li><strong>Check Repeated problems.</strong> When endpoints keep failing or being slow, they are listed above the log under <span class="ui">Repeated problems</span>, with how many times each failed or was slow, so one bad endpoint doesn't get lost among hundreds of cards.</li>
           <li><strong>Open a call to see why.</strong> Its <span class="ui">Timing</span> section shows where the time went: queued, DNS lookup, connect, waiting for the server, download. For a call to another site, the browser hides the breakdown unless that server allows it, and the card says so. <span class="ui">Called from</span> lists the page code that made the call.</li>
           <li><strong>Send it again.</strong> Press <span class="ui">Replay</span> on a card to resend that exact request and see whether it still fails. For a POST, PUT, PATCH or DELETE it asks first, because a repeat can change real data. <a href="guide-replay-edit-request.html">Replay and edit a request</a>.</li>
         </ol>
-        <p>RequestFox marks what it sees; you decide what is a bug. A call that your own mock or fault rule changed is marked <span class="ui">Mocked</span> or <span class="ui">Simulated</span>, so a test you set up is not mistaken for a real failure.</p>
+        <p>RequestFox marks what it sees, and you decide what's a bug. A call that your own mock or fault rule changed is marked <span class="ui">Mocked</span> or <span class="ui">Simulated</span>, so a test you set up isn't mistaken for a real failure.</p>
       </section>
 
       <section class="block" id="which" aria-labelledby="which-title">
@@ -178,7 +178,7 @@
           <table class="cmp">
             <thead><tr><th scope="col">You want to</th><th scope="col">Use</th></tr></thead>
             <tbody>
-              <tr><th scope="row">Look at one call right now, with nothing installed</th><td>DevTools. It is built in, exact, and shows every phase of a request.</td></tr>
+              <tr><th scope="row">Look at one call right now, with nothing installed</th><td>DevTools. It's built in, exact, and shows every phase of a request.</td></tr>
               <tr><th scope="row">Filter by one status code or one size</th><td>DevTools. The Filter box does that in one line.</td></tr>
               <tr><th scope="row">Know how many calls failed or were slow in a whole session</th><td>RequestFox. The counts sit above the log, and you can click them.</td></tr>
               <tr><th scope="row">Catch a failure the status code hides</th><td>RequestFox marks GraphQL, JSON-RPC, SOAP and stream errors in a 200. In DevTools you read the body.</td></tr>
@@ -196,7 +196,7 @@
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
           <li>Chrome for Developers, "Inspect network activity". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network" rel="noopener noreferrer">developer.chrome.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Docs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Docs change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

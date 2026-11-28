@@ -75,13 +75,13 @@
       "@type": "HowToStep",
       "position": 3,
       "name": "Pick the mode",
-      "text": "In Mode, a new rule starts on Mock. Pick Slow and type the Delay ms, such as 4000; or pick Network error to fail the call with no response at all. Throttle is under More ways: type a speed in KB/s, and the bigger the response, the longer the page waits for it."
+      "text": "In Mode, a new rule starts on Mock. Pick Slow and type the Delay ms, such as 4000. Or pick Network error to fail the call with no response at all. Throttle is under More ways: type a speed in KB/s, and the bigger the response, the longer the page waits for it."
     },
     {
       "@type": "HowToStep",
       "position": 4,
       "name": "Save it and record",
-      "text": "Press Save rule, then Start Recording and use the page. Each call that matches is slowed down or cut off; the others go through as usual."
+      "text": "Press Save rule, then Start Recording and use the page. Each call that matches is slowed down or cut off, and the rest go through as usual."
     },
     {
       "@type": "HowToStep",
@@ -136,8 +136,8 @@
         <ol class="howto">
           <li><h3>Open Mock or break an endpoint</h3><p>In RequestFox, open <span class="ui">Settings</span> → <span class="ui">Mocks &amp; rules</span> → <span class="ui">Mock or break an endpoint</span>, and press <span class="ui">Add rule…</span>.</p></li>
           <li><h3>Say which call it is for</h3><p>In <span class="ui">URL contains</span>, type part of the call's address, such as <code>/api/search</code>. Leave <span class="ui">Method</span> on <span class="ui">Any method</span>, or pick one.</p></li>
-          <li><h3>Pick the mode</h3><p>In <span class="ui">Mode</span>, a new rule starts on <span class="ui">Mock</span>. Pick <span class="ui">Slow</span> and type the <span class="ui">Delay ms</span>, such as <code>4000</code>; or pick <span class="ui">Network error</span> to fail the call with no response at all. <span class="ui">Throttle</span> is under <span class="ui">More ways</span>: type a speed in <span class="ui">KB/s</span>, and the bigger the response, the longer the page waits for it.</p></li>
-          <li><h3>Save it and record</h3><p>Press <span class="ui">Save rule</span>, then <span class="ui">Start Recording</span> and use the page. Each call that matches is slowed down or cut off; the others go through as usual.</p></li>
+          <li><h3>Pick the mode</h3><p>In <span class="ui">Mode</span>, a new rule starts on <span class="ui">Mock</span>. Pick <span class="ui">Slow</span> and type the <span class="ui">Delay ms</span>, such as <code>4000</code>. Or pick <span class="ui">Network error</span> to fail the call with no response at all. <span class="ui">Throttle</span> is under <span class="ui">More ways</span>: type a speed in <span class="ui">KB/s</span>, and the bigger the response, the longer the page waits for it.</p></li>
+          <li><h3>Save it and record</h3><p>Press <span class="ui">Save rule</span>, then <span class="ui">Start Recording</span> and use the page. Each call that matches is slowed down or cut off, and the rest go through as usual.</p></li>
           <li><h3>Watch the page cope</h3><p>Look for the spinner, the timeout and the error message the page shows. A call cut off by your rule says <span class="ui">Simulated</span> on its card, so nobody files it as a real bug.</p></li>
         </ol>
         <p>To make a call fail only some of the time, pick <span class="ui">Cycle</span> under <span class="ui">More ways</span> and write one step per line, such as <code>pass</code>, <code>pass</code>, <code>offline</code>: the steps take turns, call by call, and start again after the last line.</p>
@@ -146,7 +146,7 @@
       <section class="block" id="tab" aria-labelledby="tab-title">
         <h2 id="tab-title">How do I slow down a whole tab?</h2>
         <p>In Chrome, open <span class="ui">Settings</span> → <span class="ui">Mocks &amp; rules</span> → <span class="ui">Slow down the whole tab</span>. Pick a <span class="ui">Speed</span>: Slow 3G (2 s delay, 400 kbit/s), Fast 3G (0.56 s delay, 1.4 Mbit/s), 4G (0.17 s delay, 8.1 Mbit/s), <span class="ui">Offline</span>, or <span class="ui">Custom</span> with your own delay and speeds. Then press <span class="ui">Turn on for this tab</span>.</p>
-        <p>RequestFox uses Chrome's debugger connection to that tab, so the first time Chrome asks you to allow it, and while it is on Chrome shows its own "started debugging this browser" bar. Only the speed changes; nothing is read. One tab is slowed at a time, and it goes back to normal speed when you press <span class="ui">Turn off</span>, stop recording, close the tab, close the RequestFox panel or close Chrome's bar.</p>
+        <p>RequestFox uses Chrome's debugger connection to that tab, so the first time, Chrome asks you to allow it, and while it's on, Chrome shows its own "started debugging this browser" bar. Only the speed changes. Nothing is read. One tab is slowed at a time, and it goes back to normal speed when you press <span class="ui">Turn off</span>, stop recording, close the tab, close the RequestFox panel or close Chrome's bar.</p>
         <p>Firefox can't slow down a whole tab: it has no such API for extensions. There, a <span class="ui">Slow</span> or <span class="ui">Throttle</span> rule slows the calls you pick.</p>
       </section>
 
@@ -159,16 +159,16 @@
         <h2 id="fails-title">What if the call is not slowed down?</h2>
         <ul>
           <li><strong>Nothing is recording.</strong> The rules in this list say <span class="ui">Works while you record</span>. Press <span class="ui">Start Recording</span>, or keep the rule on in a mock set.</li>
-          <li><strong>It is a page load, an image or a script.</strong> A rule changes the fetch and XMLHttpRequest calls the page makes. In Chrome, slow down the whole tab instead.</li>
-          <li><strong>The address does not match.</strong> Open the call's card and copy part of its URL into <span class="ui">URL contains</span>.</li>
+          <li><strong>It's a page load, an image or a script.</strong> A rule changes the fetch and XMLHttpRequest calls the page makes. In Chrome, slow down the whole tab instead.</li>
+          <li><strong>The address doesn't match.</strong> Open the call's card and copy part of its URL into <span class="ui">URL contains</span>.</li>
           <li><strong>The card's time looks normal.</strong> Slow holds the call back before it is sent, and Throttle holds the response back on its way to the page, so the card times only the network part. The page itself still waited.</li>
-          <li><strong>Chrome will not slow down the tab.</strong> Chrome doesn't let extensions slow down its own pages or the Web Store, and only one tool can debug a tab at a time: close DevTools on that tab, then press <span class="ui">Turn on for this tab</span> again.</li>
+          <li><strong>Chrome won't slow down the tab.</strong> Chrome doesn't let extensions slow down its own pages or the Web Store, and only one tool can debug a tab at a time: close DevTools on that tab, then press <span class="ui">Turn on for this tab</span> again.</li>
         </ul>
       </section>
 
       <section class="block" id="devtools" aria-labelledby="devtools-title">
         <h2 id="devtools-title">Can DevTools do this?</h2>
-        <p>Yes, for the tab it inspects. Chrome's Network panel has a throttling menu with presets such as fast 4G, slow 4G and 3G, an Offline choice and your own profiles [1]. Firefox's network monitor has presets from GPRS to Wi-Fi, and Offline [2]. DevTools slows down everything in that tab; a RequestFox rule slows down or cuts off only the calls you pick, and marks them in the log.</p>
+        <p>Yes, for the tab it inspects. Chrome's Network panel has a throttling menu with presets such as fast 4G, slow 4G and 3G, an Offline choice and your own profiles [1]. Firefox's network monitor has presets from GPRS to Wi-Fi, and Offline [2]. DevTools slows down everything in that tab. A RequestFox rule slows down or cuts off only the calls you pick, and marks them in the log.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -177,7 +177,7 @@
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-17">17 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
           <li>Firefox Source Docs, "Throttling" (Network Monitor). Checked <time datetime="2026-11-17">17 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/throttling/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

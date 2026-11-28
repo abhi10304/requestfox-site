@@ -75,7 +75,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API testing in Firefox</span></li></ol></nav>
       <h1 id="title">API testing in Firefox: what is built in and which extensions help</h1>
-      <p class="answer">Firefox can already test an API call with no add-on: in the Network Monitor, choose Edit and Resend on a request, change its method, address, headers or body, and send it again. For more, add a Firefox extension. RESTer and RESTED are REST clients, where you write each request by hand. <strong>RequestFox</strong> is a browser extension that records the calls your web app makes and flags the ones that went wrong.</p>
+      <p class="answer">Firefox can already test an API call with no add-on: in the Network Monitor, choose Edit and Resend on a request, change its method, address, headers or body, and send it again. For more than that, add a Firefox extension. RESTer and RESTED are REST clients: you write each request by hand. <strong>RequestFox</strong> is a browser extension that records the calls your web app makes and flags the ones that went wrong.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about Firefox and other add-ons are from their own pages, checked <time datetime="2026-11-04">4 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -104,12 +104,12 @@
           <li><strong>Save All As HAR</strong> writes the listed requests to a HAR file [2].</li>
           <li><strong>Block URL</strong> blocks the chosen address for later requests [2].</li>
         </ul>
-        <p>This is the quickest way to try one call you can already see. It works one request at a time, and which calls went wrong is for you to decide. The extensions below add more.</p>
+        <p>It's the quickest way to try one call you can already see. It works one request at a time, though, and deciding which calls went wrong is up to you. The extensions below add more.</p>
       </section>
 
       <section class="block" id="addons" aria-labelledby="addons-title">
         <h2 id="addons-title">Which Firefox extensions test APIs?</h2>
-        <p>These four are REST clients: you write a request and send it. The words in quotes are each listing's own summary, and the dates are the last update shown on Firefox Add-ons. They are listed in no order of merit.</p>
+        <p>These four are REST clients: you write a request and send it. The words in quotes are each listing's own summary, and the dates are the last update shown on Firefox Add-ons. They're listed in no order of merit.</p>
         <div class="table-wrap" role="region" aria-labelledby="addons-title" tabindex="0">
           <table class="cmp">
             <thead><tr><th scope="col">Extension</th><th scope="col">What its listing says</th><th scope="col">Last updated</th></tr></thead>
@@ -121,19 +121,19 @@
             </tbody>
           </table>
         </div>
-        <p>A client is the right tool when you already know which request to send. RequestFox starts from the other end: it watches what your web app really sends, so there is nothing to retype.</p>
+        <p>A client is the right tool when you already know which request to send. RequestFox starts from the other end: it watches what your web app actually sends, so there's nothing to retype.</p>
       </section>
 
       <section class="block" id="record" aria-labelledby="record-title">
         <h2 id="record-title">How do I record the API calls a page makes in Firefox?</h2>
         <ol>
-          <li>Add RequestFox from <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Firefox Add-ons</a>. There is no account to make.</li>
+          <li>Add RequestFox from <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-api-testing-firefox" rel="noopener noreferrer">Firefox Add-ons</a>. There's no account to make.</li>
           <li>Open the site you want to test. Open RequestFox's sidebar and press <span class="ui">Start Recording</span> (or press <kbd>Alt</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd>; <kbd>Option</kbd>&nbsp;<kbd>Shift</kbd>&nbsp;<kbd>S</kbd> on a Mac). The first time, Firefox asks you to allow access to the site.</li>
           <li>Use the page. Every fetch, XMLHttpRequest, WebSocket frame and server-sent event is listed as it starts, tied to the click or form submit that caused it.</li>
           <li>Read the flags. A call that failed, was slow, fired twice or hid an error inside a 200 OK is marked, and its card says why in plain words.</li>
           <li>Press <span class="ui">Replay</span> to send a call again, or choose <span class="ui">Edit and send again…</span> in its ··· menu to change it first. While recording, the call goes through the page, with its cookies.</li>
         </ol>
-        <p>The full steps, with the search box and what to do when nothing shows up, are in <a href="guide-record-api-calls.html">How to record API calls</a>. Sessions are kept in History, and you can export them as a HAR file, a Postman collection or an HTML report.</p>
+        <p>The full steps, with the search box and what to do when nothing shows up, are in <a href="guide-record-api-calls.html">How to record API calls</a>. Sessions stay in History, and you can export them as a HAR file, a Postman collection or an HTML report.</p>
       </section>
 
       <section class="block" id="limits" aria-labelledby="limits-title">
@@ -141,10 +141,10 @@
         <ul>
           <li>Scripts that run before a request or after a response, and rewriting a request or response with a script, work in Chrome only: Firefox does not let extensions run code typed at runtime. Chaining values from one request to the next works in both.</li>
           <li>Firefox has no debugger API for extensions, so there is no slow-down for the whole tab. Use a mock rule's Slow or Throttle mode for one endpoint instead.</li>
-          <li>Clicking a RequestFox notification opens the sidebar in the window you are looking at, which may not be the window being recorded.</li>
+          <li>Clicking a RequestFox notification opens the sidebar in the window you're looking at, which may not be the window being recorded.</li>
           <li>It sees what a browser tab sends. Mobile and desktop apps need a proxy tool such as <a href="compare-proxy-tools.html">HTTP Toolkit, Proxyman or Charles</a>, and there is no team workspace or cloud sync: share work as files.</li>
         </ul>
-        <p>Apart from these points, recording, flags, mocks, checks and exports are the same in Firefox as in Chrome. <a href="features.html">The feature list</a> says which feature is Chrome only.</p>
+        <p>Apart from these, recording, flags, mocks, checks and exports work the same in Firefox as in Chrome. <a href="features.html">The feature list</a> says which feature is Chrome only.</p>
       </section>
 
       <section class="block" id="pick" aria-labelledby="pick-title">
@@ -167,7 +167,7 @@
           <li>Firefox Add-ons, Apier. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/apier/" rel="noopener noreferrer">addons.mozilla.org</a></li>
           <li>Firefox Add-ons, API Request Tester. Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://addons.mozilla.org/en-US/firefox/addon/api-request-tester/" rel="noopener noreferrer">addons.mozilla.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Add-ons change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Add-ons change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

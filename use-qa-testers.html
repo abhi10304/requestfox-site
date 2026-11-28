@@ -70,7 +70,7 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><span aria-current="page">For QA testers</span></li></ol></nav>
         <h1 id="title">Catch the API bugs the screen hides</h1>
-        <p class="answer">RequestFox is a free browser extension that lets a manual tester test an API without writing code: press Start, use the app as a user would, watch the flags, and copy a bug report from the call that went wrong. A page can look fine while a call behind it failed, fired twice or returned an error inside a 200 OK; RequestFox flags those as they happen and ties each one to your click.</p>
+        <p class="answer">RequestFox is a free browser extension that lets a manual tester test an API without writing code: press Start, use the app as a user would, watch the flags, and copy a bug report from the call that went wrong. A page can look fine while a call behind it failed, fired twice or returned an error inside a 200 OK. RequestFox flags those as they happen and ties each one to your click.</p>
         <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
       </div>
       <figure class="fig">
@@ -98,7 +98,7 @@
       <section class="block" id="nocode" aria-labelledby="nocode-title">
         <h2 id="nocode-title">How to test an API without code</h2>
         <ol>
-          <li>Open the RequestFox side panel on the page you test and press Start.</li>
+          <li>Open the RequestFox side panel on the page you're testing and press Start.</li>
           <li>Use the app the way a user would. Every call is listed the moment it starts.</li>
           <li>Watch the flags on the calls. Press "Why is this flagged?" for the reason in plain words and a next step.</li>
           <li>On the call that went wrong, open More and choose Copy bug report, or open a GitHub or Linear issue from it (set up once in Settings).</li>
@@ -120,18 +120,18 @@
 
       <section class="block" id="example" aria-labelledby="example-title">
         <h2 id="example-title">A worked example: an order that "worked"</h2>
-        <p>Say you test a shop. You press Place order and the page shows a green "Order placed" message. In RequestFox, <code>POST /api/orders</code> carries the Failed flag and <code>HTTP 500</code>, and the card is tied to the click that sent it. Press "Why is this flagged?" and it says: "The server failed while answering (a 5xx status)." The next step it gives is to look at the server's logs for that moment, and to press Replay to send the same request again and see whether it repeats. In a long session, type <code>status:500</code> in the search box to list only the calls that failed that way.</p>
-        <p>Then choose Copy bug report from More on that call, or open the GitHub or Linear issue from it. The developer gets the call itself, with its status, instead of "the order sometimes fails". No code, and no need to open DevTools.</p>
+        <p>Say you test a shop. You press Place order and the page shows a green "Order placed" message. In RequestFox, <code>POST /api/orders</code> carries the Failed flag and <code>HTTP 500</code>, and the card is tied to the click that sent it. Press "Why is this flagged?" and it says: "The server failed while answering (a 5xx status)." Its next step: check the server's logs for that moment, and press Replay to send the same request again and see whether it repeats. In a long session, type <code>status:500</code> in the search box to list only the calls that failed that way.</p>
+        <p>Then choose Copy bug report from More on that call, or open the GitHub or Linear issue from it. The developer gets the call itself, with its status, instead of "the order sometimes fails". You didn't write code or open DevTools.</p>
       </section>
 
       <section class="block" id="report" aria-labelledby="report-title">
         <h2 id="report-title">Bug reports nobody has to reproduce</h2>
-        <p>Open a GitHub or Linear issue from a call with the repro filled in, or export the session as a self-contained HTML report or a HAR file to attach. Authorization headers, cookies and secret-shaped fields are redacted by default, so the evidence is safe to share.</p>
+        <p>Open a GitHub or Linear issue from a call with the repro filled in, or export the session as a self-contained HTML report or a HAR file to attach. Authorization headers, cookies and secret-shaped fields are redacted by default, so the evidence is safe to share as it is.</p>
       </section>
 
       <section class="block" id="edge" aria-labelledby="edge-title">
         <h2 id="edge-title">Test the edge cases without waiting for the backend</h2>
-        <p>Make an endpoint fail, drag or return an empty list, and see what the page does. Calls you changed are labelled, so nobody files them as real bugs. <a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
+        <p>Make an endpoint fail, drag or return an empty list, and see what the page does. Calls you changed are labelled, so nobody files them as real bugs by mistake. <a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
       </section>
 
       <section class="block" id="repeat" aria-labelledby="repeat-title">

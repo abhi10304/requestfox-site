@@ -96,7 +96,7 @@
     <div class="content">
       <section class="block" id="why" aria-labelledby="why-title">
         <h2 id="why-title">Why did that call fire?</h2>
-        <p>Each call is tied to the click or form submit that caused it, and Details shows "Called from": the page functions that made it, with the timing split (DNS, connect, TLS, waiting, download).</p>
+        <p>Every call is tied to the click or form submit that caused it. Details shows "Called from", the page functions that made it, plus the timing split (DNS, connect, TLS, waiting, download).</p>
       </section>
 
       <section class="block" id="waste" aria-labelledby="waste-title">
@@ -110,18 +110,18 @@
 
       <section class="block" id="states" aria-labelledby="states-title">
         <h2 id="states-title">See every UI state without touching the backend</h2>
-        <p>Mock an empty list, an error, a slow response or a dropped connection, and check your loading, empty and error screens. Pause a call with a breakpoint to edit it on the way. <a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
+        <p>Mock an empty list, an error, a slow response or a dropped connection, then check your loading, empty and error screens. Need to change a call in flight? Pause it with a breakpoint and edit it on the way. <a href="guide-mock-api-response.html">How to mock an API response</a>.</p>
       </section>
 
       <section class="block" id="graphql" aria-labelledby="graphql-title">
         <h2 id="graphql-title">GraphQL, streams and sockets</h2>
-        <p>GraphQL calls are told apart by operation and errors inside a 200 OK are flagged; load the schema and recorded calls are checked against it. Server-sent events and token streams (read with fetch, XMLHttpRequest or EventSource) show their events live, with error events, a missing end marker and long pauses flagged, and WebSocket frames are listed with the calls. To see how a page copes, rewrite a response with a script or slow the whole tab down (both Chrome), or make an endpoint fail with a mock set that stays on.</p>
+        <p>GraphQL calls are told apart by operation, and errors inside a 200 OK are flagged. Load the schema and recorded calls are checked against it. Server-sent events and token streams (read with fetch, XMLHttpRequest or EventSource) show their events live, with error events, a missing end marker and long pauses flagged, and WebSocket frames are listed with the calls. To see how a page copes, rewrite a response with a script or slow the whole tab down (both Chrome), or make an endpoint fail with a mock set that stays on.</p>
       </section>
 
       <section class="block" id="example" aria-labelledby="example-title">
         <h2 id="example-title">A worked example: a search box that asks twice</h2>
-        <p>Say you type "boots" into a search box and the results flicker. In RequestFox, <code>GET /api/search?q=boots</code> shows twice, and the second card carries <span class="badge serious">Duplicate · after 140 ms</span>. Press "Why is this flagged?": "The same call was made again within moments: often a double click or a double render." The next step it gives is to make the page send the call once, and to use Repeats on the card to see each copy and what started it.</p>
-        <p>Open Details on one copy: "Called from" lists the page functions that made the call, so you know where to look in your code. Often it is an effect that runs twice. Fix it, repeat the search, and a single card means the double fetch is gone. To check how the results list looks while the response is slow, mock a slow response for that endpoint.</p>
+        <p>Say you type "boots" into a search box and the results flicker. In RequestFox, <code>GET /api/search?q=boots</code> shows twice, and the second card carries <span class="badge serious">Duplicate · after 140 ms</span>. Press "Why is this flagged?": "The same call was made again within moments: often a double click or a double render." Its next step: make the page send the call once, and use Repeats on the card to see each copy and what started it.</p>
+        <p>Open Details on one copy: "Called from" lists the page functions that made the call, so you know where to look in your code. Often it's an effect that runs twice. Fix it and search again: one card means the double fetch is gone. Want to see how the results list looks while the response is slow? Mock a slow response for that endpoint.</p>
       </section>
     </div>
   </div>

@@ -69,19 +69,19 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Record the flow you test",
-      "text": "Press Start Recording and use the app. Calls to the spec's API are checked as they arrive; calls to other sites, such as analytics or fonts, are never judged."
+      "text": "Press Start Recording and use the app. Calls to the spec's API are checked as they arrive. Calls to other sites, like analytics or fonts, are never judged."
     },
     {
       "@type": "HowToStep",
       "position": 3,
       "name": "Read the marks",
-      "text": "“Spec mismatch” gives one line of reason, for example \"response body $.price: expected number, got string\". “Not in spec” marks a call the spec does not document. Details lists every problem."
+      "text": "“Spec mismatch” gives one line of reason, for example \"response body $.price: expected number, got string\". “Not in spec” marks a call the spec doesn't document. Details lists every problem."
     },
     {
       "@type": "HowToStep",
       "position": 4,
       "name": "See what you have not covered",
-      "text": "Above the log, \"Spec coverage: 3 of 6 operations seen\" (open Repeated problems if it is folded); a click lists the operations not called yet."
+      "text": "Above the log you'll see \"Spec coverage: 3 of 6 operations seen\" (open Repeated problems if it's folded). Click it to list the operations you haven't called yet."
     },
     {
       "@type": "HowToStep",
@@ -113,7 +113,7 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Check against OpenAPI</span></li></ol></nav>
         <h1 id="title">Check API calls against an OpenAPI spec</h1>
-        <p class="answer">RequestFox is a browser extension for Chrome and Firefox that checks the API calls your web app really makes against your OpenAPI 3 or Swagger 2 spec. Import the spec; the import links it as the contract. Then record as usual: a call that breaks the spec shows “Spec mismatch” with the reason, a call the spec does not have shows “Not in spec”, and the Spec coverage line above the log counts how many operations you covered. The same check runs in CI from the command line.</p>
+        <p class="answer">RequestFox is a browser extension for Chrome and Firefox that checks the API calls your web app actually makes against your OpenAPI 3 or Swagger 2 spec. Import the spec and it's linked as the contract. Then record as usual: a call that breaks the spec shows “Spec mismatch” with the reason, a call the spec doesn't have shows “Not in spec”, and the Spec coverage line above the log counts how many operations you've covered. The same check runs in CI from the command line.</p>
         <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>.</p>
       </div>
       <figure class="fig">
@@ -140,23 +140,23 @@
         <h2 id="steps-title">Steps</h2>
         <ol class="howto">
           <li><h3>Import the spec</h3><p><span class="ui">Import</span> your OpenAPI 3 or Swagger 2 file, JSON or YAML. Every operation becomes a request you can send, and the spec is linked as the contract.</p></li>
-          <li><h3>Record the flow you test</h3><p>Press <span class="ui">Start Recording</span> and use the app. Calls to the spec's API are checked as they arrive; calls to other sites, such as analytics or fonts, are never judged.</p></li>
-          <li><h3>Read the marks</h3><p>“<span class="ui">Spec mismatch</span>” gives one line of reason, for example "response body $.price: expected number, got string". “<span class="ui">Not in spec</span>” marks a call the spec does not document. <span class="ui">Details</span> lists every problem.</p></li>
-          <li><h3>See what you have not covered</h3><p>Above the log, "<span class="ui">Spec coverage: 3 of 6 operations seen</span>" (open <span class="ui">Repeated problems</span> if it is folded); a click lists the operations not called yet.</p></li>
+          <li><h3>Record the flow you test</h3><p>Press <span class="ui">Start Recording</span> and use the app. Calls to the spec's API are checked as they arrive. Calls to other sites, like analytics or fonts, are never judged.</p></li>
+          <li><h3>Read the marks</h3><p>“<span class="ui">Spec mismatch</span>” gives one line of reason, for example "response body $.price: expected number, got string". “<span class="ui">Not in spec</span>” marks a call the spec doesn't document. <span class="ui">Details</span> lists every problem.</p></li>
+          <li><h3>See what you have not covered</h3><p>Above the log you'll see "<span class="ui">Spec coverage: 3 of 6 operations seen</span>" (open <span class="ui">Repeated problems</span> if it's folded). Click it to list the operations you haven't called yet.</p></li>
           <li><h3>Change or turn off the contract</h3><p><span class="ui">Settings</span> → <span class="ui">Mocks &amp; rules</span> → <span class="ui">Pass/fail checks</span>.</p></li>
         </ol>
       </section>
 
       <section class="block" id="what" aria-labelledby="what-title">
         <h2 id="what-title">What is checked</h2>
-        <p>Path, method and status must be in the spec, and the parameters, request body, content type, required response headers and response body must match it. Anything RequestFox cannot check is shown as "not checked", never as a pass.</p>
+        <p>Path, method and status must be in the spec, and the parameters, request body, content type, required response headers and response body must match it. Anything RequestFox can't check shows as "not checked", never as a pass.</p>
       </section>
 
       <section class="block" id="ci" aria-labelledby="ci-title">
         <h2 id="ci-title">The same check in CI</h2>
-        <p>Export the session as JSON (or use a HAR file) and run the command-line tool against the spec. It prints a line per call, the coverage, and exits with 1 on a mismatch:</p>
+        <p>Export the session as JSON (or use a HAR file) and run the command-line tool against the spec. It prints one line per call and the coverage, and exits with 1 on a mismatch:</p>
         <pre class="cmd"><code>node requestfox-ci.mjs conform --spec openapi.yaml --session session.json --reporter junit --out results.xml</code></pre>
-        <p><code>--min-coverage 80</code> also fails below that share of operations seen. <a href="guide-api-checks-in-ci.html">How to get the command-line tool</a>.</p>
+        <p>With <code>--min-coverage 80</code> it also fails below that share of operations seen. <a href="guide-api-checks-in-ci.html">How to get the command-line tool</a>.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

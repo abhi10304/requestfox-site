@@ -84,7 +84,7 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Press Mock on the card",
-      "text": "Open the call's card and press Mock, next to Replay. The dialog holds the response the server sent: its status and its body. It works for a call that got no response at all too (the backend is down): then it starts with 200 and {}."
+      "text": "Open the call's card and press Mock, next to Replay. The dialog holds the response the server sent: its status and its body. It also works for a call that got no response at all (the backend is down). Then it starts with 200 and {}."
     },
     {
       "@type": "HowToStep",
@@ -154,7 +154,7 @@
         <h2 id="steps-title">Steps</h2>
         <ol class="howto">
           <li><h3>Record the real call once</h3><p>Press <span class="ui">Start Recording</span> and do what makes the call, so RequestFox has its real status, headers and body to start from.</p></li>
-          <li><h3>Press Mock on the card</h3><p>Open the call's card and press <span class="ui">Mock</span>, next to <span class="ui">Replay</span>. The dialog holds the response the server sent: its status and its body. It works for a call that got no response at all too (the backend is down): then it starts with 200 and <code>{}</code>.</p></li>
+          <li><h3>Press Mock on the card</h3><p>Open the call's card and press <span class="ui">Mock</span>, next to <span class="ui">Replay</span>. The dialog holds the response the server sent: its status and its body. It also works for a call that got no response at all (the backend is down). Then it starts with 200 and <code>{}</code>.</p></li>
           <li><h3>Change the response, then Mock it</h3><p>Change the status or the body to what you want to test: an empty list, an error, a missing field. Press <span class="ui">Mock it</span>. <span class="ui">More options…</span> opens the full rule (method, how the address is matched, content type, a GraphQL operation).</p></li>
           <li><h3>Make the call again</h3><p>Reload the page, or do the action in the page again. The page receives your response, and the card shows <span class="ui">Mocked</span> so nobody files it as a bug. <span class="ui">Replay</span> and <span class="ui">Compose</span> always call the real server, so use the page itself to see the mock.</p></li>
         </ol>
@@ -163,20 +163,20 @@
 
       <section class="block" id="trouble" aria-labelledby="trouble-title">
         <h2 id="trouble-title">If the mock does not answer</h2>
-        <p>Open the call again: when a mock did not answer it, the card says why, in these words.</p>
+        <p>Open the call again. When a mock didn't answer it, the card says why, in these words:</p>
         <ul>
           <li>The card says <span class="ui">Not mocked: its mock is switched off.</span> Press <span class="ui">Mock off</span> on the card, then <span class="ui">Turn on</span>.</li>
-          <li><span class="ui">Not mocked: the page made this call before RequestFox was ready. Reload the page again.</span> The page's very first calls can come before RequestFox is ready; a second reload catches them.</li>
+          <li><span class="ui">Not mocked: the page made this call before RequestFox was ready. Reload the page again.</span> The page's very first calls can come before RequestFox is ready, and a second reload catches them.</li>
           <li><span class="ui">Not mocked: the page itself did not make this call (a worker, a beacon or a frame RequestFox can't reach), so a mock can't answer it.</span> Mock the call the page makes instead, if there is one.</li>
           <li>You pressed Replay or sent it from Compose: <span class="ui">Not mocked: Replay and Compose always call the real server.</span> Use the page itself.</li>
-          <li>Nothing is recording and the mock is not kept on: the card says <span class="ui">Mock paused</span>. Press <span class="ui">Start Recording</span>, or keep it on (below).</li>
+          <li>Nothing is recording and the mock isn't kept on: the card says <span class="ui">Mock paused</span>. Press <span class="ui">Start Recording</span>, or keep it on (below).</li>
           <li>The page still shows old data: reload it. A mock answers the next call, not one the page already made.</li>
         </ul>
       </section>
 
       <section class="block" id="keep-on" aria-labelledby="keep-on-title">
         <h2 id="keep-on-title">Keep a mock on without recording</h2>
-        <p>On the card press <span class="ui">Mocked</span>, then <span class="ui">Keep it on without recording…</span>, and name the site (for example localhost). The mock then answers on that site in every tab, with nothing recording, until you turn it off; a chip under the top bar says <span class="ui">Mock set on: localhost</span>, with the set's name.</p>
+        <p>On the card press <span class="ui">Mocked</span>, then <span class="ui">Keep it on without recording…</span>, and name the site (for example localhost). The mock then answers on that site in every tab, with nothing recording, until you turn it off. A chip under the top bar says <span class="ui">Mock set on: localhost</span>, with the set's name.</p>
       </section>
 
       <section class="block" id="new" aria-labelledby="new-title">
@@ -206,12 +206,12 @@
 
       <section class="block" id="done" aria-labelledby="done-title">
         <h2 id="done-title">When you are done</h2>
-        <p>The call's card says Mocked: press it to edit the response, keep it on without recording, turn it off or delete the mock. After Stop it says Mock paused: the mock waits for the next recording. While any rule is on, the recording bar says "Mocks on (n)"; press it to see every rule. A mock answers only while RequestFox records the tab, unless you keep it on without recording, and only the calls the page makes with fetch or XMLHttpRequest (not a worker's calls, images or scripts).</p>
+        <p>The call's card says Mocked: press it to edit the response, keep it on without recording, turn it off or delete the mock. After Stop it says Mock paused, and the mock waits for the next recording. While any rule is on, the recording bar says "Mocks on (n)": press it to see every rule. A mock answers only while RequestFox records the tab, unless you keep it on without recording, and only the calls the page makes with fetch or XMLHttpRequest (not a worker's calls, images or scripts).</p>
       </section>
 
       <section class="block" id="other-ways" aria-labelledby="other-ways-title">
         <h2 id="other-ways-title">DevTools local overrides, Mock Service Worker or an extension?</h2>
-        <p>Three ways to change what an API call returns in the browser, side by side. Local overrides are part of Chrome DevTools, so there is nothing to install. Mock Service Worker is a library you add to your own app. An extension such as RequestFox works on any site and starts from a call it recorded.</p>
+        <p>Here are three ways to change what an API call returns in the browser, side by side. Local overrides are part of Chrome DevTools, so there's nothing to install. Mock Service Worker is a library you add to your own app. An extension such as RequestFox works on any site and starts from a call it recorded.</p>
         <div class="table-wrap" role="region" aria-labelledby="other-ways-title" tabindex="0">
           <table class="cmp">
             <thead><tr><th scope="col">&nbsp;</th><th scope="col">DevTools local overrides</th><th scope="col">Mock Service Worker</th><th scope="col">RequestFox mock rule</th></tr></thead>
@@ -232,7 +232,7 @@
           <li>Chrome for Developers, "Override web content and HTTP response headers locally". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/overrides" rel="noopener noreferrer">developer.chrome.com</a></li>
           <li>Mock Service Worker, "Introduction". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://mswjs.io/docs/" rel="noopener noreferrer">mswjs.io</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

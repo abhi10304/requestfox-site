@@ -78,13 +78,13 @@
       "@type": "HowToStep",
       "position": 1,
       "name": "Install RequestFox",
-      "text": "Add it from the Chrome Web Store or Firefox Add-ons. There is nothing to sign up for."
+      "text": "Add it from the Chrome Web Store or Firefox Add-ons. There's nothing to sign up for."
     },
     {
       "@type": "HowToStep",
       "position": 2,
       "name": "Open the site you want to test",
-      "text": "Any normal web page works. Browser pages such as the extensions page, a new tab or the Web Store cannot be recorded; RequestFox says so if you try."
+      "text": "Any normal web page works. Browser pages, like the extensions page, a new tab or the Web Store, can't be recorded, and RequestFox tells you so if you try."
     },
     {
       "@type": "HowToStep",
@@ -96,7 +96,7 @@
       "@type": "HowToStep",
       "position": 4,
       "name": "Use the site as usual",
-      "text": "Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick \"Reload the page to record its startup calls\" before you press Start Recording."
+      "text": "Click through the flow you're testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick \"Reload the page to record its startup calls\" before you press Start Recording."
     },
     {
       "@type": "HowToStep",
@@ -108,7 +108,7 @@
       "@type": "HowToStep",
       "position": 6,
       "name": "Stop, and keep the evidence",
-      "text": "Press Stop. The session is kept in History to reopen and compare. Export it as an HTML report, HAR, CSV or JSON, or copy one call as code."
+      "text": "Press Stop. The session stays in History, so you can reopen and compare it later. Export it as an HTML report, HAR, CSV or JSON, or copy one call as code."
     }
   ]
 }</script>
@@ -161,25 +161,25 @@
     <div class="content">
       <section class="block" id="devtools" aria-labelledby="devtools-title">
         <h2 id="devtools-title">First, the built-in way: the DevTools Network panel</h2>
-        <p>You do not need an extension to see a page's API calls. In Chrome, open DevTools (F12), choose Network and click the Fetch/XHR filter. Right-click a request and choose Copy to copy it as cURL or as fetch, and tick Preserve log to keep requests across page loads [1]. In Firefox, the Network Monitor opens with Ctrl+Shift+E (Cmd+Opt+E on a Mac) [2]; its XHR button filters the list, and Copy as cURL and Copy as Fetch are in the right-click menu [3].</p>
+        <p>You don't need an extension to see a page's API calls. In Chrome, open DevTools (F12), choose Network and click the Fetch/XHR filter. Right-click a request and choose Copy to copy it as cURL or as fetch, and tick Preserve log to keep requests across page loads [1]. In Firefox, the Network Monitor opens with Ctrl+Shift+E (Cmd+Opt+E on a Mac) [2]; its XHR button filters the list, and Copy as cURL and Copy as Fetch are in the right-click menu [3].</p>
         <p>DevTools lists everything live but leaves the judging to you, and the list is gone when you close it. RequestFox adds the flags, the History and the export. <a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a>.</p>
       </section>
 
       <section class="block" id="steps" aria-labelledby="steps-title">
         <h2 id="steps-title">Steps to record API calls in Chrome or Firefox</h2>
         <ol class="howto">
-          <li data-ui="none"><h3>Install RequestFox</h3><p>Add it from the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Firefox Add-ons</a>. There is nothing to sign up for.</p></li>
-          <li data-ui="none"><h3>Open the site you want to test</h3><p>Any normal web page works. Browser pages such as the extensions page, a new tab or the Web Store cannot be recorded; RequestFox says so if you try.</p></li>
+          <li data-ui="none"><h3>Install RequestFox</h3><p>Add it from the <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Chrome Web Store</a> or <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls" rel="noopener noreferrer">Firefox Add-ons</a>. There's nothing to sign up for.</p></li>
+          <li data-ui="none"><h3>Open the site you want to test</h3><p>Any normal web page works. Browser pages, like the extensions page, a new tab or the Web Store, can't be recorded, and RequestFox tells you so if you try.</p></li>
           <li><h3>Press Start</h3><p>Click the RequestFox icon to open the side panel (the sidebar in Firefox) and press <span class="ui">Start Recording</span>, or press Alt+Shift+S (Option+Shift+S on a Mac). The first time, the browser asks you to allow access to the site: allow it.</p></li>
-          <li><h3>Use the site as usual</h3><p>Click through the flow you are testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick "<span class="ui">Reload the page to record its startup calls</span>" before you press <span class="ui">Start Recording</span>.</p></li>
+          <li><h3>Use the site as usual</h3><p>Click through the flow you're testing. Each call appears as it starts, tied to the click or form submit that caused it. To record a page's very first calls (sign-in, config, feature flags), tick "<span class="ui">Reload the page to record its startup calls</span>" before you press <span class="ui">Start Recording</span>.</p></li>
           <li data-ui="none"><h3>Read the flags</h3><p>Calls that failed, were slow, fired twice or broke inside a 200 OK are marked. Open one to see its headers, body, timing and the reason in plain words.</p></li>
-          <li><h3>Stop, and keep the evidence</h3><p>Press <span class="ui">Stop</span>. The session is kept in <span class="ui">History</span> to reopen and compare. <span class="ui">Export</span> it as an HTML report, HAR, CSV or JSON, or copy one call as code.</p></li>
+          <li><h3>Stop, and keep the evidence</h3><p>Press <span class="ui">Stop</span>. The session stays in <span class="ui">History</span>, so you can reopen and compare it later. <span class="ui">Export</span> it as an HTML report, HAR, CSV or JSON, or copy one call as code.</p></li>
         </ol>
       </section>
 
       <section class="block" id="search" aria-labelledby="search-title">
         <h2 id="search-title">Find one call in a long recording</h2>
-        <p>Type in the search box. Words each have to match, in any order, and tokens narrow the list:</p>
+        <p>Type in the search box. Every word has to match, in any order, and tokens narrow the list:</p>
         <ul>
           <li><code>status:500</code> or <code>method:POST</code></li>
           <li><code>host:api.example.com</code>, or <code>-host:cdn.example.com</code> to leave a host out</li>
@@ -193,7 +193,7 @@
           <li><strong>The list says to open a site first:</strong> you pressed Start on a browser page. Open the site, then press Start.</li>
           <li><strong>You chose not to allow access:</strong> press Start again and allow it. You can remove the access later in your browser's settings for the extension.</li>
           <li><strong>The list is empty while recording:</strong> the page has made no calls yet. Click something that loads data, or reload the page.</li>
-          <li><strong>The shortcut does nothing:</strong> another extension may use it. Set it again at chrome://extensions/shortcuts (Firefox: about:addons, the gear, Manage Extension Shortcuts).</li>
+          <li><strong>The shortcut does nothing:</strong> another extension may already use it. Set it again at chrome://extensions/shortcuts (Firefox: about:addons, the gear, Manage Extension Shortcuts).</li>
         </ul>
       </section>
 
@@ -204,7 +204,7 @@
           <li>Firefox Source Docs, "Network Monitor". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
           <li>Firefox Source Docs, "Network request list". Checked <time datetime="2026-11-04">4 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_list/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

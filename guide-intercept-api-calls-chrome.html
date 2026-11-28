@@ -100,7 +100,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Intercept API calls in Chrome</span></li></ol></nav>
       <h1 id="title">How to intercept and modify API calls in Chrome</h1>
-      <p class="answer">Chrome DevTools can already do part of it: override a response with a local file, block a request, and resend a request you edit as a fetch() call [1][2]. A browser extension adds a faster route. In RequestFox, a browser extension for Chrome and Firefox, record the call, press Mock on its card, change the status or body and press Mock it; the page then gets your response. To change a request, use Edit and send again… in its card's More menu. Details and limits below.</p>
+      <p class="answer">Chrome DevTools already does part of it: override a response with a local file, block a request, and resend a request you edit as a fetch() call [1][2]. A browser extension gets you there faster. In RequestFox, a browser extension for Chrome and Firefox, record the call, press Mock on its card, change the status or body and press Mock it, and the page gets your response. To change a request, use Edit and send again… in its card's More menu. The details and limits are below.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about Chrome are from its own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -126,7 +126,7 @@
           <li><strong>Resend a request:</strong> Edit and resend as fetch opens the Console with the request written as a fetch() call; change it and press Enter [2]. Since Chrome 152 the old Replay XHR item is called Resend, and it handles every fetchable request [3].</li>
           <li><strong>Block a request:</strong> the Network request blocking tab in the drawer [2].</li>
         </ul>
-        <p>Overrides turn the browser cache off while they are enabled, and the changes are files you manage in a folder [1].</p>
+        <p>Overrides turn the browser cache off while they're on, and the changes are files you manage in a folder [1].</p>
       </section>
 
       <section class="block" id="response" aria-labelledby="response-title">
@@ -141,7 +141,7 @@
 
       <section class="block" id="request" aria-labelledby="request-title">
         <h2 id="request-title">How do I change a request and send it again?</h2>
-        <p>Open the call's card, open its <span class="ui">More</span> menu and choose <span class="ui">Edit and send again…</span>. Change the method, address, headers or body, and send. The edited call is a new card at the top of the log, and the link <span class="ui">Compare with the original</span> sets the two side by side. <a href="guide-replay-edit-request.html">Replay and edit a request</a> has the details.</p>
+        <p>Open the call's card, open its <span class="ui">More</span> menu and choose <span class="ui">Edit and send again…</span>. Change the method, address, headers or body, and send. The edited call shows up as a new card at the top of the log, and the <span class="ui">Compare with the original</span> link puts the two side by side. <a href="guide-replay-edit-request.html">Replay and edit a request</a> has the details.</p>
       </section>
 
       <section class="block" id="table" aria-labelledby="table-title">
@@ -166,7 +166,7 @@
           <li><strong>An error, an empty list or a slow response to test a screen:</strong> a RequestFox mock, labelled so nobody files it as a bug.</li>
           <li><strong>A request you want to tweak and compare:</strong> Edit and send again…, or DevTools' Edit and resend as fetch.</li>
         </ul>
-        <p>A mock does not answer calls from a worker, images or scripts, and it is for calls the page makes itself. <a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a> has the rest.</p>
+        <p>A mock doesn't answer calls from a worker, images or scripts. It's for calls the page makes itself. <a href="compare-devtools.html">RequestFox vs the DevTools Network panel</a> has the rest.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -176,7 +176,7 @@
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
           <li>Chrome for Developers, "What's new in DevTools (Chrome 152)". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://developer.chrome.com/blog/new-in-devtools-152" rel="noopener noreferrer">developer.chrome.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Chrome changes often. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Chrome changes often. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

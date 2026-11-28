@@ -81,7 +81,7 @@
       "@type": "HowToStep",
       "position": 4,
       "name": "Find why the app did not renew it",
-      "text": "Look at the calls just before the failed one. If no call to the sign-in server's token address went out, the app did not try to refresh; if one did and failed, open it: its status and response say why."
+      "text": "Look at the calls just before the failed one. If no call to the sign-in server's token address went out, the app didn't try to refresh. If one did and failed, open it: its status and response tell you why."
     },
     {
       "@type": "HowToStep",
@@ -112,7 +112,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">A 401 from an expired token</span></li></ol></nav>
       <h1 id="title">How to tell if a 401 comes from an expired token</h1>
-      <p class="answer">Record the page with RequestFox, a browser extension for Chrome and Firefox. A call refused with 401 or 403 whose bearer token (a JWT) had already run out is marked Token expired, and the line under it says how long before the call it expired. Open the call's Details: Bearer token (JWT) shows when the token was issued and when it expires. The fix is to sign in again or refresh the token; for your own requests, Compose can renew an OAuth 2.0 token before it runs out.</p>
+      <p class="answer">Record the page with RequestFox, a browser extension for Chrome and Firefox. A call refused with 401 or 403 whose bearer token (a JWT) had already run out is marked Token expired, and the line under it says how long before the call it expired. Open the call's Details: Bearer token (JWT) shows when the token was issued and when it expires. The fix is to sign in again or refresh the token. For your own requests, Compose can renew an OAuth 2.0 token before it runs out.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-17">17 November 2026</time>.</p>
     </div>
   </section>
@@ -135,7 +135,7 @@
           <li><h3>Record until the 401</h3><p>Press <span class="ui">Start Recording</span> in RequestFox and use the app until a call fails, for example after the page sat open for an hour.</p></li>
           <li><h3>Look for Token expired</h3><p>Press <span class="ui">Failed</span> above the list. A call refused with 401 or 403 that sent an <code>Authorization: Bearer</code> token whose own expiry time had already passed is marked <span class="ui">Token expired</span>, and the line under it reads, for example, "The bearer token had expired 12 min before this call."</p></li>
           <li><h3>Open the token's dates</h3><p>Press <span class="ui">Details</span> on the card. <span class="ui">Bearer token (JWT)</span> lists its <span class="ui">Algorithm</span>, <span class="ui">Issuer</span>, <span class="ui">Audience</span>, <span class="ui">Issued</span> and <span class="ui">Expires</span>, with how long before or after this call it ran out. RequestFox reads only these fields from the token, and by default hides the token itself in everything it keeps.</p></li>
-          <li data-ui="none"><h3>Find why the app did not renew it</h3><p>Look at the calls just before the failed one. If no call to the sign-in server's token address went out, the app did not try to refresh; if one did and failed, open it: its status and response say why.</p></li>
+          <li data-ui="none"><h3>Find why the app did not renew it</h3><p>Look at the calls just before the failed one. If no call to the sign-in server's token address went out, the app didn't try to refresh. If one did and failed, open it: its status and response tell you why.</p></li>
           <li><h3>Send the call again with a new token</h3><p>Sign in again in the app, or press <span class="ui">Edit and send again…</span> on the card and put a fresh token in its Authorization header. The new call shows as a card of its own, with its status.</p></li>
         </ol>
       </section>
@@ -143,10 +143,10 @@
       <section class="block" id="other" aria-labelledby="other-title">
         <h2 id="other-title">What if the token has not expired?</h2>
         <ul>
-          <li><strong>The token is for another service.</strong> Compare its <span class="ui">Issuer</span> and <span class="ui">Audience</span> with what the API expects; a token for the staging server is refused by production.</li>
-          <li><strong>No token was sent.</strong> Open <span class="ui">Request headers</span>: if there is no Authorization header, the app did not add it, or it relies on a cookie the browser did not send.</li>
+          <li><strong>The token is for another service.</strong> Compare its <span class="ui">Issuer</span> and <span class="ui">Audience</span> with what the API expects. A token for the staging server gets refused by production.</li>
+          <li><strong>No token was sent.</strong> Open <span class="ui">Request headers</span>: if there's no Authorization header, the app didn't add it, or it relies on a cookie the browser didn't send.</li>
           <li><strong>The server says why.</strong> Open <span class="ui">Response headers</span>. A server that follows the bearer token standard answers 401 with a <code>WWW-Authenticate: Bearer error="invalid_token"</code> header when the token is expired, revoked, malformed or invalid in another way [1], often with an <code>error_description</code>.</li>
-          <li><strong>It is not a JWT.</strong> Some services hand out opaque tokens with no dates inside. RequestFox can't read when those expire, so the call is marked failed but not Token expired.</li>
+          <li><strong>It's not a JWT.</strong> Some services hand out opaque tokens with no dates inside. RequestFox can't read when those expire, so the call is marked failed but not Token expired.</li>
         </ul>
       </section>
 
@@ -160,7 +160,7 @@
         <ol class="sources">
           <li>RFC 6750, "The OAuth 2.0 Authorization Framework: Bearer Token Usage", section 3.1. Checked <time datetime="2026-11-17">17 November 2026</time>. <a href="https://www.rfc-editor.org/rfc/rfc6750" rel="noopener noreferrer">rfc-editor.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

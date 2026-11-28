@@ -81,7 +81,7 @@
       "@type": "HowToStep",
       "position": 4,
       "name": "Fill in what a file can't carry",
-      "text": "Each OAuth 2.0 sign-in in the file gets a button, “Add “My API” as a sign-in…” with its own name: press it and type the client secret, which the file does not hold. Pick files for form fields in Compose before you send."
+      "text": "Each OAuth 2.0 sign-in in the file gets a button, “Add “My API” as a sign-in…” with its own name: press it and type the client secret, which the file doesn't hold. Pick files for form fields in Compose before you send."
     },
     {
       "@type": "HowToStep",
@@ -112,7 +112,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Import a Postman collection</span></li></ol></nav>
       <h1 id="title">How to import a Postman collection and run it in the browser</h1>
-      <p class="answer">Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it could not turn into one. Send any request from it, or run the whole file as a suite from its folder&#39;s menu.</p>
+      <p class="answer">Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it couldn't turn into one. Then send any request from it, or run the whole file as a suite from its folder&#39;s menu.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-17">17 November 2026</time>.</p>
     </div>
   </section>
@@ -136,7 +136,7 @@
           <li data-ui="none"><h3>Export it from Postman</h3><p>In Postman, open Collections, then the collection's View more actions menu → More → Export collection, and save the JSON file. Postman writes Collection Format v2.1 [1]. RequestFox reads v2.0 and v2.1.</p></li>
           <li><h3>Import it into RequestFox</h3><p>Open <span class="ui">Compose</span>, then <span class="ui">Import</span> → <span class="ui">Import a collection…</span>, and pick the file. A file on a web server works too: <span class="ui">Import from URL…</span>.</p></li>
           <li data-ui="none"><h3>Read what it kept</h3><p>The note after the import says what came along, such as "Kept its variables (4) and its auth in Collection settings." and "Made checks (6) and chaining rows (2) from its tests, each on its own request.", then what was left out and why.</p></li>
-          <li><h3>Fill in what a file can't carry</h3><p>Each OAuth 2.0 sign-in in the file gets a button, “Add “My API” as a sign-in…” with its own name: press it and type the client secret, which the file does not hold. Pick files for form fields in <span class="ui">Compose</span> before you send.</p></li>
+          <li><h3>Fill in what a file can't carry</h3><p>Each OAuth 2.0 sign-in in the file gets a button, “Add “My API” as a sign-in…” with its own name: press it and type the client secret, which the file doesn't hold. Pick files for form fields in <span class="ui">Compose</span> before you send.</p></li>
           <li><h3>Send a request, or run them all</h3><p>Pick a request and press <span class="ui">Send</span>. To run the whole file with its checks, open the menu of its folder (or of one collection) in the saved collections and choose <span class="ui">Run as a suite…</span>.</p></li>
         </ol>
       </section>
@@ -144,22 +144,22 @@
       <section class="block" id="tests" aria-labelledby="tests-title">
         <h2 id="tests-title">Which Postman tests come along?</h2>
         <p>The common ones become checks that need no code, so they run in Chrome, in Firefox and in the command line in CI: a test of the status, the response time, a header or a JSON field becomes a check on that request, and <code>pm.environment.set("name", pm.response.json().path)</code> becomes a chaining row that saves the value for the next request.</p>
-        <p>A test with anything else in it is not run. The import names it under "Scripts not translated", and the script stays on the request, so exporting to Postman gives it back as it was. To bring one over by hand, paste it into a RequestFox script box in Chrome: each <code>pm.</code> line is pointed out with its <code>rf.</code> twin, and one button fixes all of them.</p>
+        <p>A test with anything else in it isn't run. The import lists it under "Scripts not translated", and the script stays on the request, so exporting to Postman gives it back as it was. To bring one over by hand, paste it into a RequestFox script box in Chrome: each <code>pm.</code> line is pointed out with its <code>rf.</code> twin, and one button fixes all of them.</p>
       </section>
 
       <section class="block" id="left" aria-labelledby="left-title">
         <h2 id="left-title">What do I have to set up again?</h2>
         <ul>
-          <li><strong>Environments.</strong> A Postman environment is its own file [1], not part of the collection, and RequestFox does not read it. Make a RequestFox environment with the same variable names, or import a <code>.env</code> file with <span class="ui">Import .env…</span>.</li>
-          <li><strong>Variables with no value here.</strong> Postman variables the collection does not define are sent as written, and the import lists them: give each a value or an environment variable.</li>
-          <li><strong>Files.</strong> A form field or a body that is a file can't come along in a collection file; the import names those requests.</li>
+          <li><strong>Environments.</strong> A Postman environment is its own file [1], not part of the collection, and RequestFox doesn't read it. Make a RequestFox environment with the same variable names, or import a <code>.env</code> file with <span class="ui">Import .env…</span>.</li>
+          <li><strong>Variables with no value here.</strong> Postman variables the collection doesn't define are sent as written, and the import lists them: give each a value or an environment variable.</li>
+          <li><strong>Files.</strong> A form field or a body that is a file can't come along in a collection file, and the import names those requests.</li>
           <li><strong>Old files.</strong> A Postman v1 file is refused with "This is a Postman v1 file. Export it from Postman as Collection v2.1."</li>
         </ul>
       </section>
 
       <section class="block" id="back" aria-labelledby="back-title">
         <h2 id="back-title">Can I take it back to Postman?</h2>
-        <p>Yes. A saved collection's <span class="ui">Export…</span> can write a Postman Collection v2.1 file, with the untranslated scripts as they came, and a folder&#39;s <span class="ui">Export…</span> writes the whole imported file back as one collection with its folders; it says what Postman cannot run or read, such as RequestFox's own checks and chaining rows. A recorded session also exports as a <span class="ui">Postman collection</span> from <span class="ui">Export</span> at the bottom of the panel.</p>
+        <p>Yes. A saved collection's <span class="ui">Export…</span> can write a Postman Collection v2.1 file, with the untranslated scripts as they came, and a folder&#39;s <span class="ui">Export…</span> writes the whole imported file back as one collection with its folders. It tells you what Postman can't run or read, like RequestFox's own checks and chaining rows. A recorded session also exports as a <span class="ui">Postman collection</span> from <span class="ui">Export</span> at the bottom of the panel.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -167,7 +167,7 @@
         <ol class="sources">
           <li>Postman Docs, "Export data from Postman". Checked <time datetime="2026-11-17">17 November 2026</time>. <a href="https://learning.postman.com/docs/getting-started/importing-and-exporting/exporting-data/" rel="noopener noreferrer">learning.postman.com</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

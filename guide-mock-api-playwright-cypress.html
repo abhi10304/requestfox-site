@@ -100,7 +100,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Mock an API for Playwright or Cypress</span></li></ol></nav>
       <h1 id="title">How to mock an API for Playwright or Cypress tests</h1>
-      <p class="answer">The mock itself lives in your test code: Playwright answers a request with page.route and route.fulfill [1], and Cypress with cy.intercept and a static response [2]. RequestFox, a browser extension for Chrome and Firefox, does not write those mocks for you. It helps around them: record the real call to get the exact response to copy into your mock, mock a call by hand in the browser while you build a screen, and export a recording as a Playwright or Cypress test that calls the real API and checks what came back.</p>
+      <p class="answer">The mock itself lives in your test code: Playwright answers a request with page.route and route.fulfill [1], and Cypress with cy.intercept and a static response [2]. RequestFox, a browser extension for Chrome and Firefox, doesn't write those mocks for you. It helps around them: record the real call to get the exact response to copy into your mock, mock a call by hand in the browser while you build a screen, and export a recording as a Playwright or Cypress test that calls the real API and checks what came back.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about Playwright and Cypress are from their own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -125,12 +125,12 @@
           <li><strong>Playwright:</strong> <code>page.route()</code> catches requests that match a URL pattern, and <code>route.fulfill()</code> answers them with data you supply. <code>route.fetch()</code> makes the real request so you can change its response first, and <code>page.routeFromHAR()</code> replays requests from a HAR file [1].</li>
           <li><strong>Cypress:</strong> <code>cy.intercept()</code> can spy on requests, stub their responses, or both. A static response with a <code>statusCode</code>, <code>headers</code> and <code>body</code>, or a <code>fixture</code>, is the stub [2].</li>
         </ul>
-        <p>Both run inside the test, so the mock is in your repository and runs in CI.</p>
+        <p>Both run inside the test, so the mock lives in your repository and runs in CI.</p>
       </section>
 
       <section class="block" id="capture" aria-labelledby="capture-title">
         <h2 id="capture-title">Where does RequestFox help?</h2>
-        <p>A mock is only as good as the response behind it. Press <span class="ui">Start Recording</span>, use the page, and open the call's card: <span class="ui">Response</span> shows the real status, headers and body to copy into <code>route.fulfill()</code> or a Cypress fixture. For a bug that shows only on some responses, the failed and odd calls are already flagged. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
+        <p>A mock is only as good as the response behind it. Press <span class="ui">Start Recording</span>, use the page, and open the call's card: <span class="ui">Response</span> shows the real status, headers and body to copy into <code>route.fulfill()</code> or a Cypress fixture. If a bug only shows on some responses, the failed and odd calls are already flagged for you. <a href="guide-record-api-calls.html">How to record API calls</a>.</p>
       </section>
 
       <section class="block" id="browser" aria-labelledby="browser-title">
@@ -140,7 +140,7 @@
           <li><h3>Press Mock on the card</h3><p>Open the card and press <span class="ui">Mock</span>. Change the status or the body to an error, an empty list or a missing field.</p></li>
           <li><h3>Press Mock it and reload</h3><p>Press <span class="ui">Mock it</span> and reload the page. It gets your response, and the card says <span class="ui">Mocked</span>.</p></li>
         </ol>
-        <p>This mock answers the page in your own browser, while RequestFox records the tab or keeps it on. It does not run inside a Playwright or Cypress run. <a href="guide-mock-api-response.html">Mock an API response</a> has every step.</p>
+        <p>This mock answers the page in your own browser, while RequestFox records the tab or keeps it on. It doesn't run inside a Playwright or Cypress run. <a href="guide-mock-api-response.html">Mock an API response</a> has every step.</p>
       </section>
 
       <section class="block" id="export" aria-labelledby="export-title">
@@ -150,14 +150,14 @@
           <li><h3>Choose the test code</h3><p>Press <span class="ui">Export</span> (bottom right) and, under <span class="ui">Functional test code</span>, choose <span class="ui">Playwright test</span> or <span class="ui">Cypress test</span>.</p></li>
           <li data-ui="none"><h3>Run the file</h3><p>The comment at the top of the file gives the command to run it.</p></li>
         </ol>
-        <p>The file has one test per recorded request. A Playwright test uses the <code>request</code> fixture and a Cypress test uses <code>cy.request</code>. Each test sends the request to the real API and checks the status that was recorded and the top-level shape of the response. A value that one response returns, such as an id or a token, is passed on to the requests after it. A token or other secret header is not written into the file: it becomes a named setting read from the environment, and the top of the file says which to set. These tests call the API for real; they do not mock it.</p>
+        <p>The file has one test per recorded request. A Playwright test uses the <code>request</code> fixture and a Cypress test uses <code>cy.request</code>. Each test sends the request to the real API and checks the status that was recorded and the top-level shape of the response. A value that one response returns, such as an id or a token, is passed on to the requests after it. A token or other secret header isn't written into the file. It becomes a named setting read from the environment, and the top of the file says which ones to set. These tests call the API for real; they don't mock it.</p>
       </section>
 
       <section class="block" id="limits" aria-labelledby="limits-title">
         <h2 id="limits-title">What does RequestFox not do here?</h2>
         <ul>
           <li>It does not generate <code>page.route()</code> or <code>cy.intercept()</code> code.</li>
-          <li>It does not mock inside your test run. Its mocks live in the extension, in your browser.</li>
+          <li>It doesn't mock inside your test run. Its mocks live in the extension, in your browser.</li>
           <li>If you keep a HAR file in your repository for Playwright to replay, <a href="guide-sanitize-har-file.html">clean it of tokens first</a>.</li>
         </ul>
       </section>
@@ -168,7 +168,7 @@
           <li>Playwright, "Mock APIs". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://playwright.dev/docs/mock" rel="noopener noreferrer">playwright.dev</a></li>
           <li>Cypress, "intercept". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://docs.cypress.io/api/commands/intercept" rel="noopener noreferrer">docs.cypress.io</a></li>
         </ol>
-        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

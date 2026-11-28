@@ -17,15 +17,15 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/about.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/changelog.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-02</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/cli.html</loc>
@@ -33,107 +33,107 @@
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-bruno.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-devtools.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-hoppscotch.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-insomnia.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-postman.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-proxy-tools.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-requestly.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare-thunder-client.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/compare.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/faq.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/features.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-401-expired-token.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-api-checks-in-ci.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-api-testing-firefox.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-bug-report-evidence.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-change-request-headers.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-copy-as-curl-and-convert.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-cors-blocked-call.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-duplicate-and-n-plus-one-api-calls.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-find-failed-and-slow-api-calls.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-graphql-errors-in-200.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-har-file-viewer.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-har-to-postman.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-import-postman-collection.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-intercept-api-calls-chrome.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-mock-api-playwright-cypress.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-mock-api-response.html</loc>
@@ -152,11 +152,11 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-openapi-contract-check.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-record-api-calls.html</loc>
@@ -175,63 +175,63 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-replay-edit-request.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-sanitize-har-file.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-see-api-calls-firefox-edge-safari.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-slow-down-network.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-test-mcp-server.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-test-server-sent-events.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guide-test-websocket.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/guides.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/postman-alternative-no-login.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/postman-interceptor-alternative.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/privacy.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-18</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/use-api-developers.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-17</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/use-frontend-developers.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/use-qa-testers.html</loc>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/es/</loc>
@@ -250,7 +250,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/es/guide-mock-api-response.html</loc>
@@ -269,7 +269,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/es/guide-record-api-calls.html</loc>
@@ -288,7 +288,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/hi/</loc>
@@ -307,7 +307,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/hi/guide-mock-api-response.html</loc>
@@ -326,7 +326,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/hi/guide-record-api-calls.html</loc>
@@ -345,7 +345,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/zh-cn/</loc>
@@ -364,7 +364,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/zh-cn/guide-mock-api-response.html</loc>
@@ -383,7 +383,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/zh-cn/guide-record-api-calls.html</loc>
@@ -402,7 +402,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ar/</loc>
@@ -421,7 +421,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ar/guide-mock-api-response.html</loc>
@@ -440,7 +440,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ar/guide-record-api-calls.html</loc>
@@ -459,7 +459,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/pt-br/</loc>
@@ -478,7 +478,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/pt-br/guide-mock-api-response.html</loc>
@@ -497,7 +497,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/pt-br/guide-record-api-calls.html</loc>
@@ -516,7 +516,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/fr/</loc>
@@ -535,7 +535,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/fr/guide-mock-api-response.html</loc>
@@ -554,7 +554,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/fr/guide-record-api-calls.html</loc>
@@ -573,7 +573,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ru/</loc>
@@ -592,7 +592,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ru/guide-mock-api-response.html</loc>
@@ -611,7 +611,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ru/guide-record-api-calls.html</loc>
@@ -630,7 +630,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ja/</loc>
@@ -649,7 +649,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ja/guide-mock-api-response.html</loc>
@@ -668,7 +668,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ja/guide-record-api-calls.html</loc>
@@ -687,7 +687,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/de/</loc>
@@ -706,7 +706,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/de/guide-mock-api-response.html</loc>
@@ -725,7 +725,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/de/guide-record-api-calls.html</loc>
@@ -744,7 +744,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ko/</loc>
@@ -763,7 +763,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ko/guide-mock-api-response.html</loc>
@@ -782,7 +782,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/ko/guide-record-api-calls.html</loc>
@@ -801,7 +801,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-21</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/id/</loc>
@@ -820,7 +820,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/id/guide-mock-api-response.html</loc>
@@ -839,7 +839,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/id/guide-record-api-calls.html</loc>
@@ -858,7 +858,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/tr/</loc>
@@ -877,7 +877,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/tr/guide-mock-api-response.html</loc>
@@ -896,7 +896,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/tr/guide-record-api-calls.html</loc>
@@ -915,7 +915,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/it/</loc>
@@ -934,7 +934,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/it/guide-mock-api-response.html</loc>
@@ -953,7 +953,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-mock-api-response.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
   <url>
     <loc>https://requestfox.accessisight.com/it/guide-record-api-calls.html</loc>
@@ -972,6 +972,6 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://requestfox.accessisight.com/tr/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="it" href="https://requestfox.accessisight.com/it/guide-record-api-calls.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-28</lastmod>
   </url>
 </urlset>

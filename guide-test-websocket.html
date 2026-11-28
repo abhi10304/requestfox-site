@@ -69,7 +69,7 @@
       "@type": "HowToStep",
       "position": 2,
       "name": "Type the URL and press Connect",
-      "text": "Type the server's address, such as wss://api.example.com/socket; {{variables}} work in it. Press Connect. The line under it says Connecting…, then which server you are connected to."
+      "text": "Type the server's address, such as wss://api.example.com/socket; {{variables}} work in it. Press Connect. The line under it says Connecting…, then which server you're connected to."
     },
     {
       "@type": "HowToStep",
@@ -112,7 +112,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Test a WebSocket server</span></li></ol></nav>
       <h1 id="title">How to test a WebSocket or Socket.IO server in the browser</h1>
-      <p class="answer">Open WebSocket / SSE activity in RequestFox, a browser extension for Chrome and Firefox, type the server's ws:// or wss:// URL under Open a connection and press Connect. Type a message and press Send; what the server sends back shows below, each line marked Received or Sent. For a Socket.IO server, pick Socket.IO beside the URL: RequestFox joins the namespace, answers the pings for you, and sends events with Emit. If the connection closes, it says the close code and what it means.</p>
+      <p class="answer">Open WebSocket / SSE activity in RequestFox, a browser extension for Chrome and Firefox, type the server's ws:// or wss:// URL under Open a connection and press Connect. Type a message and press Send. Whatever the server sends back shows below, each line marked Received or Sent. For a Socket.IO server, pick Socket.IO beside the URL: RequestFox joins the namespace, answers the pings for you, and sends events with Emit. If the connection closes, it tells you the close code and what it means.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-17">17 November 2026</time>.</p>
     </div>
   </section>
@@ -134,7 +134,7 @@
         <h2 id="steps-title">How do I connect to a WebSocket server?</h2>
         <ol class="howto">
           <li><h3>Open WebSocket / SSE activity</h3><p>In RequestFox, press <span class="ui">WebSocket / SSE activity</span> in the top bar. <span class="ui">Open a connection</span> is the box at the bottom.</p></li>
-          <li><h3>Type the URL and press Connect</h3><p>Type the server's address, such as <code>wss://api.example.com/socket</code>; <code>{{variables}}</code> work in it. Press <span class="ui">Connect</span>. The line under it says <span class="ui">Connecting…</span>, then which server you are connected to.</p></li>
+          <li><h3>Type the URL and press Connect</h3><p>Type the server's address, such as <code>wss://api.example.com/socket</code>; <code>{{variables}}</code> work in it. Press <span class="ui">Connect</span>. The line under it says <span class="ui">Connecting…</span>, then which server you're connected to.</p></li>
           <li><h3>Add a header or subprotocol if the server needs one</h3><p><span class="ui">Headers (optional)</span> go with the handshake in Chrome and Firefox, such as <code>Authorization: Bearer {{token}}</code>; the browser may ask you to allow RequestFox on that site. <span class="ui">Subprotocol (optional)</span> takes names separated by commas.</p></li>
           <li><h3>Send a message</h3><p>Type it and press <span class="ui">Send</span>. <span class="ui">Send as</span> picks <span class="ui">Text</span>, <span class="ui">Binary (base64)</span> or <span class="ui">Binary (hex)</span>. <span class="ui">Save message</span> keeps one to send again later.</p></li>
           <li><h3>Read what came back</h3><p>Each line says <span class="ui">Received</span> or <span class="ui">Sent</span>. <span class="ui">Filter messages</span> narrows the list, and <span class="ui">Copy log</span> copies it for a bug report. Tick <span class="ui">Reconnect if it drops</span> for RequestFox to try again after a drop, up to five times.</p></li>
@@ -144,13 +144,13 @@
 
       <section class="block" id="socketio" aria-labelledby="socketio-title">
         <h2 id="socketio-title">How do I test a Socket.IO server?</h2>
-        <p>A Socket.IO server speaks its own protocol on top of WebSocket (a handshake, pings, namespaces and events), so pick Socket.IO in the list beside the URL instead of WebSocket; an <code>http://</code> or <code>https://</code> address works too. Then set the <span class="ui">Path</span> (usually <code>/socket.io/</code>), the <span class="ui">Namespace</span>, the <span class="ui">Server version</span> (v3 / v4, or v2 for an older server) and, if the server checks one, the <span class="ui">Auth payload (JSON, optional)</span>.</p>
+        <p>A Socket.IO server speaks its own protocol on top of WebSocket (a handshake, pings, namespaces and events), so pick Socket.IO in the list beside the URL instead of WebSocket. An <code>http://</code> or <code>https://</code> address works too. Then set the <span class="ui">Path</span> (usually <code>/socket.io/</code>), the <span class="ui">Namespace</span>, the <span class="ui">Server version</span> (v3 / v4, or v2 for an older server) and, if the server checks one, the <span class="ui">Auth payload (JSON, optional)</span>.</p>
         <p>After <span class="ui">Connect</span>, type an <span class="ui">Event name</span> and its <span class="ui">Arguments (JSON)</span>, tick <span class="ui">Wait for ack</span> if the server answers the event, and press <span class="ui">Emit</span>. RequestFox answers the server's pings itself and keeps them out of the way until you press Show pings. It talks Socket.IO over WebSocket only: long-polling isn't supported.</p>
       </section>
 
       <section class="block" id="page" aria-labelledby="page-title">
         <h2 id="page-title">Can I see the sockets my web app opens?</h2>
-        <p>Yes. Press <span class="ui">Start Recording</span> and use the page: every WebSocket and server-sent events connection it opens shows under <span class="ui">Recorded activity</span>, with each message. A connection the page opened before you pressed Start is not seen: reload the page. Socket.IO frames read as events with their arguments; <span class="ui">Raw frames</span> shows them as sent. While recording, <span class="ui">Inject a message</span> pushes a message into the page's open connection, as if the server had sent it.</p>
+        <p>Yes. Press <span class="ui">Start Recording</span> and use the page: every WebSocket and server-sent events connection it opens shows under <span class="ui">Recorded activity</span>, with each message. A connection the page opened before you pressed Start isn't seen, so reload the page. Socket.IO frames read as events with their arguments, and <span class="ui">Raw frames</span> shows them as sent. While recording, <span class="ui">Inject a message</span> pushes a message into the page's open connection, as if the server had sent it.</p>
       </section>
 
       <section class="block" id="fails" aria-labelledby="fails-title">
@@ -160,7 +160,7 @@
           <li><strong>"The server answered HTTP 401"</strong> (or 403, 404) to the handshake: the URL is wrong, or the server wants a token or a sign-in. Add the header it expects, or for Socket.IO the auth payload.</li>
           <li><strong>It closes with a code.</strong> RequestFox says what the code means: 1006 is a drop with no close message (network, proxy or server crash), 1008 is refused by the server's rules (often sign-in), 1011 is a server error.</li>
           <li><strong>Socket.IO never joins.</strong> Check that the server runs Socket.IO and that <span class="ui">Server version</span> matches it.</li>
-          <li><strong>The headers could not be added.</strong> Allow RequestFox on that site when the browser asks, then press <span class="ui">Connect</span> again: nothing is sent without them.</li>
+          <li><strong>The headers couldn't be added.</strong> Allow RequestFox on that site when the browser asks, then press <span class="ui">Connect</span> again: nothing is sent without them.</li>
         </ul>
       </section>
 
@@ -170,7 +170,7 @@
         <ol class="sources">
           <li>MDN Web Docs, "WebSocket: WebSocket() constructor". Checked <time datetime="2026-11-17">17 November 2026</time>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/WebSocket" rel="noopener noreferrer">developer.mozilla.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">

@@ -75,7 +75,7 @@
       "@type": "HowToStep",
       "position": 3,
       "name": "Open it from the list",
-      "text": "The file is a session named after it, starting with \"Imported:\". Press its name to open it in the log, read-only. Your own recordings are untouched."
+      "text": "The file shows up as a session named after it, starting with \"Imported:\". Press its name to open it in the log, read-only. Your own recordings stay as they were."
     },
     {
       "@type": "HowToStep",
@@ -87,7 +87,7 @@
       "@type": "HowToStep",
       "position": 5,
       "name": "Take it further",
-      "text": "Press Report on the session for an HTML report, or open its More menu for CSV, JSON, a Postman collection and more. Compare to current sets it against what you are recording now."
+      "text": "Press Report on the session for an HTML report, or open its More menu for CSV, JSON, a Postman collection and more. Compare to current sets it against what you're recording now."
     }
   ]
 }</script>
@@ -113,7 +113,7 @@
       <div>
         <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">HAR file viewer</span></li></ol></nav>
         <h1 id="title">How to open and read a HAR file in your browser, offline</h1>
-        <p class="answer">To read a HAR file without uploading it anywhere, open it in RequestFox, a browser extension for Chrome and Firefox. In History press Open file…, pick the .har file, then open it from the list. Every call is listed with its status, timing, headers and bodies, and the failed, slow, repeated and hidden-error calls are flagged. The file is read on your computer, and nothing is sent to us.</p>
+        <p class="answer">To read a HAR file without uploading it anywhere, open it in RequestFox, a browser extension for Chrome and Firefox. In History, press Open file…, pick the .har file, then open it from the list. Every call is listed with its status, timing, headers and bodies, and the failed, slow, repeated and hidden-error calls are flagged. The file is read on your computer, and nothing is sent to us.</p>
         <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about browsers are from their own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
       </div>
       <figure class="fig">
@@ -154,9 +154,9 @@
         <ol class="howto">
           <li><h3>Open History</h3><p>In RequestFox, press <span class="ui">History</span> in the top bar.</p></li>
           <li><h3>Press Open file…</h3><p>Pick the <code>.har</code> file. Files up to 256 MB open. A dialog titled <span class="ui">File opened</span> says how many requests were loaded into History, and what was hidden (see below).</p></li>
-          <li data-ui="none"><h3>Open it from the list</h3><p>The file is a session named after it, starting with "Imported:". Press its name to open it in the log, read-only. Your own recordings are untouched.</p></li>
+          <li data-ui="none"><h3>Open it from the list</h3><p>The file shows up as a session named after it, starting with "Imported:". Press its name to open it in the log, read-only. Your own recordings stay as they were.</p></li>
           <li><h3>Find the call you need</h3><p>Type in <span class="ui">Search calls</span>: a word matches the address, the method or the status, and filters such as <code>status:&gt;=400</code> or <code>latency:&gt;1000</code> narrow it down. Open a card to read its headers, body and timing.</p></li>
-          <li><h3>Take it further</h3><p>Press <span class="ui">Report</span> on the session for an HTML report, or open its <span class="ui">More</span> menu for CSV, JSON, a Postman collection and more. <span class="ui">Compare to current</span> sets it against what you are recording now.</p></li>
+          <li><h3>Take it further</h3><p>Press <span class="ui">Report</span> on the session for an HTML report, or open its <span class="ui">More</span> menu for CSV, JSON, a Postman collection and more. <span class="ui">Compare to current</span> sets it against what you're recording now.</p></li>
         </ol>
         <p>A RequestFox session file (<code>.requestfox</code> or <code>.json</code>) opens the same way, with its flags and console log.</p>
       </section>
@@ -171,7 +171,7 @@
           <li>errors inside a 200 OK, in GraphQL, JSON-RPC and SOAP responses;</li>
           <li>streams that sent an error event.</li>
         </ul>
-        <p>Browsers' own preflight checks (the OPTIONS call before a cross-origin call) are not counted as slow or repeated.</p>
+        <p>Browsers' own preflight checks (the OPTIONS call before a cross-origin call) aren't counted as slow or repeated.</p>
       </section>
 
       <section class="block" id="secrets" aria-labelledby="secrets-title">
@@ -184,7 +184,7 @@
         <ul>
           <li>A HAR holds what the Network panel held. It has no console log, so none is shown. A RequestFox session file does.</li>
           <li>The Cookie header, Host, Connection, Content-Length and HTTP/2 pseudo-headers are left out when a HAR is read.</li>
-          <li>A file with no requests in it, or that is not a HAR or a session file, is refused with a message saying so.</li>
+          <li>A file with no requests in it, or that isn't a HAR or a session file, is refused with a message saying so.</li>
         </ul>
       </section>
 
@@ -194,7 +194,7 @@
           <li>Chrome for Developers, "Network features reference". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://developer.chrome.com/docs/devtools/network/reference" rel="noopener noreferrer">developer.chrome.com</a></li>
           <li>Firefox Source Docs, "Network request list". Checked <time datetime="2026-11-20">20 November 2026</time>. <a href="https://firefox-source-docs.mozilla.org/devtools-user/network_monitor/request_list/index.html" rel="noopener noreferrer">firefox-source-docs.mozilla.org</a></li>
         </ol>
-        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we will fix it.</p>
+        <p class="note">Something here out of date? Tools change. Tell us at the address in the <a href="privacy.html#contact">privacy policy</a> and we'll fix it.</p>
       </section>
 
       <section class="block" id="next" aria-labelledby="next-title">
