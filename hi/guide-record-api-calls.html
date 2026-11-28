@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें</title>
-<meta name="description" content="Chrome या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<meta name="description" content="Chrome, Edge या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
 <link rel="canonical" href="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
 <link rel="alternate" hreflang="en" href="https://requestfox.accessisight.com/guide-record-api-calls.html" />
 <link rel="alternate" hreflang="es" href="https://requestfox.accessisight.com/es/guide-record-api-calls.html" />
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RequestFox" />
 <meta property="og:title" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
-<meta property="og:description" content="Chrome या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<meta property="og:description" content="Chrome, Edge या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
 <meta property="og:url" content="https://requestfox.accessisight.com/hi/guide-record-api-calls.html" />
 <meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -42,7 +42,7 @@
 <meta property="og:image:alt" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Chrome या Firefox में HTTPS रिक्वेस्ट कैसे रिकॉर्ड करें" />
-<meta name="twitter:description" content="Chrome या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
+<meta name="twitter:description" content="Chrome, Edge या Firefox में वेबसाइट की हर fetch, XHR, WebSocket और SSE कॉल रिकॉर्ड करें, फ़ेल और धीमी कॉल फ़्लैग के साथ। चरण-दर-चरण, मुफ़्त, बिना अकाउंट।" />
 <meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-record-api-calls.jpg" />
 <meta property="og:locale" content="hi_IN" />
 <script type="application/ld+json">{
@@ -125,6 +125,7 @@
       <a href="../faq.html">अक्सर पूछे जाने वाले सवाल</a>
     </nav>
     <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer" aria-label="RequestFox को Firefox में जोड़ें">Firefox</a>
+    <a class="header-alt" href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer" aria-label="RequestFox को Edge में जोड़ें">Edge</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome में जोड़ें</a>
   </div>
 </header>
@@ -166,7 +167,7 @@
       </section>
 
       <section class="block" id="steps" aria-labelledby="steps-title">
-        <h2 id="steps-title">Chrome या Firefox में API कॉल रिकॉर्ड करने के चरण</h2>
+        <h2 id="steps-title">Chrome, Edge या Firefox में API कॉल रिकॉर्ड करने के चरण</h2>
         <ol class="howto">
           <li data-ui="none"><h3>RequestFox इंस्टॉल करें</h3><p>इसे <a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome Web Store</a> या <a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Firefox Add-ons</a> से जोड़ें। किसी चीज़ के लिए साइन अप नहीं करना।</p></li>
           <li data-ui="none"><h3>वह साइट खोलें जिसे आप टेस्ट करना चाहते हैं</h3><p>कोई भी सामान्य वेब पेज चलेगा। ब्राउज़र के अपने पेज, जैसे एक्सटेंशन पेज, नया टैब या Web Store, रिकॉर्ड नहीं किए जा सकते; कोशिश करने पर RequestFox यह बता देता है।</p></li>
@@ -222,7 +223,7 @@
     <div class="foot-top">
       <div class="foot-about">
         <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
-        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+        <p>A free API tester and network monitor for Chrome, Edge and Firefox. No account, no server, nothing sent to us.</p>
       </div>
       <nav class="foot-cols" aria-label="Footer">
         <div>
@@ -235,6 +236,7 @@
             <li><a href="../privacy.html">Privacy</a></li>
             <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Chrome Web Store</a></li>
             <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-record-api-calls-hi" rel="noopener noreferrer">Edge Add-ons</a></li>
           </ul>
         </div>
         <div>

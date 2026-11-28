@@ -8,7 +8,7 @@ Version 2.5.0, site updated 2026-11-19. The short guide is https://requestfox.ac
 
 Address: https://requestfox.accessisight.com/
 
-No login, works offline. RequestFox is a free API tester and network monitor in a side panel for Chrome and Firefox. It records every call your web app makes, flags the broken ones the moment they happen, and lets you replay, mock and test them.
+No login, works offline. RequestFox is a free API tester and network monitor in a side panel for Chrome, Edge and Firefox. It records every call your web app makes, flags the broken ones the moment they happen, and lets you replay, mock and test them.
 
 Add to Chrome, free
 Add to Firefox
@@ -198,7 +198,7 @@ Written for QA testers, frontend developers and API developers. All guides, incl
 
 It reads collections from 5 other API apps, writes code in 15 languages, turns a recording into tests for 6 tools, and speaks 14 languages. It costs nothing.
 
-- Works in: Google Chrome (side panel) and Mozilla Firefox (sidebar)
+- Works in: Google Chrome and Microsoft Edge (side panel), Mozilla Firefox (sidebar)
 
 - Price: Free, no paid tier
 
@@ -250,13 +250,13 @@ Free, with no paid tier and no account.
 
 Address: https://requestfox.accessisight.com/about.html
 
-RequestFox is a free API tester and network monitor for Chrome and Firefox, made by AccessiSight. It runs in your browser: there is no RequestFox server, no account and no analytics, and nothing you record is sent to us.
+RequestFox is a free API tester and network monitor for Chrome, Edge and Firefox, made by AccessiSight. It runs in your browser: there is no RequestFox server, no account and no analytics, and nothing you record is sent to us.
 
 For RequestFox 2.5.0, checked 19 November 2026.
 
 ## What RequestFox is
 
-It's a side panel in Chrome and a sidebar in Firefox. While you use the web app you're testing, it records every API call the app makes and flags the ones that failed, dragged, fired twice or broke inside a 200 OK. Each flag says what went wrong in plain words, and what to do next.
+It's a side panel in Chrome and Edge and a sidebar in Firefox. While you use the web app you're testing, it records every API call the app makes and flags the ones that failed, dragged, fired twice or broke inside a 200 OK. Each flag says what went wrong in plain words, and what to do next.
 
 The same panel is also an API client, a way to mock or break a call without touching the backend, a set of checks you can run in CI with its downloadable command-line tool, and a tester for the AI tools you build. Everything it does
 
@@ -280,7 +280,7 @@ The privacy policy, in full
 
 - The extension ships no third-party code and takes no plugins.
 
-- It works in Google Chrome and Mozilla Firefox, in 14 interface languages.
+- It works in Google Chrome, Microsoft Edge and Mozilla Firefox, in 14 interface languages.
 
 - It is free. Its code is MIT-licensed and ships readable inside the extension, so you can check it yourself; the source repository is not public.
 
@@ -294,7 +294,7 @@ Found a security problem? Write to the same address with “RequestFox security�
 
 ## See it on your own app.
 
-Free, in Chrome and Firefox.
+Free, in Chrome, Edge and Firefox.
 
 Add to Chrome, free
 Add to Firefox
@@ -387,7 +387,7 @@ The interface is available in 14 languages: English, Arabic (right to left), Chi
 
 ## Try it on the app you are testing today.
 
-Free, in Chrome and Firefox.
+Free, in Chrome, Edge and Firefox.
 
 Add to Chrome, free
 Add to Firefox
@@ -398,7 +398,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/features.html
 
-RequestFox is a free API tester and network monitor for Chrome and Firefox. It records the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome or Firefox, with no account and no server.
+RequestFox is a free API tester and network monitor for Chrome, Edge and Firefox. It records the API calls a web app makes while you use it, flags the ones that went wrong, and lets you replay, mock, check and export them. All of it runs inside Chrome, Edge or Firefox, with no account and no server.
 
 For RequestFox 2.5.0, checked 19 November 2026.
 
@@ -575,7 +575,7 @@ No account, no server, no analytics. Authorization headers, cookies and secret-s
 
 ## See it on your own app.
 
-Free, in Chrome and Firefox.
+Free, in Chrome, Edge and Firefox.
 
 Add to Chrome, free
 Add to Firefox
@@ -837,7 +837,7 @@ Live calls versus your spec, with coverage.
 
 Address: https://requestfox.accessisight.com/guide-401-expired-token.html
 
-Record the page with RequestFox, a browser extension for Chrome and Firefox. A call refused with 401 or 403 whose bearer token (a JWT) had already run out is marked Token expired, and the line under it says how long before the call it expired. Open the call's Details: Bearer token (JWT) shows when the token was issued and when it expires. The fix is to sign in again or refresh the token. For your own requests, Compose can renew an OAuth 2.0 token before it runs out.
+Record the page with RequestFox, a browser extension for Chrome, Edge and Firefox. A call refused with 401 or 403 whose bearer token (a JWT) had already run out is marked Token expired, and the line under it says how long before the call it expired. Open the call's Details: Bearer token (JWT) shows when the token was issued and when it expires. The fix is to sign in again or refresh the token. For your own requests, Compose can renew an OAuth 2.0 token before it runs out.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -1118,7 +1118,7 @@ Add to Chrome
 
 Address: https://requestfox.accessisight.com/guide-bug-report-evidence.html
 
-Record the bug with RequestFox, a browser extension for Chrome and Firefox, open the call that failed and choose Copy bug report from its More menu. You get one text to paste into the ticket: the request and its status, the clicks that led to it, the console lines around it, the headers and bodies, and a cURL command that repeats it, with tokens and passwords hidden. For the whole session, Export an HTML report (screenshots included) or a HAR.
+Record the bug with RequestFox, a browser extension for Chrome, Edge and Firefox, open the call that failed and choose Copy bug report from its More menu. You get one text to paste into the ticket: the request and its status, the clicks that led to it, the console lines around it, the headers and bodies, and a cURL command that repeats it, with tokens and passwords hidden. For the whole session, Export an HTML report (screenshots included) or a HAR.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -1196,7 +1196,7 @@ Get a browser's calls into Postman, and what to remove first.
 
 Address: https://requestfox.accessisight.com/guide-change-request-headers.html
 
-Open Header & URL rules in RequestFox, a browser extension for Chrome and Firefox, choose Set a request header, type the part of the address it is for, the header's name and its value, and press Add rule. The rule changes the API calls of the tabs RequestFox records, while it records. To keep a header on with nothing recording, put the rule in a rule set for the sites you name and switch the set on. The same place removes a header, sets or removes a response header, and rewrites part of a URL.
+Open Header & URL rules in RequestFox, a browser extension for Chrome, Edge and Firefox, choose Set a request header, type the part of the address it is for, the header's name and its value, and press Add rule. The rule changes the API calls of the tabs RequestFox records, while it records. To keep a header on with nothing recording, put the rule in a rule set for the sites you name and switch the set on. The same place removes a header, sets or removes a response header, and rewrites part of a URL.
 
 For RequestFox 2.5.0, checked 15 November 2026.
 
@@ -1274,13 +1274,13 @@ Two browser extensions: record and flag, or intercept and rewrite.
 
 Address: https://requestfox.accessisight.com/guide-copy-as-curl-and-convert.html
 
-In Chrome or Firefox, right-click a request in the Network panel and choose Copy, then Copy as cURL [1][2]. To turn that command into Python, JavaScript, Go or another language, paste it into RequestFox, a browser extension for Chrome and Firefox: in Compose open Import and press Paste a curl command…, then use More, Copy as code…, and pick the language. RequestFox copies any request as code in 15 languages, and it keeps real tokens out of what it copies unless you ask.
+In Chrome or Firefox, right-click a request in the Network panel and choose Copy, then Copy as cURL [1][2]. To turn that command into Python, JavaScript, Go or another language, paste it into RequestFox, a browser extension for Chrome, Edge and Firefox: in Compose open Import and press Paste a curl command…, then use More, Copy as code…, and pick the language. RequestFox copies any request as code in 15 languages, and it keeps real tokens out of what it copies unless you ask.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about browsers are from their own documentation, checked 20 November 2026; sources below.
 
 One request as Python code, with Copy.
 
-## How do I copy a request as cURL in Chrome or Firefox?
+## How do I copy a request as cURL in Chrome, Edge or Firefox?
 
 - Chrome: in the DevTools Network panel, right-click the request under Name, hover over Copy and choose Copy as cURL. Copy as fetch is next to it [1].
 
@@ -1349,7 +1349,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-cors-blocked-call.html
 
-Record the page with RequestFox, a browser extension for Chrome and Firefox, and open the failed call: its card says CORS where the status goes, and the line under it names the rule that blocked it, such as "the response has no Access-Control-Allow-Origin header" or "the call was sent with cookies, so the server must name this page's origin, not *". Press Replay from the extension to see what the server really sent back. The fix is on the server: it must allow the page's origin.
+Record the page with RequestFox, a browser extension for Chrome, Edge and Firefox, and open the failed call: its card says CORS where the status goes, and the line under it names the rule that blocked it, such as "the response has no Access-Control-Allow-Origin header" or "the call was sent with cookies, so the server must name this page's origin, not *". Press Replay from the extension to see what the server really sent back. The fix is on the server: it must allow the page's origin.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -1645,7 +1645,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-graphql-errors-in-200.html
 
-A GraphQL call can come back 200 OK and still have failed. Read the response body. If it has a top-level errors list, something went wrong, in all of the call or just part of it, whatever the HTTP status says. RequestFox, a browser extension for Chrome and Firefox, marks such a call "GraphQL error", and its command-line tool can fail a CI run on it.
+A GraphQL call can come back 200 OK and still have failed. Read the response body. If it has a top-level errors list, something went wrong, in all of the call or just part of it, whatever the HTTP status says. RequestFox, a browser extension for Chrome, Edge and Firefox, marks such a call "GraphQL error", and its command-line tool can fail a CI run on it.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about GraphQL and other tools are from their own pages, checked 4 November 2026; sources below.
 
@@ -1769,7 +1769,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-har-file-viewer.html
 
-To read a HAR file without uploading it anywhere, open it in RequestFox, a browser extension for Chrome and Firefox. In History, press Open file…, pick the .har file, then open it from the list. Every call is listed with its status, timing, headers and bodies, and the failed, slow, repeated and hidden-error calls are flagged. The file is read on your computer, and nothing is sent to us.
+To read a HAR file without uploading it anywhere, open it in RequestFox, a browser extension for Chrome, Edge and Firefox. In History, press Open file…, pick the .har file, then open it from the list. Every call is listed with its status, timing, headers and bodies, and the failed, slow, repeated and hidden-error calls are flagged. The file is read on your computer, and nothing is sent to us.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about browsers are from their own documentation, checked 20 November 2026; sources below.
 
@@ -1955,7 +1955,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-import-postman-collection.html
 
-Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it couldn't turn into one. Then send any request from it, or run the whole file as a suite from its folder's menu.
+Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome, Edge and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it couldn't turn into one. Then send any request from it, or run the whole file as a suite from its folder's menu.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -2027,7 +2027,7 @@ Three ways to get a browser's calls into Postman.
 
 Address: https://requestfox.accessisight.com/guide-intercept-api-calls-chrome.html
 
-Chrome DevTools already does part of it: override a response with a local file, block a request, and resend a request you edit as a fetch() call [1][2]. A browser extension gets you there faster. In RequestFox, a browser extension for Chrome and Firefox, record the call, press Mock on its card, change the status or body and press Mock it, and the page gets your response. To change a request, use Edit and send again… in its card's More menu. The details and limits are below.
+Chrome DevTools already does part of it: override a response with a local file, block a request, and resend a request you edit as a fetch() call [1][2]. A browser extension gets you there faster. In RequestFox, a browser extension for Chrome, Edge and Firefox, record the call, press Mock on its card, change the status or body and press Mock it, and the page gets your response. To change a request, use Edit and send again… in its card's More menu. The details and limits are below.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about Chrome are from its own documentation, checked 20 November 2026; sources below.
 
@@ -2120,7 +2120,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-mock-api-playwright-cypress.html
 
-The mock itself lives in your test code: Playwright answers a request with page.route and route.fulfill [1], and Cypress with cy.intercept and a static response [2]. RequestFox, a browser extension for Chrome and Firefox, doesn't write those mocks for you. It helps around them: record the real call to get the exact response to copy into your mock, mock a call by hand in the browser while you build a screen, and export a recording as a Playwright or Cypress test that calls the real API and checks what came back.
+The mock itself lives in your test code: Playwright answers a request with page.route and route.fulfill [1], and Cypress with cy.intercept and a static response [2]. RequestFox, a browser extension for Chrome, Edge and Firefox, doesn't write those mocks for you. It helps around them: record the real call to get the exact response to copy into your mock, mock a call by hand in the browser while you build a screen, and export a recording as a Playwright or Cypress test that calls the real API and checks what came back.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about Playwright and Cypress are from their own documentation, checked 20 November 2026; sources below.
 
@@ -2325,7 +2325,7 @@ Loading, empty and error states without the backend.
 
 Address: https://requestfox.accessisight.com/guide-openapi-contract-check.html
 
-RequestFox is a browser extension for Chrome and Firefox that checks the API calls your web app actually makes against your OpenAPI 3 or Swagger 2 spec. Import the spec and it's linked as the contract. Then record as usual: a call that breaks the spec shows “Spec mismatch” with the reason, a call the spec doesn't have shows “Not in spec”, and the Spec coverage line above the log counts how many operations you've covered. The same check runs in CI from the command line.
+RequestFox is a browser extension for Chrome, Edge and Firefox that checks the API calls your web app actually makes against your OpenAPI 3 or Swagger 2 spec. Import the spec and it's linked as the contract. Then record as usual: a call that breaks the spec shows “Spec mismatch” with the reason, a call the spec doesn't have shows “Not in spec”, and the Spec coverage line above the log counts how many operations you've covered. The same check runs in CI from the command line.
 
 For RequestFox 2.5.0, checked 19 November 2026.
 
@@ -2393,7 +2393,7 @@ You don't need an extension to see a page's API calls. In Chrome, open DevTools 
 
 DevTools lists everything live but leaves the judging to you, and the list is gone when you close it. RequestFox adds the flags, the History and the export. RequestFox vs the DevTools Network panel.
 
-## Steps to record API calls in Chrome or Firefox
+## Steps to record API calls in Chrome, Edge or Firefox
 
 ### Install RequestFox
 
@@ -2465,7 +2465,7 @@ Return your own response, or make a call fail.
 
 Address: https://requestfox.accessisight.com/guide-replay-edit-request.html
 
-Record the call with RequestFox, a browser extension for Chrome and Firefox, open its card and press Replay to send it again as it was, or choose Edit and send again… in its ··· menu to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session. The browsers' own DevTools can do part of this: Chrome resends a request as an editable fetch() call in the Console, and Firefox has Edit and Resend.
+Record the call with RequestFox, a browser extension for Chrome, Edge and Firefox, open its card and press Replay to send it again as it was, or choose Edit and send again… in its ··· menu to change the method, address, headers or body first. While recording, the request goes through the page, with its cookies and session. The browsers' own DevTools can do part of this: Chrome resends a request as an editable fetch() call in the Console, and Firefox has Edit and Resend.
 
 For RequestFox 2.5.0, checked 19 November 2026.
 
@@ -2531,7 +2531,7 @@ Turn saved requests into a suite your pipeline runs.
 
 Address: https://requestfox.accessisight.com/guide-sanitize-har-file.html
 
-A HAR file is a copy of what your browser sent and received, so it can hold cookies, tokens and passwords. Chrome's Export HAR (sanitized)… leaves out the Cookie, Set-Cookie and Authorization headers [1]; read the file for anything else. To clean any HAR file, open it in RequestFox, a browser extension for Chrome and Firefox: in History press Open file…, then use the session's More menu, choose HAR and press Export with secrets hidden. The dialog names what was removed.
+A HAR file is a copy of what your browser sent and received, so it can hold cookies, tokens and passwords. Chrome's Export HAR (sanitized)… leaves out the Cookie, Set-Cookie and Authorization headers [1]; read the file for anything else. To clean any HAR file, open it in RequestFox, a browser extension for Chrome, Edge and Firefox: in History press Open file…, then use the session's More menu, choose HAR and press Export with secrets hidden. The dialog names what was removed.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about browsers are from their own documentation, checked 20 November 2026; sources below.
 
@@ -2606,7 +2606,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-see-api-calls-firefox-edge-safari.html
 
-Each of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where you find it differs by browser, so the steps for each are below. If you want to keep the calls after you close the tools, and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome and Firefox; Safari is not supported.
+Each of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where you find it differs by browser, so the steps for each are below. If you want to keep the calls after you close the tools, and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome, Edge and Firefox; Safari is not supported.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about browsers are from their own documentation, checked 20 November 2026; sources below.
 
@@ -2628,7 +2628,7 @@ Firefox can also edit a request and send it again with Edit and Resend. API test
 
 - Refresh the page. The Network Log lists each request with its status, type, initiator and time, and you can narrow it with the Filter box or by resource type [3].
 
-The tool logs only after DevTools is open, so open it before you load the page [3].
+The tool logs only after DevTools is open, so open it before you load the page [3]. RequestFox also runs in Edge, as the same extension as in Chrome, if you want the calls kept and flagged.
 
 ## How do I see API calls in Safari?
 
@@ -2642,9 +2642,9 @@ RequestFox does not run in Safari. In Safari, use the Network tab of Web Inspect
 
 ## Can I keep the calls and have the broken ones flagged?
 
-Yes, in Chrome and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in History. Press Start Recording, use the page, press Stop. How to record API calls has every step.
+Yes, in Chrome, Edge and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in History. Press Start Recording, use the page, press Stop. How to record API calls has every step.
 
-RequestFox is in the Chrome Web Store and Firefox Add-ons. It isn't listed for other browsers, so for those, use the built-in tool above.
+RequestFox is in the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons. In Edge it is the same extension as in Chrome. It isn't listed for other browsers, so for those, use the built-in tool above.
 
 ## Sources
 
@@ -2674,7 +2674,7 @@ Edit and Resend, REST client add-ons, and RequestFox.
 
 The judging and the history, or the raw live view.
 
-## Record the calls in Chrome or Firefox.
+## Record the calls in Chrome, Edge or Firefox.
 
 Add to Chrome, free
 Add to Firefox
@@ -2685,7 +2685,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-slow-down-network.html
 
-Open Mock or break an endpoint in RequestFox, a browser extension for Chrome and Firefox, press Add rule, type part of the call's URL and pick a mode: Slow holds the call back for the milliseconds you set, Throttle makes a bigger response take longer, and Network error fails the call as if the server can't be reached. The rule works while RequestFox records. In Chrome, Slow down the whole tab makes one tab load as if on Slow 3G, Fast 3G, 4G or no network at all: the page, its scripts, images and API calls.
+Open Mock or break an endpoint in RequestFox, a browser extension for Chrome, Edge and Firefox, press Add rule, type part of the call's URL and pick a mode: Slow holds the call back for the milliseconds you set, Throttle makes a bigger response take longer, and Network error fails the call as if the server can't be reached. The rule works while RequestFox records. In Chrome, Slow down the whole tab makes one tab load as if on Slow 3G, Fast 3G, 4G or no network at all: the page, its scripts, images and API calls.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -2769,7 +2769,7 @@ A raw live view, or the problems pointed out.
 
 Address: https://requestfox.accessisight.com/guide-test-mcp-server.html
 
-In RequestFox, a browser extension for Chrome and Firefox, open Compose, set the body type to MCP server, type the server's address (it often ends in /mcp) and press Connect. RequestFox lists the server's tools, resources and prompts. Pick a tool, fill the form it builds from the tool's input schema, and press Call tool to read the response. The requests are plain JSON-RPC over HTTP, and RequestFox runs no AI model: it sends only what you pick.
+In RequestFox, a browser extension for Chrome, Edge and Firefox, open Compose, set the body type to MCP server, type the server's address (it often ends in /mcp) and press Connect. RequestFox lists the server's tools, resources and prompts. Pick a tool, fill the form it builds from the tool's input schema, and press Call tool to read the response. The requests are plain JSON-RPC over HTTP, and RequestFox runs no AI model: it sends only what you pick.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about the MCP Inspector are from its own documentation, checked 20 November 2026; sources below.
 
@@ -2848,7 +2848,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-test-server-sent-events.html
 
-In RequestFox, a browser extension for Chrome and Firefox, open Compose, type the endpoint's address and press Send. A server-sent events response stays open: the status line says Streaming… with a count of events, each event is listed as it arrives, and Stop ends the read and keeps what came. On a recorded call, RequestFox flags a stream that sent an error event, one that closed without its end marker, and one that went quiet for a long time. Headers and auth go in like any other request.
+In RequestFox, a browser extension for Chrome, Edge and Firefox, open Compose, type the endpoint's address and press Send. A server-sent events response stays open: the status line says Streaming… with a count of events, each event is listed as it arrives, and Stop ends the read and keeps what came. On a recorded call, RequestFox flags a stream that sent an error event, one that closed without its end marker, and one that went quiet for a long time. Headers and auth go in like any other request.
 
 For RequestFox 2.5.0, checked 19 November 2026. The event stream format is from the HTML standard, checked 20 November 2026; source below.
 
@@ -2925,7 +2925,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/guide-test-websocket.html
 
-Open WebSocket / SSE activity in RequestFox, a browser extension for Chrome and Firefox, type the server's ws:// or wss:// URL under Open a connection and press Connect. Type a message and press Send. Whatever the server sends back shows below, each line marked Received or Sent. For a Socket.IO server, pick Socket.IO beside the URL: RequestFox joins the namespace, answers the pings for you, and sends events with Emit. If the connection closes, it tells you the close code and what it means.
+Open WebSocket / SSE activity in RequestFox, a browser extension for Chrome, Edge and Firefox, type the server's ws:// or wss:// URL under Open a connection and press Connect. Type a message and press Send. Whatever the server sends back shows below, each line marked Received or Sent. For a Socket.IO server, pick Socket.IO beside the URL: RequestFox joins the namespace, answers the pings for you, and sends events with Emit. If the connection closes, it tells you the close code and what it means.
 
 For RequestFox 2.5.0, checked 17 November 2026.
 
@@ -3227,7 +3227,7 @@ Facts about DevTools are from Chrome's own documentation, checked 4 November 202
 
 | Export | HTML report, HAR, CSV, JSON, Postman, Bruno, Insomnia, Hoppscotch, an API docs page, OpenAPI 3.0, tests, code in 15 languages | HAR (sensitive headers left out), Copy as cURL and as fetch [2]
 
-| Browsers | Chrome and Firefox | Chrome (Firefox has its own Network Monitor)
+| Browsers | Chrome, Edge and Firefox | Chrome (Firefox has its own Network Monitor)
 
 ## Where DevTools is stronger
 
@@ -3288,7 +3288,7 @@ Facts about Hoppscotch are from its own documentation, checked 4 November 2026; 
 
 | | RequestFox | Hoppscotch
 
-| Where it runs | A side panel in Chrome, a sidebar in Firefox | Web, Mac, Windows, Linux and CLI; the web app needs no install [1]
+| Where it runs | A side panel in Chrome and Edge, a sidebar in Firefox | Web, Mac, Windows, Linux and CLI; the web app needs no install [1]
 
 | Self-hosting | Nothing to host: there is no server | Host it on your own server for your team [1]
 
@@ -3351,7 +3351,7 @@ Facts about Insomnia are from its own documentation, checked 4 November 2026; so
 
 | | RequestFox | Insomnia
 
-| Where it runs | A side panel in Chrome, a sidebar in Firefox | Desktop app for macOS, Windows and Ubuntu [1]
+| Where it runs | A side panel in Chrome and Edge, a sidebar in Firefox | Desktop app for macOS, Windows and Ubuntu [1]
 
 | Storage and account | In your browser; no account | Local Vault (on your device), Scratch Pad (before logging in), Git Sync, or Cloud Sync [2]
 
@@ -3418,7 +3418,7 @@ Facts about Postman are from its own documentation, checked 4 November 2026; sou
 
 | | RequestFox | Postman
 
-| Where it runs | A side panel in Chrome, a sidebar in Firefox | Desktop app and web app [1]
+| Where it runs | A side panel in Chrome and Edge, a sidebar in Firefox | Desktop app and web app [1]
 
 | Without an account | Everything | The lightweight API Client builds and sends requests and keeps history; collections and environments need a workspace, which needs an account [2]
 
@@ -3432,7 +3432,7 @@ Facts about Postman are from its own documentation, checked 4 November 2026; sou
 
 No. On 1 November 2017 Postman said Chrome apps were being deprecated and that new features would go only to its native apps, for Windows, Mac and Linux [3]. Today Postman runs as a desktop app and a web app, and its browser extension, Interceptor, captures browser requests and cookies and sends them to Postman [1].
 
-RequestFox isn't a copy of that app, and it's not a team workspace. It's a browser extension for Chrome and Firefox that records and judges the calls your own web app makes. It has no cloud sync and no gRPC or MQTT client (gRPC-Web and Connect only); you share work as files.
+RequestFox isn't a copy of that app, and it's not a team workspace. It's a browser extension for Chrome, Edge and Firefox that records and judges the calls your own web app makes. It has no cloud sync and no gRPC or MQTT client (gRPC-Web and Connect only); you share work as files.
 
 ## Where Postman is stronger
 
@@ -3491,7 +3491,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/compare-proxy-tools.html
 
-RequestFox is a browser extension: it sees the calls a web app makes in a Chrome or Firefox tab, with nothing else to set up. HTTP Toolkit, Proxyman and Charles are apps you install on your computer that sit between your apps and the internet: they see the traffic of whatever you send through them, phones and desktop apps included, once that app or device trusts their certificate for HTTPS. Pick a proxy tool when the traffic isn't in a browser tab. Pick RequestFox when it is, and you'd like the broken calls flagged for you, with no certificate, no proxy setting and no account.
+RequestFox is a browser extension: it sees the calls a web app makes in a Chrome, Edge or Firefox tab, with nothing else to set up. HTTP Toolkit, Proxyman and Charles are apps you install on your computer that sit between your apps and the internet: they see the traffic of whatever you send through them, phones and desktop apps included, once that app or device trusts their certificate for HTTPS. Pick a proxy tool when the traffic isn't in a browser tab. Pick RequestFox when it is, and you'd like the broken calls flagged for you, with no certificate, no proxy setting and no account.
 
 Facts about HTTP Toolkit, Proxyman and Charles are from their own pages, checked 15 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.5.0.
 
@@ -3503,7 +3503,7 @@ Facts about HTTP Toolkit, Proxyman and Charles are from their own pages, checked
 
 | What it is | A browser extension that records and judges the calls a web app makes, and lets you replay, mock, check and export them | An open-source app for debugging, testing and building with HTTP, on Windows, Linux and Mac [1] | A native macOS app to capture, decrypt and mock HTTP(S) traffic; its page also lists Windows, Linux, iOS and Android [4] | An HTTP proxy, HTTP monitor and reverse proxy for Windows, macOS and Linux [6]
 
-| Whose traffic it sees | The browser tabs you record, in Chrome and Firefox | Android and iOS apps, whole devices, Docker containers, browser windows, terminals and backend processes [1][2] | iOS and Android devices and the iOS Simulator, with standalone iOS and Android apps [4] | The HTTP and HTTPS traffic between your machine and the internet; iOS devices and simulators once they trust its certificate [6][9]
+| Whose traffic it sees | The browser tabs you record, in Chrome, Edge and Firefox | Android and iOS apps, whole devices, Docker containers, browser windows, terminals and backend processes [1][2] | iOS and Android devices and the iOS Simulator, with standalone iOS and Android apps [4] | The HTTP and HTTPS traffic between your machine and the internet; iOS devices and simulators once they trust its certificate [6][9]
 
 | HTTPS | Read inside the browser: no certificate to trust, no proxy to set | Captured; a client you set up by hand must trust its certificate [1][2] | Decrypted and shown in plain text [4] | SSL proxying shows it in plain text; each device must trust the Charles root certificate, and on Android only apps you control [7][9]
 
@@ -3537,7 +3537,7 @@ Facts about HTTP Toolkit, Proxyman and Charles are from their own pages, checked
 
 Where RequestFox falls short, so you're not surprised:
 
-- It sees what a browser tab sends, in Chrome and Firefox: not a phone, a desktop app or a terminal.
+- It sees what a browser tab sends, in Chrome, Edge and Firefox: not a phone, a desktop app or a terminal.
 
 - Slowing a whole tab works in Chrome only; Firefox offers each rule's Slow and Throttle modes instead.
 
@@ -3600,7 +3600,7 @@ Facts about Requestly are from its own pages, checked 4 November 2026; sources b
 
 | Watching traffic | Every call is recorded, tied to the click that caused it and kept in History; failed, slow, duplicate and retried calls, N+1 bursts and errors inside a 200 OK are flagged | A network traffic table, session recording and HAR import [1]
 
-| Browsers | Chrome and Firefox | Chrome, Firefox, Edge, Brave, Arc, Vivaldi and Opera; Safari with fewer features [1][2]
+| Browsers | Chrome, Edge and Firefox | Chrome, Firefox, Edge, Brave, Arc, Vivaldi and Opera; Safari with fewer features [1][2]
 
 | Beyond the browser | Browser tabs only | With its desktop app: mobile devices, simulators, desktop apps, Node.js and the terminal [1]
 
@@ -3634,7 +3634,7 @@ Facts about Requestly are from its own pages, checked 4 November 2026; sources b
 
 Where RequestFox falls short, so you're not surprised:
 
-- It runs in Chrome and Firefox, and only sees what a browser tab sends. Mobile and desktop apps need a proxy tool such as HTTP Toolkit, Proxyman or Charles.
+- It runs in Chrome, Edge and Firefox, and only sees what a browser tab sends. Mobile and desktop apps need a proxy tool such as HTTP Toolkit, Proxyman or Charles.
 
 - It has no rule that puts script or style into a page.
 
@@ -3671,7 +3671,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/compare-thunder-client.html
 
-Thunder Client is a REST API client that lives inside your code editor, VS Code or a JetBrains IDE [2]. RequestFox is a browser extension for Chrome and Firefox that records the calls a web app makes, flags the broken ones and lets you send, mock and export them. Pick Thunder Client if you want to write and keep requests beside your code, with Git Sync on a paid plan. Pick RequestFox if you want to see what your web app actually sends, with no account, no plan limits and nothing sent to us.
+Thunder Client is a REST API client that lives inside your code editor, VS Code or a JetBrains IDE [2]. RequestFox is a browser extension for Chrome, Edge and Firefox that records the calls a web app makes, flags the broken ones and lets you send, mock and export them. Pick Thunder Client if you want to write and keep requests beside your code, with Git Sync on a paid plan. Pick RequestFox if you want to see what your web app actually sends, with no account, no plan limits and nothing sent to us.
 
 Facts about Thunder Client are from its own pages, checked 20 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.5.0.
 
@@ -3681,7 +3681,7 @@ Facts about Thunder Client are from its own pages, checked 20 November 2026; sou
 
 | | RequestFox | Thunder Client
 
-| Where it runs | In Chrome and Firefox, beside the page you test | Inside the editor: VS Code, and JetBrains IDEs [2]
+| Where it runs | In Chrome, Edge and Firefox, beside the page you test | Inside the editor: VS Code, and JetBrains IDEs [2]
 
 | What it starts from | The calls your web app makes, recorded and flagged | Requests you test from your editor [2]
 
@@ -3822,7 +3822,7 @@ Honest limits of RequestFox 2.5.0, so you are not surprised:
 
 ## Try it on the app you are testing today.
 
-Free, in Chrome and Firefox.
+Free, in Chrome, Edge and Firefox.
 
 Add to Chrome, free
 Add to Firefox
@@ -3833,7 +3833,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/postman-alternative-no-login.html
 
-RequestFox is a browser extension for Chrome and Firefox with no account to make, no sign-in and no server of ours: install it and send a request. It's free, with no paid tier. Insomnia's Scratch Pad is another local-only way to work without logging in [2]. Below is what each vendor's own pricing page says about price and accounts, and where it says nothing.
+RequestFox is a browser extension for Chrome, Edge and Firefox with no account to make, no sign-in and no server of ours: install it and send a request. It's free, with no paid tier. Insomnia's Scratch Pad is another local-only way to work without logging in [2]. Below is what each vendor's own pricing page says about price and accounts, and where it says nothing.
 
 Facts about other tools are from their own pricing pages, checked 20 November 2026; sources below. Written by the RequestFox team, for RequestFox 2.5.0.
 
@@ -3896,7 +3896,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/postman-interceptor-alternative.html
 
-Postman Interceptor is a browser extension that captures requests and cookies and hands them to Postman, so Postman has to be running (the desktop app) or open (the web app) [1]. RequestFox is another browser extension, for Chrome and Firefox. It records the calls a web app makes and flags the broken ones inside the browser, with no other app, and exports a Postman collection when you want the calls in Postman.
+Postman Interceptor is a browser extension that captures requests and cookies and hands them to Postman, so Postman has to be running (the desktop app) or open (the web app) [1]. RequestFox is another browser extension, for Chrome, Edge and Firefox. It records the calls a web app makes and flags the broken ones inside the browser, with no other app, and exports a Postman collection when you want the calls in Postman.
 
 For RequestFox 2.5.0, checked 19 November 2026. Facts about Postman are from its own documentation, checked 4 November 2026; sources below. Written by the RequestFox team.
 
@@ -3960,7 +3960,7 @@ What RequestFox records stays in your browser, and nothing is sent to us. The ex
 
 ## What does RequestFox not do?
 
-- It runs in Chrome and Firefox only.
+- It runs in Chrome, Edge and Firefox only.
 
 - It does not put recorded calls into a Postman workspace by itself: you export a file and import it.
 
@@ -4150,7 +4150,7 @@ Add to Firefox
 
 Address: https://requestfox.accessisight.com/privacy.html
 
-RequestFox is a developer tool for Chrome and Firefox that watches and tests API traffic during manual QA. It does not collect, transmit, or sell any data. It has no server of its own, no analytics, no telemetry and no account.
+RequestFox is a developer tool for Chrome, Edge and Firefox that watches and tests API traffic during manual QA. It does not collect, transmit, or sell any data. It has no server of its own, no analytics, no telemetry and no account.
 
 Last updated: 17 November 2026
 

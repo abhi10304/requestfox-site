@@ -67,6 +67,7 @@
       <a href="faq.html">FAQ</a>
     </nav>
     <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="header-alt" href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer" aria-label="Add RequestFox to Edge">Edge</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -75,7 +76,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">API calls in Firefox, Edge and Safari</span></li></ol></nav>
       <h1 id="title">How to see the API calls a page makes in Firefox, Edge or Safari</h1>
-      <p class="answer">Each of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where you find it differs by browser, so the steps for each are below. If you want to keep the calls after you close the tools, and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome and Firefox; Safari is not supported.</p>
+      <p class="answer">Each of these browsers has a Network tool in its built-in developer tools: open the tools, choose Network and use the page. Where you find it differs by browser, so the steps for each are below. If you want to keep the calls after you close the tools, and have the broken ones flagged, use a browser extension. RequestFox is one, for Chrome, Edge and Firefox; Safari is not supported.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-19">19 November 2026</time>. Facts about browsers are from their own documentation, checked <time datetime="2026-11-20">20 November 2026</time>; sources below.</p>
     </div>
   </section>
@@ -110,7 +111,7 @@
           <li>On the Activity Bar choose the Network tab. If it isn't there, click More tools [3].</li>
           <li>Refresh the page. The Network Log lists each request with its status, type, initiator and time, and you can narrow it with the Filter box or by resource type [3].</li>
         </ol>
-        <p>The tool logs only after DevTools is open, so open it before you load the page [3].</p>
+        <p>The tool logs only after DevTools is open, so open it before you load the page [3]. RequestFox also runs in Edge, as the same extension as in Chrome, if you want the calls kept and flagged.</p>
       </section>
 
       <section class="block" id="safari" aria-labelledby="safari-title">
@@ -125,8 +126,8 @@
 
       <section class="block" id="extension" aria-labelledby="extension-title">
         <h2 id="extension-title">Can I keep the calls and have the broken ones flagged?</h2>
-        <p>Yes, in Chrome and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in <span class="ui">History</span>. Press <span class="ui">Start Recording</span>, use the page, press <span class="ui">Stop</span>. <a href="guide-record-api-calls.html">How to record API calls</a> has every step.</p>
-        <p>RequestFox is in the Chrome Web Store and Firefox Add-ons. It isn't listed for other browsers, so for those, use the built-in tool above.</p>
+        <p>Yes, in Chrome, Edge and Firefox. RequestFox is a browser extension that lists the fetch, XMLHttpRequest, WebSocket and server-sent events calls a page makes, ties each to the click that caused it, flags the ones that failed, were slow or repeated, and keeps them in <span class="ui">History</span>. Press <span class="ui">Start Recording</span>, use the page, press <span class="ui">Stop</span>. <a href="guide-record-api-calls.html">How to record API calls</a> has every step.</p>
+        <p>RequestFox is in the Chrome Web Store, Microsoft Edge Add-ons and Firefox Add-ons. In Edge it is the same extension as in Chrome. It isn't listed for other browsers, so for those, use the built-in tool above.</p>
       </section>
 
       <section class="block" id="sources" aria-labelledby="sources-title">
@@ -153,7 +154,7 @@
   </div>
 
   <section class="final" aria-labelledby="final-title">
-    <h2 id="final-title">Record the calls in Chrome or Firefox.</h2>
+    <h2 id="final-title">Record the calls in Chrome, Edge or Firefox.</h2>
     <div class="cta">
       <a class="btn btn-primary btn-lg" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Chrome, free</a>
       <a class="btn btn-ghost btn-lg" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Add to Firefox</a>
@@ -165,7 +166,7 @@
     <div class="foot-top">
       <div class="foot-about">
         <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
-        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+        <p>A free API tester and network monitor for Chrome, Edge and Firefox. No account, no server, nothing sent to us.</p>
       </div>
       <nav class="foot-cols" aria-label="Footer">
         <div>
@@ -178,6 +179,7 @@
             <li><a href="privacy.html">Privacy</a></li>
             <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Chrome Web Store</a></li>
             <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-see-api-calls-firefox-edge-safari" rel="noopener noreferrer">Edge Add-ons</a></li>
           </ul>
         </div>
         <div>

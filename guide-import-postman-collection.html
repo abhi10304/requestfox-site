@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>How to Import a Postman Collection and Run It in the Browser</title>
-<meta name="description" content="Export a Postman collection, import it into RequestFox in Chrome or Firefox, see which tests became checks, and what to set up again before you send." />
+<meta name="description" content="Export a Postman collection, import it into RequestFox in Chrome, Edge or Firefox, see which tests became checks, and what to set up again before you send." />
 <link rel="canonical" href="https://requestfox.accessisight.com/guide-import-postman-collection.html" />
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests" />
 <meta name="referrer" content="strict-origin-when-cross-origin" />
@@ -19,7 +19,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RequestFox" />
 <meta property="og:title" content="How to Import a Postman Collection and Run It in the Browser" />
-<meta property="og:description" content="Export a Postman collection, import it into RequestFox in Chrome or Firefox, see which tests became checks, and what to set up again before you send." />
+<meta property="og:description" content="Export a Postman collection, import it into RequestFox in Chrome, Edge or Firefox, see which tests became checks, and what to set up again before you send." />
 <meta property="og:url" content="https://requestfox.accessisight.com/guide-import-postman-collection.html" />
 <meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-import-postman-collection.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -27,7 +27,7 @@
 <meta property="og:image:alt" content="How to Import a Postman Collection and Run It in the Browser" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="How to Import a Postman Collection and Run It in the Browser" />
-<meta name="twitter:description" content="Export a Postman collection, import it into RequestFox in Chrome or Firefox, see which tests became checks, and what to set up again before you send." />
+<meta name="twitter:description" content="Export a Postman collection, import it into RequestFox in Chrome, Edge or Firefox, see which tests became checks, and what to set up again before you send." />
 <meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-import-postman-collection.jpg" />
 <meta property="og:locale" content="en_US" />
 <script type="application/ld+json">{
@@ -104,6 +104,7 @@
       <a href="faq.html">FAQ</a>
     </nav>
     <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="header-alt" href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer" aria-label="Add RequestFox to Edge">Edge</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -112,7 +113,7 @@
     <div class="wrap">
       <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="./">Home</a></li><li><a href="guides.html">Guides</a></li><li><span aria-current="page">Import a Postman collection</span></li></ol></nav>
       <h1 id="title">How to import a Postman collection and run it in the browser</h1>
-      <p class="answer">Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it couldn't turn into one. Then send any request from it, or run the whole file as a suite from its folder&#39;s menu.</p>
+      <p class="answer">Export the collection from Postman as a JSON file, then in RequestFox, a browser extension for Chrome, Edge and Firefox, open Compose → Import → Import a collection… and pick the file. RequestFox saves it under Saved collections: a file with folders becomes one folder named after the file, its folders kept, with their variables and auth. It turns the common tests (status, time, header and JSON field checks, and saved values) into checks and chaining rows, and lists every script it couldn't turn into one. Then send any request from it, or run the whole file as a suite from its folder&#39;s menu.</p>
       <p class="byline">For RequestFox 2.5.0, checked <time datetime="2026-11-17">17 November 2026</time>.</p>
     </div>
   </section>
@@ -186,7 +187,7 @@
     <div class="foot-top">
       <div class="foot-about">
         <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
-        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+        <p>A free API tester and network monitor for Chrome, Edge and Firefox. No account, no server, nothing sent to us.</p>
       </div>
       <nav class="foot-cols" aria-label="Footer">
         <div>
@@ -199,6 +200,7 @@
             <li><a href="privacy.html">Privacy</a></li>
             <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer">Chrome Web Store</a></li>
             <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-import-postman-collection" rel="noopener noreferrer">Edge Add-ons</a></li>
           </ul>
         </div>
         <div>

@@ -515,7 +515,7 @@ table.cmp, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; min-width: 0;
 .cmp tbody th { width: auto; }
 .cmp td[data-col]::before { content: attr(data-col) ": "; font-weight: 600; color: var(--text-primary); }
 }
-@media (max-width: 480px) {
+@media (max-width: 540px) {
 .header-alt { display: none; }
 .header-cta { margin-inline-start: auto; }
 }

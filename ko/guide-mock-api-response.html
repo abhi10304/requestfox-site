@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Chrome에서 API 응답 모의로 만들기: 확장 프로그램, 백엔드 없이</title>
-<meta name="description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome과 Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
+<meta name="description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome, Edge, Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
 <link rel="canonical" href="https://requestfox.accessisight.com/ko/guide-mock-api-response.html" />
 <link rel="alternate" hreflang="en" href="https://requestfox.accessisight.com/guide-mock-api-response.html" />
 <link rel="alternate" hreflang="es" href="https://requestfox.accessisight.com/es/guide-mock-api-response.html" />
@@ -34,7 +34,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="RequestFox" />
 <meta property="og:title" content="Chrome에서 API 응답 모의로 만들기: 확장 프로그램, 백엔드 없이" />
-<meta property="og:description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome과 Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
+<meta property="og:description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome, Edge, Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
 <meta property="og:url" content="https://requestfox.accessisight.com/ko/guide-mock-api-response.html" />
 <meta property="og:image" content="https://requestfox.accessisight.com/img/og-guide-mock-api-response.jpg" />
 <meta property="og:image:width" content="1200" />
@@ -42,7 +42,7 @@
 <meta property="og:image:alt" content="Chrome에서 API 응답 모의로 만들기: 확장 프로그램, 백엔드 없이" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Chrome에서 API 응답 모의로 만들기: 확장 프로그램, 백엔드 없이" />
-<meta name="twitter:description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome과 Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
+<meta name="twitter:description" content="어떤 API 호출이든 내 상태 코드, 헤더, 본문을 돌려주거나, 호출을 실패하게, 느리게, 멈추게 하세요. Chrome, Edge, Firefox 모두에서. 백엔드 변경도 프록시도 필요 없습니다." />
 <meta name="twitter:image" content="https://requestfox.accessisight.com/img/og-guide-mock-api-response.jpg" />
 <meta property="og:locale" content="ko_KR" />
 <script type="application/ld+json">{
@@ -113,6 +113,7 @@
       <a href="../faq.html">FAQ</a>
     </nav>
     <a class="header-alt" href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer" aria-label="Add RequestFox to Firefox">Firefox</a>
+    <a class="header-alt" href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer" aria-label="Add RequestFox to Edge">Edge</a>
     <a class="btn btn-primary header-cta" href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer">Add to Chrome</a>
   </div>
 </header>
@@ -250,7 +251,7 @@
     <div class="foot-top">
       <div class="foot-about">
         <a class="brand" href="./"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" fill-rule="evenodd" d="M2.6 2.6 L9.1 7.5 Q12 6.5 14.9 7.5 L21.4 2.6 L20.5 10.4 L22.8 13.8 L14.7 18.7 L12 21.6 L9.3 18.7 L1.2 13.8 L3.5 10.4 Z M4.7 5.6 L7.9 8.1 L5.3 9.9 Z M19.3 5.6 L16.1 8.1 L18.7 9.9 Z M7.1 12.3 L10.5 13.1 L9.7 14.3 Z M16.9 12.3 L13.5 13.1 L14.3 14.3 Z"/></svg><span translate="no">RequestFox</span></a>
-        <p>A free API tester and network monitor for Chrome and Firefox. No account, no server, nothing sent to us.</p>
+        <p>A free API tester and network monitor for Chrome, Edge and Firefox. No account, no server, nothing sent to us.</p>
       </div>
       <nav class="foot-cols" aria-label="Footer">
         <div>
@@ -263,6 +264,7 @@
             <li><a href="../privacy.html">Privacy</a></li>
             <li><a href="https://chromewebstore.google.com/detail/requestfox-network-qa-mon/lbhhldlnlgceobhpmpkljbefpiilhgmb?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer">Chrome Web Store</a></li>
             <li><a href="https://addons.mozilla.org/firefox/addon/requestfox-network-qa-monitor/?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer">Firefox Add-ons</a></li>
+            <li><a href="https://microsoftedge.microsoft.com/addons/detail/jefmdpiknnjopjcfaeanehdgdgeijilh?utm_source=requestfox.accessisight.com&amp;utm_medium=website&amp;utm_campaign=guide-mock-api-response-ko" rel="noopener noreferrer">Edge Add-ons</a></li>
           </ul>
         </div>
         <div>
