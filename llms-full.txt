@@ -1578,6 +1578,8 @@ Press Ctrl F (Cmd F on a Mac) in the Network panel. The Search tab opens and loo
 
 RequestFox marks what it sees, and you decide what's a bug. A call that your own mock or fault rule changed is marked Mocked or Simulated, so a test you set up isn't mistaken for a real failure.
 
+Watch it in 37 seconds on YouTube
+
 ## Which should I use when?
 
 |
